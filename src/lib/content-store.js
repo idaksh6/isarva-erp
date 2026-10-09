@@ -11,15 +11,10 @@ export let defaultContent = {
     address: 'Bangalore | Mumbai | Delhi | Dubai'
   },
   countries: [
-    { code: 'IN', name: 'India', flag: '🇮🇳', currency: 'INR (₹)', phoneCode: '+91' },
-    { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', currency: 'SAR (﷼)', phoneCode: '+966' },
-    { code: 'AE', name: 'UAE', flag: '🇦🇪', currency: 'AED (د.إ)', phoneCode: '+971' },
-    { code: 'QA', name: 'Qatar', flag: '🇶🇦', currency: 'QAR (﷼)', phoneCode: '+974' },
-    { code: 'KW', name: 'Kuwait', flag: '🇰🇼', currency: 'KWD (د.ك)', phoneCode: '+965' },
-    { code: 'OM', name: 'Oman', flag: '🇴🇲', currency: 'OMR (﷼)', phoneCode: '+968' },
-    { code: 'BH', name: 'Bahrain', flag: '🇧🇭', currency: 'BHD (.د.ب)', phoneCode: '+973' }
+    { code: 'IN', name: 'India', flag: '🇮🇳', currency: 'INR (₹)', phoneCode: '+91', lang: 'English' },
+    { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', currency: 'SAR (ر.س)', phoneCode: '+966', lang: 'العربية / English' }
   ],
-  hero: {
+    hero: {
     badge: 'ALL-IN-ONE ERP SOLUTIONS',
     headlineMain: 'Smart Business Solutions for a',
     headlineHighlight: 'Connected Tomorrow',

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -12,12 +12,13 @@ import {
   BarChart3,
   Users2,
   Handshake,
-  ArrowRight
+  ArrowRight,
+  Check
 } from 'lucide-react';
 
 export default function Navbar({ content, onOpenModal }) {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(content?.countries?.[0] || { code: 'IN', name: 'India', flag: '🇮🇳' });
+  const [selectedCountry, setSelectedCountry] = useState(content?.countries?.[0] || { code: 'IN', name: 'India', flag: '????' });
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -28,42 +29,42 @@ export default function Navbar({ content, onOpenModal }) {
           
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:bg-brand-600 transition-all">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-              </svg>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-400 flex items-center justify-center font-extrabold text-white text-lg shadow-md group-hover:scale-105 transition-transform">
+              IS
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-extrabold tracking-tight text-slate-900 leading-none">
-                ISARVA
+              <span className="font-extrabold text-xl tracking-tight text-slate-900 leading-tight">
+                ISARVA <span className="text-brand-500">ERP</span>
               </span>
-              <span className="text-[10px] tracking-widest font-semibold text-brand-500 uppercase mt-0.5">
-                ERP Platform
+              <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">
+                Enterprise Platform
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-[0.925rem] font-semibold text-slate-700">
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
             <Link href="/" className="text-brand-500 hover:text-brand-600 transition-colors">
               Home
             </Link>
 
-            {/* Solutions Dropdown */}
+            {/* Solutions Mega Dropdown Trigger */}
             <div className="relative" onMouseLeave={() => setIsSolutionsOpen(false)}>
               <button
-                onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
                 onMouseEnter={() => setIsSolutionsOpen(true)}
+                onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
                 className="flex items-center gap-1 hover:text-brand-500 transition-colors py-2"
               >
                 <span>Solutions</span>
-                <ChevronDown size={15} className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180 text-brand-500' : ''}`} />
               </button>
 
+              {/* Solutions Dropdown Menu */}
               {isSolutionsOpen && (
-                <div className="absolute left-0 mt-1 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50 animate-fadeIn">
+                <div 
+                  className="absolute top-full -left-4 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 p-2.5 z-50 animate-fadeIn space-y-1"
+                  onMouseEnter={() => setIsSolutionsOpen(true)}
+                >
                   <Link href="#restaurant-pos" className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-50 transition-colors group">
                     <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
                       <UtensilsCrossed size={16} />
@@ -127,7 +128,7 @@ export default function Navbar({ content, onOpenModal }) {
           {/* Right Action Bar */}
           <div className="hidden lg:flex items-center gap-4">
             
-            {/* Country Selector Dropdown */}
+            {/* Country & Language Selector Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setIsCountryOpen(!isCountryOpen)}
@@ -139,9 +140,9 @@ export default function Navbar({ content, onOpenModal }) {
               </button>
 
               {isCountryOpen && (
-                <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50 animate-fadeIn">
-                  <div className="px-3 pb-2 mb-1 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    Select Region
+                <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50 animate-fadeIn">
+                  <div className="px-3.5 pb-2 mb-1 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Select Region & Language
                   </div>
                   {content?.countries?.map((country) => (
                     <button
@@ -150,14 +151,19 @@ export default function Navbar({ content, onOpenModal }) {
                         setSelectedCountry(country);
                         setIsCountryOpen(false);
                       }}
-                      className="w-full flex items-center justify-between px-3.5 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                      className="w-full flex items-center justify-between px-3.5 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors text-left"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <span className="text-base">{country.flag}</span>
-                        <span className="font-medium">{country.name}</span>
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{country.flag}</span>
+                        <div>
+                          <div className="font-semibold text-slate-900 text-xs">{country.name}</div>
+                          {country.lang && (
+                            <div className="text-[11px] text-slate-500 font-normal">{country.lang}</div>
+                          )}
+                        </div>
                       </div>
                       {selectedCountry.code === country.code && (
-                        <span className="text-xs font-bold text-brand-500">✓</span>
+                        <Check size={16} className="text-brand-600 font-bold" />
                       )}
                     </button>
                   ))}
