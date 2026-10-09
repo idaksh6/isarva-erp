@@ -1,23 +1,39 @@
-{
-  "version": 2,
-  "buildCommand": "npm run build --prefix frontend",
-  "outputDirectory": "frontend/dist",
+﻿{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": {
+      "root": "backend",
+      "framework": "express"
+    },
+    "frontend": {
+      "root": "frontend",
+      "framework": "vite"
+    }
+  },
   "rewrites": [
     {
       "source": "/isarva-erp/api/(.*)",
-      "destination": "/api?path=$1"
+      "destination": {
+        "service": "backend"
+      }
     },
     {
       "source": "/api/(.*)",
-      "destination": "/api?path=$1"
+      "destination": {
+        "service": "backend"
+      }
     },
     {
       "source": "/isarva-erp/(.*)",
-      "destination": "/$1"
+      "destination": {
+        "service": "frontend"
+      }
     },
     {
-      "source": "/isarva-erp",
-      "destination": "/index.html"
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
     }
   ]
 }
