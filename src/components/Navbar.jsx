@@ -30,9 +30,9 @@ export default function Navbar({ content, onOpenModal }) {
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <img
-              src="/isarva-erp/images/isarva-logo.svg"
+              src="/isarva-erp/images/isarva-logo.png"
               alt="ISARVA Logo"
-              className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-11 w-auto object-contain group-hover:scale-105 transition-transform"
               onError={(e) => {
                 e.currentTarget.onerror = null;
                 e.currentTarget.src = '/isarva-erp/images/isarva-logo.png';

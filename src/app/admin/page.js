@@ -204,7 +204,7 @@ export default function AdminCMS() {
       <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-50 shadow-xs">
         <div className="flex items-center gap-3">
           <img
-            src="/isarva-erp/images/isarva-logo.svg"
+            src="/isarva-erp/images/isarva-logo.png"
             alt="ISARVA Logo"
             className="h-8 w-auto object-contain"
             onError={(e) => {
