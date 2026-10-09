@@ -1,0 +1,291 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', var(--font-inter);
+
+  /* Primary Brand Palette */
+  --brand-500: #007a55;
+  --brand-600: #006c4b;
+  --brand-700: #005a3e;
+  --brand-dark: #092019;
+  --brand-light: #ecfdf5;
+
+  /* Product Theme Accents */
+  --pos-primary: #059669;
+  --pos-light: #ecfdf5;
+  --billsoft-primary: #2563eb;
+  --billsoft-light: #eff6ff;
+  --hrms-primary: #7c3aed;
+  --hrms-light: #f5f3ff;
+  --crm-primary: #ea580c;
+  --crm-light: #fff7ed;
+
+  /* Neutral Backgrounds */
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+
+  /* Text Colors */
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-inter);
+    color: var(--text-main);
+    background-color: var(--bg-main);
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-jakarta);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text-main);
+  }
+}
+
+/* ==========================================================================
+   GLOBAL REUSABLE COMPONENT CLASSES & DESIGN SYSTEM
+   ========================================================================== */
+
+/* Buttons */
+.btn-brand-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #007a55;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.925rem;
+  padding: 0.685rem 1.4rem;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(0, 122, 85, 0.25);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-brand-primary:hover {
+  background-color: #006546;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 122, 85, 0.35);
+}
+
+.btn-brand-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #007a55;
+  border: 1.5px solid #007a55;
+  font-weight: 600;
+  font-size: 0.925rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-brand-outline:hover {
+  background-color: #ecfdf5;
+  transform: translateY(-1px);
+}
+
+/* Product Category Action Buttons */
+.btn-pos {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #059669;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+.btn-pos:hover {
+  background-color: #047857;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+}
+
+.btn-billsoft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+.btn-billsoft:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.btn-hrms {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #7c3aed;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+.btn-hrms:hover {
+  background-color: #6d28d9;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+}
+
+.btn-crm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ea580c;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+.btn-crm:hover {
+  background-color: #c2410c;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+}
+
+/* Badges and Tags */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-brand {
+  background-color: #ecfdf5;
+  color: #007a55;
+  border: 1px solid rgba(0, 122, 85, 0.2);
+}
+
+.badge-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.65rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* Cards */
+.card-product {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.card-product:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
+}
+
+.card-feature {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+.card-feature:hover {
+  border-color: #007a55;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 122, 85, 0.08);
+}
+
+.industry-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.industry-pill:hover {
+  border-color: #007a55;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

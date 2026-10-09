@@ -1,22 +1,3 @@
-﻿{
-  "buildCommand": "npm run build --prefix frontend",
-  "outputDirectory": "frontend/dist",
-  "rewrites": [
-    {
-      "source": "/isarva-erp/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/isarva-erp/(.*)",
-      "destination": "/$1"
-    },
-    {
-      "source": "/isarva-erp",
-      "destination": "/index.html"
-    }
-  ]
+{
+  "framework": "nextjs"
 }
