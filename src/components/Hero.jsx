@@ -111,13 +111,13 @@ export default function Hero({ content, onOpenModal }) {
 
           </div>
 
-          {/* RIGHT COLUMN: Exact 3D Photorealistic Hero Graphic */}
+          {/* RIGHT COLUMN: Transparent 3D Photorealistic Hero Devices */}
           <div className="lg:col-span-7 relative flex items-center justify-center">
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#b8e4d3] group transform hover:scale-[1.01] transition-transform duration-300">
+            <div className="relative w-full flex items-center justify-center group transform hover:scale-[1.01] transition-transform duration-300">
               <img
-                src="/isarva-erp/images/hero-devices.jpg"
+                src="/isarva-erp/images/hero-devices.png"
                 alt="ISARVA Cloud ERP Dashboard, Restaurant Touch POS Terminal, and GST Thermal Receipt Printer"
-                className="w-full h-auto object-cover block"
+                className="w-full h-auto object-contain drop-shadow-2xl block"
                 loading="eager"
               />
             </div>

@@ -28,19 +28,12 @@ export default function Navbar({ content, onOpenModal }) {
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center group">
             <img
               src="/isarva-erp/images/isarva-logo.png"
               alt="ISARVA Logo"
-              className="h-11 w-auto object-contain group-hover:scale-105 transition-transform"
-              onError={(e) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = '/isarva-erp/images/isarva-logo.png';
-              }}
+              className="h-10 sm:h-11 w-auto object-contain group-hover:scale-105 transition-transform"
             />
-            <span className="text-[11px] font-extrabold text-[#007a55] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 uppercase tracking-wider">
-              ERP
-            </span>
           </Link>
 
           {/* Desktop Navigation Links */}
