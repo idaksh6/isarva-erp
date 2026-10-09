@@ -147,9 +147,8 @@ export default function AdminCMS() {
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center justify-between">
-                <span>Passcode</span>
-                <span className="text-[10px] text-slate-400 font-mono">Default: isarva2026</span>
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                Administrator Passcode
               </label>
 
               <div className="relative">
@@ -653,3 +652,4 @@ export default function AdminCMS() {
     </div>
   );
 }
+
