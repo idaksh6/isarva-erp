@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -28,18 +28,19 @@ export default function Navbar({ content, onOpenModal }) {
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-400 flex items-center justify-center font-extrabold text-white text-lg shadow-md group-hover:scale-105 transition-transform">
-              IS
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-xl tracking-tight text-slate-900 leading-tight">
-                ISARVA <span className="text-brand-500">ERP</span>
-              </span>
-              <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">
-                Enterprise Platform
-              </span>
-            </div>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <img
+              src="/isarva-erp/images/isarva-logo.svg"
+              alt="ISARVA Logo"
+              className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = '/isarva-erp/images/isarva-logo.png';
+              }}
+            />
+            <span className="text-[11px] font-extrabold text-[#007a55] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 uppercase tracking-wider">
+              ERP
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}

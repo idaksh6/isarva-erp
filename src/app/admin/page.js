@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -203,15 +203,18 @@ export default function AdminCMS() {
       {/* Admin Topbar */}
       <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-50 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center font-bold text-white shadow-sm">
-            IS
-          </div>
-          <div>
-            <span className="font-extrabold text-lg text-slate-900">ISARVA ERP</span>
-            <span className="text-xs text-brand-700 font-bold ml-2 px-2 py-0.5 rounded bg-brand-50 border border-brand-200">
-              Admin CMS
-            </span>
-          </div>
+          <img
+            src="/isarva-erp/images/isarva-logo.svg"
+            alt="ISARVA Logo"
+            className="h-8 w-auto object-contain"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = '/isarva-erp/images/isarva-logo.png';
+            }}
+          />
+          <span className="text-xs text-brand-700 font-bold px-2 py-0.5 rounded bg-brand-50 border border-brand-200">
+            Admin CMS
+          </span>
         </div>
 
         <div className="flex items-center gap-3">
