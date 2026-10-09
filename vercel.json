@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build --prefix frontend",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    {
+      "source": "/isarva-erp/api/(.*)",
+      "destination": "/api?path=$1"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api?path=$1"
+    },
+    {
+      "source": "/isarva-erp/(.*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/isarva-erp",
+      "destination": "/index.html"
+    }
+  ]
+}
