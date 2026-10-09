@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -11,64 +11,193 @@ import {
   Settings,
   Save,
   Eye,
+  EyeOff,
   LogOut,
   Mail,
   Phone,
   Building,
   Clock,
-  Sparkles
+  Sparkles,
+  Lock,
+  KeyRound,
+  ShieldCheck,
+  ArrowRight
 } from 'lucide-react';
 import { defaultContent } from '../../lib/content-store';
 
 export default function AdminCMS() {
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState('');
+
+  // CMS Content & Inquiries State
   const [activeTab, setActiveTab] = useState('hero');
   const [content, setContent] = useState(defaultContent);
   const [inquiries, setInquiries] = useState([]);
   const [savedStatus, setSavedStatus] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
+  // Check saved session on load
   useEffect(() => {
-    async function loadData() {
-      try {
-        const res = await fetch('/isarva-erp/api/content');
-        if (res.ok) {
-          const data = await res.json();
-          if (data?.content) setContent(data.content);
-        }
-        const inqRes = await fetch('/isarva-erp/api/inquiries');
-        if (inqRes.ok) {
-          const inqData = await inqRes.json();
-          if (inqData?.inquiries) setInquiries(inqData.inquiries);
-        }
-      } catch (err) {
-        console.warn('Using local fallback');
-      }
+    const sessionAuth = sessionStorage.getItem('isarva_admin_session');
+    if (sessionAuth === 'true') {
+      setIsAuthenticated(true);
+      loadData();
     }
-    loadData();
   }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Default Admin Password (Can be changed here or in .env)
+    const validPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'isarva2026';
+
+    if (passwordInput === validPassword) {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('isarva_admin_session', 'true');
+      sessionStorage.setItem('isarva_admin_token', passwordInput);
+      setLoginError('');
+      loadData();
+    } else {
+      setLoginError('Invalid Administrator Passcode. Please try again.');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('isarva_admin_session');
+    sessionStorage.removeItem('isarva_admin_token');
+    setPasswordInput('');
+  };
+
+  const loadData = async (tokenOverride) => {
+    const token = tokenOverride || sessionStorage.getItem('isarva_admin_token') || 'isarva2026';
+    try {
+      const res = await fetch('/isarva-erp/api/content');
+      if (res.ok) {
+        const data = await res.json();
+        if (data?.content) setContent(data.content);
+      }
+      const inqRes = await fetch('/isarva-erp/api/inquiries', {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      });
+      if (inqRes.ok) {
+        const inqData = await inqRes.json();
+        if (inqData?.inquiries) setInquiries(inqData.inquiries);
+      }
+    } catch (err) {
+      console.warn('Using local fallback data');
+    }
+  };
 
   const handleSave = async () => {
     setIsSaving(true);
     setSavedStatus('Saving changes...');
+    const token = sessionStorage.getItem('isarva_admin_token') || 'isarva2026';
     try {
       const res = await fetch('/isarva-erp/api/content', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
         body: JSON.stringify(content)
       });
       if (res.ok) {
-        setSavedStatus('✓ Saved successfully! Live site updated.');
+        setSavedStatus('? Saved successfully! Live site updated.');
       } else {
-        setSavedStatus('✓ Changes applied locally.');
+        const errData = await res.json();
+        setSavedStatus(errData.error || 'Failed to save changes.');
       }
     } catch (err) {
-      setSavedStatus('✓ Saved to session.');
+      setSavedStatus('Changes applied to session.');
     } finally {
       setIsSaving(false);
       setTimeout(() => setSavedStatus(''), 4000);
     }
   };
 
+  // --- 1. LOGIN SECURITY GATE SCREEN ---
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
+        {/* Decorative Background Glows */}
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-md w-full shadow-2xl relative z-10 space-y-6 animate-fadeIn">
+          
+          {/* Logo & Header */}
+          <div className="text-center space-y-2">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-emerald-400 text-white flex items-center justify-center mx-auto shadow-lg shadow-brand-500/30">
+              <Lock size={26} />
+            </div>
+            <h2 className="text-2xl font-extrabold text-white tracking-tight pt-2">
+              ISARVA ERP Admin CMS
+            </h2>
+            <p className="text-xs text-slate-400">
+              Enter the administrator passcode to access website content and leads.
+            </p>
+          </div>
+
+          {/* Login Form */}
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5 flex items-center justify-between">
+                <span>Passcode</span>
+                <span className="text-[10px] text-slate-500 font-mono">Default: isarva2026</span>
+              </label>
+
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  placeholder="Enter administrator passcode..."
+                  value={passwordInput}
+                  onChange={(e) => setPasswordInput(e.target.value)}
+                  className="w-full pl-3.5 pr-10 py-3 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+            </div>
+
+            {loginError && (
+              <div className="text-xs font-medium text-red-400 bg-red-950/50 border border-red-900/50 p-2.5 rounded-lg text-center animate-fadeIn">
+                {loginError}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="btn-brand-primary w-full py-3 text-sm mt-2 flex items-center justify-center gap-2"
+            >
+              <span>Unlock Admin Panel</span>
+              <ArrowRight size={16} />
+            </button>
+          </form>
+
+          {/* Return link */}
+          <div className="text-center pt-2 border-t border-slate-800">
+            <Link href="/" className="text-xs text-slate-500 hover:text-brand-400 transition-colors">
+              ? Return to Public Website
+            </Link>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  // --- 2. AUTHENTICATED CMS DASHBOARD SCREEN ---
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
       {/* Admin Topbar */}
@@ -80,7 +209,7 @@ export default function AdminCMS() {
           <div>
             <span className="font-extrabold text-lg text-white">ISARVA ERP</span>
             <span className="text-xs text-brand-400 font-bold ml-2 px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">
-              Content CMS
+              Admin CMS
             </span>
           </div>
         </div>
@@ -109,6 +238,16 @@ export default function AdminCMS() {
             <Eye size={14} />
             <span>View Live Site</span>
           </Link>
+
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-950/60 hover:bg-red-900/80 text-xs font-bold text-red-300 border border-red-800 transition-colors"
+            title="Lock & Log Out"
+          >
+            <LogOut size={14} />
+            <span>Lock</span>
+          </button>
         </div>
       </header>
 
@@ -505,3 +644,6 @@ export default function AdminCMS() {
     </div>
   );
 }
+
+
+
