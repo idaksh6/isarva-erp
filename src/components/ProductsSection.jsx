@@ -82,7 +82,7 @@ export default function ProductsSection({ products, onOpenModal }) {
 
   return (
     <section id="products" className="py-20 bg-white border-t border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">

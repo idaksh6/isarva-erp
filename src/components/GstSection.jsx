@@ -16,7 +16,7 @@ export default function GstSection({ gstData }) {
       {/* Background Subtle Gradient */}
       <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-emerald-50/70 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: India Map Illustration & Badge */}
