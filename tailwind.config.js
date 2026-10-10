@@ -44,7 +44,9 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-jakarta)', 'system-ui', 'sans-serif']
+        heading: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
+        space: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-space-grotesk)', 'monospace'],
       },
       boxShadow: {
         'subtle': '0 2px 10px rgba(0, 0, 0, 0.04)',

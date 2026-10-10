@@ -1,4 +1,4 @@
-﻿// Master Data & Content Store for ISARVA ERP
+// Master Data & Content Store for ISARVA ERP
 // All public website sections read from this store and can be modified via /admin CMS
 
 export let defaultContent = {
@@ -44,6 +44,7 @@ export let defaultContent = {
       buttonText: 'Explore Restaurant POS',
       buttonLink: '#restaurant-pos',
       iconName: 'UtensilsCrossed',
+      image: '/images/pos-card-preview.jpg',
       features: [
         'Dine In, Takeaway, Delivery & Online Orders',
         'Table & Floor Management',
@@ -62,6 +63,7 @@ export let defaultContent = {
       buttonText: 'Explore BillSoft',
       buttonLink: '#billsoft',
       iconName: 'BarChart3',
+      image: '/images/billsoft-card-preview.jpg',
       features: [
         'GST e-Invoicing (India)',
         'Sales, Purchase & Inventory',
@@ -80,6 +82,7 @@ export let defaultContent = {
       buttonText: 'Explore HRMS',
       buttonLink: '#hrms',
       iconName: 'Users2',
+      image: '/images/hrms-card-preview.jpg',
       features: [
         'Employee Management',
         'Payroll & Salary Processing',
@@ -98,6 +101,7 @@ export let defaultContent = {
       buttonText: 'Explore CRM',
       buttonLink: '#crm',
       iconName: 'Handshake',
+      image: '/images/crm-card-preview.jpg',
       features: [
         'Lead & Customer Management',
         'Sales Pipeline',
@@ -188,7 +192,8 @@ export let defaultContent = {
         location: 'Bangalore, India',
         rating: 5,
         quote: 'ISARVA POS has streamlined our restaurant operations. The GST e-invoicing is seamless and fully compliant.',
-        initials: 'SG'
+        initials: 'SG',
+        avatarImage: '/images/tst-spice-garden.jpg'
       },
       {
         id: 'tst2',
@@ -196,7 +201,8 @@ export let defaultContent = {
         location: 'Mumbai, India',
         rating: 5,
         quote: 'BillSoft made our accounting and GST filing so much easier. Highly recommended for retail businesses.',
-        initials: 'MR'
+        initials: 'MR',
+        avatarImage: '/images/tst-metro-mart.jpg'
       },
       {
         id: 'tst3',
@@ -204,7 +210,17 @@ export let defaultContent = {
         location: 'Delhi, India',
         rating: 5,
         quote: 'Excellent support and features. The entire ERP platform is easy to use and very reliable.',
-        initials: 'TI'
+        initials: 'TI',
+        avatarImage: '/images/tst-taste-of-india.jpg'
+      },
+      {
+        id: 'tst4',
+        name: 'The Daily Grind Café',
+        location: 'Hyderabad, India',
+        rating: 5,
+        quote: 'The multi-terminal POS and kitchen display system accelerated our peak morning rush hour orders by 40%.',
+        initials: 'DG',
+        avatarImage: '/images/tst-royal-cafe.jpg'
       }
     ]
   },

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -133,13 +133,13 @@ export default function AdminCMS() {
           
           {/* Logo & Header */}
           <div className="text-center space-y-2">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-emerald-500 text-white flex items-center justify-center mx-auto shadow-lg shadow-brand-500/20">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#007a55] to-emerald-500 text-white flex items-center justify-center mx-auto shadow-lg shadow-[#007a55]/20">
               <Lock size={26} />
             </div>
-            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight pt-2">
+            <h2 className="pt-2">
               ISARVA ERP Admin CMS
             </h2>
-            <p className="text-xs text-slate-500">
+            <p>
               Enter the administrator passcode to access website content and leads.
             </p>
           </div>
@@ -259,7 +259,7 @@ export default function AdminCMS() {
         
         {/* Sidebar Navigation */}
         <aside className="w-64 bg-white border-r border-slate-200 p-4 space-y-1.5 shrink-0 hidden md:block">
-          <div className="text-[11px] font-bold text-slate-400 uppercase px-3 py-2 tracking-wider">
+          <div className="text-xs font-bold text-slate-400 uppercase px-3 py-2 tracking-wider">
             Content Sections
           </div>
 
@@ -304,7 +304,7 @@ export default function AdminCMS() {
           </button>
 
           <div className="pt-4 mt-4 border-t border-slate-200">
-            <div className="text-[11px] font-bold text-slate-400 uppercase px-3 py-2 tracking-wider">
+            <div className="text-xs font-bold text-slate-400 uppercase px-3 py-2 tracking-wider">
               Customer Leads
             </div>
             <button
@@ -331,8 +331,8 @@ export default function AdminCMS() {
           {activeTab === 'hero' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2 className="text-xl font-bold text-slate-900">Hero Banner Content</h2>
-                <p className="text-xs text-slate-500">Update top headline, description paragraph, and CTA buttons.</p>
+                <h2>Hero Banner Content</h2>
+                <p>Update top headline, description paragraph, and CTA buttons.</p>
               </div>
 
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
@@ -423,8 +423,8 @@ export default function AdminCMS() {
           {activeTab === 'products' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2 className="text-xl font-bold text-slate-900">Products & Features (4 Modules)</h2>
-                <p className="text-xs text-slate-500">Edit titles, subtitles, and checklist items for POS, BillSoft, HRMS, and CRM.</p>
+                <h2>Products & Features (4 Modules)</h2>
+                <p>Edit titles, subtitles, and checklist items for POS, BillSoft, HRMS, and CRM.</p>
               </div>
 
               <div className="space-y-6">
@@ -468,6 +468,21 @@ export default function AdminCMS() {
                     </div>
 
                     <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Preview Image URL</label>
+                      <input
+                        type="text"
+                        value={prod.image || ''}
+                        placeholder="/images/pos-card-preview.jpg"
+                        onChange={(e) => {
+                          const newProds = [...content.products];
+                          newProds[pIdx].image = e.target.value;
+                          setContent({ ...content, products: newProds });
+                        }}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
+                      />
+                    </div>
+
+                    <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1.5">Feature Checklist (Line separated)</label>
                       <textarea
                         rows="5"
@@ -490,12 +505,12 @@ export default function AdminCMS() {
           {activeTab === 'gst' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2 className="text-xl font-bold text-slate-900">GST Compliance & Why Choose</h2>
-                <p className="text-xs text-slate-500">Configure Indian statutory requirements and value proposition cards.</p>
+                <h2>GST Compliance & Why Choose</h2>
+                <p>Configure Indian statutory requirements and value proposition cards.</p>
               </div>
 
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="font-bold text-emerald-700 text-sm">GST Section Details</h3>
+                <h3 className="text-emerald-700">GST Section Details</h3>
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Title</label>
                   <input
@@ -532,8 +547,8 @@ export default function AdminCMS() {
           {activeTab === 'testimonials' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2 className="text-xl font-bold text-slate-900">Customer Testimonials</h2>
-                <p className="text-xs text-slate-500">Manage client reviews, business names, and quotes.</p>
+                <h2>Customer Testimonials</h2>
+                <p>Manage client reviews, business names, and quotes.</p>
               </div>
 
               <div className="space-y-4">
@@ -575,6 +590,24 @@ export default function AdminCMS() {
                     </div>
 
                     <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Store / Avatar Photo URL</label>
+                      <input
+                        type="text"
+                        value={tst.avatarImage || ''}
+                        placeholder="/images/tst-spice-garden.jpg"
+                        onChange={(e) => {
+                          const newItems = [...content.testimonials.items];
+                          newItems[idx].avatarImage = e.target.value;
+                          setContent({
+                            ...content,
+                            testimonials: { ...content.testimonials, items: newItems }
+                          });
+                        }}
+                        className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
+                      />
+                    </div>
+
+                    <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1">Quote</label>
                       <textarea
                         rows="2"
@@ -601,8 +634,8 @@ export default function AdminCMS() {
             <div className="space-y-6 animate-fadeIn">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-bold text-slate-900">Received Demo & Trial Inquiries</h2>
-                  <p className="text-xs text-slate-500">Customer leads submitted through the website modals.</p>
+                  <h2>Received Demo & Trial Inquiries</h2>
+                  <p>Customer leads submitted through the website modals.</p>
                 </div>
                 <span className="text-xs font-bold px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-full">
                   {inquiries.length} Total Leads
@@ -639,7 +672,7 @@ export default function AdminCMS() {
                           </p>
                         )}
                       </div>
-                      <div className="text-[11px] text-slate-400 font-mono flex items-center gap-1">
+                      <div className="text-xs text-slate-400 font-mono flex items-center gap-1">
                         <Clock size={12} />
                         <span>{inq.createdAt}</span>
                       </div>

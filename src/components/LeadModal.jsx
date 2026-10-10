@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { X, CheckCircle2, Send, Sparkles } from 'lucide-react';
@@ -58,15 +58,15 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct 
         {!isSubmitted ? (
           <div>
             {/* Modal Header */}
-            <div className="mb-6 space-y-1">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                <Sparkles size={14} />
-                {modalType === 'demo' ? 'Live Product Demo' : 'Get Started with ISARVA ERP'}
+            <div className="mb-6 space-y-1.5">
+              <div className="section-eyebrow flex items-center gap-1.5">
+                <Sparkles size={13} />
+                <span>{modalType === 'demo' ? 'Live Product Demo' : 'Get Started with ISARVA ERP'}</span>
               </div>
-              <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight pt-1">
+              <h3 className="pt-0.5">
                 {modalType === 'demo' ? 'Schedule an Interactive Demo' : 'Start Your Free 14-Day Trial'}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-500">
+              <p>
                 Experience GST compliance, POS and automated accounting tailored for your business.
               </p>
             </div>
@@ -164,10 +164,10 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct 
             <div className="w-16 h-16 rounded-full bg-emerald-100 text-brand-600 flex items-center justify-center mx-auto shadow-lg">
               <CheckCircle2 size={36} />
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900">
+            <h3>
               Request Received Successfully!
             </h3>
-            <p className="text-sm text-slate-600 max-w-sm mx-auto">
+            <p className="max-w-sm mx-auto">
               Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. Our ERP product specialist will get in touch with you shortly.
             </p>
             <button

@@ -1,32 +1,49 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import {
-  UtensilsCrossed,
   BarChart3,
   Users2,
   Handshake,
-  CheckCircle2,
+  Check,
   ArrowRight,
-  Monitor,
-  Laptop,
-  Smartphone,
-  LayoutGrid
+  Sparkles
 } from 'lucide-react';
 
+// Custom fork & knife icon matching the reference card design
+function CutleryIcon({ className = "w-6 h-6" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      {/* Fork */}
+      <path d="M5 2a1 1 0 0 1 1 1v4h1V3a1 1 0 1 1 2 0v4h1V3a1 1 0 1 1 2 0v4a3 3 0 0 1-2.5 2.96V21a1 1 0 0 1-2 0v-11.04A3 3 0 0 1 4 7V3a1 1 0 0 1 1-1z" />
+      {/* Knife */}
+      <path d="M18 2a3 3 0 0 0-3 3v6a2 2 0 0 0 2 2v8a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z" />
+    </svg>
+  );
+}
+
 export default function ProductsSection({ products, onOpenModal }) {
-  const getIcon = (iconName) => {
+  // Helper to format image path for Next.js basePath
+  const getImageUrl = (imagePath, fallbackPath) => {
+    const src = imagePath || fallbackPath;
+    if (!src) return '';
+    if (src.startsWith('http') || src.startsWith('/isarva-erp/')) return src;
+    return `/isarva-erp${src.startsWith('/') ? src : '/' + src}`;
+  };
+
+  const getProductIcon = (iconName, id) => {
+    if (id === 'restaurant-pos' || iconName === 'UtensilsCrossed') {
+      return <CutleryIcon className="w-6 h-6" />;
+    }
     switch (iconName) {
-      case 'UtensilsCrossed':
-        return <UtensilsCrossed size={22} />;
       case 'BarChart3':
-        return <BarChart3 size={22} />;
+        return <BarChart3 size={24} strokeWidth={2.4} />;
       case 'Users2':
-        return <Users2 size={22} />;
+        return <Users2 size={24} strokeWidth={2.4} />;
       case 'Handshake':
-        return <Handshake size={22} />;
+        return <Handshake size={24} strokeWidth={2.4} />;
       default:
-        return <LayoutGrid size={22} />;
+        return <Sparkles size={24} strokeWidth={2.4} />;
     }
   };
 
@@ -34,162 +51,125 @@ export default function ProductsSection({ products, onOpenModal }) {
     switch (themeClass) {
       case 'pos':
         return {
-          iconBg: 'bg-emerald-600',
-          badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-          btnClass: 'btn-pos',
-          checkColor: 'text-emerald-600',
-          mockupBg: 'bg-emerald-950',
-          borderColor: 'hover:border-emerald-400'
+          iconBg: 'bg-[#078356]',
+          checkBg: 'bg-[#078356]',
+          btnClass: 'btn-pos group',
+          fallbackImage: '/images/pos-card-preview.jpg',
+          borderColor: 'hover:border-[#078356]/40'
         };
       case 'billsoft':
         return {
-          iconBg: 'bg-blue-600',
-          badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
-          btnClass: 'btn-billsoft',
-          checkColor: 'text-blue-600',
-          mockupBg: 'bg-blue-950',
-          borderColor: 'hover:border-blue-400'
+          iconBg: 'bg-[#1d4ed8]',
+          checkBg: 'bg-[#1d4ed8]',
+          btnClass: 'btn-billsoft group',
+          fallbackImage: '/images/billsoft-card-preview.jpg',
+          borderColor: 'hover:border-[#1d4ed8]/40'
         };
       case 'hrms':
         return {
-          iconBg: 'bg-purple-600',
-          badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
-          btnClass: 'btn-hrms',
-          checkColor: 'text-purple-600',
-          mockupBg: 'bg-purple-950',
-          borderColor: 'hover:border-purple-400'
+          iconBg: 'bg-[#7c3aed]',
+          checkBg: 'bg-[#7c3aed]',
+          btnClass: 'btn-hrms group',
+          fallbackImage: '/images/hrms-card-preview.jpg',
+          borderColor: 'hover:border-[#7c3aed]/40'
         };
       case 'crm':
         return {
-          iconBg: 'bg-orange-600',
-          badgeBg: 'bg-orange-50 text-orange-700 border-orange-200',
-          btnClass: 'btn-crm',
-          checkColor: 'text-orange-600',
-          mockupBg: 'bg-orange-950',
-          borderColor: 'hover:border-orange-400'
+          iconBg: 'bg-[#ea580c]',
+          checkBg: 'bg-[#ea580c]',
+          btnClass: 'btn-crm group',
+          fallbackImage: '/images/crm-card-preview.jpg',
+          borderColor: 'hover:border-[#ea580c]/40'
         };
       default:
         return {
-          iconBg: 'bg-brand-500',
-          badgeBg: 'bg-brand-50 text-brand-700',
-          btnClass: 'btn-brand-primary',
-          checkColor: 'text-brand-500',
-          mockupBg: 'bg-slate-900',
+          iconBg: 'bg-[#007a55]',
+          checkBg: 'bg-[#007a55]',
+          btnClass: 'btn-brand-primary group',
+          fallbackImage: '/images/pos-card-preview.jpg',
           borderColor: 'hover:border-brand-500'
         };
     }
   };
 
   return (
-    <section id="products" className="py-20 bg-white border-t border-slate-100">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="products" className="section-padding bg-slate-50/60 border-t border-slate-100">
+      <div className="site-container">
         
-        {/* Section Title Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="text-xs font-bold tracking-widest text-brand-600 uppercase">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-eyebrow">
             OUR PRODUCTS
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2>
             Complete Business Management Platform
           </h2>
-          <p className="text-base text-slate-600">
+          <p>
             Everything you need to run and grow your business, in one integrated ERP solution.
           </p>
         </div>
 
         {/* 4 Product Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           {products?.map((product) => {
             const style = getProductStyles(product.themeClass);
+            const imageUrl = getImageUrl(product.image, style.fallbackImage);
+
             return (
               <div
                 key={product.id}
                 id={product.id}
-                className={`card-product group ${style.borderColor}`}
+                className={`card-product bg-white rounded-3xl border border-slate-200/90 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 ${style.borderColor}`}
               >
                 <div>
-                  {/* Product Header */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-11 h-11 rounded-xl ${style.iconBg} text-white flex items-center justify-center shadow-md`}>
-                      {getIcon(product.iconName)}
+                  {/* Card Header: Icon + Title & Subtitle */}
+                  <div className="flex items-center gap-3.5 mb-5">
+                    <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-2xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-sm`}>
+                      {getProductIcon(product.iconName, product.id)}
                     </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-900 leading-tight">
+                    <div className="min-w-0">
+                      <h3 className="truncate">
                         {product.title}
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="mt-0.5 line-clamp-1 text-slate-500">
                         {product.subtitle}
                       </p>
                     </div>
                   </div>
 
-                  {/* Visual Interface Preview Banner */}
-                  <div className={`rounded-xl p-3.5 mb-5 ${style.mockupBg} text-white border border-slate-800/20 shadow-inner min-h-[120px] flex flex-col justify-between`}>
-                    <div className="flex items-center justify-between text-[10px] text-slate-300">
-                      <span className="font-semibold">{product.title} Console</span>
-                      <span className="bg-white/10 px-1.5 py-0.5 rounded">v2.4</span>
-                    </div>
-
-                    {/* Dynamic mini graphic */}
-                    {product.id === 'restaurant-pos' && (
-                      <div className="grid grid-cols-3 gap-1.5 my-1">
-                        <div className="bg-emerald-900/80 p-1.5 rounded text-center text-[10px] font-bold">Table 1</div>
-                        <div className="bg-emerald-700 p-1.5 rounded text-center text-[10px] font-bold">Table 2</div>
-                        <div className="bg-emerald-900/80 p-1.5 rounded text-center text-[10px] font-bold">KDS Live</div>
-                      </div>
-                    )}
-                    {product.id === 'billsoft' && (
-                      <div className="space-y-1 my-1 text-[10px]">
-                        <div className="flex justify-between bg-blue-900/70 px-2 py-1 rounded font-medium">
-                          <span>e-Invoice GSTR-1</span>
-                          <span className="text-emerald-400">✓ Ready</span>
-                        </div>
-                        <div className="flex justify-between bg-blue-900/70 px-2 py-1 rounded font-medium">
-                          <span>GST e-Way Bill</span>
-                          <span className="text-blue-300">Generated</span>
-                        </div>
-                      </div>
-                    )}
-                    {product.id === 'hrms' && (
-                      <div className="flex items-center gap-2 my-1 bg-purple-900/70 p-1.5 rounded text-[10px]">
-                        <div className="w-6 h-6 rounded-full bg-purple-600 flex items-center justify-center font-bold">JS</div>
-                        <div className="leading-tight">
-                          <div className="font-bold">John Sharma</div>
-                          <div className="text-[9px] text-purple-300">Payroll Approved</div>
-                        </div>
-                      </div>
-                    )}
-                    {product.id === 'crm' && (
-                      <div className="grid grid-cols-2 gap-1.5 my-1 text-[10px]">
-                        <div className="bg-orange-900/70 p-1 rounded">Lead: 14 New</div>
-                        <div className="bg-orange-800 p-1 rounded font-bold">Won: ₹4.2L</div>
-                      </div>
-                    )}
-
-                    <div className="text-[9px] text-slate-400 flex items-center justify-between pt-1 border-t border-white/10">
-                      <span>Live Sync</span>
-                      <span className="text-emerald-400 font-bold">Connected</span>
-                    </div>
+                  {/* Photorealistic Product Interface Image Showcase */}
+                  <div className="relative mb-5 rounded-lg overflow-hidden border border-slate-100/80 shadow-xs aspect-[16/10] bg-slate-100 group/img">
+                    <img
+                      src={imageUrl}
+                      alt={`${product.title} Interface Preview`}
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500 block rounded-lg"
+                      loading="lazy"
+                    />
                   </div>
 
-                  {/* Bullet Features Checklist */}
-                  <ul className="space-y-2.5 mb-6 text-[0.825rem] text-slate-700 font-medium">
+                  {/* Bullet Features Checklist with Solid Rounded Checkmarks */}
+                  <ul className="space-y-3 mb-6">
                     {product.features?.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2.5">
-                        <CheckCircle2 size={15} className={`${style.checkColor} flex-shrink-0 mt-0.5`} />
-                        <span>{feature}</span>
+                        <div className={`w-5 h-5 rounded-full ${style.checkBg} text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs`}>
+                          <Check size={12} strokeWidth={3.5} />
+                        </div>
+                        <span className="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Card Action Button */}
+                {/* Card Full-Width CTA Action Button */}
                 <button
                   onClick={() => onOpenModal('product', product.title)}
                   className={style.btnClass}
+                  aria-label={`Explore ${product.title}`}
                 >
                   <span>{product.buttonText}</span>
-                  <ArrowRight size={15} />
+                  <ArrowRight size={17} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             );
@@ -200,3 +180,4 @@ export default function ProductsSection({ products, onOpenModal }) {
     </section>
   );
 }
+

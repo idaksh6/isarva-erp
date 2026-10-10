@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -15,16 +15,17 @@ import {
   ArrowRight,
   Check
 } from 'lucide-react';
+import FlagIcon from './FlagIcon';
 
 export default function Navbar({ content, onOpenModal }) {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(content?.countries?.[0] || { code: 'IN', name: 'India', flag: '????' });
+  const [selectedCountry, setSelectedCountry] = useState(content?.countries?.[0] || { code: 'IN', name: 'India' });
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Logo */}
@@ -32,7 +33,7 @@ export default function Navbar({ content, onOpenModal }) {
             <img
               src="/isarva-erp/images/isarva-logo.png"
               alt="ISARVA Logo"
-              className="h-10 sm:h-11 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-12 sm:h-13 lg:h-14 w-auto object-contain group-hover:scale-105 transition-transform"
             />
           </Link>
 
@@ -126,11 +127,11 @@ export default function Navbar({ content, onOpenModal }) {
             <div className="relative">
               <button
                 onClick={() => setIsCountryOpen(!isCountryOpen)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 text-sm font-medium text-slate-700 bg-slate-50/80 transition-colors"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-700 bg-slate-50/90 hover:bg-slate-100 transition-colors shadow-2xs"
               >
-                <span className="text-base leading-none">{selectedCountry.flag}</span>
+                <FlagIcon code={selectedCountry.code} className="w-5 h-3.5" />
                 <span>{selectedCountry.name}</span>
-                <ChevronDown size={14} className="text-slate-400" />
+                <ChevronDown size={13} className={`text-slate-400 transition-transform duration-200 ${isCountryOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isCountryOpen && (
@@ -145,19 +146,23 @@ export default function Navbar({ content, onOpenModal }) {
                         setSelectedCountry(country);
                         setIsCountryOpen(false);
                       }}
-                      className="w-full flex items-center justify-between px-3.5 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors text-left"
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 text-sm transition-colors text-left group ${
+                        selectedCountry.code === country.code ? 'bg-emerald-50/60 text-[#007a55]' : 'text-slate-700 hover:bg-slate-50'
+                      }`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-xl">{country.flag}</span>
+                        <FlagIcon code={country.code} className="w-6 h-4" />
                         <div>
-                          <div className="font-semibold text-slate-900 text-xs">{country.name}</div>
+                          <div className="font-semibold text-slate-900 text-xs group-hover:text-[#007a55] transition-colors">
+                            {country.name}
+                          </div>
                           {country.lang && (
-                            <div className="text-[11px] text-slate-500 font-normal">{country.lang}</div>
+                            <div className="text-xs text-slate-500 font-normal">{country.lang}</div>
                           )}
                         </div>
                       </div>
                       {selectedCountry.code === country.code && (
-                        <Check size={16} className="text-brand-600 font-bold" />
+                        <Check size={16} className="text-[#007a55] font-bold" />
                       )}
                     </button>
                   ))}

@@ -1,10 +1,11 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-jakarta: 'Plus Jakarta Sans', var(--font-inter);
+  --font-space-grotesk: 'Space Grotesk', var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
 
   /* Primary Brand Palette */
   --brand-500: #007a55;
@@ -45,29 +46,229 @@
 
   html {
     scroll-behavior: smooth;
-    font-family: var(--font-inter);
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text-main);
     background-color: var(--bg-main);
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     min-height: 100vh;
     overflow-x: hidden;
-    line-height: 1.6;
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem; /* 16px base */
+    line-height: 1.625;
+    font-weight: 400;
+    color: var(--text-main);
+    background-color: var(--bg-main);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Headings Typography Hierarchy (Space Grotesk - Exact Match to isarvait.com) */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-jakarta);
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    font-family: var(--font-space-grotesk), var(--font-inter), system-ui, -apple-system, sans-serif;
     color: var(--text-main);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    font-size: 2.25rem; /* 36px mobile */
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 2.875rem; /* 46px tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.5rem; /* 56px desktop */
+    }
+  }
+  @media (min-width: 1280px) {
+    h1 {
+      font-size: 3.875rem; /* 62px xl */
+    }
+  }
+
+  h2 {
+    font-size: 1.75rem; /* 28px mobile */
+    line-height: 1.22;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+  @media (min-width: 640px) {
+    h2 {
+      font-size: 2.25rem; /* 36px tablet */
+      line-height: 1.25;
+    }
+  }
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 2.5rem; /* 40px desktop */
+    }
+  }
+
+  h3 {
+    font-size: 1.125rem; /* 18px mobile */
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 640px) {
+    h3 {
+      font-size: 1.25rem; /* 20px tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    h3 {
+      font-size: 1.375rem; /* 22px desktop */
+    }
+  }
+
+  h4 {
+    font-size: 0.9375rem; /* 15px mobile */
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  @media (min-width: 640px) {
+    h4 {
+      font-size: 1rem; /* 16px desktop */
+    }
+  }
+
+  h5 {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  h6 {
+    font-size: 0.75rem; /* 12px */
+    line-height: 1.5;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Paragraphs and Body Text (Inter) */
+  p {
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    font-size: 0.9375rem; /* 15px mobile */
+    line-height: 1.65;
+    font-weight: 400;
+    color: #475569;
+  }
+  @media (min-width: 640px) {
+    p {
+      font-size: 1rem; /* 16px desktop */
+    }
+  }
+
+  small {
+    font-size: 0.8125rem; /* 13px */
+    line-height: 1.4;
+  }
+
+  strong, b {
+    font-weight: 700;
   }
 }
 
 /* ==========================================================================
    GLOBAL REUSABLE COMPONENT CLASSES & DESIGN SYSTEM
    ========================================================================== */
+
+/* Global Standard Container (Matches Hero width across entire site) */
+.site-container,
+.app-container {
+  width: 100%;
+  max-width: 1560px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .site-container,
+  .app-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .site-container,
+  .app-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .site-container,
+  .app-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Global Standard Section Vertical Padding */
+.section-padding {
+  padding-top: 4rem; /* 64px (mobile) */
+  padding-bottom: 4rem;
+}
+@media (min-width: 640px) {
+  .section-padding {
+    padding-top: 5rem; /* 80px (tablet/desktop) */
+    padding-bottom: 5rem;
+  }
+}
+
+.section-padding-sm {
+  padding-top: 2.5rem; /* 40px */
+  padding-bottom: 3.5rem; /* 56px */
+}
+@media (min-width: 1024px) {
+  .section-padding-sm {
+    padding-top: 3.5rem; /* 56px */
+    padding-bottom: 5rem; /* 80px */
+  }
+}
+
+/* ==========================================================================
+   GLOBAL STANDARDIZED TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+/* Section Eyebrow / Category Badge Text */
+.section-eyebrow,
+.section-badge-text {
+  font-family: var(--font-space-grotesk);
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #007a55;
+  display: inline-block;
+}
+
+/* Standard Centered Section Header Wrapper */
+.section-header {
+  text-align: center;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
 
 /* Buttons */
 .btn-brand-primary {
@@ -118,18 +319,20 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #059669;
+  background-color: #078356;
   color: #ffffff;
-  font-weight: 600;
-  font-size: 0.875rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(7, 131, 86, 0.2);
 }
 .btn-pos:hover {
-  background-color: #047857;
-  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+  background-color: #056d47;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(7, 131, 86, 0.3);
 }
 
 .btn-billsoft {
@@ -137,18 +340,20 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #2563eb;
+  background-color: #1d4ed8;
   color: #ffffff;
-  font-weight: 600;
-  font-size: 0.875rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.2);
 }
 .btn-billsoft:hover {
-  background-color: #1d4ed8;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  background-color: #1e40af;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.3);
 }
 
 .btn-hrms {
@@ -158,16 +363,18 @@
   gap: 0.5rem;
   background-color: #7c3aed;
   color: #ffffff;
-  font-weight: 600;
-  font-size: 0.875rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
 }
 .btn-hrms:hover {
   background-color: #6d28d9;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
 }
 
 .btn-crm {
@@ -177,16 +384,18 @@
   gap: 0.5rem;
   background-color: #ea580c;
   color: #ffffff;
-  font-weight: 600;
-  font-size: 0.875rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.2);
 }
 .btn-crm:hover {
   background-color: #c2410c;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
 }
 
 /* Badges and Tags */
@@ -226,18 +435,19 @@
 .card-product {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 1.25rem;
-  padding: 1.75rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.04), 0 2px 6px -2px rgba(0, 0, 0, 0.02);
 }
 .card-product:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.09), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
   border-color: #cbd5e1;
 }
 
@@ -289,3 +499,25 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Continuous Infinite Testimonials Loop */
+@keyframes continuousMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-continuous-loop {
+  display: flex;
+  width: max-content;
+  animation: continuousMarquee 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-continuous-loop:hover {
+  animation-play-state: paused;
+}
+

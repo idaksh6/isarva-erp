@@ -1,5 +1,5 @@
-﻿import './globals.css';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import './globals.css';
+import { Inter, Space_Grotesk } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -7,9 +7,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-jakarta',
+  variable: '--font-space-grotesk',
   display: 'swap',
 });
 
@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <link rel="icon" href="/isarva-erp/favicon.ico" sizes="any" />
       </head>
