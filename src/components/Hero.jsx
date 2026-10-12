@@ -231,12 +231,28 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
     };
   }, [isPaused, slides.length]);
 
+  const [touchStartX, setTouchStartX] = useState(0);
+
   const handlePrev = () => {
     setActiveSlideIndex((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const handleNext = () => {
     setActiveSlideIndex((prev) => (prev + 1) % slides.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 45) {
+      handleNext();
+    } else if (diff < -45) {
+      handlePrev();
+    }
   };
 
   // Automatically centralize the active tab button on mobile / responsive viewports
@@ -318,10 +334,10 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
         </div>
 
         {/* HERO MAIN CONTENT GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           
-          {/* LEFT COLUMN: Dynamic Product Information, Highlights & CTAs */}
-          <div className="lg:col-span-5 xl:col-span-5 space-y-6 relative z-10 text-center lg:text-left flex flex-col items-center lg:items-start">
+          {/* LEFT COLUMN: Expansive & Prominent Product Information, Highlights & CTAs */}
+          <div className="lg:col-span-7 xl:col-span-7 space-y-5 sm:space-y-6 relative z-10 text-center lg:text-left flex flex-col items-center lg:items-start">
             
             {/* Category Eyebrow Tag */}
             <div className="inline-block">
@@ -343,7 +359,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
             </h1>
 
             {/* Subheadline Description */}
-            <p className="max-w-lg mx-auto lg:mx-0 transition-opacity duration-300">
+            <p className="max-w-xl mx-auto lg:mx-0 transition-opacity duration-300">
               {currentSlide.subheadline}
             </p>
 
@@ -352,7 +368,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
               {currentSlide.highlights.map((highlight, idx) => (
                 <div
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/80 border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/85 border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs hover:border-slate-300 transition-all"
                 >
                   <span
                     className="w-4 h-4 rounded-full flex items-center justify-center text-white"
@@ -419,92 +435,120 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
           </div>
 
-          {/* RIGHT COLUMN: High-Resolution Unblurred Product Image with Floating Interactive Badges */}
-          <div className="lg:col-span-7 xl:col-span-7 relative flex flex-col items-center justify-center w-full">
+          {/* RIGHT COLUMN: Interactive Slider Carousel with Browser Chrome & Floating Badges */}
+          <div className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full">
             
-            {/* Image Card Container */}
-            <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group">
+            {/* Slider Mockup Window Card */}
+            <div
+              className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group select-none"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               
-              {/* Product Image */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
-                <img
-                  key={currentSlide.image}
-                  src={currentSlide.image}
-                  alt={currentSlide.imageAlt}
-                  className="w-full h-full object-cover block animate-fadeIn transition-transform duration-700 group-hover:scale-[1.02]"
-                  loading="eager"
-                />
-                
-                {/* Subtle bottom vignette gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none" />
+              {/* App Window Top Header */}
+              <div className="flex items-center justify-between px-3.5 sm:px-4 py-2.5 bg-slate-900 text-white border-b border-slate-800 text-[11px]">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
+                  <span className="ml-2 font-mono text-slate-300 text-[10px] sm:text-[11px] font-medium truncate max-w-[150px] sm:max-w-none">
+                    isarva-cloud // {currentSlide.tabLabel}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 text-emerald-400 text-[10px] font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="hidden sm:inline">Active Cloud Session</span>
+                </div>
               </div>
 
-              {/* Floating Metric Badge 1 (Top Left) */}
-              <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20">
-                <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10 animate-fadeIn">
-                  {currentSlide.floatingMetric1.flag ? (
-                    <FlagIcon country={currentSlide.floatingMetric1.flag} className="w-5 h-4 rounded-xs shadow-2xs" />
-                  ) : (
+              {/* Slider Track Container with Sleek Controlled Proportion */}
+              <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                {/* Hardware-Accelerated Sliding Track */}
+                <div
+                  className="flex h-full transition-transform duration-500 ease-out"
+                  style={{ transform: `translateX(-${activeSlideIndex * 100}%)` }}
+                >
+                  {slides.map((slide, index) => (
+                    <div
+                      key={slide.id}
+                      className="w-full h-full shrink-0 relative overflow-hidden bg-slate-100"
+                    >
+                      <img
+                        src={slide.image}
+                        alt={slide.imageAlt}
+                        className="w-full h-full object-cover block"
+                        loading={index === 0 ? "eager" : "lazy"}
+                      />
+                      {/* Subtle bottom vignette gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-transparent pointer-events-none" />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Floating Metric Badge 1 (Top Left) */}
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 pointer-events-none">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10">
+                    {currentSlide.floatingMetric1.flag ? (
+                      <FlagIcon country={currentSlide.floatingMetric1.flag} className="w-4 h-3.5 rounded-xs shadow-2xs" />
+                    ) : (
+                      <span
+                        className="w-2 h-2 rounded-full animate-pulse"
+                        style={{ backgroundColor: currentSlide.themeColor }}
+                      />
+                    )}
+                    <div>
+                      <div className="text-[11px] font-black text-slate-900 leading-none">
+                        {currentSlide.floatingMetric1.title}
+                      </div>
+                      <div className="text-[10px] text-slate-500 font-medium mt-0.5 leading-none">
+                        {currentSlide.floatingMetric1.subtitle}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Metric Badge 2 (Bottom Right) */}
+                <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-20 pointer-events-none">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 text-white backdrop-blur-md border border-slate-700/80 shadow-lg">
                     <span
-                      className="w-2.5 h-2.5 rounded-full animate-pulse"
+                      className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: currentSlide.themeColor }}
                     />
-                  )}
-                  <div>
-                    <div className="text-xs font-black text-slate-900 leading-none">
-                      {currentSlide.floatingMetric1.title}
-                    </div>
-                    <div className="text-[11px] text-slate-500 font-medium mt-0.5 leading-none">
-                      {currentSlide.floatingMetric1.subtitle}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              {/* Floating Metric Badge 2 (Bottom Right) */}
-              <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 z-20">
-                <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 text-white backdrop-blur-md border border-slate-700/80 shadow-lg animate-fadeIn">
-                  <span
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: currentSlide.themeColor }}
-                  />
-                  <div>
-                    <div className="text-xs font-bold leading-none">
-                      {currentSlide.floatingMetric2.title}
-                    </div>
-                    <div className="text-[11px] text-slate-300 font-normal mt-0.5 leading-none">
-                      {currentSlide.floatingMetric2.subtitle}
+                    <div>
+                      <div className="text-[11px] font-bold leading-none">
+                        {currentSlide.floatingMetric2.title}
+                      </div>
+                      <div className="text-[10px] text-slate-300 font-normal mt-0.5 leading-none">
+                        {currentSlide.floatingMetric2.subtitle}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-            </div>
-
-            {/* Slider Navigation Bar (Arrows, Dots, Status & Counter) */}
-            <div className="flex items-center justify-between w-full mt-4 px-2">
-              
-              {/* Previous / Next Arrow Controls */}
-              <div className="flex items-center gap-1.5">
+                {/* On-Card Navigation Arrows (Left & Right) */}
                 <button
                   onClick={handlePrev}
                   aria-label="Previous product slide"
-                  className="w-9 h-9 rounded-full bg-white hover:bg-slate-100 text-slate-700 flex items-center justify-center border border-slate-200 shadow-xs hover:scale-105 active:scale-95 transition-all"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md border border-slate-200/80 flex items-center justify-center opacity-85 hover:opacity-100 hover:scale-110 active:scale-95 transition-all"
                 >
                   <ChevronLeft size={18} />
                 </button>
                 <button
                   onClick={handleNext}
                   aria-label="Next product slide"
-                  className="w-9 h-9 rounded-full bg-white hover:bg-slate-100 text-slate-700 flex items-center justify-center border border-slate-200 shadow-xs hover:scale-105 active:scale-95 transition-all"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md border border-slate-200/80 flex items-center justify-center opacity-85 hover:opacity-100 hover:scale-110 active:scale-95 transition-all"
                 >
                   <ChevronRight size={18} />
                 </button>
               </div>
 
+            </div>
+
+            {/* Slider Navigation Bar (Dots, Status & Counter) */}
+            <div className="flex items-center justify-between w-full mt-3.5 px-1.5">
+              
               {/* Dot Indicators */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 {slides.map((slide, idx) => (
                   <button
                     key={slide.id}
@@ -520,6 +564,13 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     }}
                   />
                 ))}
+              </div>
+
+              {/* Slide Counter */}
+              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-500">
+                <span className="text-slate-900">0{activeSlideIndex + 1}</span>
+                <span className="text-slate-300">/</span>
+                <span>0{slides.length}</span>
               </div>
 
             </div>
