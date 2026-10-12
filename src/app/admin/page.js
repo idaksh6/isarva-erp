@@ -303,6 +303,16 @@ export default function AdminCMS() {
             <span>Customer Testimonials</span>
           </button>
 
+          <button
+            onClick={() => setActiveTab('industries')}
+            className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+              activeTab === 'industries' ? 'bg-brand-50 text-brand-700 border border-brand-200 shadow-xs' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+            }`}
+          >
+            <Building size={16} />
+            <span>Industries We Serve</span>
+          </button>
+
           <div className="pt-4 mt-4 border-t border-slate-200">
             <div className="text-xs font-bold text-slate-400 uppercase px-3 py-2 tracking-wider">
               Customer Leads
@@ -625,6 +635,90 @@ export default function AdminCMS() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: INDUSTRIES */}
+          {activeTab === 'industries' && (
+            <div className="space-y-6 animate-fadeIn">
+              <div>
+                <h2>Industries We Serve</h2>
+                <p>Configure industry category names and sector titles shown on the homepage.</p>
+              </div>
+
+              {/* Section Header Inputs */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-emerald-700">Section Header</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Badge Text</label>
+                    <input
+                      type="text"
+                      value={content.industries?.badge || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        industries: { ...content.industries, badge: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Main Heading</label>
+                    <input
+                      type="text"
+                      value={content.industries?.title || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        industries: { ...content.industries, title: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Subtitle</label>
+                  <input
+                    type="text"
+                    value={content.industries?.subtitle || ''}
+                    onChange={(e) => setContent({
+                      ...content,
+                      industries: { ...content.industries, subtitle: e.target.value }
+                    })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                  />
+                </div>
+              </div>
+
+              {/* 6 Industry Items Grid */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-emerald-700">Industry Categories ({content.industries?.items?.length || 6})</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {content.industries?.items?.map((ind, idx) => (
+                    <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-slate-400">Position #{idx + 1}</span>
+                        <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">{ind.iconName}</span>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Industry Name</label>
+                        <input
+                          type="text"
+                          value={ind.name}
+                          onChange={(e) => {
+                            const newItems = [...(content.industries?.items || [])];
+                            newItems[idx] = { ...newItems[idx], name: e.target.value };
+                            setContent({
+                              ...content,
+                              industries: { ...content.industries, items: newItems }
+                            });
+                          }}
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-semibold"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}
