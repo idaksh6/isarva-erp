@@ -25,11 +25,32 @@ import {
   ExternalLink,
   ChevronRight,
   Plus,
-  Trash2
+  Trash2,
+  Star
 } from 'lucide-react';
 import { defaultContent } from '../../lib/content-store';
 
+const WHY_CHOOSE_ICON_OPTIONS = [
+  { value: 'Layers', label: '📑 Layers (All-in-One)' },
+  { value: 'ShieldCheck', label: '🛡️ Shield Check (Compliance & Security)' },
+  { value: 'Store', label: '🏪 Store (Multi-Branch)' },
+  { value: 'TrendingUp', label: '📈 Trending Up (Growth / Analytics)' },
+  { value: 'BarChart3', label: '📊 Bar Chart (Reports)' },
+  { value: 'Cloud', label: '☁️ Cloud (Cloud-based)' },
+  { value: 'Lock', label: '🔒 Lock (Security / Privacy)' },
+  { value: 'Zap', label: '⚡ Zap (Speed & Performance)' },
+  { value: 'CheckCircle2', label: '✅ Check Circle (Quality)' },
+  { value: 'Users', label: '👥 Users (Collaboration)' },
+  { value: 'Smartphone', label: '📱 Smartphone (Mobile POS)' },
+  { value: 'Sparkles', label: '✨ Sparkles (AI / Modern)' },
+  { value: 'Cpu', label: '💻 CPU (Automated Tech)' },
+  { value: 'Clock', label: '⏱️ Clock (24/7 Availability)' },
+  { value: 'Database', label: '🗄️ Database (Unified Storage)' },
+  { value: 'Headphones', label: '🎧 Headphones (Customer Support)' },
+];
+
 const INDUSTRY_ICON_OPTIONS = [
+
   { value: 'Utensils', label: '🍴 Utensils (F&B / Restaurants)' },
   { value: 'Store', label: '🏪 Store (Retail / Shops)' },
   { value: 'ShoppingBag', label: '🛍️ Shopping Bag (Apparel / Fashion)' },
@@ -172,7 +193,77 @@ export default function AdminCMS() {
     });
   };
 
+  const handleAddWhyChoose = () => {
+    const currentItems = content.whyChoose?.items || [];
+    const newItem = {
+      id: `wc${Date.now()}`,
+      title: 'New Feature',
+      description: 'Feature description explaining the business value.',
+      iconName: 'ShieldCheck'
+    };
+    setContent({
+      ...content,
+      whyChoose: {
+        ...content.whyChoose,
+        items: [...currentItems, newItem]
+      }
+    });
+  };
+
+  const handleRemoveWhyChoose = (removeIdx) => {
+    const currentItems = content.whyChoose?.items || [];
+    if (currentItems.length <= 1) {
+      alert('You must keep at least 1 feature card.');
+      return;
+    }
+    const filtered = currentItems.filter((_, idx) => idx !== removeIdx);
+    setContent({
+      ...content,
+      whyChoose: {
+        ...content.whyChoose,
+        items: filtered
+      }
+    });
+  };
+
+  const handleAddTestimonial = () => {
+    const currentItems = content.testimonials?.items || [];
+    const newItem = {
+      id: `tst${Date.now()}`,
+      name: 'Client Business Name',
+      location: 'City, State',
+      rating: 5,
+      quote: 'ISARVA ERP has completely streamlined our business operations.',
+      initials: 'CB',
+      avatarImage: ''
+    };
+    setContent({
+      ...content,
+      testimonials: {
+        ...content.testimonials,
+        items: [...currentItems, newItem]
+      }
+    });
+  };
+
+  const handleRemoveTestimonial = (removeIdx) => {
+    const currentItems = content.testimonials?.items || [];
+    if (currentItems.length <= 1) {
+      alert('You must keep at least 1 testimonial.');
+      return;
+    }
+    const filtered = currentItems.filter((_, idx) => idx !== removeIdx);
+    setContent({
+      ...content,
+      testimonials: {
+        ...content.testimonials,
+        items: filtered
+      }
+    });
+  };
+
   // --- 1. LIGHT THEME LOGIN SECURITY GATE SCREEN ---
+
 
   if (!isAuthenticated) {
     return (
@@ -571,16 +662,44 @@ export default function AdminCMS() {
                 <p>Configure Indian statutory requirements and value proposition cards.</p>
               </div>
 
+              {/* GST Section Details */}
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-emerald-700">GST Section Details</h3>
+                <h3 className="text-emerald-700">GST Compliance Details</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Badge Text</label>
+                    <input
+                      type="text"
+                      value={content.gstSection?.badge || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        gstSection: { ...content.gstSection, badge: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Main Heading</label>
+                    <input
+                      type="text"
+                      value={content.gstSection?.title || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        gstSection: { ...content.gstSection, title: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Title</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Subtitle</label>
                   <input
                     type="text"
-                    value={content.gstSection?.title || ''}
+                    value={content.gstSection?.subtitle || ''}
                     onChange={(e) => setContent({
                       ...content,
-                      gstSection: { ...content.gstSection, title: e.target.value }
+                      gstSection: { ...content.gstSection, subtitle: e.target.value }
                     })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                   />
@@ -602,6 +721,158 @@ export default function AdminCMS() {
                   />
                 </div>
               </div>
+
+              {/* Why Choose Section Header */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-emerald-700">Why Choose Section Header</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Badge Text</label>
+                    <input
+                      type="text"
+                      value={content.whyChoose?.badge || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        whyChoose: { ...content.whyChoose, badge: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Main Heading</label>
+                    <input
+                      type="text"
+                      value={content.whyChoose?.title || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        whyChoose: { ...content.whyChoose, title: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Subtitle</label>
+                  <input
+                    type="text"
+                    value={content.whyChoose?.subtitle || ''}
+                    onChange={(e) => setContent({
+                      ...content,
+                      whyChoose: { ...content.whyChoose, subtitle: e.target.value }
+                    })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                  />
+                </div>
+              </div>
+
+              {/* Dynamic Why Choose Cards Grid */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-slate-100">
+                  <div>
+                    <h3 className="text-emerald-700">Why Choose Cards ({content.whyChoose?.items?.length || 0})</h3>
+                    <p className="text-xs text-slate-500 mt-0.5">Add, edit, or remove feature cards. The frontend grid reconfigures dynamically.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddWhyChoose}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-xs cursor-pointer"
+                  >
+                    <Plus size={15} /> Add Feature Card
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {content.whyChoose?.items?.map((item, idx) => (
+                    <div
+                      key={item.id || idx}
+                      className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 relative group hover:border-emerald-300 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                          Card #{idx + 1}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveWhyChoose(idx)}
+                          title="Remove this feature card"
+                          className="text-xs font-semibold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-2 py-1 rounded-lg border border-rose-200 flex items-center gap-1 transition cursor-pointer"
+                        >
+                          <Trash2 size={13} />
+                          <span>Remove</span>
+                        </button>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Title</label>
+                        <input
+                          type="text"
+                          value={item.title || ''}
+                          onChange={(e) => {
+                            const newItems = [...(content.whyChoose?.items || [])];
+                            newItems[idx] = { ...newItems[idx], title: e.target.value };
+                            setContent({
+                              ...content,
+                              whyChoose: { ...content.whyChoose, items: newItems }
+                            });
+                          }}
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-semibold"
+                          placeholder="e.g. Real-Time Reports"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Icon</label>
+                        <select
+                          value={item.iconName || 'ShieldCheck'}
+                          onChange={(e) => {
+                            const newItems = [...(content.whyChoose?.items || [])];
+                            newItems[idx] = { ...newItems[idx], iconName: e.target.value };
+                            setContent({
+                              ...content,
+                              whyChoose: { ...content.whyChoose, items: newItems }
+                            });
+                          }}
+                          className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 cursor-pointer"
+                        >
+                          {WHY_CHOOSE_ICON_OPTIONS.map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Description</label>
+                        <textarea
+                          rows="2"
+                          value={item.description || ''}
+                          onChange={(e) => {
+                            const newItems = [...(content.whyChoose?.items || [])];
+                            newItems[idx] = { ...newItems[idx], description: e.target.value };
+                            setContent({
+                              ...content,
+                              whyChoose: { ...content.whyChoose, items: newItems }
+                            });
+                          }}
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                          placeholder="Short description..."
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-2 flex justify-start">
+                  <button
+                    type="button"
+                    onClick={handleAddWhyChoose}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-emerald-300 text-emerald-700 hover:bg-emerald-50 text-xs font-bold transition w-full justify-center cursor-pointer"
+                  >
+                    <Plus size={16} /> Add Another Feature Card
+                  </button>
+                </div>
+              </div>
             </div>
           )}
 
@@ -610,83 +881,212 @@ export default function AdminCMS() {
             <div className="space-y-6 animate-fadeIn">
               <div>
                 <h2>Customer Testimonials</h2>
-                <p>Manage client reviews, business names, and quotes.</p>
+                <p>Manage client reviews, business names, star ratings, and quotes.</p>
               </div>
 
-              <div className="space-y-4">
-                {content.testimonials?.items?.map((tst, idx) => (
-                  <div key={tst.id} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">Company / Restaurant Name</label>
-                        <input
-                          type="text"
-                          value={tst.name}
-                          onChange={(e) => {
-                            const newItems = [...content.testimonials.items];
-                            newItems[idx].name = e.target.value;
-                            setContent({
-                              ...content,
-                              testimonials: { ...content.testimonials, items: newItems }
-                            });
-                          }}
-                          className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">Location</label>
-                        <input
-                          type="text"
-                          value={tst.location}
-                          onChange={(e) => {
-                            const newItems = [...content.testimonials.items];
-                            newItems[idx].location = e.target.value;
-                            setContent({
-                              ...content,
-                              testimonials: { ...content.testimonials, items: newItems }
-                            });
-                          }}
-                          className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Store / Avatar Photo URL</label>
-                      <input
-                        type="text"
-                        value={tst.avatarImage || ''}
-                        placeholder="/images/tst-spice-garden.jpg"
-                        onChange={(e) => {
-                          const newItems = [...content.testimonials.items];
-                          newItems[idx].avatarImage = e.target.value;
-                          setContent({
-                            ...content,
-                            testimonials: { ...content.testimonials, items: newItems }
-                          });
-                        }}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Quote</label>
-                      <textarea
-                        rows="2"
-                        value={tst.quote}
-                        onChange={(e) => {
-                          const newItems = [...content.testimonials.items];
-                          newItems[idx].quote = e.target.value;
-                          setContent({
-                            ...content,
-                            testimonials: { ...content.testimonials, items: newItems }
-                          });
-                        }}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
-                      />
-                    </div>
+              {/* Testimonials Header */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-emerald-700">Section Header</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Badge Text</label>
+                    <input
+                      type="text"
+                      value={content.testimonials?.badge || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        testimonials: { ...content.testimonials, badge: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
                   </div>
-                ))}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Main Heading</label>
+                    <input
+                      type="text"
+                      value={content.testimonials?.title || ''}
+                      onChange={(e) => setContent({
+                        ...content,
+                        testimonials: { ...content.testimonials, title: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Subtitle</label>
+                  <input
+                    type="text"
+                    value={content.testimonials?.subtitle || ''}
+                    onChange={(e) => setContent({
+                      ...content,
+                      testimonials: { ...content.testimonials, subtitle: e.target.value }
+                    })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                  />
+                </div>
+              </div>
+
+              {/* Dynamic Testimonials List */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-slate-100">
+                  <div>
+                    <h3 className="text-emerald-700">Reviews ({content.testimonials?.items?.length || 0})</h3>
+                    <p className="text-xs text-slate-500 mt-0.5">Add, edit, or remove testimonials. The infinite marquee adapts seamlessly.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddTestimonial}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-xs cursor-pointer"
+                  >
+                    <Plus size={15} /> Add Testimonial
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {content.testimonials?.items?.map((tst, idx) => (
+                    <div key={tst.id || idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 relative hover:border-emerald-300 transition-colors">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                          Review #{idx + 1}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveTestimonial(idx)}
+                          title="Remove this review"
+                          className="text-xs font-semibold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-2 py-1 rounded-lg border border-rose-200 flex items-center gap-1 transition cursor-pointer"
+                        >
+                          <Trash2 size={13} />
+                          <span>Remove</span>
+                        </button>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Company / Restaurant Name</label>
+                          <input
+                            type="text"
+                            value={tst.name || ''}
+                            onChange={(e) => {
+                              const newItems = [...(content.testimonials?.items || [])];
+                              newItems[idx] = { ...newItems[idx], name: e.target.value };
+                              setContent({
+                                ...content,
+                                testimonials: { ...content.testimonials, items: newItems }
+                              });
+                            }}
+                            className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-semibold"
+                            placeholder="e.g. Spice Garden Restaurant"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Location</label>
+                          <input
+                            type="text"
+                            value={tst.location || ''}
+                            onChange={(e) => {
+                              const newItems = [...(content.testimonials?.items || [])];
+                              newItems[idx] = { ...newItems[idx], location: e.target.value };
+                              setContent({
+                                ...content,
+                                testimonials: { ...content.testimonials, items: newItems }
+                              });
+                            }}
+                            className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                            placeholder="e.g. Bangalore, India"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Rating</label>
+                          <select
+                            value={tst.rating || 5}
+                            onChange={(e) => {
+                              const newItems = [...(content.testimonials?.items || [])];
+                              newItems[idx] = { ...newItems[idx], rating: Number(e.target.value) };
+                              setContent({
+                                ...content,
+                                testimonials: { ...content.testimonials, items: newItems }
+                              });
+                            }}
+                            className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 cursor-pointer"
+                          >
+                            <option value={5}>⭐⭐⭐⭐⭐ (5 Stars)</option>
+                            <option value={4}>⭐⭐⭐⭐ (4 Stars)</option>
+                            <option value={3}>⭐⭐⭐ (3 Stars)</option>
+                            <option value={2}>⭐⭐ (2 Stars)</option>
+                            <option value={1}>⭐ (1 Star)</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Initials (Fallback)</label>
+                          <input
+                            type="text"
+                            maxLength={3}
+                            value={tst.initials || ''}
+                            onChange={(e) => {
+                              const newItems = [...(content.testimonials?.items || [])];
+                              newItems[idx] = { ...newItems[idx], initials: e.target.value };
+                              setContent({
+                                ...content,
+                                testimonials: { ...content.testimonials, items: newItems }
+                              });
+                            }}
+                            className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 uppercase font-mono"
+                            placeholder="e.g. SG"
+                          />
+                        </div>
+                        <div className="sm:col-span-3">
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Store / Avatar Photo URL</label>
+                          <input
+                            type="text"
+                            value={tst.avatarImage || ''}
+                            placeholder="/images/tst-spice-garden.jpg"
+                            onChange={(e) => {
+                              const newItems = [...(content.testimonials?.items || [])];
+                              newItems[idx] = { ...newItems[idx], avatarImage: e.target.value };
+                              setContent({
+                                ...content,
+                                testimonials: { ...content.testimonials, items: newItems }
+                              });
+                            }}
+                            className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Customer Quote</label>
+                        <textarea
+                          rows="2"
+                          value={tst.quote || ''}
+                          onChange={(e) => {
+                            const newItems = [...(content.testimonials?.items || [])];
+                            newItems[idx] = { ...newItems[idx], quote: e.target.value };
+                            setContent({
+                              ...content,
+                              testimonials: { ...content.testimonials, items: newItems }
+                            });
+                          }}
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                          placeholder="Write the customer testimonial here..."
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-2 flex justify-start">
+                  <button
+                    type="button"
+                    onClick={handleAddTestimonial}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-emerald-300 text-emerald-700 hover:bg-emerald-50 text-xs font-bold transition w-full justify-center cursor-pointer"
+                  >
+                    <Plus size={16} /> Add Another Testimonial
+                  </button>
+                </div>
               </div>
             </div>
           )}

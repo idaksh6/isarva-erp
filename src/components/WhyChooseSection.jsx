@@ -8,28 +8,54 @@ import {
   BarChart3,
   TrendingUp,
   Cloud,
-  Lock
+  Lock,
+  Zap,
+  CheckCircle2,
+  Users,
+  Smartphone,
+  Sparkles,
+  Cpu,
+  Clock,
+  Database,
+  Headphones,
 } from 'lucide-react';
 
+const ICON_MAP = {
+  Layers,
+  ShieldCheck,
+  Store,
+  BarChart3,
+  TrendingUp,
+  Cloud,
+  Lock,
+  Zap,
+  CheckCircle2,
+  Users,
+  Smartphone,
+  Sparkles,
+  Cpu,
+  Clock,
+  Database,
+  Headphones,
+};
+
+function getGridClass(count) {
+  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-4 sm:gap-6';
+  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl mx-auto gap-4 sm:gap-6';
+  if (count === 4) return 'grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
+  if (count === 5) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
+  if (count === 6) return 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
+  if (count === 7 || count === 8) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
+  return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-5';
+}
+
 export default function WhyChooseSection({ whyChoose }) {
+  const items = whyChoose?.items || [];
+  const gridLayoutClass = getGridClass(items.length);
+
   const getIcon = (iconName) => {
-    switch (iconName) {
-      case 'Layers':
-        return <Layers size={22} strokeWidth={2.4} />;
-      case 'ShieldCheck':
-        return <ShieldCheck size={22} strokeWidth={2.4} />;
-      case 'Store':
-        return <Store size={22} strokeWidth={2.4} />;
-      case 'TrendingUp':
-      case 'BarChart3':
-        return <BarChart3 size={22} strokeWidth={2.4} />;
-      case 'Cloud':
-        return <Cloud size={22} strokeWidth={2.4} />;
-      case 'Lock':
-        return <Lock size={22} strokeWidth={2.4} />;
-      default:
-        return <ShieldCheck size={22} strokeWidth={2.4} />;
-    }
+    const Component = ICON_MAP[iconName] || ShieldCheck;
+    return <Component size={22} strokeWidth={2.4} />;
   };
 
   const formatTwoLineTitle = (title) => {
@@ -60,7 +86,6 @@ export default function WhyChooseSection({ whyChoose }) {
       <div className="absolute -bottom-32 right-1/4 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="site-container relative z-10">
-        
         {/* Section Header */}
         <div className="section-header">
           <div className="section-eyebrow">
@@ -74,11 +99,11 @@ export default function WhyChooseSection({ whyChoose }) {
           </p>
         </div>
 
-        {/* 6 Features Row Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
-          {whyChoose?.items?.map((item) => (
+        {/* Dynamic Features Grid */}
+        <div className={gridLayoutClass}>
+          {items.map((item, idx) => (
             <div
-              key={item.id}
+              key={item.id || idx}
               className="bg-white rounded-2xl border border-emerald-950/8 p-5 sm:p-6 flex flex-col items-center text-center shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 group"
             >
               {/* Circular Mint Icon Container */}
@@ -86,21 +111,21 @@ export default function WhyChooseSection({ whyChoose }) {
                 {getIcon(item.iconName)}
               </div>
 
-              {/* Title (Clean 2-line layout) */}
-              <h3 className="mb-1.5 group-hover:text-[#007a55] transition-colors min-h-[2.85rem] flex items-center justify-center">
+              {/* Title */}
+              <h3 className="mb-1.5 min-h-12 flex items-center justify-center text-center">
                 <span>{formatTwoLineTitle(item.title)}</span>
               </h3>
 
               {/* Description */}
-              <p>
+              <p className="line-clamp-3 text-center">
                 {item.description}
               </p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
+
 
