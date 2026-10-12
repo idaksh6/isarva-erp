@@ -19,8 +19,8 @@ export const indiaContent = {
   ],
   hero: {
     badge: 'ALL-IN-ONE ERP SOLUTIONS',
-    headlineMain: 'Smart Business Solutions for a',
-    headlineHighlight: 'Connected Tomorrow',
+    headlineMain: 'Smart Business Solutions',
+    headlineHighlight: 'for a Connected Tomorrow',
     subheadline: 'Power your restaurant, retail and business operations with ISARVA ERP – featuring Restaurant POS, Accounting (BillSoft), HRMS and CRM in one integrated platform, fully compliant with Indian GST, e-Invoicing and e-Way Bill regulations.',
     primaryCtaText: 'Get Started',
     primaryCtaLink: '#get-started',
