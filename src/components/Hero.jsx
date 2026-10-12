@@ -351,24 +351,10 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
             {/* Main Headline */}
             <h1 className="transition-all duration-300">
-              {currentSlide.headlineMain?.endsWith(' for a') ? (
-                <>
-                  {currentSlide.headlineMain.replace(/\s+for\s+a$/, '')}{' '}
-                  <br className="hidden sm:inline" />
-                  <span>for a </span>
-                  <span style={{ color: currentSlide.themeColor }}>
-                    {currentSlide.headlineHighlight}
-                  </span>
-                </>
-              ) : (
-                <>
-                  {currentSlide.headlineMain}{' '}
-                  <br className="hidden sm:inline" />
-                  <span style={{ color: currentSlide.themeColor }}>
-                    {currentSlide.headlineHighlight}
-                  </span>
-                </>
-              )}
+              {currentSlide.headlineMain}{' '}
+              <span style={{ color: currentSlide.themeColor }}>
+                {currentSlide.headlineHighlight}
+              </span>
             </h1>
 
             {/* Subheadline Description */}
