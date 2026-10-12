@@ -438,29 +438,12 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
           {/* RIGHT COLUMN: Interactive Slider Carousel with Browser Chrome & Floating Badges */}
           <div className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full">
             
-            {/* Slider Mockup Window Card */}
+            {/* Slider Image Card Container */}
             <div
               className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group select-none"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              
-              {/* App Window Top Header */}
-              <div className="flex items-center justify-between px-3.5 sm:px-4 py-2.5 bg-slate-900 text-white border-b border-slate-800 text-[11px]">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
-                  <span className="ml-2 font-mono text-slate-300 text-[10px] sm:text-[11px] font-medium truncate max-w-[150px] sm:max-w-none">
-                    isarva-cloud // {currentSlide.tabLabel}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5 text-emerald-400 text-[10px] font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="hidden sm:inline">Active Cloud Session</span>
-                </div>
-              </div>
-
               {/* Slider Track Container with Sleek Controlled Proportion */}
               <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden bg-slate-100">
                 {/* Hardware-Accelerated Sliding Track */}
