@@ -17,10 +17,11 @@ import {
 } from 'lucide-react';
 import FlagIcon from './FlagIcon';
 
-export default function Navbar({ content, onOpenModal }) {
+export default function Navbar({ content, onOpenModal, selectedCountry: selectedCountryProp, onSelectCountry }) {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(content?.countries?.[0] || { code: 'IN', name: 'India' });
+  const selectedCountry = selectedCountryProp || content?.countries?.[0] || { code: 'IN', name: 'India' };
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const solutionsRef = useRef(null);
@@ -181,9 +182,10 @@ export default function Navbar({ content, onOpenModal }) {
                     <button
                       key={country.code}
                       onClick={() => {
-                        setSelectedCountry(country);
+                        onSelectCountry?.(country);
                         setIsCountryOpen(false);
                       }}
+
                       className={`w-full flex items-center justify-between px-3.5 py-2.5 text-sm transition-colors text-left group ${
                         selectedCountry.code === country.code ? 'bg-emerald-50/60 text-[#007a55]' : 'text-slate-700 hover:bg-slate-50'
                       }`}

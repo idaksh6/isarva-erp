@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import FlagIcon from './FlagIcon';
 
-export default function Footer({ content }) {
+export default function Footer({ content, selectedCountry: selectedCountryProp, onSelectCountry }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -22,9 +22,10 @@ export default function Footer({ content }) {
     { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', currency: 'SAR (ر.س)', phoneCode: '+966', lang: 'العربية / English' }
   ];
 
-  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  const selectedCountry = selectedCountryProp || countries[0];
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const countryRef = useRef(null);
+
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -232,10 +233,11 @@ export default function Footer({ content }) {
                       key={country.code}
                       type="button"
                       onClick={() => {
-                        setSelectedCountry(country);
+                        onSelectCountry?.(country);
                         setIsCountryOpen(false);
                       }}
                       className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs transition-colors text-left group ${
+
                         selectedCountry.code === country.code
                           ? 'bg-emerald-50/70 text-[#007a55]'
                           : 'text-slate-700 hover:bg-slate-50'

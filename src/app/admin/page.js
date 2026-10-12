@@ -29,7 +29,10 @@ import {
   Star
 } from 'lucide-react';
 import { defaultContent } from '../../lib/content-store';
+import { getDefaultContentForCountry } from '../../lib/content';
 import ImageUploadField from '../../components/ImageUploadField';
+import FlagIcon from '../../components/FlagIcon';
+
 
 const WHY_CHOOSE_ICON_OPTIONS = [
 
@@ -76,9 +79,10 @@ export default function AdminCMS() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState('');
 
-  // CMS Content & Inquiries State
+  // CMS Regional & Content State
+  const [selectedCountry, setSelectedCountry] = useState('IN');
   const [activeTab, setActiveTab] = useState('hero');
-  const [content, setContent] = useState(defaultContent);
+  const [content, setContent] = useState(() => getDefaultContentForCountry('IN'));
   const [inquiries, setInquiries] = useState([]);
   const [savedStatus, setSavedStatus] = useState('');
   const [isSaving, setIsSaving] = useState(false);
@@ -114,13 +118,16 @@ export default function AdminCMS() {
     setPasswordInput('');
   };
 
-  const loadData = async (tokenOverride) => {
+  const loadData = async (tokenOverride, countryOverride) => {
     const token = tokenOverride || sessionStorage.getItem('isarva_admin_token') || 'isarva2026';
+    const targetCountry = countryOverride || selectedCountry || 'IN';
     try {
-      const res = await fetch('/api/content');
+      const res = await fetch(`/api/content?country=${targetCountry}`);
       if (res.ok) {
         const data = await res.json();
         if (data?.content) setContent(data.content);
+      } else {
+        setContent(getDefaultContentForCountry(targetCountry));
       }
       const inqRes = await fetch('/api/inquiries', {
         headers: {
@@ -133,7 +140,14 @@ export default function AdminCMS() {
       }
     } catch (err) {
       console.warn('Using local fallback data');
+      setContent(getDefaultContentForCountry(targetCountry));
     }
+  };
+
+  const handleCountrySwitch = (newCountry) => {
+    setSelectedCountry(newCountry);
+    setContent(getDefaultContentForCountry(newCountry));
+    loadData(undefined, newCountry);
   };
 
   const handleSave = async () => {
@@ -141,16 +155,16 @@ export default function AdminCMS() {
     setSavedStatus('Saving changes...');
     const token = sessionStorage.getItem('isarva_admin_token') || 'isarva2026';
     try {
-      const res = await fetch('/api/content', {
+      const res = await fetch(`/api/content?country=${selectedCountry}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token
         },
-        body: JSON.stringify(content)
+        body: JSON.stringify({ ...content, countryCode: selectedCountry })
       });
       if (res.ok) {
-        setSavedStatus('? Saved successfully! Live site updated.');
+        setSavedStatus(`✓ Saved ${selectedCountry === 'SA' ? 'Saudi Arabia' : 'India'} edition! Live site updated.`);
       } else {
         const errData = await res.json();
         setSavedStatus(errData.error || 'Failed to save changes.');
@@ -162,6 +176,7 @@ export default function AdminCMS() {
       setTimeout(() => setSavedStatus(''), 4000);
     }
   };
+
 
   const handleAddIndustry = () => {
     const currentItems = content.industries?.items || [];
@@ -357,10 +372,40 @@ export default function AdminCMS() {
               e.currentTarget.src = '/images/isarva-logo.png';
             }}
           />
-          <span className="text-xs text-brand-700 font-bold px-2 py-0.5 rounded bg-brand-50 border border-brand-200">
+          <span className="text-xs text-brand-700 font-bold px-2 py-0.5 rounded bg-brand-50 border border-brand-200 hidden sm:inline-block">
             Admin CMS
           </span>
+
+          {/* Regional Country Segmented Toggle */}
+          <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 ml-2">
+            <button
+              type="button"
+              onClick={() => handleCountrySwitch('IN')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                selectedCountry === 'IN'
+                  ? 'bg-white text-emerald-800 shadow-xs border border-slate-200/80'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <FlagIcon code="IN" className="w-4 h-3" />
+              <span>India (GST)</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleCountrySwitch('SA')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                selectedCountry === 'SA'
+                  ? 'bg-white text-emerald-800 shadow-xs border border-slate-200/80'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <FlagIcon code="SA" className="w-4 h-3" />
+              <span>Saudi Arabia (ZATCA)</span>
+            </button>
+          </div>
         </div>
+
 
         <div className="flex items-center gap-3">
           {savedStatus && (
@@ -435,8 +480,9 @@ export default function AdminCMS() {
             }`}
           >
             <CheckCircle2 size={16} />
-            <span>GST & Why Choose</span>
+            <span>{selectedCountry === 'SA' ? 'ZATCA & Why Choose' : 'GST & Why Choose'}</span>
           </button>
+
 
           <button
             onClick={() => setActiveTab('testimonials')}
@@ -653,17 +699,24 @@ export default function AdminCMS() {
             </div>
           )}
 
-          {/* TAB 3: GST & WHY CHOOSE */}
+          {/* TAB 3: REGIONAL COMPLIANCE & WHY CHOOSE */}
           {activeTab === 'gst' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2>GST Compliance & Why Choose</h2>
-                <p>Configure Indian statutory requirements and value proposition cards.</p>
+                <h2>{selectedCountry === 'SA' ? 'ZATCA Fatoora & Why Choose' : 'GST Compliance & Why Choose'}</h2>
+                <p>
+                  {selectedCountry === 'SA'
+                    ? 'Configure Saudi Arabia statutory Fatoora Phase 2 requirements and value proposition cards.'
+                    : 'Configure Indian statutory requirements and value proposition cards.'}
+                </p>
               </div>
 
-              {/* GST Section Details */}
+              {/* Statutory Compliance Section Details */}
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-emerald-700">GST Compliance Details</h3>
+                <h3 className="text-emerald-700">
+                  {selectedCountry === 'SA' ? 'ZATCA Fatoora Compliance Details (Saudi Arabia)' : 'GST Compliance Details (India)'}
+                </h3>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">Badge Text</label>
@@ -1284,7 +1337,12 @@ export default function AdminCMS() {
                           <span className="text-xs bg-brand-50 text-brand-700 px-2.5 py-0.5 rounded-full font-bold border border-brand-200">
                             {inq.product}
                           </span>
+                          <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-slate-700">
+                            <FlagIcon code={inq.country || (inq.phone?.startsWith('+966') ? 'SA' : 'IN')} className="w-3.5 h-2.5" />
+                            <span>{inq.country === 'SA' || inq.phone?.startsWith('+966') ? 'Saudi' : 'India'}</span>
+                          </span>
                         </div>
+
                         <div className="flex flex-wrap items-center gap-4 text-xs text-slate-600">
                           <span className="flex items-center gap-1"><Building size={13} className="text-slate-400" />{inq.company}</span>
                           <span className="flex items-center gap-1"><Mail size={13} className="text-slate-400" />{inq.email}</span>

@@ -54,19 +54,20 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
         'GST e-Invoice & e-Way Bill Ready'
       ],
       floatingMetric1: {
-        title: 'GST Compliant',
-        subtitle: 'India & GCC Statutory Ready',
-        flag: 'IN'
+        title: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'ZATCA Phase 2' : 'GST Compliant',
+        subtitle: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'Saudi Fatoora Ready' : 'India & GCC Statutory Ready',
+        flag: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'SA' : 'IN'
       },
       floatingMetric2: {
-        title: '1,000+ Businesses',
+        title: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? '500+ GCC Businesses' : '1,000+ Businesses',
         subtitle: '99.9% Cloud Uptime'
       },
       stats: [
-        { label: 'Trusted by', value: '1,000+ Businesses', icon: Users },
-        { label: 'Compliance', value: 'GST & e-Way Bill', icon: FileCheck },
+        { label: 'Trusted by', value: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? '500+ GCC Businesses' : '1,000+ Businesses', icon: Users },
+        { label: 'Compliance', value: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'ZATCA Phase 2' : 'GST & e-Way Bill', icon: FileCheck },
         { label: 'Security', value: 'Enterprise Ready', icon: ShieldCheck }
       ]
+
     },
     {
       id: 'restaurant-pos',

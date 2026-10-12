@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, Send, Sparkles } from 'lucide-react';
 
-export default function LeadModal({ isOpen, onClose, modalType, selectedProduct }) {
+export default function LeadModal({ isOpen, onClose, modalType, selectedProduct, countryCode = 'IN' }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,8 +24,9 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct 
       const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ ...formData, country: countryCode })
       });
+
       if (res.ok) {
         setIsSubmitted(true);
       } else {
@@ -115,12 +116,13 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct 
                   <input
                     type="tel"
                     required
-                    placeholder="+91 98765 43210"
+                    placeholder={countryCode === 'SA' ? '+966 50 123 4567' : '+91 98765 43210'}
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
                   />
                 </div>
+
               </div>
 
               <div>
