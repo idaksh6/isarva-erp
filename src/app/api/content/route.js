@@ -4,7 +4,8 @@ import { getContent, updateContent } from '../../../lib/content-store';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'isarva2026';
 
 export async function GET() {
-  return NextResponse.json({ success: true, content: getContent() });
+  const content = await getContent();
+  return NextResponse.json({ success: true, content });
 }
 
 export async function POST(request) {
@@ -20,7 +21,7 @@ export async function POST(request) {
     }
 
     const body = await request.json();
-    const updated = updateContent(body);
+    const updated = await updateContent(body);
     return NextResponse.json({ success: true, content: updated });
   } catch (error) {
     return NextResponse.json({ success: false, error: 'Failed to update content' }, { status: 500 });

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getContent, addInquiry } from '../../../lib/content-store';
+import { getInquiries, addInquiry } from '../../../lib/content-store';
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'isarva2026';
 
@@ -14,8 +14,8 @@ export async function GET(request) {
     );
   }
 
-  const content = getContent();
-  return NextResponse.json({ success: true, inquiries: content.inquiries || [] });
+  const inquiries = await getInquiries();
+  return NextResponse.json({ success: true, inquiries: inquiries || [] });
 }
 
 export async function POST(request) {
@@ -24,7 +24,7 @@ export async function POST(request) {
     if (!body.name || !body.phone) {
       return NextResponse.json({ success: false, error: 'Name and Phone are required' }, { status: 400 });
     }
-    const newInquiry = addInquiry(body);
+    const newInquiry = await addInquiry(body);
     return NextResponse.json({ success: true, inquiry: newInquiry });
   } catch (error) {
     return NextResponse.json({ success: false, error: 'Failed to record inquiry' }, { status: 500 });

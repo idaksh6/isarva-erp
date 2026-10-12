@@ -241,21 +241,102 @@ export let defaultContent = {
 // Global in-memory content storage
 let activeContent = { ...defaultContent };
 
-export function getContent() {
+import { sql, initDb } from './db';
+
+export async function getContent() {
+  if (sql) {
+    try {
+      await initDb(defaultContent);
+      const rows = await sql`
+        SELECT data FROM site_content WHERE id = 'main' LIMIT 1;
+      `;
+      if (rows && rows.length > 0 && rows[0].data) {
+        activeContent = { ...defaultContent, ...rows[0].data };
+        return activeContent;
+      }
+    } catch (err) {
+      console.error('[Content Store] Neon DB fetch failed, using memory:', err.message);
+    }
+  }
   return activeContent;
 }
 
-export function updateContent(newContent) {
+export async function updateContent(newContent) {
   activeContent = { ...activeContent, ...newContent };
+
+  if (sql) {
+    try {
+      await initDb(defaultContent);
+      await sql`
+        INSERT INTO site_content (id, data, updated_at)
+        VALUES ('main', ${JSON.stringify(activeContent)}, NOW())
+        ON CONFLICT (id) DO UPDATE
+        SET data = ${JSON.stringify(activeContent)}, updated_at = NOW();
+      `;
+    } catch (err) {
+      console.error('[Content Store] Neon DB update failed, saved to memory:', err.message);
+    }
+  }
+
   return activeContent;
 }
 
-export function addInquiry(inquiry) {
+export async function getInquiries() {
+  if (sql) {
+    try {
+      await initDb(defaultContent);
+      const rows = await sql`
+        SELECT 
+          inquiry_id as id,
+          name,
+          email,
+          phone,
+          company,
+          product,
+          message,
+          to_char(created_at, 'YYYY-MM-DD HH24:MI') as "createdAt"
+        FROM inquiries 
+        ORDER BY created_at DESC;
+      `;
+      if (rows && rows.length > 0) {
+        return rows;
+      }
+    } catch (err) {
+      console.error('[Content Store] Neon DB getInquiries failed, using memory:', err.message);
+    }
+  }
+  return activeContent.inquiries || [];
+}
+
+export async function addInquiry(inquiry) {
   const newInq = {
-    id: 'inq-' + (activeContent.inquiries.length + 1),
+    id: 'inq-' + Date.now(),
     ...inquiry,
     createdAt: new Date().toLocaleString()
   };
+
+  if (!activeContent.inquiries) activeContent.inquiries = [];
   activeContent.inquiries.unshift(newInq);
+
+  if (sql) {
+    try {
+      await initDb(defaultContent);
+      await sql`
+        INSERT INTO inquiries (inquiry_id, name, email, phone, company, product, message)
+        VALUES (
+          ${newInq.id},
+          ${inquiry.name || ''},
+          ${inquiry.email || ''},
+          ${inquiry.phone || ''},
+          ${inquiry.company || ''},
+          ${inquiry.product || ''},
+          ${inquiry.message || ''}
+        );
+      `;
+    } catch (err) {
+      console.error('[Content Store] Neon DB addInquiry failed, saved to memory:', err.message);
+    }
+  }
+
   return newInq;
 }
