@@ -8,33 +8,20 @@ export default function GstSection({ gstData }) {
   return (
     <section
       id="compliance"
-      className="w-full relative overflow-hidden bg-gradient-to-br from-[#fffdf9] via-[#f1f9f5] to-[#eaf6f0] border-y border-emerald-950/10 section-padding-sm"
+      className="w-full relative overflow-hidden bg-gradient-to-r from-[#faeedd] via-[#fef7ee] to-[#f9ecdc] border-y border-[#fed7aa]/60 section-padding-sm"
     >
-      {/* Precision Fintech Dot-Matrix & Micro-Line Mesh */}
+      {/* High-Fidelity Custom Generated Warm Fintech Background Graphic */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-45"
+        className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-65 bg-cover bg-center"
         style={{
-          backgroundImage: `
-            radial-gradient(circle at 1px 1px, rgba(0, 122, 85, 0.22) 1.2px, transparent 0),
-            linear-gradient(to right, rgba(245, 158, 11, 0.06) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0, 122, 85, 0.06) 1px, transparent 1px)
-          `,
-          backgroundSize: '24px 24px, 48px 48px, 48px 48px',
-          maskImage: 'radial-gradient(ellipse 85% 75% at 50% 50%, #000 45%, transparent 100%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 85% 75% at 50% 50%, #000 45%, transparent 100%)',
+          backgroundImage: "url('/images/gst-compliance-bg.jpg')",
         }}
       />
 
-      {/* Radiant High-Depth Ambient Lighting Orbs */}
-      <div className="absolute -top-32 -left-20 w-[550px] h-[550px] bg-gradient-to-br from-[#ff9933]/25 via-amber-300/15 to-transparent rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -right-20 w-[550px] h-[550px] bg-gradient-to-tl from-[#007a55]/25 via-emerald-400/20 to-transparent rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[480px] h-[480px] bg-white/70 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Decorative Precision Grid Corner Crosshairs */}
-      <span className="hidden md:block absolute top-6 left-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
-      <span className="hidden md:block absolute top-6 right-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
-      <span className="hidden md:block absolute bottom-6 left-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
-      <span className="hidden md:block absolute bottom-6 right-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
+      {/* Warm Ambient Saffron & Emerald Glow Accents */}
+      <div className="absolute top-0 left-0 w-[450px] h-[450px] bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-[#138808]/12 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/40 blur-3xl pointer-events-none" />
 
       <div className="site-container relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
