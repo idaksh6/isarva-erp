@@ -173,12 +173,12 @@ export let defaultContent = {
     title: 'Trusted by Businesses Across Multiple Industries',
     subtitle: 'From restaurants to retail, ISARVA ERP helps businesses of all sizes succeed.',
     items: [
-      { name: 'Restaurants & Cafés', iconName: 'Utensils' },
-      { name: 'Retail Stores', iconName: 'ShoppingBag' },
-      { name: 'Supermarkets', iconName: 'ShoppingCart' },
-      { name: 'Food & Beverage Chains', iconName: 'Coffee' },
-      { name: 'Wholesale & Distribution', iconName: 'Boxes' },
-      { name: 'Multi-Branch Businesses', iconName: 'Building2' }
+      { name: 'Restaurants & Cafés', iconName: 'Utensils', tag: 'F&B' },
+      { name: 'Retail Stores', iconName: 'ShoppingBag', tag: 'Retail' },
+      { name: 'Supermarkets', iconName: 'ShoppingCart', tag: 'FMCG' },
+      { name: 'Food & Beverage Chains', iconName: 'Coffee', tag: 'Chains' },
+      { name: 'Wholesale & Distribution', iconName: 'Boxes', tag: 'B2B' },
+      { name: 'Multi-Branch Businesses', iconName: 'Building2', tag: 'Enterprise' }
     ]
   },
   testimonials: {

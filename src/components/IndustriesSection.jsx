@@ -5,12 +5,35 @@ import {
   Utensils,
   Store,
   ShoppingCart,
+  ShoppingBag,
   Coffee,
   Boxes,
-  Building2
+  Building2,
+  Factory,
+  Truck,
+  Hotel,
+  Scissors,
+  Briefcase,
+  Layers,
 } from 'lucide-react';
 
-const INDUSTRY_CONFIG = [
+const ICON_MAP = {
+  Utensils,
+  Store,
+  ShoppingCart,
+  ShoppingBag,
+  Coffee,
+  Boxes,
+  Building2,
+  Factory,
+  Truck,
+  Hotel,
+  Scissors,
+  Briefcase,
+  Layers,
+};
+
+const INDUSTRY_PALETTE = [
   {
     icon: Utensils,
     accentColor: '#059669',
@@ -19,7 +42,7 @@ const INDUSTRY_CONFIG = [
     glowColor: 'rgba(5, 150, 105, 0.12)',
     hoverBg: 'rgba(5, 150, 105, 0.06)',
     tagBg: 'rgba(5, 150, 105, 0.1)',
-    tag: 'F&B',
+    defaultTag: 'F&B',
   },
   {
     icon: Store,
@@ -29,7 +52,7 @@ const INDUSTRY_CONFIG = [
     glowColor: 'rgba(234, 88, 12, 0.12)',
     hoverBg: 'rgba(234, 88, 12, 0.06)',
     tagBg: 'rgba(234, 88, 12, 0.1)',
-    tag: 'Retail',
+    defaultTag: 'Retail',
   },
   {
     icon: ShoppingCart,
@@ -39,7 +62,7 @@ const INDUSTRY_CONFIG = [
     glowColor: 'rgba(37, 99, 235, 0.12)',
     hoverBg: 'rgba(37, 99, 235, 0.06)',
     tagBg: 'rgba(37, 99, 235, 0.1)',
-    tag: 'FMCG',
+    defaultTag: 'FMCG',
   },
   {
     icon: Coffee,
@@ -49,7 +72,7 @@ const INDUSTRY_CONFIG = [
     glowColor: 'rgba(219, 39, 119, 0.12)',
     hoverBg: 'rgba(219, 39, 119, 0.06)',
     tagBg: 'rgba(219, 39, 119, 0.1)',
-    tag: 'Chains',
+    defaultTag: 'Chains',
   },
   {
     icon: Boxes,
@@ -59,7 +82,7 @@ const INDUSTRY_CONFIG = [
     glowColor: 'rgba(147, 51, 234, 0.12)',
     hoverBg: 'rgba(147, 51, 234, 0.06)',
     tagBg: 'rgba(147, 51, 234, 0.1)',
-    tag: 'B2B',
+    defaultTag: 'B2B',
   },
   {
     icon: Building2,
@@ -69,11 +92,25 @@ const INDUSTRY_CONFIG = [
     glowColor: 'rgba(13, 148, 136, 0.12)',
     hoverBg: 'rgba(13, 148, 136, 0.06)',
     tagBg: 'rgba(13, 148, 136, 0.1)',
-    tag: 'Enterprise',
+    defaultTag: 'Enterprise',
   },
 ];
 
+function getGridClass(count) {
+  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-4 sm:gap-6';
+  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl mx-auto gap-4 sm:gap-6';
+  if (count === 4) return 'grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
+  if (count === 5) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
+  if (count === 6) return 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
+  if (count === 7 || count === 8) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
+  return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5';
+}
+
 export default function IndustriesSection({ industries }) {
+  const items = industries?.items || [];
+  const count = items.length;
+  const gridLayoutClass = getGridClass(count);
+
   return (
     <section
       id="industries"
@@ -106,14 +143,16 @@ export default function IndustriesSection({ industries }) {
           </p>
         </div>
 
-        {/* Glassmorphism Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
-          {industries?.items?.map((ind, idx) => {
-            const cfg = INDUSTRY_CONFIG[idx] || INDUSTRY_CONFIG[0];
-            const IconComponent = cfg.icon;
+        {/* Dynamic Glassmorphism Grid */}
+        <div className={gridLayoutClass}>
+          {items.map((ind, idx) => {
+            const cfg = INDUSTRY_PALETTE[idx % INDUSTRY_PALETTE.length];
+            const IconComponent = (ind.iconName && ICON_MAP[ind.iconName]) || cfg.icon;
+            const tagLabel = ind.tag || cfg.defaultTag;
+
             return (
               <div
-                key={idx}
+                key={ind.id || idx}
                 className="group relative flex flex-col items-center text-center rounded-2xl p-5 sm:p-6 cursor-pointer"
                 style={{
                   background: 'rgba(255,255,255,0.75)',
@@ -123,13 +162,13 @@ export default function IndustriesSection({ industries }) {
                   boxShadow: `0 4px 20px ${cfg.glowColor}, 0 1px 3px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.9)`,
                   transition: 'all 0.3s cubic-bezier(0.4,0,0.2,1)',
                 }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.background = `rgba(255,255,255,0.95)`;
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.95)';
                   e.currentTarget.style.transform = 'translateY(-6px)';
                   e.currentTarget.style.boxShadow = `0 16px 40px ${cfg.glowColor}, 0 4px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,1)`;
                   e.currentTarget.style.borderColor = cfg.accentColor;
                 }}
-                onMouseLeave={e => {
+                onMouseLeave={(e) => {
                   e.currentTarget.style.background = 'rgba(255,255,255,0.75)';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = `0 4px 20px ${cfg.glowColor}, 0 1px 3px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.9)`;
@@ -149,7 +188,7 @@ export default function IndustriesSection({ industries }) {
 
                 {/* Icon badge */}
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
                   style={{
                     background: cfg.accentBg,
                     border: `1px solid ${cfg.borderColor}`,
@@ -160,22 +199,13 @@ export default function IndustriesSection({ industries }) {
                 </div>
 
                 {/* Industry name */}
-                <h3
-                  className="mb-2.5"
-                  style={{
-                    color: '#0f172a',
-                    fontSize: '0.9375rem',
-                    lineHeight: 1.35,
-                    fontWeight: 700,
-                    letterSpacing: '-0.01em',
-                  }}
-                >
+                <h3 className="mb-2.5 text-center">
                   {ind.name}
                 </h3>
 
                 {/* Sector tag pill */}
                 <span
-                  className="text-xs font-semibold rounded-full px-2.5 py-0.5"
+                  className="text-xs font-semibold rounded-full px-2.5 py-0.5 mt-auto"
                   style={{
                     background: cfg.tagBg,
                     color: cfg.accentColor,
@@ -183,7 +213,7 @@ export default function IndustriesSection({ industries }) {
                     letterSpacing: '0.04em',
                   }}
                 >
-                  {cfg.tag}
+                  {tagLabel}
                 </span>
               </div>
             );
@@ -199,7 +229,7 @@ export default function IndustriesSection({ industries }) {
           }}
         >
           {[
-            { value: '6+', label: 'Industries Served' },
+            { value: `${count > 0 ? count : 6}+`, label: 'Industries Served' },
             { value: '1,000+', label: 'Businesses Trust ISARVA' },
             { value: '15+', label: 'Years of Experience' },
             { value: '99.9%', label: 'Uptime SLA' },
@@ -230,3 +260,4 @@ export default function IndustriesSection({ industries }) {
     </section>
   );
 }
+

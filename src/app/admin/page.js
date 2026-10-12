@@ -23,11 +23,30 @@ import {
   ShieldCheck,
   ArrowRight,
   ExternalLink,
-  ChevronRight
+  ChevronRight,
+  Plus,
+  Trash2
 } from 'lucide-react';
 import { defaultContent } from '../../lib/content-store';
 
+const INDUSTRY_ICON_OPTIONS = [
+  { value: 'Utensils', label: '🍴 Utensils (F&B / Restaurants)' },
+  { value: 'Store', label: '🏪 Store (Retail / Shops)' },
+  { value: 'ShoppingBag', label: '🛍️ Shopping Bag (Apparel / Fashion)' },
+  { value: 'ShoppingCart', label: '🛒 Shopping Cart (Supermarkets / FMCG)' },
+  { value: 'Coffee', label: '☕ Coffee (Cafés & Chains)' },
+  { value: 'Boxes', label: '📦 Boxes (Wholesale / Warehousing)' },
+  { value: 'Building2', label: '🏢 Building (Enterprise / Corporate)' },
+  { value: 'Factory', label: '🏭 Factory (Manufacturing / Industry)' },
+  { value: 'Truck', label: '🚚 Truck (Logistics & Supply Chain)' },
+  { value: 'Hotel', label: '🏨 Hotel (Hospitality)' },
+  { value: 'Scissors', label: '✂️ Scissors (Salons & Services)' },
+  { value: 'Briefcase', label: '💼 Briefcase (Professional Services)' },
+  { value: 'Layers', label: '📑 Layers (Multi-Branch / Other)' },
+];
+
 export default function AdminCMS() {
+
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
@@ -121,7 +140,40 @@ export default function AdminCMS() {
     }
   };
 
+  const handleAddIndustry = () => {
+    const currentItems = content.industries?.items || [];
+    const newItem = {
+      name: 'New Industry',
+      iconName: 'Building2',
+      tag: 'Sector'
+    };
+    setContent({
+      ...content,
+      industries: {
+        ...content.industries,
+        items: [...currentItems, newItem]
+      }
+    });
+  };
+
+  const handleRemoveIndustry = (removeIdx) => {
+    const currentItems = content.industries?.items || [];
+    if (currentItems.length <= 1) {
+      alert('You must keep at least 1 industry category.');
+      return;
+    }
+    const filtered = currentItems.filter((_, idx) => idx !== removeIdx);
+    setContent({
+      ...content,
+      industries: {
+        ...content.industries,
+        items: filtered
+      }
+    });
+  };
+
   // --- 1. LIGHT THEME LOGIN SECURITY GATE SCREEN ---
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 relative overflow-hidden">
@@ -690,21 +742,48 @@ export default function AdminCMS() {
                 </div>
               </div>
 
-              {/* 6 Industry Items Grid */}
+              {/* Dynamic Industry Items Grid */}
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-emerald-700">Industry Categories ({content.industries?.items?.length || 6})</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-slate-100">
+                  <div>
+                    <h3 className="text-emerald-700">Industry Categories ({content.industries?.items?.length || 0})</h3>
+                    <p className="text-xs text-slate-500 mt-0.5">Add, edit, or remove industry categories. The website grid adapts automatically.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddIndustry}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-xs cursor-pointer"
+                  >
+                    <Plus size={15} /> Add Industry
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {content.industries?.items?.map((ind, idx) => (
-                    <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div
+                      key={idx}
+                      className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 relative group hover:border-emerald-300 transition-colors"
+                    >
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-slate-400">Position #{idx + 1}</span>
-                        <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">{ind.iconName}</span>
+                        <span className="text-xs font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                          #{idx + 1}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveIndustry(idx)}
+                          title="Remove this industry"
+                          className="text-xs font-semibold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-2 py-1 rounded-lg border border-rose-200 flex items-center gap-1 transition cursor-pointer"
+                        >
+                          <Trash2 size={13} />
+                          <span>Remove</span>
+                        </button>
                       </div>
+
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1">Industry Name</label>
                         <input
                           type="text"
-                          value={ind.name}
+                          value={ind.name || ''}
                           onChange={(e) => {
                             const newItems = [...(content.industries?.items || [])];
                             newItems[idx] = { ...newItems[idx], name: e.target.value };
@@ -714,10 +793,63 @@ export default function AdminCMS() {
                             });
                           }}
                           className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-semibold"
+                          placeholder="e.g. Retail Stores"
                         />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Sector Tag</label>
+                          <input
+                            type="text"
+                            value={ind.tag || ''}
+                            onChange={(e) => {
+                              const newItems = [...(content.industries?.items || [])];
+                              newItems[idx] = { ...newItems[idx], tag: e.target.value };
+                              setContent({
+                                ...content,
+                                industries: { ...content.industries, items: newItems }
+                              });
+                            }}
+                            className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                            placeholder="e.g. Retail"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Icon</label>
+                          <select
+                            value={ind.iconName || 'Building2'}
+                            onChange={(e) => {
+                              const newItems = [...(content.industries?.items || [])];
+                              newItems[idx] = { ...newItems[idx], iconName: e.target.value };
+                              setContent({
+                                ...content,
+                                industries: { ...content.industries, items: newItems }
+                              });
+                            }}
+                            className="w-full px-2 py-1.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 cursor-pointer"
+                          >
+                            {INDUSTRY_ICON_OPTIONS.map((opt) => (
+                              <option key={opt.value} value={opt.value}>
+                                {opt.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
                       </div>
                     </div>
                   ))}
+                </div>
+
+                <div className="pt-2 flex justify-start">
+                  <button
+                    type="button"
+                    onClick={handleAddIndustry}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-emerald-300 text-emerald-700 hover:bg-emerald-50 text-xs font-bold transition w-full justify-center cursor-pointer"
+                  >
+                    <Plus size={16} /> Add Another Industry Category
+                  </button>
                 </div>
               </div>
             </div>
