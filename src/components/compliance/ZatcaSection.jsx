@@ -8,12 +8,33 @@ export default function ZatcaSection({ zatcaData }) {
   return (
     <section
       id="compliance"
-      className="w-full relative overflow-hidden bg-gradient-to-r from-[#eaf6f0] via-[#f3faf6] to-[#ebf7f1] border-y border-[#a7f3d0]/70 section-padding-sm"
+      className="w-full relative overflow-hidden bg-gradient-to-br from-[#f8fdfa] via-[#eef9f3] to-[#e6f6ee] border-y border-emerald-900/10 section-padding-sm"
     >
-      {/* Soft Ambient Saudi Emerald Accents */}
-      <div className="absolute top-0 left-0 w-[450px] h-[450px] bg-[#007a55]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/60 blur-3xl pointer-events-none" />
+      {/* Precision Fintech Dot-Matrix & Micro-Line Mesh */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-45"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 1px 1px, rgba(0, 122, 85, 0.22) 1.2px, transparent 0),
+            linear-gradient(to right, rgba(16, 185, 129, 0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 122, 85, 0.06) 1px, transparent 1px)
+          `,
+          backgroundSize: '24px 24px, 48px 48px, 48px 48px',
+          maskImage: 'radial-gradient(ellipse 85% 75% at 50% 50%, #000 45%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 85% 75% at 50% 50%, #000 45%, transparent 100%)',
+        }}
+      />
+
+      {/* Soft Radiant Saudi Emerald & Mint Lighting Orbs */}
+      <div className="absolute -top-32 -left-20 w-[550px] h-[550px] bg-gradient-to-br from-[#007a55]/25 via-emerald-400/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -right-20 w-[550px] h-[550px] bg-gradient-to-tl from-emerald-500/20 via-teal-400/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[480px] h-[480px] bg-white/70 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Decorative Precision Grid Corner Crosshairs */}
+      <span className="hidden md:block absolute top-6 left-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
+      <span className="hidden md:block absolute top-6 right-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
+      <span className="hidden md:block absolute bottom-6 left-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
+      <span className="hidden md:block absolute bottom-6 right-8 font-mono text-emerald-800/20 text-xs select-none pointer-events-none">+</span>
 
       <div className="site-container relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -21,10 +42,14 @@ export default function ZatcaSection({ zatcaData }) {
           {/* LEFT ZONE: Section Eyebrow, Title, Subtitle, Checklist & Trust Badges */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
             
-            {/* Category Eyebrow */}
-            <div className="inline-block">
+            {/* Category Eyebrow with Pulsing Live Sync Badge */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
               <span className="section-eyebrow">
                 {zatcaData?.badge || 'ZATCA FATOORA STATUTORY COMPLIANCE'}
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100/80 border border-emerald-300/60 text-[10px] font-bold text-emerald-800 tracking-wide uppercase shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                Phase 2 Certified
               </span>
             </div>
 
@@ -33,20 +58,23 @@ export default function ZatcaSection({ zatcaData }) {
               <h2>
                 {zatcaData?.title || 'Built for Saudi Vision 2030 Enterprises'}
               </h2>
-              <p className="mt-1.5 max-w-xl mx-auto lg:mx-0">
+              <p className="mt-2 max-w-xl mx-auto lg:mx-0">
                 {zatcaData?.subtitle ||
                   'ISARVA ERP connects seamlessly with the ZATCA Fatoora portal for Phase 2 integration, generating certified Simplified & Standard Tax Invoices with cryptographic stamps.'}
               </p>
             </div>
 
-            {/* 2-Column Statutory Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 pt-1 text-left w-full max-w-xl">
+            {/* 2-Column Enhanced Glassmorphic Statutory Checklist */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-left w-full max-w-xl">
               {zatcaData?.checklist?.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs">
-                    <Check size={12} strokeWidth={3.5} />
+                <div
+                  key={idx}
+                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-xl bg-white/80 backdrop-blur-md border border-slate-200/70 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:bg-white hover:-translate-y-0.5 transition-all duration-200 group"
+                >
+                  <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
+                    <Check size={13} strokeWidth={3.5} />
                   </div>
-                  <span className="text-sm font-semibold text-slate-800 leading-snug">
+                  <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
                     {item}
                   </span>
                 </div>
@@ -54,16 +82,16 @@ export default function ZatcaSection({ zatcaData }) {
             </div>
 
             {/* Compliance Trust Feature Pills */}
-            <div className="pt-3.5 flex flex-wrap justify-center lg:justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-200/80">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 border border-emerald-200 shadow-2xs text-xs font-semibold text-slate-700">
+            <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-950/8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <ShieldCheck size={15} className="text-[#007a55]" />
                 <span>ZATCA Phase 2 Certified</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 border border-emerald-200 shadow-2xs text-xs font-semibold text-slate-700">
+              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <Zap size={15} className="text-[#007a55]" />
                 <span>1-Click CSID Cryptographic Stamp</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 border border-emerald-200 shadow-2xs text-xs font-semibold text-slate-700">
+              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <FileCheck size={15} className="text-[#007a55]" />
                 <span>Direct Fatoora Portal API</span>
               </div>
@@ -71,8 +99,14 @@ export default function ZatcaSection({ zatcaData }) {
 
           </div>
 
-          {/* RIGHT ZONE: 3D Photorealistic Saudi ZATCA Tax Invoice Card */}
-          <div className="lg:col-span-5 flex items-center justify-center w-full">
+          {/* RIGHT ZONE: 3D Photorealistic Saudi ZATCA Tax Invoice Card with Radar Backing */}
+          <div className="lg:col-span-5 relative flex items-center justify-center w-full">
+            {/* Concentric Decorative Compliance Radar Rings */}
+            <div className="absolute -inset-6 sm:-inset-10 flex items-center justify-center pointer-events-none">
+              <div className="w-[360px] sm:w-[440px] h-[360px] sm:h-[440px] rounded-full border border-dashed border-[#007a55]/20 animate-[spin_100s_linear_infinite]" />
+              <div className="w-[280px] sm:w-[350px] h-[280px] sm:h-[350px] rounded-full border border-emerald-400/20" />
+            </div>
+
             <ZatcaGraphic />
           </div>
 
