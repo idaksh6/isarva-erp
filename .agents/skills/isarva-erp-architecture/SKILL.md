@@ -174,8 +174,8 @@ All website copy and data is centralized in `src/lib/content-store.js`:
 
 ## 9. Built-in Admin CMS (`/admin`)
 
-- **Route**: `https://demoweb.isarva.in/isarva-erp/admin`
-- **Base Path**: `/isarva-erp` (configured in `next.config.mjs`).
+- **Route**: `/admin` (e.g. `http://localhost:3000/admin` or `https://demoweb.isarva.in/admin`)
+- **Base Path**: Clean root `/`
 - **Features**:
   - Live editing of Hero text, Products, GST rules, and Testimonials.
   - Real-time customer leads inbox.

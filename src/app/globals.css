@@ -521,3 +521,13 @@
   animation-play-state: paused;
 }
 
+/* Hero Slider Auto-Progress Indicator Animation */
+@keyframes heroProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+

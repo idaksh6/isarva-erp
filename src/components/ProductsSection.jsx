@@ -23,12 +23,12 @@ function CutleryIcon({ className = "w-6 h-6" }) {
 }
 
 export default function ProductsSection({ products, onOpenModal }) {
-  // Helper to format image path for Next.js basePath
+  // Helper to format image path
   const getImageUrl = (imagePath, fallbackPath) => {
     const src = imagePath || fallbackPath;
     if (!src) return '';
-    if (src.startsWith('http') || src.startsWith('/isarva-erp/')) return src;
-    return `/isarva-erp${src.startsWith('/') ? src : '/' + src}`;
+    if (src.startsWith('http')) return src;
+    return src.startsWith('/') ? src : '/' + src;
   };
 
   const getProductIcon = (iconName, id) => {

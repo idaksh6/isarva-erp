@@ -10,11 +10,11 @@ export default function TestimonialsSection({ testimonials }) {
   // Repeat items for seamless continuous looping
   const loopedItems = [...baseItems, ...baseItems, ...baseItems];
 
-  // Helper for Next.js basePath
+  // Helper for image path
   const getImageUrl = (imagePath) => {
     if (!imagePath) return '';
-    if (imagePath.startsWith('http') || imagePath.startsWith('/isarva-erp/')) return imagePath;
-    return `/isarva-erp${imagePath.startsWith('/') ? imagePath : '/' + imagePath}`;
+    if (imagePath.startsWith('http')) return imagePath;
+    return imagePath.startsWith('/') ? imagePath : '/' + imagePath;
   };
 
   return (

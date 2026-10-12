@@ -21,7 +21,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct 
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/isarva-erp/api/inquiries', {
+      const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

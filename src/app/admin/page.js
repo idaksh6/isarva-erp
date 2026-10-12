@@ -75,12 +75,12 @@ export default function AdminCMS() {
   const loadData = async (tokenOverride) => {
     const token = tokenOverride || sessionStorage.getItem('isarva_admin_token') || 'isarva2026';
     try {
-      const res = await fetch('/isarva-erp/api/content');
+      const res = await fetch('/api/content');
       if (res.ok) {
         const data = await res.json();
         if (data?.content) setContent(data.content);
       }
-      const inqRes = await fetch('/isarva-erp/api/inquiries', {
+      const inqRes = await fetch('/api/inquiries', {
         headers: {
           'Authorization': 'Bearer ' + token
         }
@@ -99,7 +99,7 @@ export default function AdminCMS() {
     setSavedStatus('Saving changes...');
     const token = sessionStorage.getItem('isarva_admin_token') || 'isarva2026';
     try {
-      const res = await fetch('/isarva-erp/api/content', {
+      const res = await fetch('/api/content', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -204,12 +204,12 @@ export default function AdminCMS() {
       <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-50 shadow-xs">
         <div className="flex items-center gap-3">
           <img
-            src="/isarva-erp/images/isarva-logo.png"
+            src="/images/isarva-logo.png"
             alt="ISARVA Logo"
             className="h-8 w-auto object-contain"
             onError={(e) => {
               e.currentTarget.onerror = null;
-              e.currentTarget.src = '/isarva-erp/images/isarva-logo.png';
+              e.currentTarget.src = '/images/isarva-logo.png';
             }}
           />
           <span className="text-xs text-brand-700 font-bold px-2 py-0.5 rounded bg-brand-50 border border-brand-200">

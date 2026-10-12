@@ -1,106 +1,128 @@
 'use client';
 
 import React from 'react';
+import { Check, ShieldCheck, QrCode } from 'lucide-react';
 
 export default function TaxInvoiceGraphic() {
   return (
-    <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[390px] flex items-center justify-center lg:justify-end select-none">
+    <div className="relative w-full max-w-[340px] sm:max-w-[410px] lg:max-w-[440px] flex items-center justify-center select-none">
       
-      {/* Dynamic Waving Indian Tricolor Flag Ribbon (Curving behind invoice to the right edge) */}
-      <div className="absolute -right-12 sm:-right-16 -top-6 w-48 sm:w-60 lg:w-72 h-[120%] pointer-events-none z-0 opacity-95 overflow-visible">
-        <svg
-          viewBox="0 0 240 280"
-          className="w-full h-full object-contain filter drop-shadow-md"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Top Saffron Wave */}
-          <path
-            d="M 10,60 
-               C 70,20 120,80 180,35 
-               C 210,15 235,35 250,55 
-               L 250,95 
-               C 230,75 205,55 180,75 
-               C 120,120 70,60 10,100 Z"
-            fill="#FF9933"
-          />
+      {/* Soft Ambient Glow */}
+      <div className="absolute -inset-3 bg-emerald-500/15 rounded-3xl blur-3xl pointer-events-none" />
 
-          {/* Middle White Wave */}
-          <path
-            d="M 10,100 
-               C 70,60 120,120 180,75 
-               C 205,55 230,75 250,95 
-               L 250,135 
-               C 230,115 205,95 180,115 
-               C 120,160 70,100 10,140 Z"
-            fill="#FFFFFF"
-            stroke="rgba(0,0,0,0.04)"
-            strokeWidth="0.5"
-          />
-
-          {/* Bottom Green Wave */}
-          <path
-            d="M 10,140 
-               C 70,100 120,160 180,115 
-               C 205,95 230,115 250,135 
-               L 250,175 
-               C 230,155 205,135 180,155 
-               C 120,200 70,140 10,180 Z"
-            fill="#138808"
-          />
-        </svg>
-      </div>
-
-      {/* 3D Angled Photorealistic Tax Invoice Card */}
-      <div className="relative z-10 w-full max-w-[280px] sm:max-w-[310px] bg-white rounded-2xl border border-slate-100 p-5 sm:p-6 shadow-2xl shadow-slate-800/10 rotate-2 hover:rotate-0 transition-transform duration-300">
+      {/* Realistic GST Tax Invoice Card */}
+      <div className="relative z-10 w-full bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-2xl shadow-slate-900/10 rotate-1 hover:rotate-0 transition-transform duration-300">
         
-        {/* Invoice Top Header: Brand Logo & Title + Stamp Icon */}
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <div className="flex items-center gap-1.5">
-            {/* Hexagon/Emblem Icon */}
-            <div className="w-5 h-5 rounded-md bg-[#007a55] text-white flex items-center justify-center text-[10px] font-black">
-              ✦
+        {/* Top Header: Brand & Invoice Badge */}
+        <div className="flex items-start justify-between gap-2 pb-3 border-b border-slate-100">
+          <div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-5 h-5 rounded-md bg-[#007a55] text-white flex items-center justify-center text-[10px] font-black">
+                ✦
+              </div>
+              <span className="font-heading font-black text-sm tracking-tight text-[#007a55]">
+                ISARVA ERP
+              </span>
             </div>
-            <span className="font-heading font-black text-sm tracking-tight text-[#007a55]">
-              ISARVA
+            <div className="text-[11px] font-mono text-slate-500 mt-1">
+              GSTIN: <span className="font-semibold text-slate-700">29AAPCA1234F1Z9</span>
+            </div>
+          </div>
+
+          <div className="text-right">
+            <span className="inline-block text-[11px] font-heading font-extrabold uppercase tracking-wider text-slate-900 bg-slate-100 px-2 py-0.5 rounded">
+              Tax Invoice
             </span>
-          </div>
-
-          {/* Top-Right Decorative Green Stamp */}
-          <div className="w-6 h-6 rounded-full bg-emerald-100 text-[#007a55] flex items-center justify-center text-[11px] font-black">
-            ⚡
-          </div>
-        </div>
-
-        {/* Invoice Title & e-Invoice Compliant Badge */}
-        <div className="flex items-center justify-between gap-2 mb-4">
-          <span className="font-heading font-bold text-base text-slate-900 tracking-tight">
-            Tax Invoice
-          </span>
-          <div className="bg-[#007a55] text-white px-2.5 py-1 rounded-md text-[10px] sm:text-[11px] font-bold tracking-tight shadow-2xs">
-            e-Invoice Compliant
+            <div className="mt-1 flex items-center justify-end gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+              e-Invoice Ready
+            </div>
           </div>
         </div>
 
-        {/* Skeleton Invoice Rows / Placeholders */}
-        <div className="space-y-2 mb-4">
-          <div className="flex gap-2">
-            <div className="h-1.5 bg-slate-200 rounded w-1/3" />
-            <div className="h-1.5 bg-slate-100 rounded w-2/3" />
+        {/* Invoice Meta Grid */}
+        <div className="grid grid-cols-2 gap-2 py-2.5 text-[11px] border-b border-dashed border-slate-200">
+          <div>
+            <span className="text-slate-400 block text-[10px] uppercase font-semibold">Invoice Details</span>
+            <div className="font-mono text-slate-800 font-semibold">INV-2026-08412</div>
+            <div className="text-slate-500">Date: 12 Oct 2026</div>
           </div>
-          <div className="flex gap-2">
-            <div className="h-1.5 bg-slate-200 rounded w-1/2" />
-            <div className="h-1.5 bg-slate-100 rounded w-1/2" />
+          <div className="text-right sm:text-left">
+            <span className="text-slate-400 block text-[10px] uppercase font-semibold">Billed To (Client)</span>
+            <div className="font-semibold text-slate-800 truncate">Spice Garden Pvt Ltd</div>
+            <div className="font-mono text-slate-500 text-[10px]">27AABCS1234D1Z5</div>
           </div>
-          <div className="h-1.5 bg-slate-100 rounded w-full" />
         </div>
 
-        {/* High Definition IRN QR Code Graphic */}
-        <div className="w-full flex justify-center py-1">
-          <div className="bg-white p-2 rounded-xl border border-slate-200/80 shadow-xs">
+        {/* Line Items Table */}
+        <div className="py-2.5">
+          <div className="grid grid-cols-12 gap-1 text-[10px] font-bold uppercase text-slate-400 pb-1.5 border-b border-slate-100">
+            <div className="col-span-5">Item Description</div>
+            <div className="col-span-2 text-center">HSN</div>
+            <div className="col-span-2 text-center">Qty</div>
+            <div className="col-span-3 text-right">Amount</div>
+          </div>
+
+          <div className="divide-y divide-slate-50 text-[11px]">
+            <div className="grid grid-cols-12 gap-1 py-1.5 items-center">
+              <div className="col-span-5 font-medium text-slate-800 truncate">Restaurant POS</div>
+              <div className="col-span-2 text-center text-slate-500 font-mono text-[10px]">9983</div>
+              <div className="col-span-2 text-center text-slate-600">1</div>
+              <div className="col-span-3 text-right font-mono text-slate-800 font-medium">₹8,000.00</div>
+            </div>
+            <div className="grid grid-cols-12 gap-1 py-1.5 items-center">
+              <div className="col-span-5 font-medium text-slate-800 truncate">HRMS Module</div>
+              <div className="col-span-2 text-center text-slate-500 font-mono text-[10px]">9983</div>
+              <div className="col-span-2 text-center text-slate-600">1</div>
+              <div className="col-span-3 text-right font-mono text-slate-800 font-medium">₹5,000.00</div>
+            </div>
+          </div>
+        </div>
+
+        {/* GST Calculation Breakdown */}
+        <div className="bg-slate-50/80 rounded-xl p-2.5 border border-slate-100 text-[11px] space-y-1">
+          <div className="flex justify-between text-slate-600">
+            <span>Taxable Amount</span>
+            <span className="font-mono">₹13,000.00</span>
+          </div>
+          <div className="flex justify-between text-slate-500 text-[10px]">
+            <span>CGST @ 9.0%</span>
+            <span className="font-mono">₹1,170.00</span>
+          </div>
+          <div className="flex justify-between text-slate-500 text-[10px]">
+            <span>SGST @ 9.0%</span>
+            <span className="font-mono">₹1,170.00</span>
+          </div>
+          <div className="flex justify-between font-bold text-slate-900 pt-1 border-t border-slate-200 text-xs">
+            <span>Total Invoice Value (INR)</span>
+            <span className="font-mono text-[#007a55]">₹15,340.00</span>
+          </div>
+        </div>
+
+        {/* Statutory IRN, QR Code & Validation Bar */}
+        <div className="mt-3 pt-3 border-t border-dashed border-slate-200 flex items-center justify-between gap-3">
+          <div className="space-y-1.5 flex-1 min-w-0">
+            <div className="text-[10px] font-mono text-slate-400 uppercase tracking-tight">
+              IRN Reference Hash
+            </div>
+            <div className="font-mono text-[10px] text-slate-600 bg-slate-100 px-2 py-1 rounded truncate border border-slate-200/80">
+              7a9bc3f28d1045a19c...e12d8a4
+            </div>
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
+              <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <Check size={10} strokeWidth={3} /> IRN Generated
+              </span>
+              <span className="inline-flex items-center gap-1 text-[9px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                <ShieldCheck size={10} strokeWidth={2.5} /> GSTN Validated
+              </span>
+            </div>
+          </div>
+
+          {/* QR Code */}
+          <div className="shrink-0 p-1.5 bg-white rounded-lg border border-slate-200 shadow-2xs">
             <svg
               viewBox="0 0 100 100"
-              className="w-24 h-24 sm:w-28 sm:h-28 text-slate-900"
+              className="w-14 h-14 sm:w-16 sm:h-16 text-slate-900"
               fill="currentColor"
             >
               {/* Top-Left Finder */}
@@ -155,4 +177,3 @@ export default function TaxInvoiceGraphic() {
     </div>
   );
 }
-

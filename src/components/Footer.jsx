@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Facebook,
@@ -8,13 +8,39 @@ import {
   Linkedin,
   Youtube,
   Instagram,
-  ChevronDown
+  ChevronDown,
+  Check
 } from 'lucide-react';
 import FlagIcon from './FlagIcon';
 
 export default function Footer({ content }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+
+  const countries = content?.countries || [
+    { code: 'IN', name: 'India', flag: '🇮🇳', currency: 'INR (₹)', phoneCode: '+91', lang: 'English' },
+    { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', currency: 'SAR (ر.س)', phoneCode: '+966', lang: 'العربية / English' }
+  ];
+
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  const [isCountryOpen, setIsCountryOpen] = useState(false);
+  const countryRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (countryRef.current && !countryRef.current.contains(event.target)) {
+        setIsCountryOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -35,7 +61,7 @@ export default function Footer({ content }) {
           <div className="lg:col-span-4 space-y-3.5">
             <Link href="/" className="inline-block">
               <img
-                src="/isarva-erp/images/isarva-logo.png"
+                src="/images/isarva-logo.png"
                 alt="ISARVA Logo"
                 className="h-11 sm:h-12 w-auto object-contain"
               />
@@ -177,11 +203,64 @@ export default function Footer({ content }) {
               <Link href="#terms" className="hover:text-[#007a55] transition-colors">Terms of Service</Link>
             </div>
 
-            {/* Country Selector Pill */}
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-semibold text-slate-700 shadow-2xs">
-              <FlagIcon code="IN" className="w-4 h-3" />
-              <span>India</span>
-              <ChevronDown size={13} className="text-slate-400" />
+            {/* Country & Language Selector Dropdown (Opens Upwards) */}
+            <div className="relative" ref={countryRef}>
+              <button
+                type="button"
+                onClick={() => setIsCountryOpen(!isCountryOpen)}
+                aria-label="Select region and language"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 shadow-2xs transition-colors"
+              >
+                <FlagIcon code={selectedCountry.code} className="w-4 h-3" />
+                <span>{selectedCountry.name}</span>
+                <ChevronDown
+                  size={13}
+                  className={`text-slate-400 transition-transform duration-200 ${
+                    isCountryOpen ? 'rotate-180 text-[#007a55]' : ''
+                  }`}
+                />
+              </button>
+
+              {/* Upward Dropdown Menu */}
+              {isCountryOpen && (
+                <div className="absolute bottom-full right-0 mb-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-200 py-2 z-50 animate-fadeIn">
+                  <div className="px-3.5 pb-2 mb-1 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Select Region & Language
+                  </div>
+                  {countries.map((country) => (
+                    <button
+                      key={country.code}
+                      type="button"
+                      onClick={() => {
+                        setSelectedCountry(country);
+                        setIsCountryOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs transition-colors text-left group ${
+                        selectedCountry.code === country.code
+                          ? 'bg-emerald-50/70 text-[#007a55]'
+                          : 'text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <FlagIcon code={country.code} className="w-6 h-4" />
+                        <div>
+                          <div className="font-semibold text-slate-900 group-hover:text-[#007a55] transition-colors">
+                            {country.name}
+                          </div>
+                          {country.lang && (
+                            <div className="text-[11px] text-slate-500 font-normal mt-0.5">
+                              {country.lang}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      {selectedCountry.code === country.code && (
+                        <Check size={15} className="text-[#007a55] font-bold" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Search,
@@ -23,6 +23,28 @@ export default function Navbar({ content, onOpenModal }) {
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const solutionsRef = useRef(null);
+  const countryRef = useRef(null);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (solutionsRef.current && !solutionsRef.current.contains(event.target)) {
+        setIsSolutionsOpen(false);
+      }
+      if (countryRef.current && !countryRef.current.contains(event.target)) {
+        setIsCountryOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="site-container">
@@ -31,7 +53,7 @@ export default function Navbar({ content, onOpenModal }) {
           {/* Brand Logo */}
           <Link href="/" className="flex items-center group">
             <img
-              src="/isarva-erp/images/isarva-logo.png"
+              src="/images/isarva-logo.png"
               alt="ISARVA Logo"
               className="h-12 sm:h-13 lg:h-14 w-auto object-contain group-hover:scale-105 transition-transform"
             />
@@ -44,7 +66,7 @@ export default function Navbar({ content, onOpenModal }) {
             </Link>
 
             {/* Solutions Mega Dropdown Trigger */}
-            <div className="relative" onMouseLeave={() => setIsSolutionsOpen(false)}>
+            <div className="relative" ref={solutionsRef} onMouseLeave={() => setIsSolutionsOpen(false)}>
               <button
                 onMouseEnter={() => setIsSolutionsOpen(true)}
                 onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
@@ -60,7 +82,11 @@ export default function Navbar({ content, onOpenModal }) {
                   className="absolute top-full -left-4 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 p-2.5 z-50 animate-fadeIn space-y-1"
                   onMouseEnter={() => setIsSolutionsOpen(true)}
                 >
-                  <Link href="#restaurant-pos" className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-50 transition-colors group">
+                  <Link
+                    href="#restaurant-pos"
+                    onClick={() => setIsSolutionsOpen(false)}
+                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-50 transition-colors group"
+                  >
                     <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
                       <UtensilsCrossed size={16} />
                     </div>
@@ -70,7 +96,11 @@ export default function Navbar({ content, onOpenModal }) {
                     </div>
                   </Link>
 
-                  <Link href="#billsoft" className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition-colors group">
+                  <Link
+                    href="#billsoft"
+                    onClick={() => setIsSolutionsOpen(false)}
+                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition-colors group"
+                  >
                     <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
                       <BarChart3 size={16} />
                     </div>
@@ -80,7 +110,11 @@ export default function Navbar({ content, onOpenModal }) {
                     </div>
                   </Link>
 
-                  <Link href="#hrms" className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-purple-50 transition-colors group">
+                  <Link
+                    href="#hrms"
+                    onClick={() => setIsSolutionsOpen(false)}
+                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-purple-50 transition-colors group"
+                  >
                     <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
                       <Users2 size={16} />
                     </div>
@@ -90,7 +124,11 @@ export default function Navbar({ content, onOpenModal }) {
                     </div>
                   </Link>
 
-                  <Link href="#crm" className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-orange-50 transition-colors group">
+                  <Link
+                    href="#crm"
+                    onClick={() => setIsSolutionsOpen(false)}
+                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-orange-50 transition-colors group"
+                  >
                     <div className="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
                       <Handshake size={16} />
                     </div>
@@ -124,7 +162,7 @@ export default function Navbar({ content, onOpenModal }) {
           <div className="hidden lg:flex items-center gap-4">
             
             {/* Country & Language Selector Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={countryRef}>
               <button
                 onClick={() => setIsCountryOpen(!isCountryOpen)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-700 bg-slate-50/90 hover:bg-slate-100 transition-colors shadow-2xs"

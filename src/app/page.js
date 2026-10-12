@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
@@ -24,7 +24,7 @@ export default function HomePage() {
     // Fetch live content from API if updated via CMS
     async function loadContent() {
       try {
-        const res = await fetch('/isarva-erp/api/content');
+        const res = await fetch('/api/content');
         if (res.ok) {
           const data = await res.json();
           if (data?.content) setContent(data.content);
@@ -54,7 +54,7 @@ export default function HomePage() {
       <Navbar content={content} onOpenModal={handleOpenModal} />
 
       {/* Hero Section */}
-      <Hero hero={content.hero} onOpenModal={handleOpenModal} />
+      <Hero hero={content.hero} products={content.products} onOpenModal={handleOpenModal} />
 
       {/* 4 Products Section */}
       <ProductsSection products={content.products} onOpenModal={handleOpenModal} />

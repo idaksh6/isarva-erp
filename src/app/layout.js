@@ -20,7 +20,7 @@ export const metadata = {
   openGraph: {
     title: 'ISARVA ERP | Complete Business Management Platform',
     description: 'All-in-One ERP Platform featuring Restaurant POS, Accounting, HRMS, and CRM with Indian GST and e-Invoicing compliance.',
-    url: 'https://demoweb.isarva.in/isarva-erp/',
+    url: 'https://demoweb.isarva.in/',
     siteName: 'ISARVA ERP',
     locale: 'en_US',
     type: 'website',
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <link rel="icon" href="/isarva-erp/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
       <body className="antialiased bg-slate-50 text-slate-900 min-h-screen">
         {children}
