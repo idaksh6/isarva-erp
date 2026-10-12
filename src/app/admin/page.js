@@ -29,8 +29,10 @@ import {
   Star
 } from 'lucide-react';
 import { defaultContent } from '../../lib/content-store';
+import ImageUploadField from '../../components/ImageUploadField';
 
 const WHY_CHOOSE_ICON_OPTIONS = [
+
   { value: 'Layers', label: '📑 Layers (All-in-One)' },
   { value: 'ShieldCheck', label: '🛡️ Shield Check (Compliance & Security)' },
   { value: 'Store', label: '🏪 Store (Multi-Branch)' },
@@ -620,20 +622,17 @@ export default function AdminCMS() {
                       </div>
                     </div>
 
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Preview Image URL</label>
-                      <input
-                        type="text"
-                        value={prod.image || ''}
-                        placeholder="/images/pos-card-preview.jpg"
-                        onChange={(e) => {
-                          const newProds = [...content.products];
-                          newProds[pIdx].image = e.target.value;
-                          setContent({ ...content, products: newProds });
-                        }}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
-                      />
-                    </div>
+                    <ImageUploadField
+                      label="Product Preview Image"
+                      value={prod.image || ''}
+                      placeholder="/images/pos-card-preview.jpg"
+                      onChange={(url) => {
+                        const newProds = [...content.products];
+                        newProds[pIdx].image = url;
+                        setContent({ ...content, products: newProds });
+                      }}
+                    />
+
 
                     <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1.5">Feature Checklist (Line separated)</label>
@@ -1039,20 +1038,19 @@ export default function AdminCMS() {
                           />
                         </div>
                         <div className="sm:col-span-3">
-                          <label className="block text-xs font-bold text-slate-700 mb-1">Store / Avatar Photo URL</label>
-                          <input
-                            type="text"
+                          <ImageUploadField
+                            label="Store / Avatar Photo"
                             value={tst.avatarImage || ''}
                             placeholder="/images/tst-spice-garden.jpg"
-                            onChange={(e) => {
+                            compact
+                            onChange={(url) => {
                               const newItems = [...(content.testimonials?.items || [])];
-                              newItems[idx] = { ...newItems[idx], avatarImage: e.target.value };
+                              newItems[idx] = { ...newItems[idx], avatarImage: url };
                               setContent({
                                 ...content,
                                 testimonials: { ...content.testimonials, items: newItems }
                               });
                             }}
-                            className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
                           />
                         </div>
                       </div>
