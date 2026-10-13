@@ -148,8 +148,8 @@ export default function Footer({
         </div>
 
         {/* 2. ENTERPRISE TRUST & STATUTORY ACCREDITATION RIBBON */}
-        <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-12 border-b border-slate-200/80">
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pb-12 border-b border-slate-200/80">
+          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
             <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
               <ShieldCheck size={18} strokeWidth={2.4} />
             </div>
@@ -159,7 +159,7 @@ export default function Footer({
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
+          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
             <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
               <FileCheck size={18} strokeWidth={2.4} />
             </div>
@@ -169,7 +169,7 @@ export default function Footer({
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
+          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
             <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
               <Lock size={18} strokeWidth={2.4} />
             </div>
@@ -179,7 +179,7 @@ export default function Footer({
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
+          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
             <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
               <Activity size={18} strokeWidth={2.4} />
             </div>
