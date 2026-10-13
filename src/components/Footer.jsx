@@ -363,18 +363,24 @@ export default function Footer({
         </div>
 
         {/* 4. SUB-FOOTER BOTTOM BAR */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
-          <div>
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium text-center md:text-left">
+          <div className="text-center md:text-left w-full md:w-auto">
             © 2026 ISARVA IT Solutions Pvt. Ltd. All rights reserved.
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
-            <div className="flex items-center gap-3.5">
-              <Link href="#privacy" className="hover:text-[#007a55] transition-colors">Privacy Policy</Link>
-              <span className="text-slate-300">|</span>
-              <Link href="#terms" className="hover:text-[#007a55] transition-colors">Terms of Service</Link>
-              <span className="text-slate-300">|</span>
-              <Link href="#security" className="hover:text-[#007a55] transition-colors">Security Architecture</Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full md:w-auto">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-3.5 gap-y-1.5 text-center">
+              <Link href="#privacy" className="hover:text-[#007a55] transition-colors whitespace-nowrap">
+                Privacy Policy
+              </Link>
+              <span className="text-slate-300 hidden sm:inline">•</span>
+              <Link href="#terms" className="hover:text-[#007a55] transition-colors whitespace-nowrap">
+                Terms of Service
+              </Link>
+              <span className="text-slate-300 hidden sm:inline">•</span>
+              <Link href="#security" className="hover:text-[#007a55] transition-colors whitespace-nowrap">
+                Security Architecture
+              </Link>
             </div>
 
             {/* Upward Region & Currency Dropdown */}
