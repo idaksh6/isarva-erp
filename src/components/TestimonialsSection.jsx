@@ -1,13 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Star } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function TestimonialsSection({ testimonials }) {
   const baseItems = testimonials?.items || [];
   const [isPaused, setIsPaused] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const mobileScrollRef = useRef(null);
 
-  // Repeat items for seamless continuous looping
+  // Repeat items for seamless continuous looping on desktop
   const loopedItems = [...baseItems, ...baseItems, ...baseItems];
 
   // Helper for image path
@@ -15,6 +17,35 @@ export default function TestimonialsSection({ testimonials }) {
     if (!imagePath) return '';
     if (imagePath.startsWith('http')) return imagePath;
     return imagePath.startsWith('/') ? imagePath : '/' + imagePath;
+  };
+
+  // Sync active dot indicator on mobile hand swiping
+  const handleMobileScroll = () => {
+    if (!mobileScrollRef.current) return;
+    const { scrollLeft, clientWidth } = mobileScrollRef.current;
+    if (clientWidth === 0) return;
+    const cardWidth = clientWidth * 0.88;
+    const newIdx = Math.round(scrollLeft / cardWidth);
+    setActiveSlide(Math.min(Math.max(newIdx, 0), baseItems.length - 1));
+  };
+
+  const scrollToSlide = (idx) => {
+    if (!mobileScrollRef.current) return;
+    const cards = mobileScrollRef.current.children;
+    if (cards[idx]) {
+      cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      setActiveSlide(idx);
+    }
+  };
+
+  const handlePrev = () => {
+    const nextIdx = Math.max(activeSlide - 1, 0);
+    scrollToSlide(nextIdx);
+  };
+
+  const handleNext = () => {
+    const nextIdx = Math.min(activeSlide + 1, baseItems.length - 1);
+    scrollToSlide(nextIdx);
   };
 
   return (
@@ -39,15 +70,129 @@ export default function TestimonialsSection({ testimonials }) {
         </div>
       </div>
 
-      {/* Continuous Infinite Marquee Loop Viewport */}
+      {/* 1. MOBILE VIEW: Touch-Swipeable Hand Slider with Snap-Scroll */}
+      <div className="md:hidden relative w-full">
+        {/* Horizontal Swipeable Track */}
+        <div
+          ref={mobileScrollRef}
+          onScroll={handleMobileScroll}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 py-2 touch-pan-x"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch'
+          }}
+        >
+          {baseItems.map((item, idx) => (
+            <div
+              key={idx}
+              className="w-[86vw] max-w-[340px] shrink-0 snap-center"
+            >
+              <div className="bg-white rounded-2xl border border-emerald-950/8 p-5 flex items-start gap-4 shadow-xs h-full">
+                {/* Circular Store / Restaurant Photo Avatar */}
+                <div className="w-13 h-13 rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100">
+                  {item.avatarImage ? (
+                    <img
+                      src={getImageUrl(item.avatarImage)}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        if (e.currentTarget.nextSibling) {
+                          e.currentTarget.nextSibling.style.display = 'flex';
+                        }
+                      }}
+                    />
+                  ) : null}
+                  <div
+                    className="w-full h-full bg-gradient-to-tr from-[#007a55] to-emerald-500 text-white font-bold items-center justify-center text-sm"
+                    style={{ display: item.avatarImage ? 'none' : 'flex' }}
+                  >
+                    {item.initials || 'IS'}
+                  </div>
+                </div>
+
+                {/* Testimonial Content */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="truncate">
+                    {item.name}
+                  </h3>
+                  <div className="text-xs font-semibold text-slate-500 mt-0.5">
+                    {item.location}
+                  </div>
+
+                  {/* 5 Rating Stars */}
+                  <div className="flex items-center gap-1 my-1.5">
+                    {[...Array(item.rating || 5)].map((_, starIdx) => (
+                      <Star
+                        key={starIdx}
+                        size={14}
+                        className="fill-[#f59e0b] text-[#f59e0b]"
+                      />
+                    ))}
+                  </div>
+
+                  {/* Quote Text */}
+                  <p className="italic line-clamp-3">
+                    "{item.quote}"
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile Swipe Pagination Dots & Touch Arrows */}
+        <div className="flex items-center justify-center gap-3 pt-4">
+          <button
+            type="button"
+            onClick={handlePrev}
+            disabled={activeSlide === 0}
+            aria-label="Previous testimonial"
+            className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-2xs flex items-center justify-center text-slate-600 disabled:opacity-30 disabled:pointer-events-none active:scale-95 transition-all"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex items-center gap-1.5">
+            {baseItems.map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                onClick={() => scrollToSlide(dotIdx)}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeSlide === dotIdx
+                    ? 'w-6 bg-[#007a55]'
+                    : 'w-2 bg-slate-300 hover:bg-slate-400'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={activeSlide === baseItems.length - 1}
+            aria-label="Next testimonial"
+            className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-2xs flex items-center justify-center text-slate-600 disabled:opacity-30 disabled:pointer-events-none active:scale-95 transition-all"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      {/* 2. DESKTOP VIEW: Continuous Infinite Marquee Loop Viewport */}
       <div
-        className="relative w-full overflow-hidden"
+        className="hidden md:block relative w-full overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Left & Right Gradient Fade Masks */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-[#eff7f3] via-[#eff7f3]/80 to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-[#eff7f3] via-[#eff7f3]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 lg:w-28 bg-gradient-to-r from-[#eff7f3] via-[#eff7f3]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 lg:w-28 bg-gradient-to-l from-[#eff7f3] via-[#eff7f3]/80 to-transparent z-10" />
 
         {/* Continuous Looping Track */}
         <div
@@ -59,7 +204,7 @@ export default function TestimonialsSection({ testimonials }) {
           {loopedItems.map((item, idx) => (
             <div
               key={idx}
-              className="w-[320px] sm:w-[380px] lg:w-[420px] shrink-0"
+              className="w-[340px] lg:w-[420px] shrink-0"
             >
               <div className="bg-white rounded-2xl sm:rounded-3xl border border-emerald-950/8 p-6 flex items-start gap-4 shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 h-full">
                 
@@ -73,7 +218,9 @@ export default function TestimonialsSection({ testimonials }) {
                       loading="lazy"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';
-                        e.currentTarget.nextSibling.style.display = 'flex';
+                        if (e.currentTarget.nextSibling) {
+                          e.currentTarget.nextSibling.style.display = 'flex';
+                        }
                       }}
                     />
                   ) : null}
