@@ -161,14 +161,12 @@ export const saudiContent = {
   gstSection: {
     badge: 'ZATCA FATOORA STATUTORY COMPLIANCE',
     title: 'Built for Saudi Vision 2030 Enterprises',
-    subtitle: 'ISARVA ERP connects seamlessly with the ZATCA Fatoora portal for Phase 2 integration, generating certified Simplified & Standard Tax Invoices with cryptographic stamps.',
+    subtitle: 'ISARVA ERP is fully compliant with ZATCA e-invoicing regulations, ensuring your business meets all requirements for Phase 1 and Phase 2.',
     checklist: [
-      'ZATCA Phase 2 Direct API Clearance & Reporting',
-      'Phase 1 & Phase 2 QR Code Generation',
-      'Cryptographic Stamp (CSID) & Digital Signatures',
-      'Unique UUID, Invoice Hash & Previous Invoice Hash (PIH)',
-      'Saudi Standard 15% VAT & Tax Exemption Rules',
-      'Bilingual Arabic & English Tax Receipts'
+      'Generate compliant e-invoices',
+      'Real-time integration ready',
+      'QR code and XML format',
+      'Stay updated with latest ZATCA regulations'
     ]
   },
   industries: {

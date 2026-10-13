@@ -8,20 +8,20 @@ export default function GstSection({ gstData }) {
   return (
     <section
       id="compliance"
-      className="w-full relative overflow-hidden bg-gradient-to-r from-[#faeedd] via-[#fef7ee] to-[#f9ecdc] border-y border-[#fed7aa]/60 section-padding-sm"
+      className="w-full relative overflow-hidden bg-[#fef7ee] bg-gradient-to-b from-[#fef7ee] via-[#faf3e8] to-[#f6ecdf] border-y border-[#fed7aa]/50 pt-10 pb-16 lg:pt-14 lg:pb-24 section-india-gst"
     >
-      {/* High-Fidelity Custom Generated Warm Fintech Background Graphic */}
-      <div
-        className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-65 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/gst-compliance-bg.jpg')",
-        }}
-      />
+      {/* Simple, Clean Architectural India Monuments Line-Art — Edge-to-Edge Across Full Width */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+        <img
+          src="/images/gst-india-minimal-skyline.jpg"
+          alt="Clean India Monuments Line Art Silhouette - India Gate, Taj Mahal, Gateway of India, Rashtrapati Bhavan"
+          className="w-full h-full object-cover object-bottom opacity-70 sm:opacity-80 mix-blend-multiply transition-opacity duration-500"
+          loading="eager"
+        />
 
-      {/* Warm Ambient Saffron & Emerald Glow Accents */}
-      <div className="absolute top-0 left-0 w-[450px] h-[450px] bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-[#138808]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/40 blur-3xl pointer-events-none" />
+        {/* Delicate top gradient fade to blend open sky seamlessly */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#fef7ee] via-[#fef7ee]/80 to-transparent pointer-events-none" />
+      </div>
 
       <div className="site-container relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -34,7 +34,7 @@ export default function GstSection({ gstData }) {
               <span className="section-eyebrow">
                 {gstData?.badge || 'GST & STATUTORY COMPLIANCE'}
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100/80 border border-emerald-300/60 text-[10px] font-bold text-emerald-800 tracking-wide uppercase shadow-2xs">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100/90 border border-emerald-300/80 text-[10px] font-bold text-emerald-900 tracking-wide uppercase shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                 Live GSTN Sync
               </span>
@@ -51,17 +51,17 @@ export default function GstSection({ gstData }) {
               </p>
             </div>
 
-            {/* 2-Column Enhanced Glassmorphic Statutory Checklist */}
+            {/* 2-Column Enhanced High-Contrast Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-left w-full max-w-xl">
               {gstData?.checklist?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-xl bg-white/80 backdrop-blur-md border border-slate-200/70 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:bg-white hover:-translate-y-0.5 transition-all duration-200 group"
+                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group"
                 >
                   <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
                     <Check size={13} strokeWidth={3.5} />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
+                  <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
                     {item}
                   </span>
                 </div>
@@ -70,15 +70,15 @@ export default function GstSection({ gstData }) {
 
             {/* Compliance Trust Feature Pills */}
             <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-950/8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
+              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <ShieldCheck size={15} className="text-[#007a55]" />
                 <span>100% Statutory Compliant</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
+              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <Zap size={15} className="text-[#007a55]" />
                 <span>1-Click IRN & QR Code</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
+              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <FileText size={15} className="text-[#007a55]" />
                 <span>Direct GSTN Validated</span>
               </div>

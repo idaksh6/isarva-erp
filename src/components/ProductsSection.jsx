@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {
+  UtensilsCrossed,
   BarChart3,
   Users2,
   Handshake,
@@ -9,18 +10,6 @@ import {
   ArrowRight,
   Sparkles
 } from 'lucide-react';
-
-// Custom fork & knife icon matching the reference card design
-function CutleryIcon({ className = "w-6 h-6" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      {/* Fork */}
-      <path d="M5 2a1 1 0 0 1 1 1v4h1V3a1 1 0 1 1 2 0v4h1V3a1 1 0 1 1 2 0v4a3 3 0 0 1-2.5 2.96V21a1 1 0 0 1-2 0v-11.04A3 3 0 0 1 4 7V3a1 1 0 0 1 1-1z" />
-      {/* Knife */}
-      <path d="M18 2a3 3 0 0 0-3 3v6a2 2 0 0 0 2 2v8a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z" />
-    </svg>
-  );
-}
 
 export default function ProductsSection({ products, onOpenModal }) {
   // Helper to format image path
@@ -31,11 +20,11 @@ export default function ProductsSection({ products, onOpenModal }) {
     return src.startsWith('/') ? src : '/' + src;
   };
 
-  const getProductIcon = (iconName, id) => {
-    if (id === 'restaurant-pos' || iconName === 'UtensilsCrossed') {
-      return <CutleryIcon className="w-6 h-6" />;
-    }
+  const getProductIcon = (iconName) => {
     switch (iconName) {
+      case 'UtensilsCrossed':
+      case 'Utensils':
+        return <UtensilsCrossed size={24} strokeWidth={2.4} />;
       case 'BarChart3':
         return <BarChart3 size={24} strokeWidth={2.4} />;
       case 'Users2':
@@ -124,14 +113,14 @@ export default function ProductsSection({ products, onOpenModal }) {
                 <div>
                   {/* Card Header: Icon + Title & Subtitle */}
                   <div className="flex items-center gap-3.5 mb-5">
-                    <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-2xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-sm`}>
-                      {getProductIcon(product.iconName, product.id)}
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-sm`}>
+                      {getProductIcon(product.iconName)}
                     </div>
-                    <div className="min-w-0">
-                      <h3 className="truncate">
+                    <div className="min-w-0 flex-1">
+                      <h3>
                         {product.title}
                       </h3>
-                      <p className="mt-0.5 line-clamp-1 text-slate-500">
+                      <p className="mt-0.5 line-clamp-1">
                         {product.subtitle}
                       </p>
                     </div>
@@ -144,6 +133,11 @@ export default function ProductsSection({ products, onOpenModal }) {
                       alt={`${product.title} Interface Preview`}
                       className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500 block rounded-lg"
                       loading="lazy"
+                      onError={(e) => {
+                        if (style.fallbackImage && e.currentTarget.src !== style.fallbackImage) {
+                          e.currentTarget.src = style.fallbackImage;
+                        }
+                      }}
                     />
                   </div>
 

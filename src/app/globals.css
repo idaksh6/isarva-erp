@@ -532,3 +532,122 @@
   }
 }
 
+.hero-tab-progress {
+  animation: heroProgress 6s linear forwards;
+}
+
+.hero-tab-progress-paused {
+  animation-play-state: paused;
+}
+
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-fade-up {
+  animation: heroFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+@keyframes heroBadgePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-hero-badge-pop {
+  animation: heroBadgePop 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+/* QuickDice ERP Inspired Ambient & Floating Animations */
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.floating-module {
+  animation: heroFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.floating-module:hover {
+  animation-play-state: paused;
+}
+
+@keyframes heroBreathe {
+  0%, 100% {
+    opacity: 0.16;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.32;
+    transform: scale(1.1);
+  }
+}
+
+.animate-hero-breathe {
+  animation: heroBreathe 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* QuickDice ERP Smooth Fluid Slide Transition */
+.hero-slide-transition {
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Saudi Arabia ZATCA Dark Emerald Compliance Section Typography */
+.section-saudi-zatca h1,
+.section-saudi-zatca h2,
+.section-saudi-zatca h3,
+.section-saudi-zatca h4,
+.section-saudi-zatca h5,
+.section-saudi-zatca h6 {
+  color: #ffffff;
+}
+
+.section-saudi-zatca p {
+  color: #e2f7ed;
+  font-size: 0.95rem;
+  line-height: 1.625;
+}
+
+.section-saudi-zatca .section-eyebrow {
+  color: #34d399;
+}
+
+/* India GST Section Typography - Maximum Clarity & Contrast */
+.section-india-gst h1,
+.section-india-gst h2,
+.section-india-gst h3,
+.section-india-gst h4,
+.section-india-gst h5,
+.section-india-gst h6 {
+  color: #091e14;
+  font-weight: 800;
+}
+
+.section-india-gst p {
+  color: #0f172a;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 500;
+}
+

@@ -148,8 +148,8 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             <Link href="#pricing" className="hover:text-brand-500 transition-colors">
               Pricing
             </Link>
-            <Link href="#gst-compliance" className="hover:text-brand-500 transition-colors">
-              GST Compliance
+            <Link href="#compliance" className="hover:text-brand-500 transition-colors">
+              {selectedCountry.code === 'SA' ? 'ZATCA Compliance' : 'GST Compliance'}
             </Link>
             <Link href="#about" className="hover:text-brand-500 transition-colors">
               About Us
@@ -259,9 +259,37 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           <Link href="#crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-orange-600">
             CRM
           </Link>
-          <Link href="#gst-compliance" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
-            GST Compliance
+          <Link href="#compliance" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            {selectedCountry.code === 'SA' ? 'ZATCA Compliance' : 'GST Compliance'}
           </Link>
+
+          {/* Mobile Region Switcher */}
+          <div className="pt-2 border-t border-slate-100">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+              Select Region
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {content?.countries?.map((country) => (
+                <button
+                  key={country.code}
+                  type="button"
+                  onClick={() => {
+                    onSelectCountry?.(country);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold border transition-all ${
+                    selectedCountry.code === country.code
+                      ? 'border-[#007a55] bg-emerald-50 text-[#007a55]'
+                      : 'border-slate-200 bg-slate-50 text-slate-700'
+                  }`}
+                >
+                  <FlagIcon code={country.code} className="w-5 h-3.5" />
+                  <span>{country.name}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
             <button
               onClick={() => {

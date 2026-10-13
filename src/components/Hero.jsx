@@ -224,7 +224,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
     timerRef.current = setInterval(() => {
       setActiveSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 6000);
+    }, 4000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -281,10 +281,13 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
     >
       {/* Subtle Ambient Radial Glows tailored to current theme color */}
       <div
-        className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full blur-3xl pointer-events-none transition-colors duration-700 opacity-20"
+        className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-20 animate-hero-breathe"
         style={{ backgroundColor: currentSlide.themeColor }}
       />
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#007a55]/5 rounded-full blur-3xl pointer-events-none" />
+      <div
+        className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#007a55]/10 rounded-full blur-3xl pointer-events-none animate-hero-breathe"
+        style={{ animationDelay: '3.5s' }}
+      />
 
       <div className="site-container relative z-10">
         
@@ -337,177 +340,215 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           
           {/* LEFT COLUMN: Expansive & Prominent Product Information, Highlights & CTAs */}
-          <div className="lg:col-span-7 xl:col-span-7 space-y-5 sm:space-y-6 relative z-10 text-center lg:text-left flex flex-col items-center lg:items-start">
-            
-            {/* Category Eyebrow Tag */}
-            <div className="inline-block">
-              <span
-                className="section-eyebrow transition-colors duration-300"
-                style={{ color: currentSlide.themeColor }}
-              >
-                {currentSlide.badge}
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="transition-all duration-300">
-              {currentSlide.headlineMain}{' '}
-              <span style={{ color: currentSlide.themeColor }}>
-                {currentSlide.headlineHighlight}
-              </span>
-            </h1>
-
-            {/* Subheadline Description */}
-            <p className="max-w-xl mx-auto lg:mx-0 transition-opacity duration-300">
-              {currentSlide.subheadline}
-            </p>
-
-            {/* Mini Feature Highlights Chips */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-1">
-              {currentSlide.highlights.map((highlight, idx) => (
+          <div className="lg:col-span-7 xl:col-span-7 relative z-10 w-full min-h-[460px] sm:min-h-[440px] lg:min-h-[480px]">
+            {slides.map((slide, index) => {
+              const isActive = index === activeSlideIndex;
+              return (
                 <div
-                  key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/85 border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs hover:border-slate-300 transition-all"
+                  key={slide.id}
+                  className={`w-full flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 sm:space-y-6 hero-slide-transition ${
+                    isActive
+                      ? 'opacity-100 translate-y-0 relative z-10 pointer-events-auto'
+                      : 'opacity-0 translate-y-6 absolute top-0 left-0 right-0 z-0 pointer-events-none'
+                  }`}
                 >
-                  <span
-                    className="w-4 h-4 rounded-full flex items-center justify-center text-white"
-                    style={{ backgroundColor: currentSlide.themeColor }}
-                  >
-                    <Check size={10} strokeWidth={3} />
-                  </span>
-                  <span>{highlight}</span>
-                </div>
-              ))}
-            </div>
+                  {/* Category Eyebrow Tag */}
+                  <div className="inline-block">
+                    <span
+                      className="section-eyebrow transition-colors duration-300"
+                      style={{ color: slide.themeColor }}
+                    >
+                      {slide.badge}
+                    </span>
+                  </div>
 
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4 w-full">
-              <button
-                onClick={() => onOpenModal(currentSlide.modalType, currentSlide.productName)}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2.5"
-                style={{
-                  backgroundColor: currentSlide.themeColor,
-                  boxShadow: `0 10px 25px -5px ${currentSlide.themeColor}40`
-                }}
-              >
-                <span>{currentSlide.primaryCtaText}</span>
-                <ArrowRight size={18} />
-              </button>
+                  {/* Main Headline */}
+                  <div>
+                    <h1>
+                      {slide.headlineMain}{' '}
+                      <span style={{ color: slide.themeColor }}>
+                        {slide.headlineHighlight}
+                      </span>
+                    </h1>
+                  </div>
 
-              <button
-                onClick={() => onOpenModal('demo', currentSlide.productName)}
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/90 hover:bg-white text-slate-900 font-bold text-base border border-slate-200 shadow-xs hover:shadow-md hover:scale-[1.02] transition-all flex items-center justify-center gap-2.5"
-              >
-                <span
-                  className="w-6 h-6 rounded-full text-white flex items-center justify-center text-xs pl-0.5"
-                  style={{ backgroundColor: currentSlide.themeColor }}
-                >
-                  ▶
-                </span>
-                <span>{currentSlide.secondaryCtaText}</span>
-              </button>
-            </div>
+                  {/* Subheadline Description */}
+                  <div>
+                    <p className="max-w-xl mx-auto lg:mx-0">
+                      {slide.subheadline}
+                    </p>
+                  </div>
 
-            {/* Product Stats / Trust Badges */}
-            <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-5 sm:gap-7 border-t border-slate-200/70 w-full">
-              {currentSlide.stats.map((stat, idx) => {
-                const StatIcon = stat.icon;
-                return (
-                  <div key={idx} className="flex items-center gap-2.5">
-                    <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center shadow-xs shrink-0"
+                  {/* Mini Feature Highlights Chips */}
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-1">
+                    {slide.highlights.map((highlight, idx) => (
+                      <div
+                        key={idx}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/85 border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs hover:border-slate-300 transition-all"
+                      >
+                        <span
+                          className="w-4 h-4 rounded-full flex items-center justify-center text-white"
+                          style={{ backgroundColor: slide.themeColor }}
+                        >
+                          <Check size={10} strokeWidth={3} />
+                        </span>
+                        <span>{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4 w-full">
+                    <button
+                      onClick={() => onOpenModal(slide.modalType, slide.productName)}
+                      className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
                       style={{
-                        backgroundColor: currentSlide.lightBg,
-                        color: currentSlide.themeColor
+                        backgroundColor: slide.themeColor,
+                        boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
                       }}
                     >
-                      <StatIcon size={17} strokeWidth={2.4} />
-                    </div>
-                    <div className="text-left">
-                      <div className="text-xs text-slate-500 font-medium leading-none">{stat.label}</div>
-                      <div className="text-sm font-black text-slate-900 mt-1">{stat.value}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                      <span>{slide.primaryCtaText}</span>
+                      <ArrowRight size={18} />
+                    </button>
 
+                    <button
+                      onClick={() => onOpenModal('demo', slide.productName)}
+                      className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/90 hover:bg-white text-slate-900 font-bold text-base border border-slate-200 shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                    >
+                      <span
+                        className="w-6 h-6 rounded-full text-white flex items-center justify-center text-xs pl-0.5"
+                        style={{ backgroundColor: slide.themeColor }}
+                      >
+                        ▶
+                      </span>
+                      <span>{slide.secondaryCtaText}</span>
+                    </button>
+                  </div>
+
+                  {/* Product Stats / Trust Badges */}
+                  <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-5 sm:gap-7 border-t border-slate-200/70 w-full">
+                    {slide.stats.map((stat, idx) => {
+                      const StatIcon = stat.icon;
+                      return (
+                        <div key={idx} className="flex items-center gap-2.5">
+                          <div
+                            className="w-9 h-9 rounded-full flex items-center justify-center shadow-xs shrink-0 transition-colors duration-300"
+                            style={{
+                              backgroundColor: slide.lightBg,
+                              color: slide.themeColor
+                            }}
+                          >
+                            <StatIcon size={17} strokeWidth={2.4} />
+                          </div>
+                          <div className="text-left">
+                            <div className="text-xs text-slate-500 font-medium leading-none">{stat.label}</div>
+                            <div className="text-sm font-black text-slate-900 mt-1">{stat.value}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                </div>
+              );
+            })}
           </div>
 
-          {/* RIGHT COLUMN: Interactive Slider Carousel with Browser Chrome & Floating Badges */}
+          {/* RIGHT COLUMN: Interactive Slider Carousel with Floating Module Animation */}
           <div className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full">
             
-            {/* Slider Image Card Container */}
+            {/* Slider Image Card Container with QuickDice Floating Effect */}
             <div
-              className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group select-none"
+              className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group select-none floating-module"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              {/* Slider Track Container with Sleek Controlled Proportion */}
+              {/* Stacked Slides Container with Smooth Cross-Fade and Elevation */}
               <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden bg-slate-100">
-                {/* Hardware-Accelerated Sliding Track */}
-                <div
-                  className="flex h-full transition-transform duration-500 ease-out"
-                  style={{ transform: `translateX(-${activeSlideIndex * 100}%)` }}
-                >
-                  {slides.map((slide, index) => (
+                {slides.map((slide, index) => {
+                  const isActive = index === activeSlideIndex;
+                  return (
                     <div
                       key={slide.id}
-                      className="w-full h-full shrink-0 relative overflow-hidden bg-slate-100"
+                      className={`w-full h-full hero-slide-transition ${
+                        isActive
+                          ? 'opacity-100 translate-y-0 scale-100 relative z-10 pointer-events-auto'
+                          : 'opacity-0 translate-y-5 scale-95 absolute inset-0 z-0 pointer-events-none'
+                      }`}
                     >
+                      {/* Slide Image */}
                       <img
                         src={slide.image}
                         alt={slide.imageAlt}
                         className="w-full h-full object-cover block"
                         loading={index === 0 ? "eager" : "lazy"}
                       />
-                      {/* Subtle bottom vignette gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-transparent pointer-events-none" />
-                    </div>
-                  ))}
-                </div>
 
-                {/* Floating Metric Badge 1 (Top Left) */}
-                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 pointer-events-none">
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10">
-                    {currentSlide.floatingMetric1.flag ? (
-                      <FlagIcon country={currentSlide.floatingMetric1.flag} className="w-4 h-3.5 rounded-xs shadow-2xs" />
-                    ) : (
-                      <span
-                        className="w-2 h-2 rounded-full animate-pulse"
-                        style={{ backgroundColor: currentSlide.themeColor }}
-                      />
-                    )}
-                    <div>
-                      <div className="text-[11px] font-black text-slate-900 leading-none">
-                        {currentSlide.floatingMetric1.title}
-                      </div>
-                      <div className="text-[10px] text-slate-500 font-medium mt-0.5 leading-none">
-                        {currentSlide.floatingMetric1.subtitle}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                      {/* Subtle bottom vignette gradient for depth */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
 
-                {/* Floating Metric Badge 2 (Bottom Right) */}
-                <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-20 pointer-events-none">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 text-white backdrop-blur-md border border-slate-700/80 shadow-lg">
-                    <span
-                      className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: currentSlide.themeColor }}
-                    />
-                    <div>
-                      <div className="text-[11px] font-bold leading-none">
-                        {currentSlide.floatingMetric2.title}
+                      {/* Top-Left Metric Badge */}
+                      <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 pointer-events-none">
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10">
+                          {slide.floatingMetric1.flag ? (
+                            <FlagIcon country={slide.floatingMetric1.flag} className="w-4 h-3.5 rounded-xs shadow-2xs" />
+                          ) : (
+                            <span
+                              className="w-2 h-2 rounded-full animate-pulse"
+                              style={{ backgroundColor: slide.themeColor }}
+                            />
+                          )}
+                          <div>
+                            <div className="text-[11px] font-black text-slate-900 leading-none">
+                              {slide.floatingMetric1.title}
+                            </div>
+                            <div className="text-[10px] text-slate-500 font-medium mt-0.5 leading-none">
+                              {slide.floatingMetric1.subtitle}
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-[10px] text-slate-300 font-normal mt-0.5 leading-none">
-                        {currentSlide.floatingMetric2.subtitle}
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                {/* On-Card Navigation Arrows (Left & Right) */}
+                      {/* Bottom Slide Info & Metric Badge 2 */}
+                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-20 pointer-events-none flex items-end justify-between gap-2">
+                        {/* Solution Capsule (Light Background matching other badges) */}
+                        <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10 max-w-[62%] sm:max-w-[65%] truncate">
+                          <span
+                            className="w-2 h-2 rounded-full shrink-0"
+                            style={{ backgroundColor: slide.themeColor }}
+                          />
+                          <div className="truncate">
+                            <div className="text-[11px] sm:text-xs font-bold leading-tight text-slate-900 truncate">
+                              {slide.tabLabel}
+                            </div>
+                            <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-none truncate mt-0.5">
+                              {slide.highlights[0]}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Secondary Metric Badge */}
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shrink-0">
+                          <span
+                            className="w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: slide.themeColor }}
+                          />
+                          <div className="text-left">
+                            <div className="text-[11px] font-black leading-tight text-slate-900">
+                              {slide.floatingMetric2.title}
+                            </div>
+                            <div className="text-[9px] text-slate-500 font-medium leading-none mt-0.5">
+                              {slide.floatingMetric2.subtitle}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  );
+                })}
+
+                {/* On-Card Navigation Arrows */}
                 <button
                   onClick={handlePrev}
                   aria-label="Previous product slide"
@@ -526,7 +567,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
             </div>
 
-            {/* Slider Navigation Bar (Dots, Status & Counter) */}
+            {/* Slider Navigation Bar (Dots & Active Product Pill) */}
             <div className="flex items-center justify-between w-full mt-3.5 px-1.5">
               
               {/* Dot Indicators */}
@@ -548,13 +589,17 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                 ))}
               </div>
 
-              {/* Slide Counter */}
-              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-500">
-                <span className="text-slate-900">0{activeSlideIndex + 1}</span>
-                <span className="text-slate-300">/</span>
-                <span>0{slides.length}</span>
+              {/* Active Slide Text Label - Changes and animates smoothly with the slide */}
+              <div
+                key={`slide-label-${activeSlideIndex}`}
+                className="animate-hero-fade-up flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/85 border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-800"
+              >
+                <span
+                  className="w-2 h-2 rounded-full"
+                  style={{ backgroundColor: currentSlide.themeColor }}
+                />
+                <span>{currentSlide.tabLabel}</span>
               </div>
-
             </div>
 
           </div>

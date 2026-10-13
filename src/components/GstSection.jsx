@@ -8,20 +8,20 @@ export default function GstSection({ gstData }) {
   return (
     <section
       id="compliance"
-      className="w-full relative overflow-hidden bg-gradient-to-r from-[#faeedd] via-[#fef7ee] to-[#f9ecdc] border-y border-[#fed7aa]/60 section-padding-sm"
+      className="w-full relative overflow-hidden bg-[#fef7ee] bg-gradient-to-b from-[#fef7ee] via-[#faf3e8] to-[#f6ecdf] border-y border-[#fed7aa]/50 pt-10 pb-16 lg:pt-14 lg:pb-24"
     >
-      {/* High-Fidelity Custom Generated Warm Fintech Background Graphic */}
-      <div
-        className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-65 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/gst-compliance-bg.jpg')",
-        }}
-      />
+      {/* Simple, Clean Architectural India Monuments Line-Art — Edge-to-Edge Across Full Width */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+        <img
+          src="/images/gst-india-minimal-skyline.jpg"
+          alt="Clean India Monuments Line Art Silhouette - India Gate, Taj Mahal, Gateway of India, Rashtrapati Bhavan"
+          className="w-full h-full object-cover object-bottom opacity-70 sm:opacity-80 mix-blend-multiply transition-opacity duration-500"
+          loading="eager"
+        />
 
-      {/* Warm Ambient Saffron & Emerald Glow Accents */}
-      <div className="absolute top-0 left-0 w-[450px] h-[450px] bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-[#138808]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/40 blur-3xl pointer-events-none" />
+        {/* Delicate top gradient fade to blend open sky seamlessly */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#fef7ee] via-[#fef7ee]/80 to-transparent pointer-events-none" />
+      </div>
 
       <div className="site-container relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
