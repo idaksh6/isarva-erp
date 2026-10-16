@@ -26,7 +26,8 @@ import {
   ChevronRight,
   Plus,
   Trash2,
-  Star
+  Star,
+  HelpCircle
 } from 'lucide-react';
 import { defaultContent } from '../../lib/content-store';
 import { getDefaultContentForCountry } from '../../lib/content';
@@ -177,6 +178,35 @@ export default function AdminCMS() {
     }
   };
 
+  const handleSyncMaster = async () => {
+    if (!confirm(`Are you sure you want to re-sync ${selectedCountry === 'SA' ? 'Saudi Arabia' : 'India'} content with master defaults? This will update the database to match the master files.`)) {
+      return;
+    }
+    setIsSaving(true);
+    setSavedStatus('Syncing master content...');
+    const token = sessionStorage.getItem('isarva_admin_token') || 'isarva2026';
+    try {
+      const res = await fetch(`/api/content?country=${selectedCountry}&action=sync`, {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data?.content) setContent(data.content);
+        setSavedStatus(`✓ Synced ${selectedCountry === 'SA' ? 'Saudi Arabia' : 'India'} with master defaults!`);
+      } else {
+        setSavedStatus('Sync failed.');
+      }
+    } catch (err) {
+      setSavedStatus('Sync failed.');
+    } finally {
+      setIsSaving(false);
+      setTimeout(() => setSavedStatus(''), 4000);
+    }
+  };
+
 
   const handleAddIndustry = () => {
     const currentItems = content.industries?.items || [];
@@ -274,6 +304,37 @@ export default function AdminCMS() {
       ...content,
       testimonials: {
         ...content.testimonials,
+        items: filtered
+      }
+    });
+  };
+
+  const handleAddFaq = () => {
+    const currentItems = content.faqs?.items || [];
+    const newItem = {
+      q: 'New Question Here?',
+      a: 'Detailed answer explaining the solution, feature, or workflow.'
+    };
+    setContent({
+      ...content,
+      faqs: {
+        ...content.faqs,
+        items: [...currentItems, newItem]
+      }
+    });
+  };
+
+  const handleRemoveFaq = (removeIdx) => {
+    const currentItems = content.faqs?.items || [];
+    if (currentItems.length <= 1) {
+      alert('You must keep at least 1 FAQ item.');
+      return;
+    }
+    const filtered = currentItems.filter((_, idx) => idx !== removeIdx);
+    setContent({
+      ...content,
+      faqs: {
+        ...content.faqs,
         items: filtered
       }
     });
@@ -417,10 +478,21 @@ export default function AdminCMS() {
           <button
             onClick={handleSave}
             disabled={isSaving}
-            className="btn-brand-primary text-xs py-2 px-4 shadow-sm"
+            className="btn-brand-primary text-xs py-2 px-4 shadow-sm cursor-pointer"
           >
             <Save size={15} />
             <span>{isSaving ? 'Saving...' : 'Save All Changes'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleSyncMaster}
+            disabled={isSaving}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-xs font-semibold text-emerald-800 border border-emerald-200 transition-colors cursor-pointer"
+            title="Reset/sync database with master files"
+          >
+            <Sparkles size={14} />
+            <span>Sync Master</span>
           </button>
 
           <Link
@@ -502,6 +574,16 @@ export default function AdminCMS() {
           >
             <Building size={16} />
             <span>Industries We Serve</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('faqs')}
+            className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+              activeTab === 'faqs' ? 'bg-brand-50 text-brand-700 border border-brand-200 shadow-xs' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+            }`}
+          >
+            <HelpCircle size={16} />
+            <span>FAQs & Answers</span>
           </button>
 
           <div className="pt-4 mt-4 border-t border-slate-200">
@@ -818,6 +900,59 @@ export default function AdminCMS() {
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
                   />
                 </div>
+
+                {selectedCountry === 'SA' ? (
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Pill Badge Text</label>
+                      <input
+                        type="text"
+                        value={content.gstSection?.badgeText || ''}
+                        placeholder="ZATCA"
+                        onChange={(e) => setContent({
+                          ...content,
+                          gstSection: { ...content.gstSection, badgeText: e.target.value }
+                        })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Pill Badge Subtext</label>
+                      <input
+                        type="text"
+                        value={content.gstSection?.badgeSubtext || ''}
+                        placeholder="Compliant"
+                        onChange={(e) => setContent({
+                          ...content,
+                          gstSection: { ...content.gstSection, badgeSubtext: e.target.value }
+                        })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Trust Badges (Line separated)</label>
+                    <textarea
+                      rows="3"
+                      value={content.gstSection?.trustPills?.map(p => p.label).join('\n') || ''}
+                      placeholder={"GST-Ready Invoicing\nIRN & QR Code Support\nAudit Trail & Tax Summaries"}
+                      onChange={(e) => {
+                        const lines = e.target.value.split('\n').filter(Boolean);
+                        const defaultIcons = ['ShieldCheck', 'Zap', 'FileText'];
+                        const pills = lines.map((label, i) => ({
+                          label,
+                          iconName: content.gstSection?.trustPills?.[i]?.iconName || defaultIcons[i % defaultIcons.length]
+                        }));
+                        setContent({
+                          ...content,
+                          gstSection: { ...content.gstSection, trustPills: pills }
+                        });
+                      }}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-mono text-xs"
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Why Choose Section Header */}
@@ -1348,6 +1483,125 @@ export default function AdminCMS() {
                     <Plus size={16} /> Add Another Industry Category
                   </button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 6: FAQ SECTION */}
+          {activeTab === 'faqs' && (
+            <div className="space-y-6 animate-fadeIn">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2>Frequently Asked Questions (FAQ)</h2>
+                  <p>Manage common questions, answers, and section category header.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleAddFaq}
+                  className="btn-brand-primary text-xs py-2 px-3.5 flex items-center gap-1.5 shadow-sm cursor-pointer"
+                >
+                  <Plus size={14} />
+                  <span>Add FAQ Item</span>
+                </button>
+              </div>
+
+              {/* FAQ Section Header Controls */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-emerald-700">FAQ Section Header</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Badge / Eyebrow</label>
+                    <input
+                      type="text"
+                      value={content.faqs?.badge || ''}
+                      placeholder="FREQUENTLY ASKED QUESTIONS"
+                      onChange={(e) => setContent({
+                        ...content,
+                        faqs: { ...content.faqs, badge: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Section Title</label>
+                    <input
+                      type="text"
+                      value={content.faqs?.title || ''}
+                      placeholder="Common Questions About ISARVA ERP"
+                      onChange={(e) => setContent({
+                        ...content,
+                        faqs: { ...content.faqs, title: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Section Subtitle</label>
+                  <input
+                    type="text"
+                    value={content.faqs?.subtitle || ''}
+                    placeholder="Find clear answers about platform capabilities..."
+                    onChange={(e) => setContent({
+                      ...content,
+                      faqs: { ...content.faqs, subtitle: e.target.value }
+                    })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                  />
+                </div>
+              </div>
+
+              {/* FAQ Accordion List */}
+              <div className="space-y-4">
+                {content.faqs?.items?.map((faq, fIdx) => (
+                  <div key={fIdx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                      <span className="text-xs font-bold text-slate-500">Question #{fIdx + 1}</span>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveFaq(fIdx)}
+                        className="text-red-500 hover:text-red-700 text-xs flex items-center gap-1 font-semibold transition cursor-pointer"
+                      >
+                        <Trash2 size={13} />
+                        <span>Remove</span>
+                      </button>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Question Text</label>
+                      <input
+                        type="text"
+                        value={faq.q || ''}
+                        onChange={(e) => {
+                          const newItems = [...(content.faqs?.items || [])];
+                          newItems[fIdx] = { ...newItems[fIdx], q: e.target.value };
+                          setContent({
+                            ...content,
+                            faqs: { ...content.faqs, items: newItems }
+                          });
+                        }}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 font-semibold"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Answer Text</label>
+                      <textarea
+                        rows="3"
+                        value={faq.a || ''}
+                        onChange={(e) => {
+                          const newItems = [...(content.faqs?.items || [])];
+                          newItems[fIdx] = { ...newItems[fIdx], a: e.target.value };
+                          setContent({
+                            ...content,
+                            faqs: { ...content.faqs, items: newItems }
+                          });
+                        }}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 leading-relaxed"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           )}
