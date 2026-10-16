@@ -218,18 +218,18 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
   const currentSlide = slides[activeSlideIndex];
 
-  // Auto-slide effect (changes every 6 seconds if not hovered/paused)
+  // Auto-slide effect (changes every 5 seconds; resets cleanly on active slide change)
   useEffect(() => {
     if (isPaused) return;
 
     timerRef.current = setInterval(() => {
       setActiveSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 4000);
+    }, 5000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused, slides.length]);
+  }, [isPaused, activeSlideIndex, slides.length]);
 
   const [touchStartX, setTouchStartX] = useState(0);
 
@@ -274,11 +274,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
   }, [activeSlideIndex]);
 
   return (
-    <section
-      className="relative overflow-hidden bg-gradient-to-br from-[#eaf5f0] via-[#f2faf6] to-[#e4f4ed] section-padding-sm border-b border-[#d2ecdf]"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#eaf5f0] via-[#f2faf6] to-[#e4f4ed] section-padding-sm border-b border-[#d2ecdf]">
       {/* Subtle Ambient Radial Glows tailored to current theme color */}
       <div
         className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-20 animate-hero-breathe"
@@ -295,6 +291,8 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
         <div className="mb-8 lg:mb-10">
           <div
             ref={tabsContainerRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
             className="flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 pt-1 scroll-smooth px-1"
           >
             {slides.map((slide, index) => {
@@ -308,7 +306,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     tabButtonRefs.current[index] = el;
                   }}
                   onClick={() => setActiveSlideIndex(index)}
-                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
+                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 overflow-hidden ${
                     isActive
                       ? 'bg-white text-slate-900 shadow-md shadow-slate-900/10 scale-[1.02] border'
                       : 'bg-white/60 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/60'
@@ -319,7 +317,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                 >
                   {/* Color dot / icon */}
                   <span
-                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
+                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors relative z-10 ${
                       isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-900'
                     }`}
                     style={{
@@ -329,7 +327,20 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     <IconComponent size={13} strokeWidth={2.5} />
                   </span>
 
-                  <span>{slide.tabLabel}</span>
+                  <span className="relative z-10">{slide.tabLabel}</span>
+
+                  {/* Active Tab Animated Timer Progress Indicator */}
+                  {isActive && (
+                    <span
+                      key={`progress-${slide.id}-${activeSlideIndex}`}
+                      className={`hero-tab-progress absolute bottom-0 left-0 h-[2.5px] rounded-full pointer-events-none ${
+                        isPaused ? 'paused' : ''
+                      }`}
+                      style={{
+                        backgroundColor: slide.themeColor
+                      }}
+                    />
+                  )}
                 </button>
               );
             })}
@@ -464,6 +475,8 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
             {/* Slider Image Card Container with QuickDice Floating Effect */}
             <div
               className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group select-none floating-module"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
