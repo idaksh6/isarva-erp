@@ -175,7 +175,7 @@ export const saudiContent = {
     {
       id: 'restaurant-pos',
       title: 'Restaurant POS (Bilingual)',
-      subtitle: 'Smart Touch POS & Kitchen Display',
+      subtitle: 'Smart Touch POS &\nKitchen Display',
       color: '#059669',
       themeClass: 'pos',
       buttonText: 'Explore Saudi POS',
@@ -194,7 +194,7 @@ export const saudiContent = {
     {
       id: 'billsoft',
       title: 'BillSoft Accounting (ZATCA)',
-      subtitle: 'Complete Accounting & Fatoora Suite',
+      subtitle: 'Complete Accounting &\nFatoora Suite',
       color: '#2563eb',
       themeClass: 'billsoft',
       buttonText: 'Explore BillSoft KSA',
@@ -213,7 +213,7 @@ export const saudiContent = {
     {
       id: 'hrms',
       title: 'HRMS (Saudi Labor Law)',
-      subtitle: 'HR & GOSI / WPS Payroll Suite',
+      subtitle: 'HR & GOSI / WPS\nPayroll Suite',
       color: '#7c3aed',
       themeClass: 'hrms',
       buttonText: 'Explore HRMS KSA',
@@ -232,7 +232,7 @@ export const saudiContent = {
     {
       id: 'crm',
       title: 'CRM (GCC Edition)',
-      subtitle: 'Omnichannel Sales & WhatsApp CRM',
+      subtitle: 'Omnichannel Sales &\nWhatsApp CRM',
       color: '#ea580c',
       themeClass: 'crm',
       buttonText: 'Explore CRM KSA',

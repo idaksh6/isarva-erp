@@ -76,6 +76,40 @@ const INDUSTRY_ICON_OPTIONS = [
   { value: 'Layers', label: '📑 Layers (Multi-Branch / Other)' },
 ];
 
+const THEME_COLORS = [
+  { label: 'Emerald', hex: '#007a55' },
+  { label: 'Forest', hex: '#059669' },
+  { label: 'Royal Blue', hex: '#2563eb' },
+  { label: 'Violet', hex: '#7c3aed' },
+  { label: 'Amber', hex: '#ea580c' },
+  { label: 'Cyan', hex: '#0891b2' },
+  { label: 'Rose', hex: '#e11d48' },
+  { label: 'Indigo', hex: '#4f46e5' },
+  { label: 'Gold', hex: '#d97706' },
+  { label: 'Slate', hex: '#475569' }
+];
+
+const HERO_TAB_ICON_OPTIONS = [
+  { value: 'Layers', label: '📑 Layers (All Solutions / Platform)' },
+  { value: 'UtensilsCrossed', label: '🍴 Utensils (Restaurant POS)' },
+  { value: 'BarChart3', label: '📊 Bar Chart (Accounting & Finance)' },
+  { value: 'Users', label: '👥 Users (HRMS / Workforce)' },
+  { value: 'Handshake', label: '🤝 Handshake (CRM / Sales)' },
+  { value: 'Store', label: '🏪 Store (Retail / Shops)' },
+  { value: 'ShoppingBag', label: '🛍️ Shopping Bag (Apparel / Fashion)' },
+  { value: 'ShoppingCart', label: '🛒 Shopping Cart (Supermarket / Grocery)' },
+  { value: 'Truck', label: '🚚 Truck (Supply Chain / Logistics)' },
+  { value: 'Building', label: '🏢 Building (Real Estate / Corporate)' },
+  { value: 'ShieldCheck', label: '🛡️ Shield Check (Security / Compliance)' },
+  { value: 'Zap', label: '⚡ Zap (Speed / Real-time)' },
+  { value: 'Sparkles', label: '✨ Sparkles (AI / Innovation)' },
+  { value: 'Smartphone', label: '📱 Smartphone (Mobile POS / App)' },
+  { value: 'Database', label: '🗄️ Database (Cloud Storage / ERP)' },
+  { value: 'Package', label: '📦 Package (Inventory / Warehouse)' },
+  { value: 'Cpu', label: '💻 CPU (Automation / Tech)' },
+  { value: 'Clock', label: '⏱️ Clock (Time Tracking / Attendance)' },
+];
+
 export default function AdminCMS() {
 
   // Authentication State
@@ -139,7 +173,7 @@ export default function AdminCMS() {
             hero: {
               ...defaultForCountry.hero,
               ...data.content.hero,
-              slides: (data.content.hero?.slides && data.content.hero.slides.length === 5)
+              slides: (data.content.hero?.slides && data.content.hero.slides.length > 0)
                 ? data.content.hero.slides
                 : defaultForCountry.hero?.slides
             }
@@ -171,9 +205,82 @@ export default function AdminCMS() {
     loadData(undefined, newCountry);
   };
 
+  const handleAddHeroSlide = () => {
+    const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
+    const currentSlides = (content.hero?.slides && content.hero.slides.length > 0)
+      ? [...content.hero.slides]
+      : [...(defaultMasterHero?.slides || [])];
+
+    const newIdx = currentSlides.length + 1;
+    const newSlide = {
+      id: `custom-slide-${Date.now()}`,
+      tabLabel: `New Tab ${newIdx}`,
+      themeColor: '#0891b2',
+      badge: 'ENTERPRISE SOLUTION',
+      headlineMain: 'Streamline Your Business &',
+      headlineHighlight: 'Scale Faster',
+      subheadline: 'Organize operations, connect workflows, and boost productivity with ISARVA integrated business software modules.',
+      primaryCtaText: 'Explore Solution',
+      secondaryCtaText: 'Book a Demo',
+      image: '/images/hero-erp-overview.jpg',
+      imageAlt: `ISARVA Solution ${newIdx}`,
+      iconName: 'Layers',
+      highlights: [
+        'Single Unified Cloud Database',
+        'Real-Time Multi-Device Sync',
+        'Enterprise Security & Compliance'
+      ],
+      floatingMetric1: {
+        title: 'High Performance',
+        subtitle: '100% Cloud Reliable'
+      },
+      floatingMetric2: {
+        title: 'Instant Setup',
+        subtitle: '24/7 Priority Support'
+      }
+    };
+
+    const updatedSlides = [...currentSlides, newSlide];
+    setContent({
+      ...content,
+      hero: {
+        ...content.hero,
+        slides: updatedSlides
+      }
+    });
+    setSelectedHeroSlideIdx(currentSlides.length);
+  };
+
+  const handleRemoveHeroSlide = (removeIdx) => {
+    const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
+    const currentSlides = (content.hero?.slides && content.hero.slides.length > 0)
+      ? [...content.hero.slides]
+      : [...(defaultMasterHero?.slides || [])];
+
+    if (currentSlides.length <= 1) {
+      alert('You must keep at least 1 hero banner slide.');
+      return;
+    }
+
+    const slideName = currentSlides[removeIdx]?.tabLabel || `Slide ${removeIdx + 1}`;
+    if (!confirm(`Are you sure you want to delete tab "${slideName}"?`)) {
+      return;
+    }
+
+    const updatedSlides = currentSlides.filter((_, idx) => idx !== removeIdx);
+    setContent({
+      ...content,
+      hero: {
+        ...content.hero,
+        slides: updatedSlides
+      }
+    });
+    setSelectedHeroSlideIdx((prev) => Math.min(prev, Math.max(0, updatedSlides.length - 1)));
+  };
+
   const handleUpdateHeroSlide = (slideIdx, field, value) => {
     const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
-    const currentSlides = (content.hero?.slides && content.hero.slides.length === 5)
+    const currentSlides = (content.hero?.slides && content.hero.slides.length > 0)
       ? [...content.hero.slides]
       : [...(defaultMasterHero?.slides || [])];
 
@@ -202,7 +309,7 @@ export default function AdminCMS() {
 
   const handleUpdateHeroSlideNested = (slideIdx, parentKey, childKey, value) => {
     const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
-    const currentSlides = (content.hero?.slides && content.hero.slides.length === 5)
+    const currentSlides = (content.hero?.slides && content.hero.slides.length > 0)
       ? [...content.hero.slides]
       : [...(defaultMasterHero?.slides || [])];
 
@@ -226,7 +333,7 @@ export default function AdminCMS() {
 
   const handleUpdateHeroSlideHighlight = (slideIdx, highlightIdx, value) => {
     const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
-    const currentSlides = (content.hero?.slides && content.hero.slides.length === 5)
+    const currentSlides = (content.hero?.slides && content.hero.slides.length > 0)
       ? [...content.hero.slides]
       : [...(defaultMasterHero?.slides || [])];
 
@@ -305,6 +412,47 @@ export default function AdminCMS() {
     }
   };
 
+  const handleAddProduct = () => {
+    const currentProducts = content.products || [];
+    const newIdx = currentProducts.length + 1;
+    const newProd = {
+      id: `product-${Date.now()}`,
+      title: `Product Module ${newIdx}`,
+      subtitle: `Enterprise Module\nManagement`,
+      color: '#0891b2',
+      themeClass: 'brand',
+      buttonText: `Explore Solution`,
+      buttonLink: `#demo`,
+      iconName: 'Package',
+      image: '/images/hero-erp-overview.jpg',
+      features: [
+        'Cloud-Based Platform',
+        'Real-Time Visibility',
+        'Integrated Workflows',
+        'Multi-Branch Ready'
+      ]
+    };
+    setContent({
+      ...content,
+      products: [...currentProducts, newProd]
+    });
+  };
+
+  const handleRemoveProduct = (removeIdx) => {
+    const currentProducts = content.products || [];
+    if (currentProducts.length <= 1) {
+      alert('You must keep at least 1 product module.');
+      return;
+    }
+    const prodName = currentProducts[removeIdx]?.title || `Product ${removeIdx + 1}`;
+    if (!confirm(`Are you sure you want to remove product module "${prodName}"?`)) {
+      return;
+    }
+    setContent({
+      ...content,
+      products: currentProducts.filter((_, idx) => idx !== removeIdx)
+    });
+  };
 
   const handleAddIndustry = () => {
     const currentItems = content.industries?.items || [];
@@ -708,53 +856,69 @@ export default function AdminCMS() {
         {/* Content Editor Area */}
         <main className="flex-1 p-8 overflow-y-auto max-w-4xl space-y-6">
           
-          {/* TAB 1: HERO SECTION (5-SLIDE CAROUSEL & STATS) */}
+          {/* TAB 1: HERO SECTION (DYNAMIC SLIDE CAROUSEL & STATS) */}
           {activeTab === 'hero' && (() => {
             const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
-            const heroSlides = (content.hero?.slides && content.hero.slides.length === 5)
+            const heroSlides = (content.hero?.slides && content.hero.slides.length > 0)
               ? content.hero.slides
               : defaultMasterHero?.slides || [];
-            const activeSlide = heroSlides[selectedHeroSlideIdx] || heroSlides[0];
-
-            const SLIDE_TABS = [
-              { idx: 0, label: 'Slide 1: All Solutions', id: 'overview', icon: Layers, themeColor: '#007a55' },
-              { idx: 1, label: 'Slide 2: Restaurant POS', id: 'restaurant-pos', icon: UtensilsCrossed, themeColor: '#059669' },
-              { idx: 2, label: 'Slide 3: BillSoft Accounting', id: 'billsoft', icon: BarChart3, themeColor: '#2563eb' },
-              { idx: 3, label: 'Slide 4: HRMS', id: 'hrms', icon: Users, themeColor: '#7c3aed' },
-              { idx: 4, label: 'Slide 5: CRM', id: 'crm', icon: Handshake, themeColor: '#ea580c' },
-            ];
+            const safeIdx = Math.min(selectedHeroSlideIdx, Math.max(0, heroSlides.length - 1));
+            const activeSlide = heroSlides[safeIdx] || heroSlides[0];
 
             return (
               <div className="space-y-6 animate-fadeIn">
-                <div>
-                  <h2>Hero Banner Slider (5 Interactive Slides)</h2>
-                  <p>Select each slide below to customize its headline, highlighted text, description paragraph, buttons, image, and bullet points.</p>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div>
+                    <h2>Hero Banner Slider & Tabs</h2>
+                    <p>Add, customize, or delete interactive slide tabs displayed on the hero banner.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddHeroSlide}
+                    className="btn-brand-primary px-4 py-2.5 text-xs font-bold flex items-center gap-1.5 shadow-sm shrink-0 self-start sm:self-auto cursor-pointer"
+                  >
+                    <Plus size={16} />
+                    <span>Add New Tab</span>
+                  </button>
                 </div>
 
                 {/* Slide Switcher Navigation Pills */}
                 <div className="bg-white p-3 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-2 overflow-x-auto no-scrollbar">
-                  {SLIDE_TABS.map((tab) => {
-                    const TabIcon = tab.icon;
-                    const isSelected = selectedHeroSlideIdx === tab.idx;
+                  {heroSlides.map((slide, sIdx) => {
+                    const isSelected = safeIdx === sIdx;
+                    const tabColor = slide.themeColor || '#007a55';
                     return (
-                      <button
-                        key={tab.idx}
-                        type="button"
-                        onClick={() => setSelectedHeroSlideIdx(tab.idx)}
-                        className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                          isSelected
-                            ? 'text-white shadow-sm'
-                            : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200/80'
-                        }`}
-                        style={{
-                          backgroundColor: isSelected ? tab.themeColor : undefined
-                        }}
-                      >
-                        <TabIcon size={14} />
-                        <span>{heroSlides[tab.idx]?.tabLabel || tab.label}</span>
-                      </button>
+                      <div key={slide.id || sIdx} className="flex items-center shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedHeroSlideIdx(sIdx)}
+                          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                            isSelected
+                              ? 'text-white shadow-sm'
+                              : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200/80'
+                          }`}
+                          style={{
+                            backgroundColor: isSelected ? tabColor : undefined
+                          }}
+                        >
+                          <span
+                            className="w-2.5 h-2.5 rounded-full"
+                            style={{ backgroundColor: isSelected ? '#ffffff' : tabColor }}
+                          />
+                          <span>{slide.tabLabel || `Slide ${sIdx + 1}`}</span>
+                        </button>
+                      </div>
                     );
                   })}
+
+                  <button
+                    type="button"
+                    onClick={handleAddHeroSlide}
+                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-dashed border-emerald-300 transition-all cursor-pointer whitespace-nowrap shrink-0 ml-1"
+                  >
+                    <Plus size={14} />
+                    <span>Add Tab</span>
+                  </button>
                 </div>
 
                 {/* Active Slide Form Card */}
@@ -762,16 +926,76 @@ export default function AdminCMS() {
                   <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                     <div className="flex items-center gap-2.5">
                       <span
-                        className="w-3 h-3 rounded-full"
-                        style={{ backgroundColor: SLIDE_TABS[selectedHeroSlideIdx]?.themeColor }}
+                        className="w-3.5 h-3.5 rounded-full shadow-2xs"
+                        style={{ backgroundColor: activeSlide.themeColor || '#007a55' }}
                       />
                       <span className="text-sm font-bold text-slate-900">
-                        Editing: {activeSlide.tabLabel || `Slide ${selectedHeroSlideIdx + 1}`} ({activeSlide.id})
+                        Editing: {activeSlide.tabLabel || `Slide ${safeIdx + 1}`} ({activeSlide.id})
                       </span>
                     </div>
-                    <span className="text-xs px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 font-medium">
-                      Slide {selectedHeroSlideIdx + 1} of 5
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 font-medium">
+                        Tab {safeIdx + 1} of {heroSlides.length}
+                      </span>
+                      {heroSlides.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveHeroSlide(safeIdx)}
+                          className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-red-50 text-red-600 hover:bg-red-100 text-xs font-semibold transition cursor-pointer border border-red-200/70"
+                          title="Delete this slide tab"
+                        >
+                          <Trash2 size={13} />
+                          <span>Delete Tab</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Icon & Theme Color Settings */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2 border-b border-slate-100">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1.5">Tab Icon</label>
+                      <select
+                        value={activeSlide.iconName || 'Layers'}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'iconName', e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500"
+                      >
+                        {HERO_TAB_ICON_OPTIONS.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1.5">Theme Accent Color</label>
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+                          {THEME_COLORS.map((c) => (
+                            <button
+                              key={c.hex}
+                              type="button"
+                              onClick={() => handleUpdateHeroSlide(safeIdx, 'themeColor', c.hex)}
+                              className={`w-6 h-6 rounded-full shrink-0 border-2 transition-transform cursor-pointer ${
+                                (activeSlide.themeColor || '#007a55').toLowerCase() === c.hex.toLowerCase()
+                                  ? 'scale-110 border-slate-900 shadow-xs'
+                                  : 'border-white hover:scale-105'
+                              }`}
+                              style={{ backgroundColor: c.hex }}
+                              title={c.label}
+                            />
+                          ))}
+                        </div>
+                        <input
+                          type="text"
+                          value={activeSlide.themeColor || '#007a55'}
+                          onChange={(e) => handleUpdateHeroSlide(safeIdx, 'themeColor', e.target.value)}
+                          placeholder="#007a55"
+                          className="w-24 px-2 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-mono text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -780,7 +1004,7 @@ export default function AdminCMS() {
                       <input
                         type="text"
                         value={activeSlide.tabLabel || ''}
-                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'tabLabel', e.target.value)}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'tabLabel', e.target.value)}
                         placeholder="e.g. Restaurant POS"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                       />
@@ -790,7 +1014,7 @@ export default function AdminCMS() {
                       <input
                         type="text"
                         value={activeSlide.badge || ''}
-                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'badge', e.target.value)}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'badge', e.target.value)}
                         placeholder="e.g. RESTAURANT & FOOD SERVICE POS"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                       />
@@ -803,7 +1027,7 @@ export default function AdminCMS() {
                       <input
                         type="text"
                         value={activeSlide.headlineMain || ''}
-                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'headlineMain', e.target.value)}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'headlineMain', e.target.value)}
                         placeholder="e.g. Ultra-Fast Touch Billing &"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                       />
@@ -813,7 +1037,7 @@ export default function AdminCMS() {
                       <input
                         type="text"
                         value={activeSlide.headlineHighlight || ''}
-                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'headlineHighlight', e.target.value)}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'headlineHighlight', e.target.value)}
                         placeholder="e.g. Kitchen Display (KDS)"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                       />
@@ -825,7 +1049,7 @@ export default function AdminCMS() {
                     <textarea
                       rows="3"
                       value={activeSlide.subheadline || ''}
-                      onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'subheadline', e.target.value)}
+                      onChange={(e) => handleUpdateHeroSlide(safeIdx, 'subheadline', e.target.value)}
                       placeholder="Enter slide paragraph description..."
                       className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 leading-relaxed"
                     />
@@ -837,7 +1061,7 @@ export default function AdminCMS() {
                       <input
                         type="text"
                         value={activeSlide.primaryCtaText || ''}
-                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'primaryCtaText', e.target.value)}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'primaryCtaText', e.target.value)}
                         placeholder="e.g. Explore Restaurant POS"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                       />
@@ -847,7 +1071,7 @@ export default function AdminCMS() {
                       <input
                         type="text"
                         value={activeSlide.secondaryCtaText || ''}
-                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'secondaryCtaText', e.target.value)}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'secondaryCtaText', e.target.value)}
                         placeholder="e.g. Book POS Demo"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                       />
@@ -860,14 +1084,14 @@ export default function AdminCMS() {
                       label="Slide Mockup Image"
                       value={activeSlide.image || ''}
                       placeholder="/images/hero-erp-overview.jpg"
-                      onChange={(url) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'image', url)}
+                      onChange={(url) => handleUpdateHeroSlide(safeIdx, 'image', url)}
                     />
                     <div>
                       <label className="block text-xs font-medium text-slate-600 mb-1">Image Alt Text (SEO)</label>
                       <input
                         type="text"
                         value={activeSlide.imageAlt || ''}
-                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'imageAlt', e.target.value)}
+                        onChange={(e) => handleUpdateHeroSlide(safeIdx, 'imageAlt', e.target.value)}
                         placeholder="Description of slide image for search engines..."
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                       />
@@ -888,7 +1112,7 @@ export default function AdminCMS() {
                           <input
                             type="text"
                             value={activeSlide.highlights?.[hIdx] || ''}
-                            onChange={(e) => handleUpdateHeroSlideHighlight(selectedHeroSlideIdx, hIdx, e.target.value)}
+                            onChange={(e) => handleUpdateHeroSlideHighlight(safeIdx, hIdx, e.target.value)}
                             placeholder={`Highlight ${hIdx + 1}`}
                             className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
                           />
@@ -909,14 +1133,14 @@ export default function AdminCMS() {
                         <input
                           type="text"
                           value={activeSlide.floatingMetric1?.title || ''}
-                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric1', 'title', e.target.value)}
+                          onChange={(e) => handleUpdateHeroSlideNested(safeIdx, 'floatingMetric1', 'title', e.target.value)}
                           placeholder="Title (e.g. 3-Sec Order Dispatch)"
                           className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
                         />
                         <input
                           type="text"
                           value={activeSlide.floatingMetric1?.subtitle || ''}
-                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric1', 'subtitle', e.target.value)}
+                          onChange={(e) => handleUpdateHeroSlideNested(safeIdx, 'floatingMetric1', 'subtitle', e.target.value)}
                           placeholder="Subtitle (e.g. Instant Kitchen KOT Sync)"
                           className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
                         />
@@ -928,14 +1152,14 @@ export default function AdminCMS() {
                         <input
                           type="text"
                           value={activeSlide.floatingMetric2?.title || ''}
-                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric2', 'title', e.target.value)}
+                          onChange={(e) => handleUpdateHeroSlideNested(safeIdx, 'floatingMetric2', 'title', e.target.value)}
                           placeholder="Title (e.g. Zero Order Leakage)"
                           className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
                         />
                         <input
                           type="text"
                           value={activeSlide.floatingMetric2?.subtitle || ''}
-                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric2', 'subtitle', e.target.value)}
+                          onChange={(e) => handleUpdateHeroSlideNested(safeIdx, 'floatingMetric2', 'subtitle', e.target.value)}
                           placeholder="Subtitle (e.g. Table Turnover +35%)"
                           className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
                         />
@@ -1016,9 +1240,19 @@ export default function AdminCMS() {
           {/* TAB 2: PRODUCTS SECTION */}
           {activeTab === 'products' && (
             <div className="space-y-6 animate-fadeIn">
-              <div>
-                <h2>Products & Features (4 Modules)</h2>
-                <p>Edit section title, subtitle, and modules for POS, BillSoft, HRMS, and CRM.</p>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <h2>Products & Solutions Modules ({content.products?.length || 4})</h2>
+                  <p>Edit section title, subtitle, and individual business management modules.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleAddProduct}
+                  className="btn-brand-primary px-4 py-2.5 text-xs font-bold flex items-center gap-1.5 shadow-sm shrink-0 self-start sm:self-auto cursor-pointer"
+                >
+                  <Plus size={16} />
+                  <span>Add Product Module</span>
+                </button>
               </div>
 
               {/* Section Header Controls */}
@@ -1072,10 +1306,22 @@ export default function AdminCMS() {
                   <div key={prod.id} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
                     <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: prod.color }} />
+                        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: prod.color || '#007a55' }} />
                         <span className="font-bold text-base text-slate-900">{prod.title}</span>
                       </div>
-                      <span className="text-xs font-mono text-slate-400">{prod.themeClass}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono text-slate-400">{prod.themeClass}</span>
+                        {content.products?.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveProduct(pIdx)}
+                            className="p-1 rounded-md text-slate-400 hover:text-red-600 hover:bg-red-50 transition cursor-pointer"
+                            title="Delete module"
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        )}
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">

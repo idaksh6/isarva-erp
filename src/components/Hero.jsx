@@ -17,9 +17,36 @@ import {
   Check,
   Layers,
   UtensilsCrossed,
-  Handshake
+  Handshake,
+  Store,
+  ShoppingBag,
+  ShoppingCart,
+  Truck,
+  Building,
+  Package,
+  Cpu
 } from 'lucide-react';
 import FlagIcon from './FlagIcon';
+
+const ICON_MAP = {
+  Layers,
+  UtensilsCrossed,
+  BarChart3,
+  Users,
+  Handshake,
+  Store,
+  ShoppingBag,
+  ShoppingCart,
+  Truck,
+  Building,
+  ShieldCheck,
+  Zap,
+  Clock,
+  Smartphone,
+  CheckCircle2,
+  Package,
+  Cpu
+};
 
 export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -216,19 +243,62 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
     }
   ];
 
-  const slides = defaultSlides.map((def, idx) => {
-    const custom = heroProp?.slides?.[idx];
-    if (!custom) return def;
+  const inputSlides = (heroProp?.slides && Array.isArray(heroProp.slides) && heroProp.slides.length > 0)
+    ? heroProp.slides
+    : defaultSlides;
+
+  const slides = inputSlides.map((custom, idx) => {
+    const def = defaultSlides[idx] || {
+      id: custom.id || `slide-${idx + 1}`,
+      tabLabel: custom.tabLabel || `Solution ${idx + 1}`,
+      tabIcon: Layers,
+      themeColor: custom.themeColor || '#007a55',
+      lightBg: custom.lightBg || 'rgba(0, 122, 85, 0.08)',
+      badge: custom.badge || 'BUSINESS MANAGEMENT SOFTWARE',
+      headlineMain: custom.headlineMain || 'Accelerate Your Operations with',
+      headlineHighlight: custom.headlineHighlight || 'ISARVA ERP',
+      subheadline: custom.subheadline || 'Simplify business operations, connect workflows, and scale your organization efficiently.',
+      primaryCtaText: custom.primaryCtaText || 'Explore Solution',
+      secondaryCtaText: custom.secondaryCtaText || 'Book a Demo',
+      modalType: 'demo',
+      productName: custom.tabLabel || '',
+      image: custom.image || '/images/hero-erp-overview.jpg',
+      imageAlt: custom.imageAlt || 'ISARVA Business Solution Preview',
+      highlights: custom.highlights || [
+        'Real-Time Cloud Synchronization',
+        'Multi-Branch & Mobile Ready',
+        'Enterprise Security & Compliance'
+      ],
+      floatingMetric1: custom.floatingMetric1 || {
+        title: 'High Performance',
+        subtitle: '100% Cloud Reliable'
+      },
+      floatingMetric2: custom.floatingMetric2 || {
+        title: '1,000+ Businesses',
+        subtitle: '99.9% Cloud Uptime'
+      },
+      stats: [
+        { label: 'Uptime', value: '99.9% Cloud', icon: ShieldCheck },
+        { label: 'Speed', value: 'Instant Sync', icon: Zap },
+        { label: 'Security', value: 'Enterprise Ready', icon: FileCheck }
+      ]
+    };
+
+    let TabIcon = def.tabIcon || Layers;
+    if (custom.iconName && ICON_MAP[custom.iconName]) {
+      TabIcon = ICON_MAP[custom.iconName];
+    }
+
     return {
       ...def,
       ...custom,
-      tabIcon: def.tabIcon,
-      themeColor: custom.themeColor || def.themeColor,
-      lightBg: custom.lightBg || def.lightBg,
-      highlights: Array.isArray(custom.highlights) && custom.highlights.length > 0 ? custom.highlights : def.highlights,
-      floatingMetric1: { ...def.floatingMetric1, ...(custom.floatingMetric1 || {}) },
-      floatingMetric2: { ...def.floatingMetric2, ...(custom.floatingMetric2 || {}) },
-      stats: def.stats.map((s, sIdx) => ({
+      tabIcon: TabIcon,
+      themeColor: custom.themeColor || def.themeColor || '#007a55',
+      lightBg: custom.lightBg || def.lightBg || 'rgba(0, 122, 85, 0.08)',
+      highlights: Array.isArray(custom.highlights) && custom.highlights.length > 0 ? custom.highlights : (def.highlights || []),
+      floatingMetric1: { ...(def.floatingMetric1 || {}), ...(custom.floatingMetric1 || {}) },
+      floatingMetric2: { ...(def.floatingMetric2 || {}), ...(custom.floatingMetric2 || {}) },
+      stats: (def.stats || []).map((s, sIdx) => ({
         ...s,
         ...(custom.stats?.[sIdx] || {}),
         icon: s.icon
@@ -236,11 +306,12 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
     };
   });
 
-  const currentSlide = slides[activeSlideIndex];
+  const safeActiveIndex = Math.min(activeSlideIndex, Math.max(0, slides.length - 1));
+  const currentSlide = slides[safeActiveIndex] || slides[0] || defaultSlides[0];
 
   // Auto-slide effect (changes every 5 seconds; resets cleanly on active slide change)
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || slides.length <= 1) return;
 
     timerRef.current = setInterval(() => {
       setActiveSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -249,7 +320,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused, activeSlideIndex, slides.length]);
+  }, [isPaused, safeActiveIndex, slides.length]);
 
   const [touchStartX, setTouchStartX] = useState(0);
 
@@ -278,7 +349,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
   // Automatically centralize the active tab button on mobile / responsive viewports
   useEffect(() => {
     const container = tabsContainerRef.current;
-    const activeButton = tabButtonRefs.current[activeSlideIndex];
+    const activeButton = tabButtonRefs.current[safeActiveIndex];
     if (container && activeButton) {
       const containerWidth = container.clientWidth;
       const buttonOffset = activeButton.offsetLeft;
@@ -291,7 +362,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
         behavior: 'smooth'
       });
     }
-  }, [activeSlideIndex]);
+  }, [safeActiveIndex]);
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#eaf5f0] via-[#f2faf6] to-[#e4f4ed] section-padding-sm border-b border-[#d2ecdf]">
@@ -316,7 +387,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
             className="flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 pt-1 scroll-smooth px-1"
           >
             {slides.map((slide, index) => {
-              const isActive = index === activeSlideIndex;
+              const isActive = index === safeActiveIndex;
               const IconComponent = slide.tabIcon;
 
               return (
@@ -364,7 +435,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
             onTouchEnd={handleTouchEnd}
           >
             {slides.map((slide, index) => {
-              const isActive = index === activeSlideIndex;
+              const isActive = index === safeActiveIndex;
               return (
                 <div
                   key={slide.id}
@@ -490,7 +561,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
               {/* Stacked Slides Container with Smooth Cross-Fade and Elevation */}
               <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden bg-slate-100">
                 {slides.map((slide, index) => {
-                  const isActive = index === activeSlideIndex;
+                  const isActive = index === safeActiveIndex;
                   return (
                     <div
                       key={slide.id}

@@ -177,7 +177,7 @@ export const indiaContent = {
     {
       id: 'restaurant-pos',
       title: 'Restaurant POS',
-      subtitle: 'Complete Restaurant Management',
+      subtitle: 'Complete Restaurant\nManagement',
       color: '#059669',
       themeClass: 'pos',
       buttonText: 'Explore Restaurant POS',
@@ -196,7 +196,7 @@ export const indiaContent = {
     {
       id: 'billsoft',
       title: 'BillSoft Accounting',
-      subtitle: 'Complete Accounting Solution',
+      subtitle: 'Complete Accounting\nSolution',
       color: '#2563eb',
       themeClass: 'billsoft',
       buttonText: 'Explore BillSoft',
@@ -215,7 +215,7 @@ export const indiaContent = {
     {
       id: 'hrms',
       title: 'HRMS',
-      subtitle: 'Human Resource Management',
+      subtitle: 'Human Resource\nManagement',
       color: '#7c3aed',
       themeClass: 'hrms',
       buttonText: 'Explore HRMS',
@@ -234,7 +234,7 @@ export const indiaContent = {
     {
       id: 'crm',
       title: 'CRM',
-      subtitle: 'Customer Relationship Management',
+      subtitle: 'Customer Relationship\nManagement',
       color: '#ea580c',
       themeClass: 'crm',
       buttonText: 'Explore CRM',

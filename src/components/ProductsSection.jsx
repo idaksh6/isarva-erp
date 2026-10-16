@@ -113,17 +113,19 @@ export default function ProductsSection({ header, products, onOpenModal }) {
               >
                 <div>
                   {/* Card Header: Icon + Title & Subtitle */}
-                  <div className="flex items-center gap-3.5 mb-5">
+                  <div className="flex items-center gap-3.5 mb-5 min-h-[64px]">
                     <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-sm`}>
                       {getProductIcon(product.iconName)}
                     </div>
-                    <div className="min-w-0 flex-1">
-                      <h3>
+                    <div className="min-w-0 flex-1 flex flex-col justify-center">
+                      <h3 className="truncate">
                         {product.title}
                       </h3>
-                      <p className="mt-0.5">
-                        {product.subtitle}
-                      </p>
+                      <div className="min-h-[2.6rem] flex items-center whitespace-pre-line">
+                        <p className="mt-0.5">
+                          {product.subtitle}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
