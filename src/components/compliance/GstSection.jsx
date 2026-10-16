@@ -52,11 +52,11 @@ export default function GstSection({ gstData }) {
             </div>
 
             {/* 2-Column Enhanced High-Contrast Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-left w-full max-w-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 w-full max-w-xl">
               {gstData?.checklist?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group"
+                  className="flex items-center justify-center sm:justify-start gap-3 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group text-center sm:text-left"
                 >
                   <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
                     <Check size={13} strokeWidth={3.5} />
