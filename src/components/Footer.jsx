@@ -53,11 +53,11 @@ export default function Footer({
     };
   }, []);
 
-  const metaPhone = content?.meta?.phone || (selectedCountry.code === 'SA' ? '+966 50 123 4567' : '+91 98765 43210');
+  const metaPhone = content?.meta?.phone || '+91 9902863697';
   const metaEmail = content?.meta?.email || 'contact@isarvait.com';
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-[#f8faf9] via-white to-[#f1f6f3] border-t border-[#d8eae1] pt-14 pb-10">
+    <footer id="contact" className="relative overflow-hidden bg-gradient-to-b from-[#f8faf9] via-white to-[#f1f6f3] border-t border-[#d8eae1] pt-14 pb-10">
       {/* Subtle Ambient Radial Lighting Accents */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007a55]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-emerald-100/30 rounded-full blur-3xl pointer-events-none" />
@@ -201,7 +201,7 @@ export default function Footer({
             {/* Circular Social Icons */}
             <div className="flex items-center justify-center lg:justify-start gap-2.5 pt-1">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/isarva-infotech-private-limited"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
@@ -210,7 +210,7 @@ export default function Footer({
                 <Linkedin size={15} />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://twitter.com/isarva"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="X (Twitter)"
@@ -219,7 +219,7 @@ export default function Footer({
                 <Twitter size={15} />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@isarvainfotech"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="YouTube"
@@ -228,7 +228,7 @@ export default function Footer({
                 <Youtube size={15} />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/isarvainfotech/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
@@ -237,7 +237,7 @@ export default function Footer({
                 <Instagram size={15} />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/IsarvaInfotech"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
@@ -299,21 +299,7 @@ export default function Footer({
             © 2026 ISARVA IT Solutions Pvt. Ltd. All rights reserved.
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full md:w-auto">
-            <div className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-3.5 gap-y-1.5 text-center">
-              <Link href="#privacy" className="hover:text-[#007a55] transition-colors whitespace-nowrap">
-                Privacy Policy
-              </Link>
-              <span className="text-slate-300 hidden sm:inline">•</span>
-              <Link href="#terms" className="hover:text-[#007a55] transition-colors whitespace-nowrap">
-                Terms of Service
-              </Link>
-              <span className="text-slate-300 hidden sm:inline">•</span>
-              <Link href="#security" className="hover:text-[#007a55] transition-colors whitespace-nowrap">
-                Security Architecture
-              </Link>
-            </div>
-
+          <div className="flex items-center justify-center md:justify-end w-full md:w-auto">
             {/* Upward Region & Currency Dropdown */}
             <div className="relative" ref={countryRef}>
               <button

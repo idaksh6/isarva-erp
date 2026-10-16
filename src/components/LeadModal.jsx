@@ -105,7 +105,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                   <input
                     type="email"
                     required
-                    placeholder="rahul@company.in"
+                    placeholder="name@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
@@ -116,7 +116,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                   <input
                     type="tel"
                     required
-                    placeholder={countryCode === 'SA' ? '+966 50 123 4567' : '+91 98765 43210'}
+                    placeholder="+91 9902863697"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
