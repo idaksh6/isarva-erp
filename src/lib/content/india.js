@@ -293,7 +293,7 @@ export const indiaContent = {
         a: 'Submit your business details through the contact form and select the solution you want to explore. The team can then discuss your requirements and arrange a suitable demonstration.'
       },
       {
-        q: 'Is ISARVA ERP available for businesses in India and the Middle East?',
+        q: 'Is ISARVA ERP available in India and the Middle East?',
         a: 'The website references Indian GST and Saudi ZATCA-related workflows. Contact the team to confirm regional availability, supported legal entities, integrations and compliance capabilities for your location.'
       }
     ]

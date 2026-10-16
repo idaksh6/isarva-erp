@@ -3,14 +3,14 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
-function FaqCard({ item, index, isOpen, onToggle }) {
+function FaqCard({ item, index, isOpen, onToggle, className = '' }) {
   return (
     <div
       className={`bg-white rounded-2xl border transition-all duration-200 shadow-2xs overflow-hidden ${
         isOpen
           ? 'border-[#007a55]/40 shadow-sm ring-1 ring-[#007a55]/20'
           : 'border-slate-200/80 hover:border-slate-300'
-      }`}
+      } ${className}`}
     >
       <button
         type="button"
@@ -18,7 +18,7 @@ function FaqCard({ item, index, isOpen, onToggle }) {
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${index}`}
         id={`faq-btn-${index}`}
-        className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors group"
+        className="w-full h-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors group"
       >
         <span className="font-space font-bold text-slate-900 text-base sm:text-lg pr-2 leading-snug group-hover:text-[#007a55] transition-colors">
           {item.q}
@@ -108,29 +108,39 @@ export default function FaqSection({ faqs }) {
         </div>
 
         {/* 2-Column Accordion Grid */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
-          <div className="space-y-4">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-stretch">
+          <div className="flex flex-col gap-4">
             {leftColumn.map((item, i) => (
-              <FaqCard
+              <div
                 key={i}
-                item={item}
-                index={i}
-                isOpen={openIndex === i}
-                onToggle={() => toggleAccordion(i)}
-              />
+                className={`flex flex-col ${i === leftColumn.length - 1 ? 'flex-1' : ''}`}
+              >
+                <FaqCard
+                  item={item}
+                  index={i}
+                  isOpen={openIndex === i}
+                  onToggle={() => toggleAccordion(i)}
+                  className={i === leftColumn.length - 1 ? 'h-full flex flex-col justify-center' : ''}
+                />
+              </div>
             ))}
           </div>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             {rightColumn.map((item, i) => {
               const actualIndex = midPoint + i;
               return (
-                <FaqCard
+                <div
                   key={actualIndex}
-                  item={item}
-                  index={actualIndex}
-                  isOpen={openIndex === actualIndex}
-                  onToggle={() => toggleAccordion(actualIndex)}
-                />
+                  className={`flex flex-col ${i === rightColumn.length - 1 ? 'flex-1' : ''}`}
+                >
+                  <FaqCard
+                    item={item}
+                    index={actualIndex}
+                    isOpen={openIndex === actualIndex}
+                    onToggle={() => toggleAccordion(actualIndex)}
+                    className={i === rightColumn.length - 1 ? 'h-full flex flex-col justify-center' : ''}
+                  />
+                </div>
               );
             })}
           </div>
