@@ -72,10 +72,13 @@ export default function ZatcaSection({ zatcaData }) {
                 'ISARVA ERP is fully compliant with ZATCA e-invoicing regulations, ensuring your business meets all requirements for Phase 1 and Phase 2.'}
             </p>
 
-            {/* Clean Minimalist Statutory Checklist (2 Columns with Solid Circular Green Checkmarks) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 pt-2 text-left w-full max-w-xl">
+            {/* Clean Minimalist Statutory Checklist */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 pt-2 w-full max-w-xl">
               {checklistItems.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 group">
+                <div
+                  key={idx}
+                  className="flex items-center justify-center sm:justify-start gap-2.5 group text-center sm:text-left"
+                >
                   <div className="w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-xs font-black group-hover:scale-110 transition-transform">
                     <Check size={12} strokeWidth={3.5} />
                   </div>
