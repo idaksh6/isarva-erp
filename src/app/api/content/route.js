@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getContent, updateContent } from '../../../lib/content-store';
+import { getDefaultContentForCountry } from '../../../lib/content';
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'isarva2026';
 
@@ -24,6 +25,13 @@ export async function POST(request) {
 
     const { searchParams } = new URL(request.url);
     const country = searchParams.get('country') || undefined;
+
+    if (searchParams.get('action') === 'sync') {
+      const targetCountry = (country || 'IN').toUpperCase();
+      const defaultContent = getDefaultContentForCountry(targetCountry);
+      const updated = await updateContent(defaultContent, targetCountry);
+      return NextResponse.json({ success: true, message: `Successfully synced database with ${targetCountry} master content`, country: targetCountry, content: updated });
+    }
 
     const body = await request.json();
     const targetCountry = country || body.countryCode || 'IN';

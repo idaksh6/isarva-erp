@@ -39,6 +39,11 @@ export const indiaContent = {
       gstTag: 'GST e-Invoice Compliant India'
     }
   },
+  productsHeader: {
+    badge: 'PRODUCTS & SOLUTIONS',
+    title: 'Complete Business Management Solutions for Every Stage of Growth',
+    subtitle: 'Manage essential business activities with connected solutions for billing, accounting, workforce management, sales and inventory. Choose the modules your business needs and build a more organized way of working.'
+  },
   products: [
     {
       id: 'restaurant-pos',
@@ -172,6 +177,11 @@ export const indiaContent = {
       'Sales tax summaries and GSTR-related reports',
       'TDS/TCS calculations, where supported',
       'Financial records and audit trail visibility, where available'
+    ],
+    trustPills: [
+      { label: 'GST-Ready Invoicing', iconName: 'ShieldCheck' },
+      { label: 'IRN & QR Code Support', iconName: 'Zap' },
+      { label: 'Audit Trail & Tax Summaries', iconName: 'FileText' }
     ]
   },
   industries: {

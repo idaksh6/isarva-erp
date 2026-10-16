@@ -625,7 +625,53 @@ export default function AdminCMS() {
             <div className="space-y-6 animate-fadeIn">
               <div>
                 <h2>Products & Features (4 Modules)</h2>
-                <p>Edit titles, subtitles, and checklist items for POS, BillSoft, HRMS, and CRM.</p>
+                <p>Edit section title, subtitle, and modules for POS, BillSoft, HRMS, and CRM.</p>
+              </div>
+
+              {/* Section Header Controls */}
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-emerald-700">Section Header</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Badge / Eyebrow</label>
+                    <input
+                      type="text"
+                      value={content.productsHeader?.badge || ''}
+                      placeholder="PRODUCTS & SOLUTIONS"
+                      onChange={(e) => setContent({
+                        ...content,
+                        productsHeader: { ...content.productsHeader, badge: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Section Title</label>
+                    <input
+                      type="text"
+                      value={content.productsHeader?.title || ''}
+                      placeholder="Complete Business Management Solutions for Every Stage of Growth"
+                      onChange={(e) => setContent({
+                        ...content,
+                        productsHeader: { ...content.productsHeader, title: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Section Subtitle / Description</label>
+                  <textarea
+                    rows="2"
+                    value={content.productsHeader?.subtitle || ''}
+                    placeholder="Manage essential business activities with connected solutions..."
+                    onChange={(e) => setContent({
+                      ...content,
+                      productsHeader: { ...content.productsHeader, subtitle: e.target.value }
+                    })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                  />
+                </div>
               </div>
 
               <div className="space-y-6">

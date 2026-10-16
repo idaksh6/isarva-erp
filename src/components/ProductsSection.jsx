@@ -11,7 +11,7 @@ import {
   Sparkles
 } from 'lucide-react';
 
-export default function ProductsSection({ products, onOpenModal }) {
+export default function ProductsSection({ header, products, onOpenModal }) {
   // Helper to format image path
   const getImageUrl = (imagePath, fallbackPath) => {
     const src = imagePath || fallbackPath;
@@ -88,13 +88,14 @@ export default function ProductsSection({ products, onOpenModal }) {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-eyebrow">
-            PRODUCTS & SOLUTIONS
+            {header?.badge || 'PRODUCTS & SOLUTIONS'}
           </div>
           <h2>
-            Complete Business Management Solutions for Every Stage of Growth
+            {header?.title || 'Complete Business Management Solutions for Every Stage of Growth'}
           </h2>
           <p>
-            Manage essential business activities with connected solutions for billing, accounting, workforce management, sales and inventory. Choose the modules your business needs and build a more organized way of working.
+            {header?.subtitle ||
+              'Manage essential business activities with connected solutions for billing, accounting, workforce management, sales and inventory. Choose the modules your business needs and build a more organized way of working.'}
           </p>
         </div>
 

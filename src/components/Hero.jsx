@@ -29,7 +29,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
   const tabButtonRefs = useRef([]);
 
   // Define the 5 high-fidelity hero slides
-  const slides = [
+  const defaultSlides = [
     {
       id: 'overview',
       tabLabel: 'All Solutions',
@@ -215,6 +215,18 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
       ]
     }
   ];
+
+  const slides = defaultSlides.map((def, idx) => {
+    const custom = heroProp?.slides?.[idx];
+    if (!custom) return def;
+    return {
+      ...def,
+      ...custom,
+      tabIcon: def.tabIcon,
+      themeColor: custom.themeColor || def.themeColor,
+      lightBg: custom.lightBg || def.lightBg
+    };
+  });
 
   const currentSlide = slides[activeSlideIndex];
 

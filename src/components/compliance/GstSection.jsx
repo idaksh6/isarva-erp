@@ -70,18 +70,19 @@ export default function GstSection({ gstData }) {
 
             {/* Compliance Trust Feature Pills */}
             <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-950/8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
-                <ShieldCheck size={15} className="text-[#007a55]" />
-                <span>GST-Ready Invoicing</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
-                <Zap size={15} className="text-[#007a55]" />
-                <span>IRN & QR Code Support</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
-                <FileText size={15} className="text-[#007a55]" />
-                <span>Audit Trail & Tax Summaries</span>
-              </div>
+              {(gstData?.trustPills || [
+                { label: 'GST-Ready Invoicing', iconName: 'ShieldCheck' },
+                { label: 'IRN & QR Code Support', iconName: 'Zap' },
+                { label: 'Audit Trail & Tax Summaries', iconName: 'FileText' }
+              ]).map((pill, idx) => {
+                const IconComp = pill.iconName === 'Zap' ? Zap : pill.iconName === 'FileText' ? FileText : ShieldCheck;
+                return (
+                  <div key={idx} className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
+                    <IconComp size={15} className="text-[#007a55]" />
+                    <span>{pill.label}</span>
+                  </div>
+                );
+              })}
             </div>
 
           </div>

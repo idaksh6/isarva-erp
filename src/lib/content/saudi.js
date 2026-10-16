@@ -37,6 +37,11 @@ export const saudiContent = {
       gstTag: 'ZATCA Phase 2 Fatoora Compliant'
     }
   },
+  productsHeader: {
+    badge: 'PRODUCTS & SOLUTIONS',
+    title: 'Bilingual Business Management Solutions for Saudi Vision 2030',
+    subtitle: 'Streamline your enterprise operations with connected solutions for restaurant POS, ZATCA e-invoicing, GOSI/WPS payroll, and omnichannel CRM designed for the Kingdom.'
+  },
   products: [
     {
       id: 'restaurant-pos',
@@ -167,7 +172,9 @@ export const saudiContent = {
       'Real-time integration ready',
       'QR code and XML format',
       'Stay updated with latest ZATCA regulations'
-    ]
+    ],
+    badgeText: 'ZATCA',
+    badgeSubtext: 'Compliant'
   },
   industries: {
     badge: 'INDUSTRIES WE SERVE IN SAUDI ARABIA',

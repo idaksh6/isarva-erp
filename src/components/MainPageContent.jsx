@@ -106,6 +106,7 @@ export default function MainPageContent({ initialCountry = 'IN' }) {
 
       {/* 4 Products Section */}
       <ProductsSection
+        header={content?.productsHeader}
         products={content.products}
         onOpenModal={handleOpenModal}
       />

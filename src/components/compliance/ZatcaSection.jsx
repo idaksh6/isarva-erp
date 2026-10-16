@@ -49,10 +49,10 @@ export default function ZatcaSection({ zatcaData }) {
                 </div>
                 <div className="text-left">
                   <div className="text-sm font-black text-white uppercase tracking-wider leading-none">
-                    ZATCA
+                    {zatcaData?.badgeText || 'ZATCA'}
                   </div>
                   <div className="text-[11px] font-bold text-emerald-300 tracking-wide leading-tight mt-0.5">
-                    Compliant
+                    {zatcaData?.badgeSubtext || 'Compliant'}
                   </div>
                 </div>
               </div>
