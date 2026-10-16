@@ -38,8 +38,8 @@ export default function FaqSection({ faqs }) {
 
       <div className="site-container">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#007a55]">
+        <div className="section-header">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#007a55] mx-auto">
             <HelpCircle size={15} />
             <span className="section-eyebrow">
               {faqs.badge || 'FREQUENTLY ASKED QUESTIONS'}

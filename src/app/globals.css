@@ -265,10 +265,23 @@
   max-width: 48rem;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 1.75rem; /* reduced on responsive mobile */
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-header {
+    margin-bottom: 2.25rem;
+    gap: 0.625rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-header {
+    margin-bottom: 3rem;
+  }
 }
 
 /* Buttons */
