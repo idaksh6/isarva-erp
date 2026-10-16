@@ -14,12 +14,14 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg('');
     try {
       const res = await fetch('/api/inquiries', {
         method: 'POST',
@@ -27,13 +29,14 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
         body: JSON.stringify({ ...formData, country: countryCode })
       });
 
-      if (res.ok) {
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.success) {
         setIsSubmitted(true);
       } else {
-        setIsSubmitted(true);
+        setErrorMsg(data?.error || 'Failed to submit inquiry. Please try again.');
       }
     } catch (err) {
-      setIsSubmitted(true);
+      setErrorMsg('Unable to connect to the server. Please check your internet connection and try again.');
     } finally {
       setLoading(false);
     }
@@ -149,6 +152,12 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                   className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
                 />
               </div>
+
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700">
+                  {errorMsg}
+                </div>
+              )}
 
               <button
                 type="submit"
