@@ -27,10 +27,10 @@ export default function GstSection({ gstData }) {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* LEFT ZONE: Section Eyebrow, Title, Subtitle, Checklist & Trust Badges */}
-          <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left flex flex-col items-start">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
             
             {/* Category Eyebrow with Pulsing Live Sync Badge */}
-            <div className="flex flex-wrap items-center justify-start gap-2.5">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
               <span className="section-eyebrow">
                 {gstData?.badge || 'GST & STATUTORY COMPLIANCE'}
               </span>
@@ -45,23 +45,23 @@ export default function GstSection({ gstData }) {
               <h2>
                 {gstData?.title || 'Simplify GST Invoicing and Financial Compliance Workflows'}
               </h2>
-              <p className="mt-2 max-w-xl text-left">
+              <p className="mt-2 max-w-xl mx-auto lg:mx-0">
                 {gstData?.subtitle ||
                   'Manage invoicing and accounting activities with tools designed to support relevant Indian GST workflows. Organize transaction records, review tax-related reports and prepare the information needed for your compliance processes.'}
               </p>
             </div>
 
             {/* 2-Column Enhanced High-Contrast Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 w-full max-w-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 w-full max-w-xl mx-auto lg:mx-0">
               {gstData?.checklist?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group text-left"
+                  className="relative flex items-center justify-center sm:justify-start p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group sm:gap-3 text-center sm:text-left"
                 >
-                  <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
+                  <div className="absolute left-3.5 sm:static w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
                     <Check size={13} strokeWidth={3.5} />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                  <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug px-8 sm:px-0 text-center sm:text-left">
                     {item}
                   </span>
                 </div>
@@ -69,7 +69,7 @@ export default function GstSection({ gstData }) {
             </div>
 
             {/* Compliance Trust Feature Pills */}
-            <div className="pt-4 flex flex-wrap justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-950/8">
+            <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-950/8">
               <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <ShieldCheck size={15} className="text-[#007a55]" />
                 <span>GST-Ready Invoicing</span>

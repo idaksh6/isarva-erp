@@ -60,29 +60,29 @@ export default function ZatcaSection({ zatcaData }) {
           </div>
 
           {/* ZONE 2 (MIDDLE): High-Contrast Headline, Explanatory Paragraph & Minimalist Checklist */}
-          <div className="lg:col-span-5 xl:col-span-5 text-left flex flex-col items-start space-y-3.5">
+          <div className="lg:col-span-5 xl:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start space-y-3.5">
             {/* Native Heading (Space Grotesk, Pure White via .section-saudi-zatca) */}
             <h2>
               {zatcaData?.title || 'Built for Saudi Vision 2030 Enterprises'}
             </h2>
 
             {/* Native Paragraph (Inter, Crisp Mint-White, Zero Distraction) */}
-            <p className="max-w-xl text-left">
+            <p className="max-w-xl mx-auto lg:mx-0">
               {zatcaData?.subtitle ||
                 'ISARVA ERP is fully compliant with ZATCA e-invoicing regulations, ensuring your business meets all requirements for Phase 1 and Phase 2.'}
             </p>
 
             {/* Clean Minimalist Statutory Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 pt-2 w-full max-w-xl text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-x-6 sm:gap-y-3 pt-2 w-full max-w-xl mx-auto lg:mx-0">
               {checklistItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-start gap-2.5 group text-left"
+                  className="relative flex items-center justify-center sm:justify-start py-2.5 px-3 sm:px-0 sm:py-0 rounded-xl bg-emerald-950/30 sm:bg-transparent border border-emerald-400/20 sm:border-0 group sm:gap-2.5 text-center sm:text-left"
                 >
-                  <div className="w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-xs font-black group-hover:scale-110 transition-transform">
+                  <div className="absolute left-3.5 sm:static w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-xs font-black group-hover:scale-110 transition-transform">
                     <Check size={12} strokeWidth={3.5} />
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white leading-snug">
+                  <span className="text-xs sm:text-sm font-semibold text-white leading-snug px-8 sm:px-0 text-center sm:text-left">
                     {item}
                   </span>
                 </div>
