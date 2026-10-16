@@ -42,8 +42,8 @@ export const indiaContent = {
   products: [
     {
       id: 'restaurant-pos',
-      title: 'Restaurant POS Software',
-      subtitle: 'Speed up restaurant billing and coordinate front-of-house and kitchen operations with a restaurant management system designed for everyday service.',
+      title: 'Restaurant POS',
+      subtitle: 'Complete Restaurant Management',
       color: '#059669',
       themeClass: 'pos',
       buttonText: 'Explore Restaurant POS',
@@ -51,69 +51,69 @@ export const indiaContent = {
       iconName: 'UtensilsCrossed',
       image: '/images/pos-card-preview.jpg',
       features: [
-        'Dine-in, takeaway and delivery order management',
-        'Table, floor and reservation management',
-        'Kitchen Order Tickets (KOT) and kitchen display workflows',
-        'Menu, recipe and ingredient stock management',
-        'Discounts, taxes and sales reporting',
-        'Multi-outlet sales visibility'
+        'Dine In, Takeaway, Delivery & Online Orders',
+        'Table & Floor Management',
+        'Menu & Inventory Management',
+        'Kitchen Display System (KDS)',
+        'Reports & Analytics',
+        'Multi-Branch Support'
       ]
     },
     {
       id: 'billsoft',
-      title: 'BillSoft Accounting Software',
-      subtitle: 'Organize financial operations with accounting, invoicing, purchase management, inventory tracking and financial reporting in one workspace.',
+      title: 'BillSoft Accounting',
+      subtitle: 'Complete Accounting Solution',
       color: '#2563eb',
       themeClass: 'billsoft',
-      buttonText: 'Explore BillSoft Accounting',
+      buttonText: 'Explore BillSoft',
       buttonLink: '#billsoft',
       iconName: 'BarChart3',
       image: '/images/billsoft-card-preview.jpg',
       features: [
-        'Sales and purchase invoices',
-        'GST-oriented invoicing and e-invoice workflows',
-        'Accounts receivable and payable',
-        'Inventory and warehouse tracking',
-        'Bank and account reconciliation',
-        'Profit and loss, balance sheet and cash flow reports'
+        'GST e-Invoicing (India)',
+        'Sales, Purchase & Inventory',
+        'Accounts, Payments & Receivables',
+        'Multi-Branch & Multi-Currency',
+        'Financial Reports & Analytics',
+        'TDS, TCS & GST Reports'
       ]
     },
     {
       id: 'hrms',
-      title: 'HRMS & Payroll Software',
-      subtitle: 'Simplify employee administration, attendance, leave management and payroll processing with organized workforce management tools.',
+      title: 'HRMS',
+      subtitle: 'Human Resource Management',
       color: '#7c3aed',
       themeClass: 'hrms',
-      buttonText: 'Explore HRMS & Payroll',
+      buttonText: 'Explore HRMS',
       buttonLink: '#hrms',
       iconName: 'Users2',
       image: '/images/hrms-card-preview.jpg',
       features: [
-        'Employee records and onboarding',
-        'Payroll calculations and payslip generation',
-        'Attendance, shifts and leave management',
-        'Employee self-service requests',
-        'Performance and appraisal management',
-        'Applicable statutory deduction workflows'
+        'Employee Management',
+        'Payroll & Salary Processing',
+        'Attendance & Leave Management',
+        'Recruitment & Onboarding',
+        'HR Reports & Analytics',
+        'Multi-Branch Support'
       ]
     },
     {
       id: 'crm',
-      title: 'CRM & Sales Management',
-      subtitle: 'Keep leads, customer interactions, quotations and sales follow-ups organized to help your team manage opportunities from enquiry to closure.',
+      title: 'CRM',
+      subtitle: 'Customer Relationship Management',
       color: '#ea580c',
       themeClass: 'crm',
-      buttonText: 'Explore CRM Software',
+      buttonText: 'Explore CRM',
       buttonLink: '#crm',
       iconName: 'Handshake',
       image: '/images/crm-card-preview.jpg',
       features: [
-        'Lead and contact management',
-        'Visual sales pipeline',
-        'Follow-up reminders and activity tracking',
-        'Quotations and proforma invoices',
-        'Customer communication integrations where configured',
-        'Sales performance reports'
+        'Lead & Customer Management',
+        'Sales Pipeline',
+        'Follow-ups & Tasks',
+        'WhatsApp & Email Communication',
+        'Customer Insights & Reports',
+        'Team & Activity Tracking'
       ]
     }
   ],
