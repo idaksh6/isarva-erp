@@ -4,15 +4,21 @@ import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 export default function FaqSection({ faqs }) {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndices, setOpenIndices] = useState([0]);
 
   if (!faqs || !faqs.items || faqs.items.length === 0) {
     return null;
   }
 
   const toggleAccordion = (index) => {
-    setOpenIndex(openIndex === index ? -1 : index);
+    setOpenIndices((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
+
+  const midPoint = Math.ceil(faqs.items.length / 2);
+  const leftColumn = faqs.items.slice(0, midPoint);
+  const rightColumn = faqs.items.slice(midPoint);
 
   // Structured Data Schema for Google FAQ rich snippet
   const faqSchema = {
@@ -26,6 +32,48 @@ export default function FaqSection({ faqs }) {
         'text': item.a
       }
     }))
+  };
+
+  const renderFaqCard = (item, actualIndex) => {
+    const isOpen = openIndices.includes(actualIndex);
+    return (
+      <div
+        key={actualIndex}
+        className={`bg-white rounded-2xl border transition-all duration-200 shadow-2xs overflow-hidden ${
+          isOpen
+            ? 'border-[#007a55]/40 shadow-sm ring-1 ring-[#007a55]/20'
+            : 'border-slate-200/80 hover:border-slate-300'
+        }`}
+      >
+        <button
+          type="button"
+          onClick={() => toggleAccordion(actualIndex)}
+          aria-expanded={isOpen}
+          className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors"
+        >
+          <h3 className="pr-2">
+            {item.q}
+          </h3>
+          <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
+              isOpen
+                ? 'bg-emerald-50 text-[#007a55] rotate-180'
+                : 'bg-slate-100 text-slate-500'
+            }`}
+          >
+            <ChevronDown size={18} />
+          </div>
+        </button>
+
+        {isOpen && (
+          <div className="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100 animate-fadeIn">
+            <p className="leading-relaxed">
+              {item.a}
+            </p>
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -55,49 +103,14 @@ export default function FaqSection({ faqs }) {
           )}
         </div>
 
-        {/* Accordion List */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {faqs.items.map((item, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div
-                key={index}
-                className={`bg-white rounded-2xl border transition-all duration-200 shadow-2xs overflow-hidden ${
-                  isOpen
-                    ? 'border-[#007a55]/40 shadow-sm ring-1 ring-[#007a55]/20'
-                    : 'border-slate-200/80 hover:border-slate-300'
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggleAccordion(index)}
-                  aria-expanded={isOpen}
-                  className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors"
-                >
-                  <h3 className="pr-2">
-                    {item.q}
-                  </h3>
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen
-                        ? 'bg-emerald-50 text-[#007a55] rotate-180'
-                        : 'bg-slate-100 text-slate-500'
-                    }`}
-                  >
-                    <ChevronDown size={18} />
-                  </div>
-                </button>
-
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100 animate-fadeIn">
-                    <p className="leading-relaxed">
-                      {item.a}
-                    </p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+        {/* 2-Column Accordion Grid */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+          <div className="space-y-4">
+            {leftColumn.map((item, i) => renderFaqCard(item, i))}
+          </div>
+          <div className="space-y-4">
+            {rightColumn.map((item, i) => renderFaqCard(item, midPoint + i))}
+          </div>
         </div>
       </div>
     </section>
