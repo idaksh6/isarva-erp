@@ -513,35 +513,35 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                         </div>
                       </div>
 
-                      {/* Bottom Slide Info & Metric Badge 2 */}
-                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-20 pointer-events-none flex items-end justify-between gap-2">
+                      {/* Bottom Slide Info & Metric Badge 2 - Hidden on mobile to keep hero image clean and prevent overflow */}
+                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-20 pointer-events-none hidden sm:flex items-end justify-between gap-2 min-w-0">
                         {/* Solution Capsule (Light Background matching other badges) */}
-                        <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10">
+                        <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10 min-w-0 max-w-[50%]">
                           <span
                             className="w-2 h-2 rounded-full shrink-0"
                             style={{ backgroundColor: slide.themeColor }}
                           />
-                          <div>
-                            <div className="text-[11px] sm:text-xs font-bold leading-tight text-slate-900 whitespace-nowrap">
+                          <div className="min-w-0">
+                            <div className="text-[11px] sm:text-xs font-bold leading-tight text-slate-900 truncate">
                               {slide.tabLabel}
                             </div>
-                            <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-none whitespace-nowrap mt-0.5">
+                            <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-none truncate mt-0.5">
                               {slide.highlights[0]}
                             </div>
                           </div>
                         </div>
 
                         {/* Secondary Metric Badge */}
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shrink-0">
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shrink-0 max-w-[50%]">
                           <span
                             className="w-1.5 h-1.5 rounded-full shrink-0"
                             style={{ backgroundColor: slide.themeColor }}
                           />
-                          <div className="text-left">
-                            <div className="text-[11px] font-black leading-tight text-slate-900">
+                          <div className="text-left min-w-0">
+                            <div className="text-[11px] font-black leading-tight text-slate-900 truncate">
                               {slide.floatingMetric2.title}
                             </div>
-                            <div className="text-[9px] text-slate-500 font-medium leading-none mt-0.5">
+                            <div className="text-[9px] text-slate-500 font-medium leading-none mt-0.5 truncate">
                               {slide.floatingMetric2.subtitle}
                             </div>
                           </div>
