@@ -65,11 +65,8 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                 <span>{modalType === 'demo' ? 'Live Product Demo' : 'Get Started with ISARVA ERP'}</span>
               </div>
               <h3 className="pt-0.5">
-                {modalType === 'demo' ? 'Schedule an Interactive Demo' : 'Start Your Free 14-Day Trial'}
+                {modalType === 'demo' ? 'Schedule an Interactive Demo' : 'Connect with Our Solutions Team'}
               </h3>
-              <p>
-                Experience GST compliance, POS and automated accounting tailored for your business.
-              </p>
             </div>
 
             {/* Form */}

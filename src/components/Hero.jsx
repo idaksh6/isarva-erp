@@ -350,18 +350,31 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
   useEffect(() => {
     const container = tabsContainerRef.current;
     const activeButton = tabButtonRefs.current[safeActiveIndex];
-    if (container && activeButton) {
-      const containerWidth = container.clientWidth;
-      const buttonOffset = activeButton.offsetLeft;
-      const buttonWidth = activeButton.clientWidth;
+    if (!container || !activeButton) return;
 
-      const targetScrollLeft = buttonOffset - (containerWidth / 2) + (buttonWidth / 2);
+    const centerTab = () => {
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = activeButton.getBoundingClientRect();
 
-      container.scrollTo({
-        left: Math.max(0, targetScrollLeft),
-        behavior: 'smooth'
-      });
-    }
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      const buttonCenter = buttonRect.left + buttonRect.width / 2;
+      const scrollDiff = buttonCenter - containerCenter;
+
+      if (Math.abs(scrollDiff) > 1) {
+        container.scrollBy({
+          left: scrollDiff,
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    const rId = requestAnimationFrame(centerTab);
+    const tId = setTimeout(centerTab, 60);
+
+    return () => {
+      cancelAnimationFrame(rId);
+      clearTimeout(tId);
+    };
   }, [safeActiveIndex]);
 
   return (
@@ -377,14 +390,14 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
       />
 
       <div className="site-container relative z-10">
-        
+
         {/* TOP INTERACTIVE PRODUCT SWITCHER TABS */}
         <div className="mb-8 lg:mb-10">
           <div
             ref={tabsContainerRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 pt-1 scroll-smooth px-1"
+            className="relative flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 pt-1 scroll-smooth px-4 sm:px-6 lg:px-2"
           >
             {slides.map((slide, index) => {
               const isActive = index === safeActiveIndex;
@@ -473,19 +486,19 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Mini Feature Highlights Chips */}
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-1">
+                  <div className="w-full max-w-sm sm:max-w-none flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2 pt-1">
                     {slide.highlights.map((highlight, idx) => (
                       <div
                         key={idx}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/85 border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs hover:border-slate-300 transition-all"
+                        className="w-full sm:w-auto flex sm:inline-flex items-center gap-2 sm:gap-1.5 px-3.5 py-2 sm:py-1.5 rounded-xl sm:rounded-lg bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs hover:border-slate-300 transition-all text-left"
                       >
                         <span
-                          className="w-4 h-4 rounded-full flex items-center justify-center text-white"
+                          className="w-4 h-4 rounded-full flex items-center justify-center text-white shrink-0"
                           style={{ backgroundColor: slide.themeColor }}
                         >
                           <Check size={10} strokeWidth={3} />
                         </span>
-                        <span>{highlight}</span>
+                        <span className="leading-snug break-words">{highlight}</span>
                       </div>
                     ))}
                   </div>

@@ -13,10 +13,6 @@ import {
   ArrowRight,
   Phone,
   Mail,
-  ShieldCheck,
-  Lock,
-  Activity,
-  FileCheck,
   Building2,
   Sparkles
 } from 'lucide-react';
@@ -54,7 +50,7 @@ export default function Footer({
   }, []);
 
   const metaPhone = content?.meta?.phone || '+91 9902863697';
-  const metaEmail = content?.meta?.email || 'contact@isarvait.com';
+  const metaEmail = content?.meta?.email || 'marketing@isarvait.com';
 
   return (
     <footer id="contact" className="relative overflow-hidden bg-gradient-to-b from-[#f8faf9] via-white to-[#f1f6f3] border-t border-[#d8eae1] pt-14 pb-10">
@@ -132,49 +128,6 @@ export default function Footer({
               >
                 <span>Talk to Our Team</span>
               </button>
-            </div>
-          </div>
-        </div>
-
-        {/* 2. ENTERPRISE TRUST & STATUTORY ACCREDITATION RIBBON */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pb-12 border-b border-slate-200/80">
-          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
-              <ShieldCheck size={18} strokeWidth={2.4} />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-slate-900 leading-tight">ISO/IEC 27001</div>
-              <div className="text-[11px] text-slate-500 font-medium">Certified Security</div>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
-              <FileCheck size={18} strokeWidth={2.4} />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-slate-900 leading-tight">GSTN & ZATCA</div>
-              <div className="text-[11px] text-slate-500 font-medium">Compliant e-Invoicing</div>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
-              <Lock size={18} strokeWidth={2.4} />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-slate-900 leading-tight">256-Bit SSL</div>
-              <div className="text-[11px] text-slate-500 font-medium">Bank-Grade Privacy</div>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-2 sm:gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200/70 shadow-2xs">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center shrink-0">
-              <Activity size={18} strokeWidth={2.4} />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-slate-900 leading-tight">99.9% Uptime SLA</div>
-              <div className="text-[11px] text-slate-500 font-medium">Enterprise Cloud</div>
             </div>
           </div>
         </div>

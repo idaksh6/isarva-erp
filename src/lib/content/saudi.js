@@ -7,7 +7,7 @@ export const saudiContent = {
     tagline: 'ZATCA Phase 2 Approved Cloud ERP & Touch POS',
     description: 'All-in-One Cloud ERP Platform with ZATCA (Fatoora) Phase 2 e-Invoicing, Bilingual Arabic/English Restaurant POS, BillSoft Accounting, HRMS with Saudi Labor Law, and CRM.',
     phone: '+91 9902863697',
-    email: 'contact@isarvait.com',
+    email: 'marketing@isarvait.com',
     address: 'Serving Saudi Arabia & GCC | Offices: Mangalore, Bangalore, Dubai (UAE) & UK',
     currency: 'SAR (ر.س)',
     phoneCode: '+966',

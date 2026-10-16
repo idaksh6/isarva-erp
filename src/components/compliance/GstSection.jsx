@@ -56,12 +56,12 @@ export default function GstSection({ gstData }) {
               {gstData?.checklist?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="relative flex items-center justify-center sm:justify-start p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group sm:gap-3 text-center sm:text-left"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group text-left"
                 >
-                  <div className="absolute left-3.5 sm:static w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
+                  <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
                     <Check size={13} strokeWidth={3.5} />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug px-8 sm:px-0 text-center sm:text-left">
+                  <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug text-left flex-1">
                     {item}
                   </span>
                 </div>

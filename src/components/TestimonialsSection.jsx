@@ -77,7 +77,7 @@ export default function TestimonialsSection({ testimonials }) {
         <div
           ref={mobileScrollRef}
           onScroll={handleMobileScroll}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 py-2 touch-pan-x no-scrollbar"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 py-2 overscroll-x-contain no-scrollbar touch-auto"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',

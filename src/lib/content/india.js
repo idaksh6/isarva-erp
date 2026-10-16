@@ -9,7 +9,7 @@ export const indiaContent = {
     tagline: 'Connected business software for billing, accounting, inventory, workforce management and customer relationships',
     description: 'ISARVA ERP helps businesses manage restaurant POS, GST accounting, inventory, payroll, HRMS and CRM in one integrated business management platform.',
     phone: '+91 9902863697',
-    email: 'contact@isarvait.com',
+    email: 'marketing@isarvait.com',
     address: 'Bajpe, Mangalore | Tech Park, Bangalore, Karnataka, India',
     currency: 'INR (₹)',
     phoneCode: '+91',

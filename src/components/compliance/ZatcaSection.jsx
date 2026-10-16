@@ -77,12 +77,12 @@ export default function ZatcaSection({ zatcaData }) {
               {checklistItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="relative flex items-center justify-center sm:justify-start py-2.5 px-3 sm:px-0 sm:py-0 rounded-xl bg-emerald-950/30 sm:bg-transparent border border-emerald-400/20 sm:border-0 group sm:gap-2.5 text-center sm:text-left"
+                  className="flex items-center gap-2.5 py-2.5 px-3 rounded-xl bg-emerald-950/30 sm:bg-transparent border border-emerald-400/20 sm:border-0 group text-left"
                 >
-                  <div className="absolute left-3.5 sm:static w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-xs font-black group-hover:scale-110 transition-transform">
+                  <div className="w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-xs font-black group-hover:scale-110 transition-transform">
                     <Check size={12} strokeWidth={3.5} />
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white leading-snug px-8 sm:px-0 text-center sm:text-left">
+                  <span className="text-xs sm:text-sm font-semibold text-white leading-snug text-left flex-1">
                     {item}
                   </span>
                 </div>
