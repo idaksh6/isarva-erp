@@ -99,11 +99,11 @@ const INDUSTRY_PALETTE = [
 function getGridClass(count) {
   if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-4 sm:gap-6';
   if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl mx-auto gap-4 sm:gap-6';
-  if (count === 4) return 'grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
-  if (count === 5) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
-  if (count === 6) return 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
-  if (count === 7 || count === 8) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
-  return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5';
+  if (count === 4) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
+  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
+  if (count === 6) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
+  if (count === 7 || count === 8) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
+  return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5';
 }
 
 export default function IndustriesSection({ industries }) {

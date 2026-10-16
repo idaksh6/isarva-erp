@@ -42,11 +42,11 @@ const ICON_MAP = {
 function getGridClass(count) {
   if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-4 sm:gap-6';
   if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl mx-auto gap-4 sm:gap-6';
-  if (count === 4) return 'grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
-  if (count === 5) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
-  if (count === 6) return 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
-  if (count === 7 || count === 8) return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
-  return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-5';
+  if (count === 4) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
+  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
+  if (count === 6) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
+  if (count === 7 || count === 8) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
+  return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-5';
 }
 
 export default function WhyChooseSection({ whyChoose }) {
@@ -60,21 +60,21 @@ export default function WhyChooseSection({ whyChoose }) {
 
   const formatTwoLineTitle = (title) => {
     if (!title) return '';
-    if (title === 'All-in-One ERP') return <>All-in-One<br />ERP</>;
-    if (title === 'GST Compliance') return <>GST<br />Compliance</>;
-    if (title === 'Multi-Branch Support') return <>Multi-Branch<br />Support</>;
-    if (title === 'Real-Time Reports') return <>Real-Time<br />Reports</>;
-    if (title === 'Cloud Based') return <>Cloud<br />Based</>;
-    if (title === 'Secure & Reliable') return <>Secure &<br />Reliable</>;
+    if (title === 'All-in-One ERP') return <>All-in-One<br className="hidden sm:inline" /> ERP</>;
+    if (title === 'GST Compliance') return <>GST<br className="hidden sm:inline" /> Compliance</>;
+    if (title === 'Multi-Branch Support') return <>Multi-Branch<br className="hidden sm:inline" /> Support</>;
+    if (title === 'Real-Time Reports') return <>Real-Time<br className="hidden sm:inline" /> Reports</>;
+    if (title === 'Cloud Based') return <>Cloud<br className="hidden sm:inline" /> Based</>;
+    if (title === 'Secure & Reliable') return <>Secure &<br className="hidden sm:inline" /> Reliable</>;
 
     const words = title.split(' ');
     if (words.length === 2) {
-      return <>{words[0]}<br />{words[1]}</>;
+      return <>{words[0]}<br className="hidden sm:inline" /> {words[1]}</>;
     } else if (words.length === 3 && words[1] === '&') {
-      return <>{words[0]} &<br />{words[2]}</>;
+      return <>{words[0]} &<br className="hidden sm:inline" /> {words[2]}</>;
     } else if (words.length > 2) {
       const mid = Math.ceil(words.length / 2);
-      return <>{words.slice(0, mid).join(' ')}<br />{words.slice(mid).join(' ')}</>;
+      return <>{words.slice(0, mid).join(' ')}<br className="hidden sm:inline" /> {words.slice(mid).join(' ')}</>;
     }
     return title;
   };
@@ -112,12 +112,12 @@ export default function WhyChooseSection({ whyChoose }) {
               </div>
 
               {/* Title */}
-              <h3 className="mb-1.5 min-h-12 flex items-center justify-center text-center">
+              <h3 className="mb-1.5 min-h-8 sm:min-h-12 flex items-center justify-center text-center">
                 <span>{formatTwoLineTitle(item.title)}</span>
               </h3>
 
-              {/* Description */}
-              <p className="line-clamp-3 text-center">
+              {/* Description without line-clamp truncation */}
+              <p className="text-center">
                 {item.description}
               </p>
             </div>

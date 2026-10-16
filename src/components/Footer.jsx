@@ -28,9 +28,6 @@ export default function Footer({
   onSelectCountry,
   onOpenModal
 }) {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
   const countries = content?.countries || [
     { code: 'IN', name: 'India', currency: 'INR (₹)', phoneCode: '+91', lang: 'English' },
     { code: 'SA', name: 'Saudi Arabia', currency: 'SAR (ر.س)', phoneCode: '+966', lang: 'العربية / English' }
@@ -55,14 +52,6 @@ export default function Footer({
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, []);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
-    setEmail('');
-    setTimeout(() => setSubscribed(false), 4000);
-  };
 
   const metaPhone = content?.meta?.phone || (selectedCountry.code === 'SA' ? '+966 50 123 4567' : '+91 98765 43210');
   const metaEmail = content?.meta?.email || 'contact@isarvait.com';
@@ -193,8 +182,8 @@ export default function Footer({
         {/* 3. MAIN 5-COLUMN EXPANDED NAVIGATION GRID */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 border-b border-slate-200/80">
           
-          {/* Column 1: Brand Info, Regional Hubs & Socials (4 cols) */}
-          <div className="lg:col-span-4 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
+          {/* Column 1: Brand Info, Regional Hubs & Socials (5 cols) */}
+          <div className="lg:col-span-5 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <Link href="/" className="inline-block">
               <img
                 src="/images/isarva-logo.png"
@@ -303,8 +292,8 @@ export default function Footer({
             </ul>
           </div>
 
-          {/* Column 4: Statutory & Compliance (2 cols) */}
-          <div className="lg:col-span-2 space-y-3 text-center lg:text-left">
+          {/* Column 4: Statutory & Compliance (3 cols) */}
+          <div className="lg:col-span-3 space-y-3 text-center lg:text-left">
             <h4>
               Compliance
             </h4>
@@ -317,49 +306,6 @@ export default function Footer({
               <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">Audit Trail & Logs</Link></li>
             </ul>
           </div>
-
-          {/* Column 5: Stay Connected & Newsletter (2 cols) */}
-          <div className="lg:col-span-2 space-y-3 text-center lg:text-left flex flex-col items-center lg:items-start">
-            <h4>
-              Stay Updated
-            </h4>
-            <div>
-              <p className="max-w-xs mx-auto lg:mx-0">
-                Subscribe to our newsletter for release notes and statutory tax updates.
-              </p>
-            </div>
-
-            {/* Newsletter Form */}
-            <form onSubmit={handleSubscribe} className="space-y-2 pt-1 w-full max-w-xs mx-auto lg:mx-0">
-              <div className="relative">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter work email"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#007a55] focus:ring-2 focus:ring-[#007a55]/15 transition-all shadow-2xs"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full py-2.5 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-xs shadow-xs hover:shadow-sm transition-all flex items-center justify-center gap-1.5"
-              >
-                {subscribed ? (
-                  <>
-                    <Check size={14} />
-                    <span>Subscribed Successfully</span>
-                  </>
-                ) : (
-                  <span>Subscribe Now</span>
-                )}
-              </button>
-              <div className="text-[11px] text-slate-400 font-medium pt-0.5 text-center lg:text-left">
-                🔒 No spam. Unsubscribe anytime.
-              </div>
-            </form>
-          </div>
-
         </div>
 
         {/* 4. SUB-FOOTER BOTTOM BAR */}
