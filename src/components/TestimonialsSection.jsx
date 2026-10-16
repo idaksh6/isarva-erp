@@ -89,9 +89,9 @@ export default function TestimonialsSection({ testimonials }) {
               key={idx}
               className="w-[86vw] max-w-[340px] shrink-0 snap-center"
             >
-              <div className="bg-white rounded-2xl border border-emerald-950/8 p-5 flex items-start gap-4 shadow-xs h-full">
-                {/* Circular Store / Restaurant Photo Avatar */}
-                <div className="w-14 h-14 min-w-[56px] min-h-[56px] max-w-[56px] max-h-[56px] rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100 relative">
+              <div className="bg-white rounded-2xl border border-emerald-950/8 p-5 sm:p-6 flex flex-col items-center text-center shadow-xs h-full">
+                {/* Circular Store / Restaurant Photo Avatar - Centered at Top */}
+                <div className="w-14 h-14 min-w-[56px] min-h-[56px] max-w-[56px] max-h-[56px] rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100 relative mb-3 mx-auto">
                   {item.avatarImage ? (
                     <img
                       src={getImageUrl(item.avatarImage)}
@@ -116,17 +116,17 @@ export default function TestimonialsSection({ testimonials }) {
                   </div>
                 </div>
 
-                {/* Testimonial Content */}
-                <div className="flex-1 min-w-0">
-                  <h3>
+                {/* Testimonial Content - Centered */}
+                <div className="w-full flex flex-col items-center text-center">
+                  <h3 className="text-center">
                     {item.name}
                   </h3>
-                  <div className="text-xs font-semibold text-slate-500 mt-0.5">
+                  <div className="text-xs font-semibold text-slate-500 mt-0.5 text-center">
                     {item.location}
                   </div>
 
-                  {/* 5 Rating Stars */}
-                  <div className="flex items-center gap-1 my-1.5">
+                  {/* 5 Rating Stars - Centered */}
+                  <div className="flex items-center justify-center gap-1 my-2">
                     {[...Array(item.rating || 5)].map((_, starIdx) => (
                       <Star
                         key={starIdx}
@@ -137,8 +137,8 @@ export default function TestimonialsSection({ testimonials }) {
                   </div>
 
                   {/* Quote Text */}
-                  <p className="italic">
-                    "{item.quote}"
+                  <p className="italic text-center">
+                    &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
               </div>
@@ -209,10 +209,10 @@ export default function TestimonialsSection({ testimonials }) {
               key={idx}
               className="w-[340px] lg:w-[420px] shrink-0"
             >
-              <div className="bg-white rounded-2xl sm:rounded-3xl border border-emerald-950/8 p-6 flex items-start gap-4 shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 h-full">
+              <div className="bg-white rounded-2xl sm:rounded-3xl border border-emerald-950/8 p-6 flex flex-col items-center text-center shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 h-full">
                 
-                {/* Circular Store / Restaurant Photo Avatar */}
-                <div className="w-14 h-14 sm:w-16 sm:h-16 min-w-[56px] min-h-[56px] sm:min-w-[64px] sm:min-h-[64px] max-w-[56px] max-h-[56px] sm:max-w-[64px] sm:max-h-[64px] rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100 relative">
+                {/* Circular Store / Restaurant Photo Avatar - Centered at Top */}
+                <div className="w-14 h-14 sm:w-16 sm:h-16 min-w-[56px] min-h-[56px] sm:min-w-[64px] sm:min-h-[64px] max-w-[56px] max-h-[56px] sm:max-w-[64px] sm:max-h-[64px] rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100 relative mb-3.5 mx-auto">
                   {item.avatarImage ? (
                     <img
                       src={getImageUrl(item.avatarImage)}
@@ -237,17 +237,17 @@ export default function TestimonialsSection({ testimonials }) {
                   </div>
                 </div>
 
-                {/* Testimonial Content */}
-                <div className="flex-1 min-w-0">
-                  <h3>
+                {/* Testimonial Content - Centered */}
+                <div className="w-full flex flex-col items-center text-center">
+                  <h3 className="text-center">
                     {item.name}
                   </h3>
-                  <div className="text-xs font-semibold text-slate-500 mt-0.5">
+                  <div className="text-xs font-semibold text-slate-500 mt-0.5 text-center">
                     {item.location}
                   </div>
 
-                  {/* 5 Rating Stars */}
-                  <div className="flex items-center gap-1 my-2">
+                  {/* 5 Rating Stars - Centered */}
+                  <div className="flex items-center justify-center gap-1 my-2">
                     {[...Array(item.rating || 5)].map((_, starIdx) => (
                       <Star
                         key={starIdx}
@@ -258,8 +258,8 @@ export default function TestimonialsSection({ testimonials }) {
                   </div>
 
                   {/* Quote Text */}
-                  <p className="italic">
-                    "{item.quote}"
+                  <p className="italic text-center">
+                    &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
 
