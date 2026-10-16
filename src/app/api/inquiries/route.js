@@ -3,12 +3,14 @@ import { getInquiries, addInquiry } from '../../../lib/content-store';
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'isarva2026';
 const CRM_API_URL = process.env.CRM_API_URL || process.env.CRM_WEBHOOK_URL || 'https://crm.isarva.in/api/leads';
+const CRM_CATEGORY_ID = parseInt(process.env.CRM_CATEGORY_ID || '1', 10);
 
 async function sendToCrm(inquiryData) {
   try {
-    const title = `ERP Inquiry - ${inquiryData.product || 'All-in-One ERP'} (${inquiryData.country || 'IN'})`;
+    const title = `[ERP Inquiries] ${inquiryData.product || 'All-in-One ERP'} (${inquiryData.country || 'IN'})`;
     const orgName = inquiryData.company || inquiryData.name || 'Individual / Business';
     const notes = [
+      'Category: ERP Inquiries',
       inquiryData.product ? `Interested Product: ${inquiryData.product}` : '',
       inquiryData.message ? `Requirements: ${inquiryData.message}` : '',
       inquiryData.country ? `Target Market: ${inquiryData.country}` : '',
@@ -22,7 +24,8 @@ async function sendToCrm(inquiryData) {
       mobile: inquiryData.phone,
       email: inquiryData.email || '',
       description: notes,
-      categories: 1
+      categories: CRM_CATEGORY_ID,
+      category_name: 'ERP Inquiries'
     };
 
     const res = await fetch(CRM_API_URL, {
