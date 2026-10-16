@@ -107,7 +107,7 @@ export default function WhyChooseSection({ whyChoose }) {
               className="bg-white rounded-2xl border border-emerald-950/8 p-5 sm:p-6 flex flex-col items-center text-center shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 group"
             >
               {/* Circular Mint Icon Container */}
-              <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#dcf5e9] text-[#007a55] flex items-center justify-center mb-3.5 group-hover:bg-[#007a55] group-hover:text-white group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#dcf5e9] text-[#007a55] flex items-center justify-center mb-3.5 group-hover:bg-[#007a55] group-hover:text-white group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
                 {getIcon(item.iconName)}
               </div>
 

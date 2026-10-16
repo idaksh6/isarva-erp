@@ -24,7 +24,8 @@ export default function TestimonialsSection({ testimonials }) {
     if (!mobileScrollRef.current) return;
     const { scrollLeft, clientWidth } = mobileScrollRef.current;
     if (clientWidth === 0) return;
-    const cardWidth = clientWidth * 0.88;
+    const firstCard = mobileScrollRef.current.children[0];
+    const cardWidth = firstCard ? firstCard.offsetWidth + 16 : clientWidth * 0.88;
     const newIdx = Math.round(scrollLeft / cardWidth);
     setActiveSlide(Math.min(Math.max(newIdx, 0), baseItems.length - 1));
   };
@@ -76,7 +77,7 @@ export default function TestimonialsSection({ testimonials }) {
         <div
           ref={mobileScrollRef}
           onScroll={handleMobileScroll}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 py-2 touch-pan-x"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 py-2 touch-pan-x no-scrollbar"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -90,12 +91,14 @@ export default function TestimonialsSection({ testimonials }) {
             >
               <div className="bg-white rounded-2xl border border-emerald-950/8 p-5 flex items-start gap-4 shadow-xs h-full">
                 {/* Circular Store / Restaurant Photo Avatar */}
-                <div className="w-13 h-13 rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100">
+                <div className="w-14 h-14 min-w-[56px] min-h-[56px] max-w-[56px] max-h-[56px] rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100 relative">
                   {item.avatarImage ? (
                     <img
                       src={getImageUrl(item.avatarImage)}
                       alt={item.name}
-                      className="w-full h-full object-cover"
+                      width={56}
+                      height={56}
+                      className="w-full h-full object-cover rounded-full block"
                       loading="lazy"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';
@@ -209,12 +212,14 @@ export default function TestimonialsSection({ testimonials }) {
               <div className="bg-white rounded-2xl sm:rounded-3xl border border-emerald-950/8 p-6 flex items-start gap-4 shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 h-full">
                 
                 {/* Circular Store / Restaurant Photo Avatar */}
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 min-w-[56px] min-h-[56px] sm:min-w-[64px] sm:min-h-[64px] max-w-[56px] max-h-[56px] sm:max-w-[64px] sm:max-h-[64px] rounded-full overflow-hidden shrink-0 border border-slate-100 shadow-xs bg-slate-100 relative">
                   {item.avatarImage ? (
                     <img
                       src={getImageUrl(item.avatarImage)}
                       alt={item.name}
-                      className="w-full h-full object-cover"
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover rounded-full block"
                       loading="lazy"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';

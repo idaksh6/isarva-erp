@@ -340,7 +340,11 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           
           {/* LEFT COLUMN: Expansive & Prominent Product Information, Highlights & CTAs */}
-          <div className="lg:col-span-7 xl:col-span-7 relative z-10 w-full min-h-[460px] sm:min-h-[440px] lg:min-h-[480px]">
+          <div
+            className="lg:col-span-7 xl:col-span-7 relative z-10 w-full min-h-[460px] sm:min-h-[440px] lg:min-h-[480px]"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {slides.map((slide, index) => {
               const isActive = index === activeSlideIndex;
               return (
