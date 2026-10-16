@@ -18,10 +18,10 @@ function FaqCard({ item, index, isOpen, onToggle }) {
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${index}`}
         id={`faq-btn-${index}`}
-        className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors group"
+        className="w-full min-h-[76px] sm:min-h-[84px] md:min-h-[96px] flex items-center justify-between gap-4 py-4 sm:py-5 px-5 sm:px-6 text-left cursor-pointer transition-colors group"
       >
         <span
-          className={`font-space font-bold text-base sm:text-lg pr-2 leading-snug transition-colors ${
+          className={`font-space font-bold text-base lg:text-lg pr-2 leading-snug transition-colors ${
             isOpen ? 'text-[#007a55]' : 'text-slate-900 group-hover:text-[#007a55]'
           }`}
         >
