@@ -198,20 +198,6 @@ export default function Footer({
               </p>
             </div>
 
-            {/* Regional Hubs Chip */}
-            <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs max-w-sm mx-auto lg:mx-0 text-left">
-              <Building2 size={16} className="text-[#007a55] shrink-0" />
-              <div className="text-xs text-slate-600 leading-snug">
-                <span className="font-bold text-slate-800">Regional Hubs:</span> India (Bangalore, Mumbai) & Middle East (Riyadh, Dubai)
-              </div>
-            </div>
-
-            {/* Live Operational Status */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>All Cloud Systems Operational (v2.8)</span>
-            </div>
-
             {/* Circular Social Icons */}
             <div className="flex items-center justify-center lg:justify-start gap-2.5 pt-1">
               <a
