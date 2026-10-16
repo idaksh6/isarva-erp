@@ -3,17 +3,62 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
+function FaqCard({ item, index, isOpen, onToggle }) {
+  return (
+    <div
+      className={`bg-white rounded-2xl border transition-all duration-200 shadow-2xs overflow-hidden ${
+        isOpen
+          ? 'border-[#007a55]/40 shadow-sm ring-1 ring-[#007a55]/20'
+          : 'border-slate-200/80 hover:border-slate-300'
+      }`}
+    >
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={`faq-answer-${index}`}
+        id={`faq-btn-${index}`}
+        className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors group"
+      >
+        <span className="font-space font-bold text-slate-900 text-base sm:text-lg pr-2 leading-snug group-hover:text-[#007a55] transition-colors">
+          {item.q}
+        </span>
+        <div
+          className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
+            isOpen
+              ? 'bg-emerald-50 text-[#007a55] rotate-180'
+              : 'bg-slate-100 text-slate-500 group-hover:bg-emerald-50/70 group-hover:text-[#007a55]'
+          }`}
+        >
+          <ChevronDown size={18} />
+        </div>
+      </button>
+
+      {isOpen && (
+        <div
+          id={`faq-answer-${index}`}
+          role="region"
+          aria-labelledby={`faq-btn-${index}`}
+          className="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100"
+        >
+          <p className="leading-relaxed">
+            {item.a}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function FaqSection({ faqs }) {
-  const [openIndices, setOpenIndices] = useState([]);
+  const [openIndex, setOpenIndex] = useState(null);
 
   if (!faqs || !faqs.items || faqs.items.length === 0) {
     return null;
   }
 
   const toggleAccordion = (index) => {
-    setOpenIndices((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
+    setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   const midPoint = Math.ceil(faqs.items.length / 2);
@@ -32,48 +77,6 @@ export default function FaqSection({ faqs }) {
         'text': item.a
       }
     }))
-  };
-
-  const renderFaqCard = (item, actualIndex) => {
-    const isOpen = openIndices.includes(actualIndex);
-    return (
-      <div
-        key={actualIndex}
-        className={`bg-white rounded-2xl border transition-all duration-200 shadow-2xs overflow-hidden ${
-          isOpen
-            ? 'border-[#007a55]/40 shadow-sm ring-1 ring-[#007a55]/20'
-            : 'border-slate-200/80 hover:border-slate-300'
-        }`}
-      >
-        <button
-          type="button"
-          onClick={() => toggleAccordion(actualIndex)}
-          aria-expanded={isOpen}
-          className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors group select-none"
-        >
-          <span className="font-space font-bold text-slate-900 text-base sm:text-lg pr-2 leading-snug group-hover:text-[#007a55] transition-colors pointer-events-none">
-            {item.q}
-          </span>
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 pointer-events-none ${
-              isOpen
-                ? 'bg-emerald-50 text-[#007a55] rotate-180'
-                : 'bg-slate-100 text-slate-500 group-hover:bg-emerald-50/70 group-hover:text-[#007a55]'
-            }`}
-          >
-            <ChevronDown size={18} />
-          </div>
-        </button>
-
-        {isOpen && (
-          <div className="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100 animate-fadeIn">
-            <p className="leading-relaxed">
-              {item.a}
-            </p>
-          </div>
-        )}
-      </div>
-    );
   };
 
   return (
@@ -107,10 +110,29 @@ export default function FaqSection({ faqs }) {
         {/* 2-Column Accordion Grid */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
           <div className="space-y-4">
-            {leftColumn.map((item, i) => renderFaqCard(item, i))}
+            {leftColumn.map((item, i) => (
+              <FaqCard
+                key={i}
+                item={item}
+                index={i}
+                isOpen={openIndex === i}
+                onToggle={() => toggleAccordion(i)}
+              />
+            ))}
           </div>
           <div className="space-y-4">
-            {rightColumn.map((item, i) => renderFaqCard(item, midPoint + i))}
+            {rightColumn.map((item, i) => {
+              const actualIndex = midPoint + i;
+              return (
+                <FaqCard
+                  key={actualIndex}
+                  item={item}
+                  index={actualIndex}
+                  isOpen={openIndex === actualIndex}
+                  onToggle={() => toggleAccordion(actualIndex)}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
