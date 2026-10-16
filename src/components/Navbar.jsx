@@ -12,6 +12,8 @@ import {
   BarChart3,
   Users2,
   Handshake,
+  Boxes,
+  Network,
   ArrowRight,
   Check
 } from 'lucide-react';
@@ -80,7 +82,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
               {/* Solutions Dropdown Menu */}
               {isSolutionsOpen && (
                 <div 
-                  className="absolute top-full -left-4 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 p-2.5 z-50 animate-fadeIn space-y-1"
+                  className="absolute top-full -left-4 w-80 bg-white rounded-2xl shadow-xl border border-slate-100 p-2.5 z-50 animate-fadeIn space-y-1"
                   onMouseEnter={() => setIsSolutionsOpen(true)}
                 >
                   <Link
@@ -88,12 +90,12 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     onClick={() => setIsSolutionsOpen(false)}
                     className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-50 transition-colors group"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
                       <UtensilsCrossed size={16} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-emerald-700">Restaurant POS</div>
-                      <div className="text-xs text-slate-500">Order, KDS & tables</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-emerald-700">Restaurant POS Software</div>
+                      <div className="text-xs text-slate-500">Order, KOT & table billing</div>
                     </div>
                   </Link>
 
@@ -102,11 +104,11 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     onClick={() => setIsSolutionsOpen(false)}
                     className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition-colors group"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
                       <BarChart3 size={16} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-blue-700">BillSoft Accounting</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-blue-700">BillSoft Accounting Software</div>
                       <div className="text-xs text-slate-500">GST, billing & ledger</div>
                     </div>
                   </Link>
@@ -116,12 +118,12 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     onClick={() => setIsSolutionsOpen(false)}
                     className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-purple-50 transition-colors group"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
                       <Users2 size={16} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-purple-700">HRMS</div>
-                      <div className="text-xs text-slate-500">Staff, payroll & leave</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-purple-700">HRMS & Payroll Software</div>
+                      <div className="text-xs text-slate-500">Staff, biometric & payroll</div>
                     </div>
                   </Link>
 
@@ -130,29 +132,57 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     onClick={() => setIsSolutionsOpen(false)}
                     className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-orange-50 transition-colors group"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
                       <Handshake size={16} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-orange-700">CRM</div>
-                      <div className="text-xs text-slate-500">Leads & pipeline</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-orange-700">CRM & Sales Management</div>
+                      <div className="text-xs text-slate-500">Leads & visual pipeline</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="#products"
+                    onClick={() => setIsSolutionsOpen(false)}
+                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-cyan-50 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center shrink-0">
+                      <Boxes size={16} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-cyan-700">Inventory & Warehouse</div>
+                      <div className="text-xs text-slate-500">Stock movements & reorders</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="#products"
+                    onClick={() => setIsSolutionsOpen(false)}
+                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-indigo-50 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
+                      <Network size={16} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-indigo-700">Multi-Branch Management</div>
+                      <div className="text-xs text-slate-500">Centralized operational visibility</div>
                     </div>
                   </Link>
                 </div>
               )}
             </div>
 
-            <Link href="#features" className="hover:text-brand-500 transition-colors">
-              Features
+            <Link href="#industries" className="hover:text-brand-500 transition-colors">
+              Industries
             </Link>
-            <Link href="#pricing" className="hover:text-brand-500 transition-colors">
-              Pricing
+            <Link href="#why-choose" className="hover:text-brand-500 transition-colors">
+              Features
             </Link>
             <Link href="#compliance" className="hover:text-brand-500 transition-colors">
               {selectedCountry.code === 'SA' ? 'ZATCA Compliance' : 'GST Compliance'}
             </Link>
-            <Link href="#about" className="hover:text-brand-500 transition-colors">
-              About Us
+            <Link href="#faqs" className="hover:text-brand-500 transition-colors">
+              FAQs
             </Link>
             <Link href="#contact" className="hover:text-brand-500 transition-colors">
               Contact
@@ -221,10 +251,10 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
 
             {/* Primary Action Button */}
             <button
-              onClick={() => onOpenModal('started')}
+              onClick={() => onOpenModal('demo')}
               className="btn-brand-primary"
             >
-              <span>Get Started</span>
+              <span>Book a Free Demo</span>
               <ArrowRight size={16} />
             </button>
           </div>
@@ -248,19 +278,28 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             Home
           </Link>
           <Link href="#restaurant-pos" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-emerald-600">
-            Restaurant POS
+            Restaurant POS Software
           </Link>
           <Link href="#billsoft" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-blue-600">
-            BillSoft Accounting
+            BillSoft Accounting Software
           </Link>
           <Link href="#hrms" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-purple-600">
-            HRMS
+            HRMS & Payroll Software
           </Link>
           <Link href="#crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-orange-600">
-            CRM
+            CRM & Sales Management
+          </Link>
+          <Link href="#products" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-cyan-600">
+            Inventory & Warehouse Management
+          </Link>
+          <Link href="#industries" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            Industries
           </Link>
           <Link href="#compliance" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
             {selectedCountry.code === 'SA' ? 'ZATCA Compliance' : 'GST Compliance'}
+          </Link>
+          <Link href="#faqs" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            FAQs
           </Link>
 
           {/* Mobile Region Switcher */}
@@ -294,11 +333,11 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                onOpenModal('started');
+                onOpenModal('demo');
               }}
               className="btn-brand-primary w-full"
             >
-              Get Started
+              Book a Free Demo
             </button>
           </div>
         </div>

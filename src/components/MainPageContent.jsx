@@ -9,6 +9,7 @@ import WhyChooseSection from './WhyChooseSection';
 import ComplianceSection from './compliance/ComplianceSection';
 import IndustriesSection from './IndustriesSection';
 import TestimonialsSection from './TestimonialsSection';
+import FaqSection from './FaqSection';
 import Footer from './Footer';
 import LeadModal from './LeadModal';
 import { getDefaultContentForCountry } from '../lib/content';
@@ -123,6 +124,9 @@ export default function MainPageContent({ initialCountry = 'IN' }) {
 
       {/* Customer Testimonials Section */}
       <TestimonialsSection testimonials={content.testimonials} />
+
+      {/* Frequently Asked Questions Accordion */}
+      <FaqSection faqs={content.faqs} />
 
       {/* Global Footer with Live Country Switcher */}
       <Footer

@@ -88,13 +88,13 @@ export default function ProductsSection({ products, onOpenModal }) {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-eyebrow">
-            OUR PRODUCTS
+            PRODUCTS & SOLUTIONS
           </div>
           <h2>
-            Complete Business Management Platform
+            Complete Business Management Solutions for Every Stage of Growth
           </h2>
           <p>
-            Everything you need to run and grow your business, in one integrated ERP solution.
+            Manage essential business activities with connected solutions for billing, accounting, workforce management, sales and inventory. Choose the modules your business needs and build a more organized way of working.
           </p>
         </div>
 

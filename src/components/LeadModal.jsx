@@ -133,18 +133,20 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
                 >
                   <option value="All-in-One ERP">All-in-One ERP Platform</option>
-                  <option value="Restaurant POS">Restaurant POS System</option>
-                  <option value="BillSoft Accounting">BillSoft Accounting & GST</option>
-                  <option value="HRMS">HRMS & Payroll</option>
-                  <option value="CRM">CRM & Sales Pipeline</option>
+                  <option value="Restaurant POS Software">Restaurant POS Software</option>
+                  <option value="BillSoft Accounting Software">BillSoft Accounting Software</option>
+                  <option value="HRMS & Payroll Software">HRMS & Payroll Software</option>
+                  <option value="CRM & Sales Management">CRM & Sales Management</option>
+                  <option value="Inventory & Warehouse Management">Inventory & Warehouse Management</option>
+                  <option value="Multi-Branch Management">Multi-Branch Management</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Special Requirements / Notes (Optional)</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Business Requirements / Branches (Optional)</label>
                 <textarea
                   rows="2"
-                  placeholder="Number of branches, POS terminals, current software..."
+                  placeholder="Number of branches, team size, current software..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
@@ -157,7 +159,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                 className="btn-brand-primary w-full py-3.5 text-base mt-2"
               >
                 <Send size={16} />
-                <span>{loading ? 'Submitting...' : 'Submit Request'}</span>
+                <span>{loading ? 'Submitting...' : 'Request a Demo'}</span>
               </button>
             </form>
           </div>

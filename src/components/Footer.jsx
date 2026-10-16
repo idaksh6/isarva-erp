@@ -82,13 +82,13 @@ export default function Footer({
 
               <div>
                 <h3>
-                  Transform Your Business with ISARVA ERP Today
+                  Ready to Simplify Your Business Operations?
                 </h3>
               </div>
 
               <div>
                 <p className="max-w-2xl">
-                  Join hundreds of growing restaurants, retail stores, and commercial enterprises managing billing, statutory compliance, HRMS payroll, and sales pipelines on one unified cloud platform.
+                  Discover how ISARVA ERP can help organize your billing, accounting, inventory, workforce and sales processes. Let&apos;s find the right solutions for your business.
                 </p>
               </div>
 
@@ -121,7 +121,7 @@ export default function Footer({
                   boxShadow: '0 8px 20px -4px rgba(0, 122, 85, 0.35)'
                 }}
               >
-                <span>Book 1-on-1 Personalized Demo</span>
+                <span>Book a Free Demo</span>
                 <ArrowRight size={16} />
               </button>
 
@@ -130,7 +130,7 @@ export default function Footer({
                 onClick={() => onOpenModal ? onOpenModal('contact') : null}
                 className="w-full sm:w-auto lg:w-full px-6 py-3.5 rounded-full bg-slate-100/80 hover:bg-slate-100 text-slate-800 font-bold text-sm border border-slate-200 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2"
               >
-                <span>Talk to ERP Specialist</span>
+                <span>Talk to Our Team</span>
               </button>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default function Footer({
 
             <div>
               <p className="max-w-sm mx-auto lg:mx-0">
-                Next-generation ERP platform built for restaurants, retail chains, and growing enterprises. Integrating POS billing, GST & ZATCA e-invoicing, HRMS payroll, and sales CRM in one unified ecosystem.
+                Connected business software for billing, accounting, inventory, workforce management and customer relationships.
               </p>
             </div>
 
@@ -262,18 +262,18 @@ export default function Footer({
             </div>
           </div>
 
-          {/* Column 2: ERP Modules (2 cols) */}
+          {/* Column 2: ERP Solutions (2 cols) */}
           <div className="lg:col-span-2 space-y-3 text-center lg:text-left">
             <h4>
-              ERP Modules
+              Solutions
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#restaurant-pos" className="hover:text-[#007a55] transition-colors">Restaurant POS & KDS</Link></li>
-              <li><Link href="#billsoft" className="hover:text-[#007a55] transition-colors">BillSoft Invoicing</Link></li>
+              <li><Link href="#restaurant-pos" className="hover:text-[#007a55] transition-colors">Restaurant POS</Link></li>
+              <li><Link href="#billsoft" className="hover:text-[#007a55] transition-colors">BillSoft Accounting</Link></li>
               <li><Link href="#hrms" className="hover:text-[#007a55] transition-colors">HRMS & Payroll</Link></li>
-              <li><Link href="#crm" className="hover:text-[#007a55] transition-colors">Sales & Lead CRM</Link></li>
-              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Inventory Control</Link></li>
-              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Multi-Branch Sync</Link></li>
+              <li><Link href="#crm" className="hover:text-[#007a55] transition-colors">CRM & Sales</Link></li>
+              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Inventory Management</Link></li>
+              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Multi-Branch Management</Link></li>
             </ul>
           </div>
 
@@ -283,27 +283,26 @@ export default function Footer({
               Industries
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Fine Dining & QSR</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Supermarkets & Retail</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Restaurants & Cafés</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Retail & Supermarkets</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Wholesale & Distribution</Link></li>
               <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Apparel & Boutiques</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Wholesale & Trade</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Healthcare & Clinics</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Corporate Enterprises</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Corporate Businesses</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Statutory & Compliance (3 cols) */}
           <div className="lg:col-span-3 space-y-3 text-center lg:text-left">
             <h4>
-              Compliance
+              Resources & Compliance
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing (IRN)</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">e-Way Bill Integration</Link></li>
+              <li><Link href="#faqs" className="hover:text-[#007a55] transition-colors">FAQs & Knowledge Base</Link></li>
+              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing & IRN</Link></li>
+              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">e-Way Bill Workflows</Link></li>
               <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">Saudi ZATCA Phase 2</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">TDS & TCS Calculations</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">GSTR-1, 3B Reconciliation</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">Audit Trail & Logs</Link></li>
+              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">Tax & GSTR Reports</Link></li>
+              <li><Link href="#contact" className="hover:text-[#007a55] transition-colors">Implementation & Support</Link></li>
             </ul>
           </div>
         </div>

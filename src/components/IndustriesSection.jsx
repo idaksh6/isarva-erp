@@ -199,9 +199,16 @@ export default function IndustriesSection({ industries }) {
                 </div>
 
                 {/* Industry name */}
-                <h3 className="mb-2.5 text-center">
+                <h3 className="mb-2 text-center">
                   {ind.name}
                 </h3>
+
+                {/* Industry description */}
+                {ind.description && (
+                  <p className="mb-4 text-center">
+                    {ind.description}
+                  </p>
+                )}
 
                 {/* Sector tag pill */}
                 <span

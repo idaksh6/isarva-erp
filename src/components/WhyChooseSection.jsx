@@ -60,19 +60,14 @@ export default function WhyChooseSection({ whyChoose }) {
 
   const formatTwoLineTitle = (title) => {
     if (!title) return '';
-    if (title === 'All-in-One ERP') return <>All-in-One<br className="hidden sm:inline" /> ERP</>;
-    if (title === 'GST Compliance') return <>GST<br className="hidden sm:inline" /> Compliance</>;
-    if (title === 'Multi-Branch Support') return <>Multi-Branch<br className="hidden sm:inline" /> Support</>;
-    if (title === 'Real-Time Reports') return <>Real-Time<br className="hidden sm:inline" /> Reports</>;
-    if (title === 'Cloud Based') return <>Cloud<br className="hidden sm:inline" /> Based</>;
-    if (title === 'Secure & Reliable') return <>Secure &<br className="hidden sm:inline" /> Reliable</>;
-
     const words = title.split(' ');
-    if (words.length === 2) {
-      return <>{words[0]}<br className="hidden sm:inline" /> {words[1]}</>;
-    } else if (words.length === 3 && words[1] === '&') {
-      return <>{words[0]} &<br className="hidden sm:inline" /> {words[2]}</>;
-    } else if (words.length > 2) {
+    if (words.length <= 2) {
+      return title;
+    } else if (words.length === 3) {
+      return <>{words[0]} {words[1]}<br className="hidden sm:inline" /> {words[2]}</>;
+    } else if (words.length === 4) {
+      return <>{words[0]} {words[1]}<br className="hidden sm:inline" /> {words[2]} {words[3]}</>;
+    } else if (words.length > 4) {
       const mid = Math.ceil(words.length / 2);
       return <>{words.slice(0, mid).join(' ')}<br className="hidden sm:inline" /> {words.slice(mid).join(' ')}</>;
     }
@@ -80,7 +75,8 @@ export default function WhyChooseSection({ whyChoose }) {
   };
 
   return (
-    <section id="features" className="relative section-padding bg-gradient-to-b from-[#f0f8f4] via-[#e7f4ee] to-[#f2f9f5] border-y border-[#d3eade]/70 overflow-hidden">
+    <section id="why-choose" className="relative section-padding bg-gradient-to-b from-[#f0f8f4] via-[#e7f4ee] to-[#f2f9f5] border-y border-[#d3eade]/70 overflow-hidden scroll-mt-20">
+      <span id="features" className="absolute -top-24" />
       {/* Soft Ambient Glow Orbs */}
       <div className="absolute -top-32 left-1/4 w-96 h-96 bg-emerald-200/25 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 right-1/4 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl pointer-events-none" />

@@ -36,18 +36,18 @@ export default function GstSection({ gstData }) {
               </span>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100/90 border border-emerald-300/80 text-[10px] font-bold text-emerald-900 tracking-wide uppercase shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-                Live GSTN Sync
+                Indian GST Workflows
               </span>
             </div>
 
             {/* Main Section Heading */}
             <div>
               <h2>
-                {gstData?.title || 'Built for Indian Businesses'}
+                {gstData?.title || 'Simplify GST Invoicing and Financial Compliance Workflows'}
               </h2>
               <p className="mt-2 max-w-xl mx-auto lg:mx-0">
                 {gstData?.subtitle ||
-                  'ISARVA ERP is fully compliant with Indian GST regulations, including e-invoicing, e-way bill and all statutory requirements.'}
+                  'Manage invoicing and accounting activities with tools designed to support relevant Indian GST workflows. Organize transaction records, review tax-related reports and prepare the information needed for your compliance processes.'}
               </p>
             </div>
 
@@ -72,15 +72,15 @@ export default function GstSection({ gstData }) {
             <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-950/8">
               <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <ShieldCheck size={15} className="text-[#007a55]" />
-                <span>100% Statutory Compliant</span>
+                <span>GST-Ready Invoicing</span>
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <Zap size={15} className="text-[#007a55]" />
-                <span>1-Click IRN & QR Code</span>
+                <span>IRN & QR Code Support</span>
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
                 <FileText size={15} className="text-[#007a55]" />
-                <span>Direct GSTN Validated</span>
+                <span>Audit Trail & Tax Summaries</span>
               </div>
             </div>
 

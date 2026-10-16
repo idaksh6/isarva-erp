@@ -224,5 +224,45 @@ export const saudiContent = {
         avatarImage: '/images/hero-crm-isarva.jpg'
       }
     ]
+  },
+  faqs: {
+    badge: 'FREQUENTLY ASKED QUESTIONS',
+    title: 'Common Questions About ISARVA ERP',
+    subtitle: 'Find clear answers about platform capabilities, modules, multi-branch operations and ZATCA compliance.',
+    items: [
+      {
+        q: 'What is ISARVA ERP?',
+        a: 'ISARVA ERP is a business management platform offering solutions for restaurant POS, accounting, inventory, HRMS, payroll and CRM. Available modules can help businesses organize daily operations and reporting.'
+      },
+      {
+        q: 'Who can use ISARVA ERP?',
+        a: 'Restaurants, cafés, retail stores, wholesalers and multi-branch organizations can explore relevant modules based on their operational needs.'
+      },
+      {
+        q: 'Does ISARVA ERP support ZATCA Phase 2 e-invoicing?',
+        a: 'Yes, ISARVA ERP generates compliant Phase 2 e-invoices with cryptographic stamps, UBL 2.1 XML output, and ZATCA-compliant QR codes for standard and simplified tax invoices.'
+      },
+      {
+        q: 'Can I manage multiple branches?',
+        a: 'Multi-branch management is intended to provide centralized visibility into supported business operations. Branch-level access, consolidation and synchronization depend on your configuration.'
+      },
+      {
+        q: 'Does ISARVA ERP include payroll and attendance?',
+        a: 'The HRMS solution is designed to support employee records, WPS-compliant payroll generation, attendance, leave, and Saudi labor law workflows.'
+      },
+      {
+        q: 'Can I use only one module?',
+        a: 'You can enquire about individual solutions such as Restaurant POS, BillSoft Accounting, HRMS or CRM. The sales team can confirm available standalone packages and integration options.'
+      },
+      {
+        q: 'How can I get a demo?',
+        a: 'Submit your business details through the contact form and select the solution you want to explore. The team can then discuss your requirements and arrange a suitable demonstration.'
+      },
+      {
+        q: 'Is ISARVA ERP bilingual with Arabic support?',
+        a: 'Yes, ISARVA ERP features full Arabic and English bilingual UI, RTL layout support, and bilingual receipts and tax invoices compliant with Saudi standards.'
+      }
+    ]
   }
 };
+
