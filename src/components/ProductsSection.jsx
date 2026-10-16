@@ -81,10 +81,104 @@ export default function ProductsSection({ header, products, onOpenModal }) {
     }
   };
 
+  // Helper to ensure subtitles wrap onto the below line so all cards align horizontally
+  const renderSubtitle = (subtitle) => {
+    if (!subtitle) return '';
+    if (typeof subtitle !== 'string') return subtitle;
+
+    // Handle existing explicit newlines
+    if (subtitle.includes('\n')) {
+      const parts = subtitle.split('\n');
+      return parts.map((part, index) => (
+        <React.Fragment key={index}>
+          {part}
+          {index < parts.length - 1 && <br />}
+        </React.Fragment>
+      ));
+    }
+
+    const trimmed = subtitle.trim();
+
+    // Specific product subtitle matches to ensure 2 lines across all 4 cards
+    if (trimmed === 'Complete Accounting Solution') {
+      return (
+        <>
+          Complete Accounting
+          <br />
+          Solution
+        </>
+      );
+    }
+    if (trimmed === 'Human Resource Management') {
+      return (
+        <>
+          Human Resource
+          <br />
+          Management
+        </>
+      );
+    }
+    if (trimmed === 'Complete Restaurant Management') {
+      return (
+        <>
+          Complete Restaurant
+          <br />
+          Management
+        </>
+      );
+    }
+    if (trimmed === 'Customer Relationship Management') {
+      return (
+        <>
+          Customer Relationship
+          <br />
+          Management
+        </>
+      );
+    }
+
+    // Generic 3-word subtitle: wrap the 3rd word onto the below line
+    const words = trimmed.split(/\s+/);
+    if (words.length === 3) {
+      return (
+        <>
+          {words[0]} {words[1]}
+          <br />
+          {words[2]}
+        </>
+      );
+    }
+
+    // 4 words: 2 words on first line, 2 words on second line
+    if (words.length === 4) {
+      return (
+        <>
+          {words[0]} {words[1]}
+          <br />
+          {words[2]} {words[3]}
+        </>
+      );
+    }
+
+    // 5 or 6 words: split evenly
+    if (words.length >= 5 && words.length <= 6) {
+      const mid = Math.ceil(words.length / 2);
+      return (
+        <>
+          {words.slice(0, mid).join(' ')}
+          <br />
+          {words.slice(mid).join(' ')}
+        </>
+      );
+    }
+
+    return subtitle;
+  };
+
   return (
     <section id="products" className="section-padding bg-slate-50/60 border-t border-slate-100">
       <div className="site-container">
-        
+
         {/* Section Header */}
         <div className="section-header">
           <div className="section-eyebrow">
@@ -113,19 +207,17 @@ export default function ProductsSection({ header, products, onOpenModal }) {
               >
                 <div>
                   {/* Card Header: Icon + Title & Subtitle */}
-                  <div className="flex items-center gap-3.5 mb-5 min-h-[64px]">
+                  <div className="flex items-center gap-3.5 mb-5">
                     <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-sm`}>
                       {getProductIcon(product.iconName)}
                     </div>
-                    <div className="min-w-0 flex-1 flex flex-col justify-center">
+                    <div className="min-w-0 flex-1">
                       <h3 className="truncate">
                         {product.title}
                       </h3>
-                      <div className="min-h-[2.6rem] flex items-center whitespace-pre-line">
-                        <p className="mt-0.5">
-                          {product.subtitle}
-                        </p>
-                      </div>
+                      <p className="mt-0.5">
+                        {renderSubtitle(product.subtitle)}
+                      </p>
                     </div>
                   </div>
 
