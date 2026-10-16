@@ -49,7 +49,7 @@ export default function TaxInvoiceGraphic() {
           </div>
           <div className="text-right sm:text-left">
             <span className="text-slate-400 block text-[10px] uppercase font-semibold">Billed To (Client)</span>
-            <div className="font-semibold text-slate-800 truncate">Spice Garden Pvt Ltd</div>
+            <div className="font-semibold text-slate-800">Spice Garden Pvt Ltd</div>
             <div className="font-mono text-slate-500 text-[10px]">27AABCS1234D1Z5</div>
           </div>
         </div>
@@ -65,13 +65,13 @@ export default function TaxInvoiceGraphic() {
 
           <div className="divide-y divide-slate-50 text-[11px]">
             <div className="grid grid-cols-12 gap-1 py-1.5 items-center">
-              <div className="col-span-5 font-medium text-slate-800 truncate">Restaurant POS</div>
+              <div className="col-span-5 font-medium text-slate-800">Restaurant POS</div>
               <div className="col-span-2 text-center text-slate-500 font-mono text-[10px]">9983</div>
               <div className="col-span-2 text-center text-slate-600">1</div>
               <div className="col-span-3 text-right font-mono text-slate-800 font-medium">₹8,000.00</div>
             </div>
             <div className="grid grid-cols-12 gap-1 py-1.5 items-center">
-              <div className="col-span-5 font-medium text-slate-800 truncate">HRMS Module</div>
+              <div className="col-span-5 font-medium text-slate-800">HRMS Module</div>
               <div className="col-span-2 text-center text-slate-500 font-mono text-[10px]">9983</div>
               <div className="col-span-2 text-center text-slate-600">1</div>
               <div className="col-span-3 text-right font-mono text-slate-800 font-medium">₹5,000.00</div>
@@ -105,8 +105,8 @@ export default function TaxInvoiceGraphic() {
             <div className="text-[10px] font-mono text-slate-400 uppercase tracking-tight">
               IRN Reference Hash
             </div>
-            <div className="font-mono text-[10px] text-slate-600 bg-slate-100 px-2 py-1 rounded truncate border border-slate-200/80">
-              7a9bc3f28d1045a19c...e12d8a4
+            <div className="font-mono text-[10px] text-slate-600 bg-slate-100 px-2 py-1 rounded border border-slate-200/80 break-all">
+              7a9bc3f28d1045a19ce12d8a4
             </div>
             <div className="flex flex-wrap gap-1.5 pt-0.5">
               <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">

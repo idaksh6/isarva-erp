@@ -516,16 +516,16 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                       {/* Bottom Slide Info & Metric Badge 2 */}
                       <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-20 pointer-events-none flex items-end justify-between gap-2">
                         {/* Solution Capsule (Light Background matching other badges) */}
-                        <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10 max-w-[62%] sm:max-w-[65%] truncate">
+                        <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white/95 text-slate-900 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-900/10">
                           <span
                             className="w-2 h-2 rounded-full shrink-0"
                             style={{ backgroundColor: slide.themeColor }}
                           />
-                          <div className="truncate">
-                            <div className="text-[11px] sm:text-xs font-bold leading-tight text-slate-900 truncate">
+                          <div>
+                            <div className="text-[11px] sm:text-xs font-bold leading-tight text-slate-900 whitespace-nowrap">
                               {slide.tabLabel}
                             </div>
-                            <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-none truncate mt-0.5">
+                            <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-none whitespace-nowrap mt-0.5">
                               {slide.highlights[0]}
                             </div>
                           </div>

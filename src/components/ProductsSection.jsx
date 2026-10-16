@@ -120,7 +120,7 @@ export default function ProductsSection({ products, onOpenModal }) {
                       <h3>
                         {product.title}
                       </h3>
-                      <p className="mt-0.5 line-clamp-1">
+                      <p className="mt-0.5">
                         {product.subtitle}
                       </p>
                     </div>

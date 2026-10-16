@@ -49,7 +49,7 @@ export default function ZatcaGraphic() {
           </div>
           <div className="text-right">
             <span className="text-slate-400 block text-[10px] uppercase font-semibold">العميل / Billed To</span>
-            <div className="font-semibold text-slate-800 truncate">Al-Diwan Gourmet LLC</div>
+            <div className="font-semibold text-slate-800">Al-Diwan Gourmet LLC</div>
             <div className="font-mono text-slate-500 text-[10px]">CR: 1010892341</div>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function ZatcaGraphic() {
         <div className="pt-2.5 mt-2.5 border-t border-dashed border-slate-200 flex items-center justify-between text-[10px]">
           <div className="flex items-center gap-1.5 text-slate-500 font-mono">
             <span className="text-slate-400">UUID:</span>
-            <span className="truncate max-w-[120px]">e4b2-91fa-8021</span>
+            <span>e4b2-91fa-8021</span>
           </div>
           <span className="inline-flex items-center gap-1 font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full whitespace-nowrap">
             <ShieldCheck size={12} className="text-emerald-600" />

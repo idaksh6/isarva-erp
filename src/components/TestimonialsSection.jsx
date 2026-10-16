@@ -118,7 +118,7 @@ export default function TestimonialsSection({ testimonials }) {
 
                 {/* Testimonial Content */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="truncate">
+                  <h3>
                     {item.name}
                   </h3>
                   <div className="text-xs font-semibold text-slate-500 mt-0.5">
@@ -137,7 +137,7 @@ export default function TestimonialsSection({ testimonials }) {
                   </div>
 
                   {/* Quote Text */}
-                  <p className="italic line-clamp-3">
+                  <p className="italic">
                     "{item.quote}"
                   </p>
                 </div>
@@ -239,7 +239,7 @@ export default function TestimonialsSection({ testimonials }) {
 
                 {/* Testimonial Content */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="truncate">
+                  <h3>
                     {item.name}
                   </h3>
                   <div className="text-xs font-semibold text-slate-500 mt-0.5">
@@ -258,7 +258,7 @@ export default function TestimonialsSection({ testimonials }) {
                   </div>
 
                   {/* Quote Text */}
-                  <p className="italic line-clamp-3">
+                  <p className="italic">
                     "{item.quote}"
                   </p>
                 </div>
