@@ -626,23 +626,6 @@
   will-change: transform, opacity;
 }
 
-@keyframes heroTabProgress {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-.hero-tab-progress {
-  animation: heroTabProgress 5000ms linear forwards;
-}
-
-.hero-tab-progress.paused {
-  animation-play-state: paused;
-}
-
 
 /* Saudi Arabia ZATCA Dark Emerald Compliance Section Typography */
 .section-saudi-zatca h1,

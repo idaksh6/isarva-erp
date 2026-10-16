@@ -306,7 +306,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     tabButtonRefs.current[index] = el;
                   }}
                   onClick={() => setActiveSlideIndex(index)}
-                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 overflow-hidden ${
+                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
                     isActive
                       ? 'bg-white text-slate-900 shadow-md shadow-slate-900/10 scale-[1.02] border'
                       : 'bg-white/60 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/60'
@@ -317,7 +317,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                 >
                   {/* Color dot / icon */}
                   <span
-                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors relative z-10 ${
+                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
                       isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-900'
                     }`}
                     style={{
@@ -327,20 +327,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     <IconComponent size={13} strokeWidth={2.5} />
                   </span>
 
-                  <span className="relative z-10">{slide.tabLabel}</span>
-
-                  {/* Active Tab Animated Timer Progress Indicator */}
-                  {isActive && (
-                    <span
-                      key={`progress-${slide.id}-${activeSlideIndex}`}
-                      className={`hero-tab-progress absolute bottom-0 left-0 h-[2.5px] rounded-full pointer-events-none ${
-                        isPaused ? 'paused' : ''
-                      }`}
-                      style={{
-                        backgroundColor: slide.themeColor
-                      }}
-                    />
-                  )}
+                  <span>{slide.tabLabel}</span>
                 </button>
               );
             })}
