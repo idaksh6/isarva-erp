@@ -35,7 +35,136 @@ export const saudiContent = {
       totalSales: 'SAR 48,920',
       totalCustomers: '840',
       gstTag: 'ZATCA Phase 2 Fatoora Compliant'
-    }
+    },
+    slides: [
+      {
+        id: 'overview',
+        tabLabel: 'All Solutions',
+        badge: 'ZATCA PHASE 2 APPROVED ERP & POS',
+        headlineMain: 'Next-Generation Cloud ERP &',
+        headlineHighlight: 'ZATCA e-Invoicing Suite',
+        subheadline: 'Empower your restaurant, retail, and commercial enterprise in Saudi Arabia with ISARVA ERP. Fully certified for ZATCA (Fatoora) Phase 2 integration, Phase 1 QR generation, bilingual Arabic/English touch POS, BillSoft Accounting, HRMS, and CRM.',
+        primaryCtaText: 'Get Started in Saudi Arabia',
+        secondaryCtaText: 'Book ZATCA Demo',
+        image: '/images/hero-erp-overview.jpg',
+        imageAlt: 'ISARVA Cloud ERP Multi-Device Workspace Dashboard and Bilingual Touch POS',
+        highlights: [
+          'Single Unified Cloud Database',
+          'Multi-Branch & Real-Time Sync',
+          'ZATCA Phase 2 Fatoora Integration'
+        ],
+        floatingMetric1: {
+          title: 'ZATCA Phase 2',
+          subtitle: 'Saudi Fatoora Ready',
+          flag: 'SA'
+        },
+        floatingMetric2: {
+          title: '500+ GCC Businesses',
+          subtitle: '99.9% Cloud Uptime'
+        }
+      },
+      {
+        id: 'restaurant-pos',
+        tabLabel: 'Restaurant POS',
+        badge: 'RESTAURANT & FOOD SERVICE POS',
+        headlineMain: 'Bilingual Touch Billing &',
+        headlineHighlight: 'Kitchen Display (KDS)',
+        subheadline: 'Accelerate dine-in, takeaway, and delivery orders with bilingual Arabic and English POS. Generate ZATCA Phase 2 compliant QR receipts, manage floor tables, recipe costing, and kitchen display systems (KDS).',
+        primaryCtaText: 'Explore Saudi POS',
+        secondaryCtaText: 'Book POS Demo',
+        image: '/images/hero-restaurant-pos.jpg',
+        imageAlt: 'ISARVA Bilingual Restaurant Touch POS Terminal and KDS',
+        highlights: [
+          'Bilingual Arabic & English Touch Billing',
+          'ZATCA Simplified Tax Invoices with QR Code',
+          'Kitchen Display System (KDS) & Multi-Station KOT'
+        ],
+        floatingMetric1: {
+          title: '3-Sec Order Dispatch',
+          subtitle: 'Instant Kitchen KOT Sync'
+        },
+        floatingMetric2: {
+          title: 'Zero Order Leakage',
+          subtitle: 'Table Turnover +35%'
+        }
+      },
+      {
+        id: 'billsoft',
+        tabLabel: 'BillSoft Accounting',
+        badge: 'ACCOUNTING & ZATCA COMPLIANCE',
+        headlineMain: 'Automated ZATCA Phase 2 e-Invoicing &',
+        headlineHighlight: 'Financial Accounting',
+        subheadline: 'Generate bilingual Arabic/English tax invoices with cryptographic stamps, UUIDs, and ZATCA compliance checks in real time. Full ledger, VAT 15% return filing, stock inventory, and multi-branch balance sheets.',
+        primaryCtaText: 'Explore BillSoft',
+        secondaryCtaText: 'Book Accounting Demo',
+        image: '/images/hero-billsoft.jpg',
+        imageAlt: 'BillSoft Financial Accounting and ZATCA Phase 2 e-Invoicing Dashboard',
+        highlights: [
+          'ZATCA Phase 2 API Direct Integration',
+          'Live Stock Valuation & Reorder Alerts',
+          'Multi-Branch Consolidated Ledgers'
+        ],
+        floatingMetric1: {
+          title: 'ZATCA Certified',
+          subtitle: 'Phase 2 Fatoora Validated',
+          flag: 'SA'
+        },
+        floatingMetric2: {
+          title: 'Instant Financials',
+          subtitle: 'Live P&L & Balance Sheet'
+        }
+      },
+      {
+        id: 'hrms',
+        tabLabel: 'HRMS',
+        badge: 'SAUDI LABOR LAW & WORKFORCE',
+        headlineMain: 'Streamlined GOSI, WPS Payroll &',
+        headlineHighlight: 'People Operations',
+        subheadline: 'Automate WPS salary file generation, GOSI contributions, Iqama expiry alerts, biometric attendance, end-of-service benefits (EOSB) calculation, and employee self-service mobile app compliant with Saudi Labor Law.',
+        primaryCtaText: 'Explore Saudi HRMS',
+        secondaryCtaText: 'Book HRMS Demo',
+        image: '/images/hero-hrms.jpg',
+        imageAlt: 'ISARVA HRMS, GOSI and WPS Payroll Dashboard on Desktop & Mobile App',
+        highlights: [
+          'WPS Bank File & GOSI Calculations',
+          'Iqama & Document Expiry Tracking',
+          'End-of-Service Benefit (EOSB) Calc'
+        ],
+        floatingMetric1: {
+          title: 'WPS & GOSI Ready',
+          subtitle: '1-Click Payroll Run'
+        },
+        floatingMetric2: {
+          title: 'Mobile App Ready',
+          subtitle: 'Leave & Attendance Tracking'
+        }
+      },
+      {
+        id: 'crm',
+        tabLabel: 'CRM',
+        badge: 'SALES & CLIENT RELATIONSHIPS',
+        headlineMain: 'Accelerate Sales Pipelines &',
+        headlineHighlight: 'Customer Conversions',
+        subheadline: 'Track leads from initial inquiry to closed deal with interactive visual Kanban boards. Integrated WhatsApp and email messaging, automated follow-up reminders, and revenue forecasts.',
+        primaryCtaText: 'Explore CRM',
+        secondaryCtaText: 'Book CRM Demo',
+        image: '/images/hero-crm.jpg',
+        imageAlt: 'ISARVA CRM Kanban Sales Pipeline and Customer Management Dashboard',
+        highlights: [
+          'Multi-Stage Kanban Pipeline Boards',
+          'Direct WhatsApp & Email Messaging',
+          'Smart Automated Follow-Up Reminders'
+        ],
+        floatingMetric1: {
+          title: '+38% Deal Velocity',
+          subtitle: 'Automated Pipeline Tracking'
+        },
+        floatingMetric2: {
+          title: 'Omnichannel Chat',
+          subtitle: 'WhatsApp & Email Integrated'
+        }
+      }
+    ]
   },
   productsHeader: {
     badge: 'PRODUCTS & SOLUTIONS',

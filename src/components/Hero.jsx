@@ -224,7 +224,15 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
       ...custom,
       tabIcon: def.tabIcon,
       themeColor: custom.themeColor || def.themeColor,
-      lightBg: custom.lightBg || def.lightBg
+      lightBg: custom.lightBg || def.lightBg,
+      highlights: Array.isArray(custom.highlights) && custom.highlights.length > 0 ? custom.highlights : def.highlights,
+      floatingMetric1: { ...def.floatingMetric1, ...(custom.floatingMetric1 || {}) },
+      floatingMetric2: { ...def.floatingMetric2, ...(custom.floatingMetric2 || {}) },
+      stats: def.stats.map((s, sIdx) => ({
+        ...s,
+        ...(custom.stats?.[sIdx] || {}),
+        icon: s.icon
+      }))
     };
   });
 

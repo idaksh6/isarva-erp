@@ -37,7 +37,136 @@ export const indiaContent = {
       totalSales: '₹ 2,48,320',
       totalCustomers: '1,268',
       gstTag: 'GST e-Invoice Compliant India'
-    }
+    },
+    slides: [
+      {
+        id: 'overview',
+        tabLabel: 'All Solutions',
+        badge: 'ALL-IN-ONE BUSINESS MANAGEMENT SOFTWARE',
+        headlineMain: 'Run Your Entire Business with One',
+        headlineHighlight: 'Powerful ERP Platform',
+        subheadline: 'Simplify billing, accounting, inventory, employee management and customer relationships with ISARVA ERP. Connect your daily business operations through an integrated platform designed to help your business work smarter and grow confidently.',
+        primaryCtaText: 'Book a Free Demo',
+        secondaryCtaText: 'Explore Our Solutions',
+        image: '/images/hero-erp-overview.jpg',
+        imageAlt: 'ISARVA Cloud ERP Multi-Device Workspace Dashboard and Touch POS',
+        highlights: [
+          'Single Unified Cloud Database',
+          'Multi-Branch & Real-Time Sync',
+          'GST e-Invoice & e-Way Bill Ready'
+        ],
+        floatingMetric1: {
+          title: 'GST Compliant',
+          subtitle: 'India & GCC Statutory Ready',
+          flag: 'IN'
+        },
+        floatingMetric2: {
+          title: '1,000+ Businesses',
+          subtitle: '99.9% Cloud Uptime'
+        }
+      },
+      {
+        id: 'restaurant-pos',
+        tabLabel: 'Restaurant POS',
+        badge: 'RESTAURANT & FOOD SERVICE POS',
+        headlineMain: 'Ultra-Fast Touch Billing &',
+        headlineHighlight: 'Kitchen Display (KDS)',
+        subheadline: 'Accelerate dine-in, takeaway, quick counter, and multi-aggregator delivery orders. Manage table floor plans, recipe costing, kitchen order tickets (KOT), and split billing in real time.',
+        primaryCtaText: 'Explore Restaurant POS',
+        secondaryCtaText: 'Book POS Demo',
+        image: '/images/hero-restaurant-pos.jpg',
+        imageAlt: 'ISARVA Restaurant Touch POS Terminal, KDS and Thermal Receipt Printer',
+        highlights: [
+          'Interactive Table & Floor Layouts',
+          'Kitchen Display System (KDS)',
+          'Menu & Recipe Inventory Tracking'
+        ],
+        floatingMetric1: {
+          title: '3-Sec Order Dispatch',
+          subtitle: 'Instant Kitchen KOT Sync'
+        },
+        floatingMetric2: {
+          title: 'Zero Order Leakage',
+          subtitle: 'Table Turnover +35%'
+        }
+      },
+      {
+        id: 'billsoft',
+        tabLabel: 'BillSoft Accounting',
+        badge: 'ACCOUNTING & GST COMPLIANCE',
+        headlineMain: 'Automated GST e-Invoicing &',
+        headlineHighlight: 'Financial Accounting',
+        subheadline: 'Generate IRN and QR code-ready tax invoices in a single click. Manage purchases, stock inventory, receivables, TDS/TCS returns, and balance sheets effortlessly with 100% statutory compliance.',
+        primaryCtaText: 'Explore BillSoft',
+        secondaryCtaText: 'Book Accounting Demo',
+        image: '/images/hero-billsoft.jpg',
+        imageAlt: 'BillSoft Financial Accounting and GST e-Invoicing Dashboard on Laptop',
+        highlights: [
+          'Direct GST Portal e-Invoice & IRN',
+          'Live Stock Valuation & Reorder Alerts',
+          'Multi-Branch Consolidated Ledgers'
+        ],
+        floatingMetric1: {
+          title: '1-Click e-Invoicing',
+          subtitle: 'Direct GST Portal Validated',
+          flag: 'IN'
+        },
+        floatingMetric2: {
+          title: 'Instant Financials',
+          subtitle: 'Live P&L & Balance Sheet'
+        }
+      },
+      {
+        id: 'hrms',
+        tabLabel: 'HRMS',
+        badge: 'HUMAN RESOURCE & WORKFORCE',
+        headlineMain: 'Streamlined Payroll, Leaves &',
+        headlineHighlight: 'People Operations',
+        subheadline: 'Automate monthly payroll, PF/ESI/TDS tax deductions, biometric attendance clock-ins, geofencing, employee self-service mobile portal, and onboarding workflows across multiple offices.',
+        primaryCtaText: 'Explore HRMS',
+        secondaryCtaText: 'Book HRMS Demo',
+        image: '/images/hero-hrms.jpg',
+        imageAlt: 'ISARVA HRMS and Employee Payroll Dashboard on Desktop & Mobile App',
+        highlights: [
+          'Automated PF, ESI & TDS Computations',
+          'Biometric & Mobile GPS Attendance',
+          'Employee Self-Service (ESS) Portal'
+        ],
+        floatingMetric1: {
+          title: 'Auto Payroll Run',
+          subtitle: '1-Click Payslip Generation'
+        },
+        floatingMetric2: {
+          title: 'Mobile App Ready',
+          subtitle: 'Leave & Attendance Tracking'
+        }
+      },
+      {
+        id: 'crm',
+        tabLabel: 'CRM',
+        badge: 'SALES & CLIENT RELATIONSHIPS',
+        headlineMain: 'Accelerate Sales Pipelines &',
+        headlineHighlight: 'Customer Conversions',
+        subheadline: 'Track leads from initial inquiry to closed deal with interactive visual Kanban boards. Integrated WhatsApp and email messaging, automated follow-up reminders, and revenue forecasts.',
+        primaryCtaText: 'Explore CRM',
+        secondaryCtaText: 'Book CRM Demo',
+        image: '/images/hero-crm.jpg',
+        imageAlt: 'ISARVA CRM Kanban Sales Pipeline and Customer Management Dashboard',
+        highlights: [
+          'Multi-Stage Kanban Pipeline Boards',
+          'Direct WhatsApp & Email Messaging',
+          'Smart Automated Follow-Up Reminders'
+        ],
+        floatingMetric1: {
+          title: '+38% Deal Velocity',
+          subtitle: 'Automated Pipeline Tracking'
+        },
+        floatingMetric2: {
+          title: 'Omnichannel Chat',
+          subtitle: 'WhatsApp & Email Integrated'
+        }
+      }
+    ]
   },
   productsHeader: {
     badge: 'PRODUCTS & SOLUTIONS',

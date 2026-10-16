@@ -27,7 +27,11 @@ import {
   Plus,
   Trash2,
   Star,
-  HelpCircle
+  HelpCircle,
+  Layers,
+  UtensilsCrossed,
+  BarChart3,
+  Handshake
 } from 'lucide-react';
 import { defaultContent } from '../../lib/content-store';
 import { getDefaultContentForCountry } from '../../lib/content';
@@ -83,6 +87,7 @@ export default function AdminCMS() {
   // CMS Regional & Content State
   const [selectedCountry, setSelectedCountry] = useState('IN');
   const [activeTab, setActiveTab] = useState('hero');
+  const [selectedHeroSlideIdx, setSelectedHeroSlideIdx] = useState(0);
   const [content, setContent] = useState(() => getDefaultContentForCountry('IN'));
   const [inquiries, setInquiries] = useState([]);
   const [savedStatus, setSavedStatus] = useState('');
@@ -126,7 +131,21 @@ export default function AdminCMS() {
       const res = await fetch(`/api/content?country=${targetCountry}`);
       if (res.ok) {
         const data = await res.json();
-        if (data?.content) setContent(data.content);
+        if (data?.content) {
+          const defaultForCountry = getDefaultContentForCountry(targetCountry);
+          const merged = {
+            ...defaultForCountry,
+            ...data.content,
+            hero: {
+              ...defaultForCountry.hero,
+              ...data.content.hero,
+              slides: (data.content.hero?.slides && data.content.hero.slides.length === 5)
+                ? data.content.hero.slides
+                : defaultForCountry.hero?.slides
+            }
+          };
+          setContent(merged);
+        }
       } else {
         setContent(getDefaultContentForCountry(targetCountry));
       }
@@ -147,8 +166,87 @@ export default function AdminCMS() {
 
   const handleCountrySwitch = (newCountry) => {
     setSelectedCountry(newCountry);
+    setSelectedHeroSlideIdx(0);
     setContent(getDefaultContentForCountry(newCountry));
     loadData(undefined, newCountry);
+  };
+
+  const handleUpdateHeroSlide = (slideIdx, field, value) => {
+    const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
+    const currentSlides = (content.hero?.slides && content.hero.slides.length === 5)
+      ? [...content.hero.slides]
+      : [...(defaultMasterHero?.slides || [])];
+
+    const updatedSlide = { ...currentSlides[slideIdx], [field]: value };
+    currentSlides[slideIdx] = updatedSlide;
+
+    const newHero = {
+      ...content.hero,
+      slides: currentSlides
+    };
+
+    if (slideIdx === 0) {
+      if (field === 'badge') newHero.badge = value;
+      if (field === 'headlineMain') newHero.headlineMain = value;
+      if (field === 'headlineHighlight') newHero.headlineHighlight = value;
+      if (field === 'subheadline') newHero.subheadline = value;
+      if (field === 'primaryCtaText') newHero.primaryCtaText = value;
+      if (field === 'secondaryCtaText') newHero.secondaryCtaText = value;
+    }
+
+    setContent({
+      ...content,
+      hero: newHero
+    });
+  };
+
+  const handleUpdateHeroSlideNested = (slideIdx, parentKey, childKey, value) => {
+    const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
+    const currentSlides = (content.hero?.slides && content.hero.slides.length === 5)
+      ? [...content.hero.slides]
+      : [...(defaultMasterHero?.slides || [])];
+
+    const updatedSlide = {
+      ...currentSlides[slideIdx],
+      [parentKey]: {
+        ...(currentSlides[slideIdx]?.[parentKey] || {}),
+        [childKey]: value
+      }
+    };
+    currentSlides[slideIdx] = updatedSlide;
+
+    setContent({
+      ...content,
+      hero: {
+        ...content.hero,
+        slides: currentSlides
+      }
+    });
+  };
+
+  const handleUpdateHeroSlideHighlight = (slideIdx, highlightIdx, value) => {
+    const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
+    const currentSlides = (content.hero?.slides && content.hero.slides.length === 5)
+      ? [...content.hero.slides]
+      : [...(defaultMasterHero?.slides || [])];
+
+    const currentHighlights = Array.isArray(currentSlides[slideIdx]?.highlights)
+      ? [...currentSlides[slideIdx].highlights]
+      : ['', '', ''];
+    currentHighlights[highlightIdx] = value;
+
+    currentSlides[slideIdx] = {
+      ...currentSlides[slideIdx],
+      highlights: currentHighlights
+    };
+
+    setContent({
+      ...content,
+      hero: {
+        ...content.hero,
+        slides: currentSlides
+      }
+    });
   };
 
   const handleSave = async () => {
@@ -610,97 +708,310 @@ export default function AdminCMS() {
         {/* Content Editor Area */}
         <main className="flex-1 p-8 overflow-y-auto max-w-4xl space-y-6">
           
-          {/* TAB 1: HERO SECTION */}
-          {activeTab === 'hero' && (
-            <div className="space-y-6 animate-fadeIn">
-              <div>
-                <h2>Hero Banner Content</h2>
-                <p>Update top headline, description paragraph, and CTA buttons.</p>
-              </div>
+          {/* TAB 1: HERO SECTION (5-SLIDE CAROUSEL & STATS) */}
+          {activeTab === 'hero' && (() => {
+            const defaultMasterHero = getDefaultContentForCountry(selectedCountry).hero;
+            const heroSlides = (content.hero?.slides && content.hero.slides.length === 5)
+              ? content.hero.slides
+              : defaultMasterHero?.slides || [];
+            const activeSlide = heroSlides[selectedHeroSlideIdx] || heroSlides[0];
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+            const SLIDE_TABS = [
+              { idx: 0, label: 'Slide 1: All Solutions', id: 'overview', icon: Layers, themeColor: '#007a55' },
+              { idx: 1, label: 'Slide 2: Restaurant POS', id: 'restaurant-pos', icon: UtensilsCrossed, themeColor: '#059669' },
+              { idx: 2, label: 'Slide 3: BillSoft Accounting', id: 'billsoft', icon: BarChart3, themeColor: '#2563eb' },
+              { idx: 3, label: 'Slide 4: HRMS', id: 'hrms', icon: Users, themeColor: '#7c3aed' },
+              { idx: 4, label: 'Slide 5: CRM', id: 'crm', icon: Handshake, themeColor: '#ea580c' },
+            ];
+
+            return (
+              <div className="space-y-6 animate-fadeIn">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Top Pill Badge</label>
-                  <input
-                    type="text"
-                    value={content.hero?.badge || ''}
-                    onChange={(e) => setContent({
-                      ...content,
-                      hero: { ...content.hero, badge: e.target.value }
-                    })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
-                  />
+                  <h2>Hero Banner Slider (5 Interactive Slides)</h2>
+                  <p>Select each slide below to customize its headline, highlighted text, description paragraph, buttons, image, and bullet points.</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                {/* Slide Switcher Navigation Pills */}
+                <div className="bg-white p-3 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-2 overflow-x-auto no-scrollbar">
+                  {SLIDE_TABS.map((tab) => {
+                    const TabIcon = tab.icon;
+                    const isSelected = selectedHeroSlideIdx === tab.idx;
+                    return (
+                      <button
+                        key={tab.idx}
+                        type="button"
+                        onClick={() => setSelectedHeroSlideIdx(tab.idx)}
+                        className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                          isSelected
+                            ? 'text-white shadow-sm'
+                            : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200/80'
+                        }`}
+                        style={{
+                          backgroundColor: isSelected ? tab.themeColor : undefined
+                        }}
+                      >
+                        <TabIcon size={14} />
+                        <span>{heroSlides[tab.idx]?.tabLabel || tab.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Active Slide Form Card */}
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <div className="flex items-center gap-2.5">
+                      <span
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: SLIDE_TABS[selectedHeroSlideIdx]?.themeColor }}
+                      />
+                      <span className="text-sm font-bold text-slate-900">
+                        Editing: {activeSlide.tabLabel || `Slide ${selectedHeroSlideIdx + 1}`} ({activeSlide.id})
+                      </span>
+                    </div>
+                    <span className="text-xs px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 font-medium">
+                      Slide {selectedHeroSlideIdx + 1} of 5
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Tab Button Label</label>
+                      <input
+                        type="text"
+                        value={activeSlide.tabLabel || ''}
+                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'tabLabel', e.target.value)}
+                        placeholder="e.g. Restaurant POS"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Category Eyebrow / Badge</label>
+                      <input
+                        type="text"
+                        value={activeSlide.badge || ''}
+                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'badge', e.target.value)}
+                        placeholder="e.g. RESTAURANT & FOOD SERVICE POS"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Headline Line 1 (Dark Text)</label>
+                      <input
+                        type="text"
+                        value={activeSlide.headlineMain || ''}
+                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'headlineMain', e.target.value)}
+                        placeholder="e.g. Ultra-Fast Touch Billing &"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Headline Line 2 (Colored Accent)</label>
+                      <input
+                        type="text"
+                        value={activeSlide.headlineHighlight || ''}
+                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'headlineHighlight', e.target.value)}
+                        placeholder="e.g. Kitchen Display (KDS)"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                  </div>
+
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Main Headline Line 1</label>
-                    <input
-                      type="text"
-                      value={content.hero?.headlineMain || ''}
-                      onChange={(e) => setContent({
-                        ...content,
-                        hero: { ...content.hero, headlineMain: e.target.value }
-                      })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Subheadline Description</label>
+                    <textarea
+                      rows="3"
+                      value={activeSlide.subheadline || ''}
+                      onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'subheadline', e.target.value)}
+                      placeholder="Enter slide paragraph description..."
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 leading-relaxed"
                     />
                   </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Highlight Line 2</label>
-                    <input
-                      type="text"
-                      value={content.hero?.headlineHighlight || ''}
-                      onChange={(e) => setContent({
-                        ...content,
-                        hero: { ...content.hero, headlineHighlight: e.target.value }
-                      })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Primary CTA Button</label>
+                      <input
+                        type="text"
+                        value={activeSlide.primaryCtaText || ''}
+                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'primaryCtaText', e.target.value)}
+                        placeholder="e.g. Explore Restaurant POS"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Secondary CTA Button</label>
+                      <input
+                        type="text"
+                        value={activeSlide.secondaryCtaText || ''}
+                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'secondaryCtaText', e.target.value)}
+                        placeholder="e.g. Book POS Demo"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 pt-2 border-t border-slate-100">
+                    <label className="block text-xs font-bold text-slate-700">Slide Showcase Image</label>
+                    <ImageUploadField
+                      label="Slide Mockup Image"
+                      value={activeSlide.image || ''}
+                      placeholder="/images/hero-erp-overview.jpg"
+                      onChange={(url) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'image', url)}
                     />
+                    <div>
+                      <label className="block text-xs font-medium text-slate-600 mb-1">Image Alt Text (SEO)</label>
+                      <input
+                        type="text"
+                        value={activeSlide.imageAlt || ''}
+                        onChange={(e) => handleUpdateHeroSlide(selectedHeroSlideIdx, 'imageAlt', e.target.value)}
+                        placeholder="Description of slide image for search engines..."
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Bullet Highlights Chips */}
+                  <div className="space-y-3 pt-2 border-t border-slate-100">
+                    <label className="block text-xs font-bold text-slate-700">
+                      Feature Highlight Chips (3 Bullets)
+                    </label>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      {[0, 1, 2].map((hIdx) => (
+                        <div key={hIdx}>
+                          <label className="block text-[11px] font-semibold text-slate-500 mb-1">
+                            Bullet {hIdx + 1}
+                          </label>
+                          <input
+                            type="text"
+                            value={activeSlide.highlights?.[hIdx] || ''}
+                            onChange={(e) => handleUpdateHeroSlideHighlight(selectedHeroSlideIdx, hIdx, e.target.value)}
+                            placeholder={`Highlight ${hIdx + 1}`}
+                            className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Floating Metric Badges */}
+                  <div className="space-y-3 pt-2 border-t border-slate-100">
+                    <label className="block text-xs font-bold text-slate-700">
+                      Floating Glassmorphic Metric Cards
+                    </label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Metric 1 */}
+                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                        <span className="text-xs font-bold text-slate-800">Top-Left Floating Badge</span>
+                        <input
+                          type="text"
+                          value={activeSlide.floatingMetric1?.title || ''}
+                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric1', 'title', e.target.value)}
+                          placeholder="Title (e.g. 3-Sec Order Dispatch)"
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
+                        />
+                        <input
+                          type="text"
+                          value={activeSlide.floatingMetric1?.subtitle || ''}
+                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric1', 'subtitle', e.target.value)}
+                          placeholder="Subtitle (e.g. Instant Kitchen KOT Sync)"
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
+                        />
+                      </div>
+
+                      {/* Metric 2 */}
+                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                        <span className="text-xs font-bold text-slate-800">Bottom-Right Floating Badge</span>
+                        <input
+                          type="text"
+                          value={activeSlide.floatingMetric2?.title || ''}
+                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric2', 'title', e.target.value)}
+                          placeholder="Title (e.g. Zero Order Leakage)"
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
+                        />
+                        <input
+                          type="text"
+                          value={activeSlide.floatingMetric2?.subtitle || ''}
+                          onChange={(e) => handleUpdateHeroSlideNested(selectedHeroSlideIdx, 'floatingMetric2', 'subtitle', e.target.value)}
+                          placeholder="Subtitle (e.g. Table Turnover +35%)"
+                          className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-500"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Global Hero Statutory Pill & Stats */}
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                  <h3>Global Hero Stats & Compliance Pill</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Total Sales Pill</label>
+                      <input
+                        type="text"
+                        value={content.hero?.mockupStats?.totalSales || ''}
+                        onChange={(e) => setContent({
+                          ...content,
+                          hero: {
+                            ...content.hero,
+                            mockupStats: {
+                              ...(content.hero?.mockupStats || {}),
+                              totalSales: e.target.value
+                            }
+                          }
+                        })}
+                        placeholder="₹ 2,48,320"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Total Customers Pill</label>
+                      <input
+                        type="text"
+                        value={content.hero?.mockupStats?.totalCustomers || ''}
+                        onChange={(e) => setContent({
+                          ...content,
+                          hero: {
+                            ...content.hero,
+                            mockupStats: {
+                              ...(content.hero?.mockupStats || {}),
+                              totalCustomers: e.target.value
+                            }
+                          }
+                        })}
+                        placeholder="1,268"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Statutory Compliance Tag</label>
+                      <input
+                        type="text"
+                        value={content.hero?.mockupStats?.gstTag || ''}
+                        onChange={(e) => setContent({
+                          ...content,
+                          hero: {
+                            ...content.hero,
+                            mockupStats: {
+                              ...(content.hero?.mockupStats || {}),
+                              gstTag: e.target.value
+                            }
+                          }
+                        })}
+                        placeholder="GST e-Invoice Compliant India"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Subheadline Description</label>
-                  <textarea
-                    rows="3"
-                    value={content.hero?.subheadline || ''}
-                    onChange={(e) => setContent({
-                      ...content,
-                      hero: { ...content.hero, subheadline: e.target.value }
-                    })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 leading-relaxed"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Primary CTA Button</label>
-                    <input
-                      type="text"
-                      value={content.hero?.primaryCtaText || ''}
-                      onChange={(e) => setContent({
-                        ...content,
-                        hero: { ...content.hero, primaryCtaText: e.target.value }
-                      })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Secondary CTA Button</label>
-                    <input
-                      type="text"
-                      value={content.hero?.secondaryCtaText || ''}
-                      onChange={(e) => setContent({
-                        ...content,
-                        hero: { ...content.hero, secondaryCtaText: e.target.value }
-                      })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
-                    />
-                  </div>
-                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
 
           {/* TAB 2: PRODUCTS SECTION */}
           {activeTab === 'products' && (
