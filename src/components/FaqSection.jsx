@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 export default function FaqSection({ faqs }) {
-  const [openIndices, setOpenIndices] = useState([0]);
+  const [openIndices, setOpenIndices] = useState([]);
 
   if (!faqs || !faqs.items || faqs.items.length === 0) {
     return null;
@@ -49,16 +49,16 @@ export default function FaqSection({ faqs }) {
           type="button"
           onClick={() => toggleAccordion(actualIndex)}
           aria-expanded={isOpen}
-          className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors"
+          className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors group select-none"
         >
-          <h3 className="pr-2">
+          <span className="font-space font-bold text-slate-900 text-base sm:text-lg pr-2 leading-snug group-hover:text-[#007a55] transition-colors pointer-events-none">
             {item.q}
-          </h3>
+          </span>
           <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
+            className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 pointer-events-none ${
               isOpen
                 ? 'bg-emerald-50 text-[#007a55] rotate-180'
-                : 'bg-slate-100 text-slate-500'
+                : 'bg-slate-100 text-slate-500 group-hover:bg-emerald-50/70 group-hover:text-[#007a55]'
             }`}
           >
             <ChevronDown size={18} />
@@ -81,6 +81,7 @@ export default function FaqSection({ faqs }) {
       {/* FAQ Schema for Technical SEO */}
       <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
