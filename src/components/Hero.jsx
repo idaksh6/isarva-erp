@@ -587,27 +587,29 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Product Stats / Trust Badges */}
-                  <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-5 sm:gap-7 border-t border-slate-200/70 w-full">
-                    {slide.stats.map((stat, idx) => {
-                      const StatIcon = stat.icon;
-                      return (
-                        <div key={idx} className="flex items-center gap-2.5">
-                          <div
-                            className="w-9 h-9 rounded-full flex items-center justify-center shadow-xs shrink-0 transition-colors duration-300"
-                            style={{
-                              backgroundColor: slide.lightBg,
-                              color: slide.themeColor
-                            }}
-                          >
-                            <StatIcon size={17} strokeWidth={2.4} />
+                  <div className="pt-4 border-t border-slate-200/70 w-full">
+                    <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-center lg:justify-start gap-3.5 sm:gap-7">
+                      {slide.stats.map((stat, idx) => {
+                        const StatIcon = stat.icon;
+                        return (
+                          <div key={idx} className="flex items-center gap-2.5">
+                            <div
+                              className="w-9 h-9 rounded-full flex items-center justify-center shadow-xs shrink-0 transition-colors duration-300"
+                              style={{
+                                backgroundColor: slide.lightBg,
+                                color: slide.themeColor
+                              }}
+                            >
+                              <StatIcon size={17} strokeWidth={2.4} />
+                            </div>
+                            <div className="text-left">
+                              <div className="text-xs text-slate-500 font-medium leading-none">{stat.label}</div>
+                              <div className="text-sm font-black text-slate-900 mt-1">{stat.value}</div>
+                            </div>
                           </div>
-                          <div className="text-left">
-                            <div className="text-xs text-slate-500 font-medium leading-none">{stat.label}</div>
-                            <div className="text-sm font-black text-slate-900 mt-1">{stat.value}</div>
-                          </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
                   </div>
 
                 </div>

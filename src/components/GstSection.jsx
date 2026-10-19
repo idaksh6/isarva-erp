@@ -70,18 +70,20 @@ export default function GstSection({ gstData }) {
             </div>
 
             {/* Compliance Trust Feature Pills */}
-            <div className="pt-4 flex flex-wrap justify-center lg:justify-start items-center gap-2.5 sm:gap-3 w-full border-t border-emerald-950/8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
-                <ShieldCheck size={15} className="text-[#007a55]" />
-                <span>100% Statutory Compliant</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
-                <Zap size={15} className="text-[#007a55]" />
-                <span>1-Click IRN & QR Code</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all">
-                <FileText size={15} className="text-[#007a55]" />
-                <span>Direct GSTN Validated</span>
+            <div className="pt-4 border-t border-emerald-950/8 w-full">
+              <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+                <div className="w-full sm:w-auto flex sm:inline-flex items-center justify-start gap-2.5 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all text-left">
+                  <ShieldCheck size={15} className="text-[#007a55] shrink-0" />
+                  <span className="whitespace-nowrap">100% Statutory Compliant</span>
+                </div>
+                <div className="w-full sm:w-auto flex sm:inline-flex items-center justify-start gap-2.5 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all text-left">
+                  <Zap size={15} className="text-[#007a55] shrink-0" />
+                  <span className="whitespace-nowrap">1-Click IRN & QR Code</span>
+                </div>
+                <div className="w-full sm:w-auto flex sm:inline-flex items-center justify-start gap-2.5 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-2xs text-xs font-bold text-slate-700 hover:border-[#007a55]/30 hover:shadow-xs transition-all text-left">
+                  <FileText size={15} className="text-[#007a55] shrink-0" />
+                  <span className="whitespace-nowrap">Direct GSTN Validated</span>
+                </div>
               </div>
             </div>
 

@@ -65,7 +65,7 @@ export default function Footer({
         {/* 1. REGION-AWARE PRE-FOOTER CONVERSION BANNER */}
         {isSaudi ? (
           /* SAUDI ARABIA: HIGH-IMPACT DEEP ENTERPRISE EMERALD BANNER */
-          <div className="pre-footer-cta-dark relative rounded-3xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 shadow-2xl shadow-emerald-950/25 p-8 sm:p-10 lg:p-12 mb-14 overflow-hidden">
+          <div className="pre-footer-cta-dark relative rounded-3xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 shadow-2xl shadow-emerald-950/25 p-4 sm:p-8 lg:p-12 mb-14 overflow-hidden">
             {/* Subtle Ambient Radial Lighting Orbs */}
             <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-10 w-96 h-96 bg-teal-300/10 rounded-full blur-3xl pointer-events-none" />
@@ -147,25 +147,25 @@ export default function Footer({
 
               {/* Right Action Conversion Pod (5 cols) */}
               <div className="lg:col-span-5 w-full">
-                <div className="relative rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-7 shadow-2xl flex flex-col items-stretch gap-4">
+                <div className="relative rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-4 sm:p-6 lg:p-7 shadow-2xl flex flex-col items-stretch gap-3.5 sm:gap-4">
                   {/* Live Availability Badge */}
-                  <div className="flex items-center justify-between gap-2 pb-2 border-b border-white/10">
-                    <div className="flex items-center gap-2">
-                      <span className="relative flex h-2 w-2">
+                  <div className="flex flex-wrap items-center justify-between gap-1.5 pb-2 border-b border-white/10">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="relative flex h-2 w-2 shrink-0">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                       </span>
-                      <span className="text-xs font-bold text-white tracking-wide">
+                      <span className="text-xs font-bold text-white tracking-wide whitespace-nowrap">
                         Sales Team Available
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-emerald-300/90">
+                    <span className="text-xs font-medium text-emerald-300/90 whitespace-nowrap">
                       Avg. response &lt; 15 mins
                     </span>
                   </div>
 
                   {/* Subtext description inside pod */}
-                  <div className="text-xs text-emerald-100/90 font-medium leading-relaxed">
+                  <div className="text-xs text-emerald-100/90 font-normal leading-relaxed">
                     Get a personalized demo tailored for your business industry with customized pricing and dedicated onboarding support.
                   </div>
 
@@ -173,13 +173,13 @@ export default function Footer({
                   <button
                     type="button"
                     onClick={() => onOpenModal ? onOpenModal('demo') : null}
-                    className="relative overflow-hidden w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 hover:from-emerald-200 hover:via-emerald-300 hover:to-teal-200 text-slate-950 font-bold text-sm border-t border-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_8px_24px_-4px_rgba(52,211,153,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_12px_28px_-4px_rgba(52,211,153,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer"
+                    className="relative overflow-hidden w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 hover:from-emerald-200 hover:via-emerald-300 hover:to-teal-200 text-slate-950 font-bold text-xs sm:text-sm border-t border-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_8px_24px_-4px_rgba(52,211,153,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_12px_28px_-4px_rgba(52,211,153,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer whitespace-nowrap"
                   >
                     {/* Dynamic Light Sweep Shimmer Effect */}
                     <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                    <span className="relative z-10 flex items-center gap-2.5">
+                    <span className="relative z-10 flex items-center justify-center gap-2 whitespace-nowrap">
                       <span>Book a Free Demo</span>
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200 shrink-0" />
                     </span>
                   </button>
 
@@ -187,7 +187,7 @@ export default function Footer({
                   <button
                     type="button"
                     onClick={() => onOpenModal ? onOpenModal('contact') : null}
-                    className="w-full py-3 px-6 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/25 hover:border-white/40 shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/25 hover:border-white/40 shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
                     <span>Talk to Our Team</span>
                   </button>
@@ -197,7 +197,7 @@ export default function Footer({
           </div>
         ) : (
           /* INDIA & DEFAULT: HIGH-IMPACT CLEAN LIGHT ISARVA BANNER */
-          <div className="relative rounded-3xl bg-gradient-to-br from-white via-[#f4faf7] to-[#e8f6ef] border border-emerald-200/90 shadow-xl shadow-slate-900/5 p-8 sm:p-10 lg:p-12 mb-14 overflow-hidden">
+          <div className="relative rounded-3xl bg-gradient-to-br from-white via-[#f4faf7] to-[#e8f6ef] border border-emerald-200/90 shadow-xl shadow-slate-900/5 p-4 sm:p-8 lg:p-12 mb-14 overflow-hidden">
             {/* Subtle Ambient Radial Lighting Orbs */}
             <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007a55]/5 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-10 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -279,25 +279,25 @@ export default function Footer({
 
               {/* Right Action Conversion Pod (5 cols) */}
               <div className="lg:col-span-5 w-full">
-                <div className="relative rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-6 sm:p-7 shadow-xl shadow-slate-900/5 flex flex-col items-stretch gap-4">
+                <div className="relative rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-4 sm:p-6 lg:p-7 shadow-xl shadow-slate-900/5 flex flex-col items-stretch gap-3.5 sm:gap-4">
                   {/* Live Availability Badge */}
-                  <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-100">
-                    <div className="flex items-center gap-2">
-                      <span className="relative flex h-2 w-2">
+                  <div className="flex flex-wrap items-center justify-between gap-1.5 pb-2.5 border-b border-slate-100">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="relative flex h-2 w-2 shrink-0">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-[#007a55]" />
                       </span>
-                      <span className="text-xs font-bold text-slate-900 tracking-wide">
+                      <span className="text-xs font-bold text-slate-900 tracking-wide whitespace-nowrap">
                         Sales Team Available
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-slate-500">
+                    <span className="text-xs font-medium text-slate-500 whitespace-nowrap">
                       Avg. response &lt; 15 mins
                     </span>
                   </div>
 
                   {/* Subtext description inside pod */}
-                  <div className="text-xs text-slate-600 font-medium leading-relaxed">
+                  <div className="text-xs text-slate-600 font-normal leading-relaxed">
                     Get a personalized demo tailored for your business industry with customized pricing and dedicated onboarding support.
                   </div>
 
@@ -305,13 +305,13 @@ export default function Footer({
                   <button
                     type="button"
                     onClick={() => onOpenModal ? onOpenModal('demo') : null}
-                    className="relative overflow-hidden w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-[#009c6c] via-[#007a55] to-[#005f42] hover:from-[#00b07a] hover:via-[#008960] hover:to-[#006e4d] text-white font-bold text-sm border-t border-white/35 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_20px_-4px_rgba(0,122,85,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_12px_28px_-4px_rgba(0,122,85,0.55)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer"
+                    className="relative overflow-hidden w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-full bg-gradient-to-r from-[#009c6c] via-[#007a55] to-[#005f42] hover:from-[#00b07a] hover:via-[#008960] hover:to-[#006e4d] text-white font-bold text-xs sm:text-sm border-t border-white/35 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_20px_-4px_rgba(0,122,85,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_12px_28px_-4px_rgba(0,122,85,0.55)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer whitespace-nowrap"
                   >
                     {/* Dynamic Light Sweep Shimmer Effect */}
                     <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                    <span className="relative z-10 flex items-center gap-2.5">
+                    <span className="relative z-10 flex items-center justify-center gap-2 whitespace-nowrap">
                       <span>Book a Free Demo</span>
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200 shrink-0" />
                     </span>
                   </button>
 
@@ -319,7 +319,7 @@ export default function Footer({
                   <button
                     type="button"
                     onClick={() => onOpenModal ? onOpenModal('contact') : null}
-                    className="w-full py-3 px-6 rounded-full bg-slate-100/90 hover:bg-slate-100 text-slate-800 font-semibold text-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-full bg-slate-100/90 hover:bg-slate-100 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
                     <span>Talk to Our Team</span>
                   </button>
