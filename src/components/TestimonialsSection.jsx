@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { renderTitleWithGradient } from '../lib/render-title';
 
 export default function TestimonialsSection({ testimonials }) {
   const baseItems = testimonials?.items || [];
@@ -63,7 +64,7 @@ export default function TestimonialsSection({ testimonials }) {
             {testimonials?.badge || 'WHAT OUR CUSTOMERS SAY'}
           </div>
           <h2>
-            {testimonials?.title || 'Trusted by Growing Businesses'}
+            {renderTitleWithGradient(testimonials?.title || 'Trusted by Growing Businesses')}
           </h2>
           <p>
             {testimonials?.subtitle || 'Join hundreds of satisfied businesses using ISARVA ERP.'}

@@ -16,6 +16,7 @@ import {
   Briefcase,
   Layers,
 } from 'lucide-react';
+import { renderTitleWithGradient } from '../lib/render-title';
 
 const ICON_MAP = {
   Utensils,
@@ -96,14 +97,34 @@ const INDUSTRY_PALETTE = [
   },
 ];
 
+function getItemColClass(count, idx) {
+  if (count === 5) {
+    if (idx < 3) {
+      return 'lg:col-span-2 xl:col-span-1';
+    }
+    if (idx === 3) {
+      return 'lg:col-span-2 lg:col-start-2 xl:col-span-1 xl:col-start-auto';
+    }
+    // 5th item (idx === 4):
+    // - On sm (640-1023px): spans both columns and centers nicely
+    // - On lg (1024-1279px): spans columns 4-5 in the 6-col grid (paired centered with item 3)
+    // - On xl (1280px+): standard 1 column in the 5-col grid
+    return 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-2 xl:col-span-1';
+  }
+  if (count === 3 && idx === 2) {
+    return 'sm:col-span-2 sm:max-w-md sm:mx-auto md:max-w-none md:mx-0 md:col-span-1';
+  }
+  return '';
+}
+
 function getGridClass(count) {
-  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-4 sm:gap-6';
-  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl mx-auto gap-4 sm:gap-6';
-  if (count === 4) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
-  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
-  if (count === 6) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
-  if (count === 7 || count === 8) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
-  return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5';
+  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-4 sm:gap-6';
+  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto gap-4 sm:gap-6';
+  if (count === 4) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
+  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5 gap-4 sm:gap-5';
+  if (count === 6) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-5';
+  if (count <= 8) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto gap-4 sm:gap-5';
+  return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 max-w-7xl mx-auto';
 }
 
 export default function IndustriesSection({ industries }) {
@@ -136,7 +157,7 @@ export default function IndustriesSection({ industries }) {
             {industries?.badge || 'INDUSTRIES WE SERVE'}
           </div>
           <h2>
-            {industries?.title || 'Trusted by Businesses Across Multiple Industries'}
+            {renderTitleWithGradient(industries?.title || 'Trusted by Businesses Across Multiple Industries')}
           </h2>
           <p>
             {industries?.subtitle || 'From restaurants to retail, ISARVA ERP helps businesses of all sizes succeed.'}
@@ -149,11 +170,12 @@ export default function IndustriesSection({ industries }) {
             const cfg = INDUSTRY_PALETTE[idx % INDUSTRY_PALETTE.length];
             const IconComponent = (ind.iconName && ICON_MAP[ind.iconName]) || cfg.icon;
             const tagLabel = ind.tag || cfg.defaultTag;
+            const colClass = getItemColClass(count, idx);
 
             return (
               <div
                 key={ind.id || idx}
-                className="group relative flex flex-col items-center text-center rounded-2xl p-5 sm:p-6 cursor-pointer"
+                className={`group relative flex flex-col items-center text-center rounded-2xl p-5 sm:p-6 cursor-pointer min-w-0 w-full ${colClass}`}
                 style={{
                   background: 'rgba(255,255,255,0.75)',
                   backdropFilter: 'blur(12px)',
@@ -199,7 +221,7 @@ export default function IndustriesSection({ industries }) {
                 </div>
 
                 {/* Industry name */}
-                <h3 className="mb-2 text-center">
+                <h3 className="mb-2 text-center w-full break-words">
                   {ind.name}
                 </h3>
 
@@ -228,40 +250,27 @@ export default function IndustriesSection({ industries }) {
         </div>
 
         {/* Bottom stat strip */}
-        <div
-          className="mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-10"
-          style={{
-            borderTop: '1px solid #e2e8f0',
-            paddingTop: '2.5rem',
-          }}
-        >
-          {[
-            { value: `${count > 0 ? count : 6}+`, label: 'Industries Served' },
-            { value: '1,000+', label: 'Businesses Trust ISARVA' },
-            { value: '15+', label: 'Years of Experience' },
-            { value: '99.9%', label: 'Uptime SLA' },
-          ].map((stat, i) => (
-            <div key={i} className="flex flex-col items-center gap-0.5">
-              <span
-                style={{
-                  fontFamily: 'var(--font-space-grotesk)',
-                  fontSize: '1.625rem',
-                  fontWeight: 800,
-                  color: '#007a55',
-                  letterSpacing: '-0.03em',
-                  lineHeight: 1,
-                }}
+        <div className="mt-12 pt-10 border-t border-slate-200">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {[
+              { value: `${count > 0 ? count : 6}+`, label: 'Industries Served' },
+              { value: '1,000+', label: 'Businesses Trust ISARVA' },
+              { value: '15+', label: 'Years of Experience' },
+              { value: '99.9%', label: 'Uptime SLA' },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center justify-center text-center px-2 sm:px-4"
               >
-                {stat.value}
-              </span>
-              <span
-                className="text-xs font-medium"
-                style={{ color: '#64748b', letterSpacing: '0.03em' }}
-              >
-                {stat.label}
-              </span>
-            </div>
-          ))}
+                <span className="font-space text-2xl sm:text-3xl font-extrabold text-[#007a55] tracking-tight leading-none mb-1">
+                  {stat.value}
+                </span>
+                <span className="text-xs sm:text-sm font-medium text-slate-500 tracking-wide leading-snug">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

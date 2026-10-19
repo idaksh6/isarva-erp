@@ -48,22 +48,45 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
     };
   }, []);
 
+  // Lock body scroll when mobile menu is open so menu can scroll freely
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Auto-close mobile menu if window resizes to desktop
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 1024) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="site-container">
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center group">
+          <Link href="/" className="flex items-center group shrink-0">
             <img
               src="/images/isarva-logo.png"
               alt="ISARVA Logo"
-              className="h-12 sm:h-13 lg:h-14 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-10 sm:h-12 lg:h-11 xl:h-14 w-auto object-contain group-hover:scale-105 transition-transform"
             />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold text-slate-600 whitespace-nowrap shrink-0">
             <Link href="/" className="text-brand-500 hover:text-brand-600 transition-colors">
               Home
             </Link>
@@ -128,7 +151,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                   </Link>
 
                   <Link
-                    href="#crm"
+                    href="/crm"
                     onClick={() => setIsSolutionsOpen(false)}
                     className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-orange-50 transition-colors group"
                   >
@@ -178,8 +201,9 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             <Link href="#why-choose" className="hover:text-brand-500 transition-colors">
               Features
             </Link>
-            <Link href="#compliance" className="hover:text-brand-500 transition-colors">
-              {selectedCountry.code === 'SA' ? 'ZATCA Compliance' : 'GST Compliance'}
+            <Link href="#compliance" className="hover:text-brand-500 transition-colors whitespace-nowrap">
+              <span>{selectedCountry.code === 'SA' ? 'ZATCA' : 'GST'}</span>
+              <span className="hidden xl:inline">&nbsp;Compliance</span>
             </Link>
             <Link href="#faqs" className="hover:text-brand-500 transition-colors">
               FAQs
@@ -190,17 +214,17 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           </nav>
 
           {/* Right Action Bar */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3.5 shrink-0">
             
             {/* Country & Language Selector Dropdown */}
-            <div className="relative" ref={countryRef}>
+            <div className="relative shrink-0" ref={countryRef}>
               <button
                 onClick={() => setIsCountryOpen(!isCountryOpen)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-700 bg-slate-50/90 hover:bg-slate-100 transition-colors shadow-2xs"
+                className="flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-700 bg-slate-50/90 hover:bg-slate-100 transition-colors shadow-2xs whitespace-nowrap"
               >
-                <FlagIcon code={selectedCountry.code} className="w-5 h-3.5" />
+                <FlagIcon code={selectedCountry.code} className="w-4 h-3 xl:w-5 xl:h-3.5 shrink-0" />
                 <span>{selectedCountry.name}</span>
-                <ChevronDown size={13} className={`text-slate-400 transition-transform duration-200 ${isCountryOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={12} className={`text-slate-400 transition-transform duration-200 ${isCountryOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isCountryOpen && (
@@ -243,19 +267,19 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             {/* Search Icon */}
             <button
               onClick={() => onOpenModal('demo')}
-              className="p-2 text-slate-500 hover:text-brand-500 hover:bg-slate-50 rounded-full transition-colors"
+              className="p-1.5 xl:p-2 text-slate-500 hover:text-brand-500 hover:bg-slate-50 rounded-full transition-colors shrink-0"
               title="Search"
             >
-              <Search size={18} />
+              <Search size={16} />
             </button>
 
             {/* Primary Action Button */}
             <button
               onClick={() => onOpenModal('demo')}
-              className="btn-brand-primary"
+              className="btn-brand-primary text-xs xl:text-sm px-3.5 xl:px-5 py-2 xl:py-2.5 whitespace-nowrap shrink-0"
             >
               <span>Book a Free Demo</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={15} className="shrink-0" />
             </button>
           </div>
 
@@ -271,9 +295,9 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown with Smooth Scrolling */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3">
+        <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-8 space-y-3 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain shadow-2xl">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
             Home
           </Link>
@@ -286,7 +310,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           <Link href="#hrms" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-purple-600">
             HRMS & Payroll Software
           </Link>
-          <Link href="#crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-orange-600">
+          <Link href="/crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-orange-600">
             CRM & Sales Management
           </Link>
           <Link href="#products" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-cyan-600">
@@ -300,6 +324,9 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           </Link>
           <Link href="#faqs" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
             FAQs
+          </Link>
+          <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            Contact
           </Link>
 
           {/* Mobile Region Switcher */}

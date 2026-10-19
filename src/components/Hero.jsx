@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import {
   ArrowRight,
   ChevronLeft,
@@ -48,10 +49,19 @@ const ICON_MAP = {
   Cpu
 };
 
+const SLIDE_GRADIENTS = {
+  overview: 'linear-gradient(135deg, #007a55 0%, #059669 50%, #0d9488 100%)',
+  'restaurant-pos': 'linear-gradient(135deg, #059669 0%, #10b981 50%, #14b8a6 100%)',
+  billsoft: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%)',
+  hrms: 'linear-gradient(135deg, #6d28d9 0%, #7c3aed 50%, #9333ea 100%)',
+  crm: 'linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #d97706 100%)',
+};
+
 export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef(null);
+  const resumeTimerRef = useRef(null);
   const tabsContainerRef = useRef(null);
   const tabButtonRefs = useRef([]);
 
@@ -309,6 +319,21 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
   const safeActiveIndex = Math.min(activeSlideIndex, Math.max(0, slides.length - 1));
   const currentSlide = slides[safeActiveIndex] || slides[0] || defaultSlides[0];
 
+  // Temporary pause auto-rotation when user interacts with tabs or controls
+  const pauseAutoSlide = () => {
+    setIsPaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 12000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
   // Auto-slide effect (changes every 5 seconds; resets cleanly on active slide change)
   useEffect(() => {
     if (isPaused || slides.length <= 1) return;
@@ -326,10 +351,12 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
   const handlePrev = () => {
     setActiveSlideIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    pauseAutoSlide();
   };
 
   const handleNext = () => {
     setActiveSlideIndex((prev) => (prev + 1) % slides.length);
+    pauseAutoSlide();
   };
 
   const handleTouchStart = (e) => {
@@ -341,9 +368,17 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
     const diff = touchStartX - touchEndX;
     if (diff > 45) {
       handleNext();
+      pauseAutoSlide();
     } else if (diff < -45) {
       handlePrev();
+      pauseAutoSlide();
     }
+  };
+
+  // Instant & reliable tab selection handler
+  const handleTabClick = (index) => {
+    setActiveSlideIndex(index);
+    pauseAutoSlide();
   };
 
   // Automatically centralize the active tab button on mobile / responsive viewports
@@ -353,27 +388,24 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
     if (!container || !activeButton) return;
 
     const centerTab = () => {
-      const containerRect = container.getBoundingClientRect();
-      const buttonRect = activeButton.getBoundingClientRect();
+      const containerWidth = container.clientWidth;
+      const buttonLeft = activeButton.offsetLeft;
+      const buttonWidth = activeButton.offsetWidth;
 
-      const containerCenter = containerRect.left + containerRect.width / 2;
-      const buttonCenter = buttonRect.left + buttonRect.width / 2;
-      const scrollDiff = buttonCenter - containerCenter;
+      const targetScrollLeft = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
+      const currentScrollLeft = container.scrollLeft;
 
-      if (Math.abs(scrollDiff) > 1) {
-        container.scrollBy({
-          left: scrollDiff,
+      if (Math.abs(targetScrollLeft - currentScrollLeft) > 8) {
+        container.scrollTo({
+          left: Math.max(0, targetScrollLeft),
           behavior: 'smooth'
         });
       }
     };
 
     const rId = requestAnimationFrame(centerTab);
-    const tId = setTimeout(centerTab, 60);
-
     return () => {
       cancelAnimationFrame(rId);
-      clearTimeout(tId);
     };
   }, [safeActiveIndex]);
 
@@ -391,13 +423,14 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
       <div className="site-container relative z-10">
 
-        {/* TOP INTERACTIVE PRODUCT SWITCHER TABS */}
-        <div className="mb-8 lg:mb-10">
+        {/* TOP INTERACTIVE PRODUCT SWITCHER TABS - FULL WIDTH ON RESPONSIVE */}
+        <div className="mb-8 lg:mb-10 -mx-4 sm:-mx-6 lg:mx-0">
           <div
             ref={tabsContainerRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="relative flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 pt-1 scroll-smooth px-4 sm:px-6 lg:px-2"
+            onTouchStart={pauseAutoSlide}
+            className="relative flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 pt-1 px-4 sm:px-6 lg:px-2 scroll-smooth"
           >
             {slides.map((slide, index) => {
               const isActive = index === safeActiveIndex;
@@ -406,11 +439,12 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
               return (
                 <button
                   key={slide.id}
+                  type="button"
                   ref={(el) => {
                     tabButtonRefs.current[index] = el;
                   }}
-                  onClick={() => setActiveSlideIndex(index)}
-                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
+                  onClick={() => handleTabClick(index)}
+                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap cursor-pointer transition-all duration-300 ${
                     isActive
                       ? 'bg-white text-slate-900 shadow-md shadow-slate-900/10 scale-[1.02] border'
                       : 'bg-white/60 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/60'
@@ -421,7 +455,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                 >
                   {/* Color dot / icon */}
                   <span
-                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
+                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors pointer-events-none ${
                       isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-900'
                     }`}
                     style={{
@@ -431,7 +465,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     <IconComponent size={13} strokeWidth={2.5} />
                   </span>
 
-                  <span>{slide.tabLabel}</span>
+                  <span className="pointer-events-none">{slide.tabLabel}</span>
                 </button>
               );
             })}
@@ -472,7 +506,14 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   <div>
                     <h1>
                       {slide.headlineMain}{' '}
-                      <span style={{ color: slide.themeColor }}>
+                      <span
+                        className="bg-clip-text text-transparent inline-block"
+                        style={{
+                          backgroundImage: SLIDE_GRADIENTS[slide.id] || `linear-gradient(135deg, ${slide.themeColor} 0%, #059669 100%)`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                        }}
+                      >
                         {slide.headlineHighlight}
                       </span>
                     </h1>
@@ -486,7 +527,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Mini Feature Highlights Chips */}
-                  <div className="w-full max-w-sm sm:max-w-none flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2 pt-1">
+                  <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2 pt-1">
                     {slide.highlights.map((highlight, idx) => (
                       <div
                         key={idx}
@@ -505,17 +546,31 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
                   {/* Action Buttons */}
                   <div className="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4 w-full">
-                    <button
-                      onClick={() => onOpenModal(slide.modalType, slide.productName)}
-                      className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
-                      style={{
-                        backgroundColor: slide.themeColor,
-                        boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
-                      }}
-                    >
-                      <span>{slide.primaryCtaText}</span>
-                      <ArrowRight size={18} />
-                    </button>
+                    {slide.id === 'crm' ? (
+                      <Link
+                        href="/crm"
+                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        style={{
+                          backgroundColor: slide.themeColor,
+                          boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
+                        }}
+                      >
+                        <span>{slide.primaryCtaText}</span>
+                        <ArrowRight size={18} />
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => onOpenModal(slide.modalType, slide.productName)}
+                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        style={{
+                          backgroundColor: slide.themeColor,
+                          boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
+                        }}
+                      >
+                        <span>{slide.primaryCtaText}</span>
+                        <ArrowRight size={18} />
+                      </button>
+                    )}
 
                     <button
                       onClick={() => onOpenModal('demo', slide.productName)}
@@ -658,6 +713,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
                 {/* On-Card Navigation Arrows */}
                 <button
+                  type="button"
                   onClick={handlePrev}
                   aria-label="Previous product slide"
                   className="absolute left-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md border border-slate-200/80 flex items-center justify-center opacity-85 hover:opacity-100 hover:scale-110 active:scale-95 transition-all"
@@ -665,6 +721,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   <ChevronLeft size={18} />
                 </button>
                 <button
+                  type="button"
                   onClick={handleNext}
                   aria-label="Next product slide"
                   className="absolute right-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md border border-slate-200/80 flex items-center justify-center opacity-85 hover:opacity-100 hover:scale-110 active:scale-95 transition-all"
@@ -683,7 +740,11 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                 {slides.map((slide, idx) => (
                   <button
                     key={slide.id}
-                    onClick={() => setActiveSlideIndex(idx)}
+                    type="button"
+                    onClick={() => {
+                      setActiveSlideIndex(idx);
+                      pauseAutoSlide();
+                    }}
                     aria-label={`Go to slide ${idx + 1}`}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       idx === activeSlideIndex

@@ -3,6 +3,7 @@
 import React from 'react';
 import { Check, ShieldCheck, Zap, FileText } from 'lucide-react';
 import TaxInvoiceGraphic from './TaxInvoiceGraphic';
+import { renderTitleWithGradient } from '../lib/render-title';
 
 export default function GstSection({ gstData }) {
   return (
@@ -43,7 +44,7 @@ export default function GstSection({ gstData }) {
             {/* Main Section Heading */}
             <div>
               <h2>
-                {gstData?.title || 'Built for Indian Businesses'}
+                {renderTitleWithGradient(gstData?.title || 'Built for Indian Businesses')}
               </h2>
               <p className="mt-2 max-w-xl mx-auto lg:mx-0">
                 {gstData?.subtitle ||

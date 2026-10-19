@@ -19,6 +19,7 @@ import {
   Database,
   Headphones,
 } from 'lucide-react';
+import { renderTitleWithGradient } from '../lib/render-title';
 
 const ICON_MAP = {
   Layers,
@@ -39,39 +40,36 @@ const ICON_MAP = {
   Headphones,
 };
 
+function getItemColClass(count, idx) {
+  if (count === 5) {
+    if (idx < 3) return 'lg:col-span-2';
+    if (idx === 3) return 'lg:col-span-2 lg:col-start-2';
+    return 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-2';
+  }
+  if (count === 3 && idx === 2) {
+    return 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-1';
+  }
+  return '';
+}
+
 function getGridClass(count) {
-  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-4 sm:gap-6';
-  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-4xl mx-auto gap-4 sm:gap-6';
-  if (count === 4) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 sm:gap-5';
-  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5';
-  if (count === 6) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5';
-  if (count === 7 || count === 8) return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto gap-4 sm:gap-5';
-  return 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-5';
+  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-6 sm:gap-8';
+  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto gap-6 sm:gap-8';
+  if (count === 4) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto gap-6 sm:gap-8';
+  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 max-w-6xl mx-auto gap-6 sm:gap-8';
+  if (count === 6) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-6 sm:gap-8';
+  if (count <= 8) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto gap-6 sm:gap-8';
+  return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto';
 }
 
 export default function WhyChooseSection({ whyChoose }) {
   const items = whyChoose?.items || [];
-  const gridLayoutClass = getGridClass(items.length);
+  const count = items.length;
+  const gridLayoutClass = getGridClass(count);
 
   const getIcon = (iconName) => {
     const Component = ICON_MAP[iconName] || ShieldCheck;
-    return <Component size={22} strokeWidth={2.4} />;
-  };
-
-  const formatTwoLineTitle = (title) => {
-    if (!title) return '';
-    const words = title.split(' ');
-    if (words.length <= 2) {
-      return title;
-    } else if (words.length === 3) {
-      return <>{words[0]} {words[1]}<br className="hidden sm:inline" /> {words[2]}</>;
-    } else if (words.length === 4) {
-      return <>{words[0]} {words[1]}<br className="hidden sm:inline" /> {words[2]} {words[3]}</>;
-    } else if (words.length > 4) {
-      const mid = Math.ceil(words.length / 2);
-      return <>{words.slice(0, mid).join(' ')}<br className="hidden sm:inline" /> {words.slice(mid).join(' ')}</>;
-    }
-    return title;
+    return <Component size={26} strokeWidth={2.2} />;
   };
 
   return (
@@ -88,7 +86,7 @@ export default function WhyChooseSection({ whyChoose }) {
             {whyChoose?.badge || 'WHY CHOOSE ISARVA ERP?'}
           </div>
           <h2>
-            {whyChoose?.title || 'Everything You Need to Succeed'}
+            {renderTitleWithGradient(whyChoose?.title || 'Everything You Need to Succeed')}
           </h2>
           <p>
             {whyChoose?.subtitle || 'One platform. Multiple solutions. Built for modern businesses.'}
@@ -97,27 +95,30 @@ export default function WhyChooseSection({ whyChoose }) {
 
         {/* Dynamic Features Grid */}
         <div className={gridLayoutClass}>
-          {items.map((item, idx) => (
-            <div
-              key={item.id || idx}
-              className="bg-white rounded-2xl border border-emerald-950/8 p-5 sm:p-6 flex flex-col items-center text-center shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 group"
-            >
-              {/* Circular Mint Icon Container */}
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#dcf5e9] text-[#007a55] flex items-center justify-center mb-3.5 group-hover:bg-[#007a55] group-hover:text-white group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+          {items.map((item, idx) => {
+            const colClass = getItemColClass(count, idx);
+            return (
+              <div
+                key={item.id || idx}
+                className={`bg-white rounded-2xl border border-emerald-950/8 p-6 sm:p-7 lg:p-8 flex flex-col items-center text-center shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 min-w-0 w-full group ${colClass}`}
+              >
+              {/* Mint Icon Container with Generous Padding & Background */}
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#dcf5e9] text-[#007a55] flex items-center justify-center mb-5 sm:mb-6 shrink-0 shadow-2xs group-hover:bg-[#007a55] group-hover:text-white group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
                 {getIcon(item.iconName)}
               </div>
 
               {/* Title */}
-              <h3 className="mb-1.5 min-h-8 sm:min-h-12 flex items-center justify-center text-center">
-                <span>{formatTwoLineTitle(item.title)}</span>
+              <h3 className="mb-2 sm:mb-2.5 min-h-0 sm:min-h-[3rem] flex items-center justify-center text-center">
+                <span>{item.title}</span>
               </h3>
 
-              {/* Description without line-clamp truncation */}
+              {/* Description */}
               <p className="text-center">
                 {item.description}
               </p>
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

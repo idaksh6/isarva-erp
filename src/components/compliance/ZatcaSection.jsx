@@ -3,6 +3,7 @@
 import React from 'react';
 import { Check, ShieldCheck } from 'lucide-react';
 import ZatcaGraphic from './ZatcaGraphic';
+import { renderTitleWithGradient } from '../../lib/render-title';
 
 export default function ZatcaSection({ zatcaData }) {
   const defaultChecklist = [
@@ -63,7 +64,7 @@ export default function ZatcaSection({ zatcaData }) {
           <div className="lg:col-span-5 xl:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start space-y-3.5">
             {/* Native Heading (Space Grotesk, Pure White via .section-saudi-zatca) */}
             <h2>
-              {zatcaData?.title || 'Built for Saudi Vision 2030 Enterprises'}
+              {renderTitleWithGradient(zatcaData?.title || 'Built for Saudi Vision 2030 Enterprises', 'Saudi Vision 2030 Enterprises', true)}
             </h2>
 
             {/* Native Paragraph (Inter, Crisp Mint-White, Zero Distraction) */}

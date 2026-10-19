@@ -26,7 +26,9 @@ export async function getContent(countryCode = 'IN') {
         SELECT data FROM site_content WHERE id = ${dbKey} LIMIT 1;
       `;
       if (rows && rows.length > 0 && rows[0].data) {
-        memoryStore[code] = { ...defaultForCountry, ...rows[0].data };
+        const rawProducts = rows[0].data.products || defaultForCountry.products;
+        const cleanProducts = rawProducts.filter((p) => p.id !== 'industry-erp');
+        memoryStore[code] = { ...defaultForCountry, ...rows[0].data, products: cleanProducts };
         return memoryStore[code];
       }
 
@@ -36,7 +38,9 @@ export async function getContent(countryCode = 'IN') {
           SELECT data FROM site_content WHERE id = 'main' LIMIT 1;
         `;
         if (legacyRows && legacyRows.length > 0 && legacyRows[0].data) {
-          memoryStore.IN = { ...defaultForCountry, ...legacyRows[0].data };
+          const rawProducts = legacyRows[0].data.products || defaultForCountry.products;
+          const cleanProducts = rawProducts.filter((p) => p.id !== 'industry-erp');
+          memoryStore.IN = { ...defaultForCountry, ...legacyRows[0].data, products: cleanProducts };
           return memoryStore.IN;
         }
       }

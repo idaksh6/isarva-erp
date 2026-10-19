@@ -123,8 +123,8 @@ export default function MainPageContent({ initialCountry = 'IN' }) {
       {/* Industries Served Section */}
       <IndustriesSection industries={content.industries} />
 
-      {/* Customer Testimonials Section */}
-      <TestimonialsSection testimonials={content.testimonials} />
+      {/* Customer Testimonials Section (Hidden) */}
+      {/* <TestimonialsSection testimonials={content.testimonials} /> */}
 
       {/* Frequently Asked Questions Accordion */}
       <FaqSection faqs={content.faqs} />
