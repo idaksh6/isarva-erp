@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, Download, Send, Sparkles, AlertCircle } from 'lucide-react';
 
 export function CrmLightboxModal({ isOpen, onClose, imageSrc, imageAlt }) {
@@ -42,7 +42,33 @@ export function CrmBrochureModal({ isOpen, onClose }) {
   const [isDownloaded, setIsDownloaded] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
+  // Always reset fields to blank whenever modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+      });
+      setIsDownloaded(false);
+      setErrorMsg('');
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
+  const handleClose = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+    });
+    setIsDownloaded(false);
+    setErrorMsg('');
+    onClose();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,7 +107,7 @@ export function CrmBrochureModal({ isOpen, onClose }) {
   return (
     <div
       className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div
         className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 sm:p-8 text-left max-h-[90vh] overflow-y-auto"
@@ -89,7 +115,7 @@ export function CrmBrochureModal({ isOpen, onClose }) {
       >
         <button
           type="button"
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 p-2 rounded-full transition-all cursor-pointer"
           aria-label="Close Modal"
         >
@@ -118,7 +144,7 @@ export function CrmBrochureModal({ isOpen, onClose }) {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} autoComplete="off" className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                   Full Name <span className="text-red-500">*</span>
@@ -201,7 +227,7 @@ export function CrmBrochureModal({ isOpen, onClose }) {
             <div className="pt-2">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleClose}
                 className="btn-brand-primary"
               >
                 Done
@@ -226,7 +252,35 @@ export function CrmDemoModal({ isOpen, onClose }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
+  // Always reset fields to blank whenever modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+      });
+      setIsSubmitted(false);
+      setErrorMsg('');
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
+  const handleClose = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      message: '',
+    });
+    setIsSubmitted(false);
+    setErrorMsg('');
+    onClose();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -260,7 +314,7 @@ export function CrmDemoModal({ isOpen, onClose }) {
   return (
     <div
       className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div
         className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 sm:p-8 text-left max-h-[90vh] overflow-y-auto"
@@ -268,7 +322,7 @@ export function CrmDemoModal({ isOpen, onClose }) {
       >
         <button
           type="button"
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 p-2 rounded-full transition-all cursor-pointer"
           aria-label="Close Modal"
         >
@@ -297,7 +351,7 @@ export function CrmDemoModal({ isOpen, onClose }) {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} autoComplete="off" className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                   Full Name <span className="text-red-500">*</span>
@@ -393,7 +447,7 @@ export function CrmDemoModal({ isOpen, onClose }) {
             <div className="pt-2">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleClose}
                 className="btn-brand-primary"
               >
                 Done

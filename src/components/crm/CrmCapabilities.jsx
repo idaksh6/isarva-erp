@@ -110,7 +110,7 @@ export default function CrmCapabilities() {
           {capabilities.map((item, idx) => (
             <div
               key={idx}
-              className={`group relative p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/80 ${item.hoverBorder} hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between shadow-xs`}
+              className={`group relative p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/80 ${item.hoverBorder} hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between shadow-xs w-full`}
             >
               <div className="flex flex-col items-center w-full">
                 {/* Gradient Rounded-2xl Icon Box */}

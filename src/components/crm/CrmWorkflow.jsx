@@ -111,7 +111,7 @@ export default function CrmWorkflow() {
           {steps.map((item, idx) => (
             <div
               key={idx}
-              className={`relative flex flex-col min-w-0 ${
+              className={`relative flex flex-col min-w-0 w-full ${
                 idx === 4 ? 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0 xl:col-span-1' : ''
               }`}
             >

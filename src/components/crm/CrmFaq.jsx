@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 
 export default function CrmFaq() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -17,27 +16,19 @@ export default function CrmFaq() {
     },
     {
       q: 'Does Isarva CRM support mobile access on Android and iOS?',
-      a: 'Yes. Field sales representatives can access leads, log meeting notes, update deal stages, view customer contact history, and receive new lead notifications on Android and iOS mobile devices.',
+      a: 'Yes, Isarva CRM provides responsive mobile access as well as dedicated companion app capabilities, enabling field sales reps to log client meetings, update deal milestones, access contact history, and receive instant lead alerts from anywhere.',
     },
     {
-      q: 'How does Isarva CRM handle GST & tax calculations in quotations?',
-      a: 'Our quotation engine has native Indian GST support (CGST, SGST, IGST), customizable HSN/SAC codes, and regional Saudi ZATCA compliance options. Taxes are calculated automatically per line item, generating certified, print-ready PDF proposals instantly.',
+      q: 'How secure is our customer and sales data?',
+      a: 'Your data is safeguarded with enterprise-grade 256-bit SSL encryption in transit and at rest. We implement strict role-based access control (RBAC), automated regular backups, and multi-tenant security architecture to keep your customer records private and secure.',
     },
     {
-      q: 'How does the WhatsApp & Email integration work?',
-      a: 'You can dispatch estimates, quotations, and welcome messages directly to prospects over WhatsApp and synchronized email. Communication logs are linked directly to each client dossier for seamless team visibility.',
+      q: 'How long does implementation and team onboarding take?',
+      a: 'Most teams get up and running within 24 to 48 hours. Our intuitive interface requires minimal training, and we provide step-by-step onboarding, CSV data import tools from your existing spreadsheets, and dedicated customer support.',
     },
     {
-      q: 'Can we import our existing leads and customer contacts from Excel or CSV?',
-      a: 'Yes. You can seamlessly import existing spreadsheets, contact lists, and past customer records via our guided 1-click CSV/Excel import wizard with automated column mapping.',
-    },
-    {
-      q: 'How secure is our business and customer data on Isarva?',
-      a: 'Your data is secured with 256-bit SSL encryption in transit and AES-256 at rest, hosted on enterprise AWS cloud data centers with automated daily offsite backups, strict role-based access tiers, and complete audit trails.',
-    },
-    {
-      q: 'Can Isarva CRM connect with BillSoft Accounting and Restaurant POS?',
-      a: 'Yes. Isarva CRM is part of the unified ISARVA ERP ecosystem. Won deals convert directly into accounting invoices, customer ledgers, and delivery challans without double data entry or external connectors.',
+      q: 'How can I get a customized demo or pricing quote?',
+      a: 'You can click the "Book a Free Demo" button anywhere on this page to schedule a live, personalized walkthrough with one of our CRM specialists, or click "Download Brochure" for full technical and commercial specifications.',
     },
   ];
 
@@ -46,70 +37,73 @@ export default function CrmFaq() {
   };
 
   return (
-    <section id="faq" className="section-padding bg-slate-50 border-b border-slate-200/80 scroll-mt-20">
-      <div className="site-container">
-        <div className="max-w-4xl mx-auto">
-          
-          {/* Section Header matching Home Page exactly */}
-          <div className="section-header">
-            <div className="section-eyebrow text-[#ea580c]">
-              GOT QUESTIONS?
-            </div>
-            <h2>
-              Frequently Asked{' '}
-              <span className="text-gradient-crm">
-                Questions
-              </span>
-            </h2>
-            <p>
-              Everything you need to know about Isarva CRM setup, security, integrations, and pricing.
-            </p>
+    <section id="faq" className="py-14 lg:py-20 bg-gray-50 border-b border-gray-200 scroll-mt-20">
+      <div className="w-full max-w-4xl mx-auto px-5 sm:px-6">
+        
+        {/* Section Header */}
+        <div className="text-center mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs font-heading">
+            <span className="w-2 h-2 rounded-full bg-[#008CDB] animate-pulse" />
+            Got Questions?
           </div>
 
-          {/* Accordion Stack */}
-          <div className="space-y-3.5 sm:space-y-4">
-            {faqs.map((faq, idx) => {
-              const isOpen = openIndex === idx;
-              return (
-                <div
-                  key={idx}
-                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
-                    isOpen
-                      ? 'border-[#ea580c] shadow-md shadow-orange-500/10'
-                      : 'border-slate-200/90 hover:border-slate-300'
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleFaq(idx)}
-                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
-                    aria-expanded={isOpen}
-                  >
-                    <span className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
-                      {faq.q}
-                    </span>
-                    <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${
-                        isOpen
-                          ? 'rotate-180 bg-[#ea580c] text-white'
-                          : 'bg-slate-100 text-slate-500'
-                      }`}
-                    >
-                      <ChevronDown size={17} strokeWidth={2.5} />
-                    </span>
-                  </button>
+          <h2 className="mb-4 capitalize">
+            Frequently Asked{' '}
+            <span className="bg-gradient-to-r from-[#008CDB] via-indigo-600 to-[#0284C7] bg-clip-text text-transparent">
+              Questions
+            </span>
+          </h2>
 
-                  {isOpen && (
-                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 animate-in fade-in duration-200">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
+          <p className="max-w-2xl mx-auto">
+            Everything you need to know about Isarva CRM setup, security, and pricing.
+          </p>
         </div>
+
+        {/* Accordion List */}
+        <div className="space-y-3.5 sm:space-y-4">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <div
+                key={idx}
+                className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
+                  isOpen
+                    ? 'border-[#008CDB] shadow-md shadow-sky-500/10'
+                    : 'border-gray-200/90 hover:border-gray-300'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(idx)}
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-base sm:text-lg font-bold text-gray-900 leading-snug font-heading">
+                    {faq.q}
+                  </span>
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${
+                      isOpen
+                        ? 'rotate-180 bg-[#008CDB] text-white'
+                        : 'bg-gray-100 text-gray-500'
+                    }`}
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </button>
+
+                {isOpen && (
+                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 animate-in fade-in duration-200">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

@@ -20,10 +20,10 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
       <div className="absolute top-20 right-10 w-[400px] h-[300px] bg-[#0284C7]/10 blur-[100px] pointer-events-none rounded-full" />
 
       <div className="site-container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
           
           {/* Left Hero Column */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
             
             {/* Live Indicator Eyebrow Tag */}
             <div className="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs sm:text-sm mb-6 shadow-2xs">
@@ -37,7 +37,7 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
             </div>
 
             {/* Headline with Space Grotesk via @layer base and exact gradient */}
-            <h1 className="mb-5 sm:mb-6 capitalize max-w-2xl">
+            <h1 className="mb-5 sm:mb-6 capitalize max-w-2xl w-full">
               CRM That Runs Your{' '}
               <span className="bg-gradient-to-r from-[#008CDB] via-[#6366F1] to-[#0284C7] bg-clip-text text-transparent">
                 Sales Pipeline Itself
@@ -46,12 +46,12 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
             </h1>
 
             {/* Paragraph with Inter via @layer base */}
-            <p className="mb-6 max-w-xl mx-auto lg:mx-0">
+            <p className="mb-6 max-w-xl mx-auto lg:mx-0 w-full">
               Capture leads from web and campaigns, manage visual Kanban deals, generate instant GST-compliant PDF quotations, and build lasting customer relationships—all in one unified cloud system.
             </p>
 
             {/* 4 Category Highlight Pills */}
-            <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-8 justify-center lg:justify-start max-w-xl">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-8 justify-center lg:justify-start max-w-xl w-full">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#008CDB] shrink-0" />
                 <span>Inbound Leads</span>
@@ -95,8 +95,8 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
             </div>
 
             {/* 3 Trust Cards from Source */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-gray-200/90 w-full">
-              <div className="flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-sky-300 hover:shadow-md transition-all">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-gray-200/90 w-full self-stretch">
+              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-sky-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100/80 text-[#008CDB]">
                   <ShieldCheck size={22} className="text-[#008CDB]" />
                 </div>
@@ -106,7 +106,7 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
                 </div>
               </div>
 
-              <div className="flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-sky-300 hover:shadow-md transition-all">
+              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-sky-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100/80 text-[#008CDB]">
                   <RefreshCw size={20} className="text-[#008CDB]" />
                 </div>
@@ -116,7 +116,7 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
                 </div>
               </div>
 
-              <div className="flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-sky-300 hover:shadow-md transition-all">
+              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-sky-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100/80 text-[#008CDB]">
                   <Headphones size={22} className="text-[#008CDB]" />
                 </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, Send, Sparkles } from 'lucide-react';
 
 export default function LeadModal({ isOpen, onClose, modalType, selectedProduct, countryCode = 'IN' }) {
@@ -16,7 +16,42 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
+  // Always reset form fields to completely blank whenever popup modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        product: selectedProduct || 'All-in-One ERP',
+        message: ''
+      });
+      setIsSubmitted(false);
+      setErrorMsg('');
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.removeItem('isarva_saved_lead_data');
+        } catch (e) {}
+      }
+    }
+  }, [isOpen, selectedProduct]);
+
   if (!isOpen) return null;
+
+  const handleClose = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      product: selectedProduct || 'All-in-One ERP',
+      message: ''
+    });
+    setIsSubmitted(false);
+    setErrorMsg('');
+    onClose();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +80,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn"
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div
         className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 relative overflow-hidden"
@@ -53,7 +88,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
       >
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
         >
           <X size={20} />
@@ -73,13 +108,14 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} autoComplete="off" className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Your Full Name *</label>
                   <input
                     type="text"
                     required
+                    autoComplete="off"
                     placeholder="e.g. Rahul Sharma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -91,6 +127,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                   <input
                     type="text"
                     required
+                    autoComplete="off"
                     placeholder="e.g. Spice Hub Cafe"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -105,6 +142,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                   <input
                     type="email"
                     required
+                    autoComplete="off"
                     placeholder="name@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -116,13 +154,13 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                   <input
                     type="tel"
                     required
+                    autoComplete="off"
                     placeholder="+91 9902863697"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
                   />
                 </div>
-
               </div>
 
               <div>
@@ -181,10 +219,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
               Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. Our ERP product specialist will get in touch with you shortly.
             </p>
             <button
-              onClick={() => {
-                setIsSubmitted(false);
-                onClose();
-              }}
+              onClick={handleClose}
               className="btn-brand-primary px-8 mt-4"
             >
               Done
