@@ -21,7 +21,7 @@ export default function ZatcaSection({ zatcaData }) {
   return (
     <section
       id="compliance"
-      className="w-full relative overflow-hidden bg-[#004e30] bg-gradient-to-r from-[#003822] via-[#004e30] to-[#003822] border-y border-emerald-500/30 section-padding-sm section-saudi-zatca"
+      className="w-full relative overflow-hidden bg-[#004e30] bg-gradient-to-r from-[#003822] via-[#004e30] to-[#003822] border-y border-emerald-500/30 section-padding section-saudi-zatca"
     >
       {/* Subtle Ambient Radial Lighting for Depth (Velvet Smooth — Zero Dot Noise) */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />

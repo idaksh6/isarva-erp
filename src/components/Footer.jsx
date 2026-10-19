@@ -146,11 +146,11 @@ export default function Footer({
               </div>
 
               {/* Right Action Conversion Pod (5 cols) */}
-              <div className="lg:col-span-5 w-full">
-                <div className="relative rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-4 sm:p-6 lg:p-7 shadow-2xl flex flex-col items-stretch gap-3.5 sm:gap-4">
+              <div className="lg:col-span-5 w-full flex justify-center">
+                <div className="relative w-full max-w-md mx-auto lg:mx-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-4 sm:p-6 lg:p-7 shadow-2xl flex flex-col items-stretch gap-3.5 sm:gap-4">
                   {/* Live Availability Badge */}
-                  <div className="flex flex-wrap items-center justify-between gap-1.5 pb-2 border-b border-white/10">
-                    <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1.5 pb-2 border-b border-white/10 text-center sm:text-left">
+                    <div className="flex items-center justify-center gap-2 shrink-0">
                       <span className="relative flex h-2 w-2 shrink-0">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
@@ -165,7 +165,7 @@ export default function Footer({
                   </div>
 
                   {/* Subtext description inside pod */}
-                  <div className="text-xs text-emerald-100/90 font-normal leading-relaxed">
+                  <div className="text-xs text-emerald-100/90 font-normal leading-relaxed text-center sm:text-left">
                     Get a personalized demo tailored for your business industry with customized pricing and dedicated onboarding support.
                   </div>
 
@@ -278,11 +278,11 @@ export default function Footer({
               </div>
 
               {/* Right Action Conversion Pod (5 cols) */}
-              <div className="lg:col-span-5 w-full">
-                <div className="relative rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-4 sm:p-6 lg:p-7 shadow-xl shadow-slate-900/5 flex flex-col items-stretch gap-3.5 sm:gap-4">
+              <div className="lg:col-span-5 w-full flex justify-center">
+                <div className="relative w-full max-w-md mx-auto lg:mx-0 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-4 sm:p-6 lg:p-7 shadow-xl shadow-slate-900/5 flex flex-col items-stretch gap-3.5 sm:gap-4">
                   {/* Live Availability Badge */}
-                  <div className="flex flex-wrap items-center justify-between gap-1.5 pb-2.5 border-b border-slate-100">
-                    <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1.5 pb-2.5 border-b border-slate-100 text-center sm:text-left">
+                    <div className="flex items-center justify-center gap-2 shrink-0">
                       <span className="relative flex h-2 w-2 shrink-0">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-[#007a55]" />
@@ -297,7 +297,7 @@ export default function Footer({
                   </div>
 
                   {/* Subtext description inside pod */}
-                  <div className="text-xs text-slate-600 font-normal leading-relaxed">
+                  <div className="text-xs text-slate-600 font-normal leading-relaxed text-center sm:text-left">
                     Get a personalized demo tailored for your business industry with customized pricing and dedicated onboarding support.
                   </div>
 

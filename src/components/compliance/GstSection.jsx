@@ -9,7 +9,7 @@ export default function GstSection({ gstData }) {
   return (
     <section
       id="compliance"
-      className="w-full relative overflow-hidden bg-[#fef7ee] bg-gradient-to-b from-[#fef7ee] via-[#faf3e8] to-[#f6ecdf] border-y border-[#fed7aa]/50 pt-10 pb-16 lg:pt-14 lg:pb-24 section-india-gst"
+      className="w-full relative overflow-hidden bg-[#fef7ee] bg-gradient-to-b from-[#fef7ee] via-[#faf3e8] to-[#f6ecdf] border-y border-[#fed7aa]/50 section-padding section-india-gst"
     >
       {/* Simple, Clean Architectural India Monuments Line-Art — Edge-to-Edge Across Full Width */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">

@@ -588,7 +588,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
                   {/* Product Stats / Trust Badges */}
                   <div className="pt-4 border-t border-slate-200/70 w-full">
-                    <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-center lg:justify-start gap-3.5 sm:gap-7">
+                    <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-wrap items-center justify-center lg:justify-start gap-x-3.5 sm:gap-x-4 gap-y-2 sm:gap-y-2.5">
                       {slide.stats.map((stat, idx) => {
                         const StatIcon = stat.icon;
                         return (
