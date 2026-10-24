@@ -89,7 +89,7 @@ export default function CrmCapabilities() {
       <div className="site-container">
         
         {/* Exact Section Header from Source Theme */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#008CDB] animate-pulse" />
             Core Capabilities
@@ -110,6 +110,9 @@ export default function CrmCapabilities() {
           {capabilities.map((item, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={(idx % 3) * 120 + 100}
+              data-aos-duration="700"
               className={`group relative p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/80 ${item.hoverBorder} hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between shadow-xs w-full`}
             >
               <div className="flex flex-col items-center w-full">

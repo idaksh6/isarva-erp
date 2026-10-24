@@ -113,7 +113,7 @@ export default function CrmWhyUs() {
 
       <div className="w-full max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-14 lg:mb-18">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-14 lg:mb-18">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs font-heading">
             <span className="w-2 h-2 rounded-full bg-[#008CDB] animate-pulse" />
             Why Sales Leaders Choose Isarva
@@ -137,6 +137,9 @@ export default function CrmWhyUs() {
           {cards.map((item, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={(idx % 3) * 120 + 100}
+              data-aos-duration="700"
               className="group relative p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/80 hover:border-sky-400 hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between shadow-xs w-full"
             >
               <div className="flex flex-col items-center w-full">
@@ -184,6 +187,9 @@ export default function CrmWhyUs() {
             {metrics.map((m, idx) => (
               <div
                 key={idx}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100 + 100}
+                data-aos-duration="700"
                 className="p-4 sm:p-5 rounded-2xl bg-sky-50/60 border border-sky-100 text-center"
               >
                 <div

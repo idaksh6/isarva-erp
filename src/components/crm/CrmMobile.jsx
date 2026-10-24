@@ -10,7 +10,11 @@ export default function CrmMobile({ onOpenLightbox }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Content Column */}
-            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div
+              data-aos="fade-right"
+              data-aos-duration="700"
+              className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left"
+            >
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 text-[#008CDB] font-bold text-xs mb-4 font-heading">
                 Mobile Companion
               </div>
@@ -65,7 +69,12 @@ export default function CrmMobile({ onOpenLightbox }) {
             </div>
 
             {/* Right Graphic Mockup */}
-            <div className="lg:col-span-5 flex justify-center">
+            <div
+              data-aos="fade-left"
+              data-aos-delay="200"
+              data-aos-duration="800"
+              className="lg:col-span-5 flex justify-center"
+            >
               <div
                 className="relative cursor-zoom-in group max-w-[380px]"
                 onClick={() => onOpenLightbox?.('/images/crm/mockups/CRM-mobile-mockup.png', 'Isarva CRM Mobile App')}

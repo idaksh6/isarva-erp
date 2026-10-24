@@ -31,7 +31,11 @@ export default function ZatcaSection({ zatcaData }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           
           {/* ZONE 1 (LEFT): Dotted Cyber Map of Saudi Arabia with Anchored ZATCA Compliant Pill Badge */}
-          <div className="lg:col-span-3 xl:col-span-3 flex justify-center lg:justify-start">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="700"
+            className="lg:col-span-3 xl:col-span-3 flex justify-center lg:justify-start"
+          >
             <div className="relative w-full max-w-[260px] sm:max-w-[280px] lg:max-w-[290px] aspect-square flex items-center justify-center">
               {/* Dotted Matrix Cyber Map Asset */}
               <div className="w-full h-full rounded-2xl overflow-hidden border border-emerald-500/20 shadow-2xl bg-[#003620]/60 p-2 flex items-center justify-center">
@@ -61,7 +65,12 @@ export default function ZatcaSection({ zatcaData }) {
           </div>
 
           {/* ZONE 2 (MIDDLE): High-Contrast Headline, Explanatory Paragraph & Minimalist Checklist */}
-          <div className="lg:col-span-5 xl:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start space-y-3.5">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="150"
+            data-aos-duration="700"
+            className="lg:col-span-5 xl:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start space-y-3.5"
+          >
             {/* Native Heading (Space Grotesk, Pure White via .section-saudi-zatca) */}
             <h2>
               {renderTitleWithGradient(zatcaData?.title || 'Built for Saudi Vision 2030 Enterprises', 'Saudi Vision 2030 Enterprises', true)}
@@ -92,7 +101,12 @@ export default function ZatcaSection({ zatcaData }) {
           </div>
 
           {/* ZONE 3 (RIGHT): 3D Photorealistic Saudi ZATCA Tax Invoice Card */}
-          <div className="lg:col-span-4 xl:col-span-4 flex items-center justify-center w-full">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="250"
+            data-aos-duration="800"
+            className="lg:col-span-4 xl:col-span-4 flex items-center justify-center w-full"
+          >
             <ZatcaGraphic />
           </div>
 

@@ -135,9 +135,13 @@ function getGridPosClass(index, total) {
 function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
   const theme = FAQ_THEMES[index % FAQ_THEMES.length];
   const [isHovered, setIsHovered] = useState(false);
+  const cardDelay = (index % 2) * 150 + 100;
 
   return (
     <div
+      data-aos="fade-up"
+      data-aos-delay={cardDelay}
+      data-aos-duration="600"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`relative rounded-2xl transition-all duration-300 overflow-hidden min-w-0 w-full ${gridClass}`}
@@ -277,7 +281,7 @@ export default function FaqSection({ faqs }) {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="section-header">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#007a55] mx-auto shadow-2xs">
             <Sparkles size={14} className="text-[#007a55]" />
             <span className="section-eyebrow">

@@ -81,7 +81,7 @@ export default function WhyChooseSection({ whyChoose }) {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="section-header">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header">
           <div className="section-eyebrow">
             {whyChoose?.badge || 'WHY CHOOSE ISARVA ERP?'}
           </div>
@@ -97,9 +97,13 @@ export default function WhyChooseSection({ whyChoose }) {
         <div className={gridLayoutClass}>
           {items.map((item, idx) => {
             const colClass = getItemColClass(count, idx);
+            const cardDelay = (idx % 3) * 150 + 100;
             return (
               <div
                 key={item.id || idx}
+                data-aos="fade-up"
+                data-aos-delay={cardDelay}
+                data-aos-duration="700"
                 className={`bg-white rounded-2xl border border-emerald-950/8 p-6 sm:p-7 lg:p-8 flex flex-col items-center text-center shadow-xs hover:shadow-xl hover:border-[#007a55]/30 hover:-translate-y-1.5 transition-all duration-300 min-w-0 w-full group ${colClass}`}
               >
               {/* Mint Icon Container with Generous Padding & Background */}

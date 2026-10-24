@@ -152,7 +152,7 @@ export default function IndustriesSection({ industries }) {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="section-header">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header">
           <div className="section-eyebrow">
             {industries?.badge || 'INDUSTRIES WE SERVE'}
           </div>
@@ -171,10 +171,14 @@ export default function IndustriesSection({ industries }) {
             const IconComponent = (ind.iconName && ICON_MAP[ind.iconName]) || cfg.icon;
             const tagLabel = ind.tag || cfg.defaultTag;
             const colClass = getItemColClass(count, idx);
+            const cardDelay = (idx % 3) * 120 + 100;
 
             return (
               <div
                 key={ind.id || idx}
+                data-aos="fade-up"
+                data-aos-delay={cardDelay}
+                data-aos-duration="700"
                 className={`group relative flex flex-col items-center text-center rounded-2xl p-5 sm:p-6 cursor-pointer min-w-0 w-full ${colClass}`}
                 style={{
                   background: 'rgba(255,255,255,0.75)',
@@ -250,7 +254,7 @@ export default function IndustriesSection({ industries }) {
         </div>
 
         {/* Bottom stat strip */}
-        <div className="mt-12 pt-10 border-t border-slate-200">
+        <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="mt-12 pt-10 border-t border-slate-200">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
             {[
               { value: `${count > 0 ? count : 6}+`, label: 'Industries Served' },

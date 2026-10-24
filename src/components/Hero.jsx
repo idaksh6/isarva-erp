@@ -424,7 +424,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
       <div className="site-container relative z-10">
 
         {/* TOP INTERACTIVE PRODUCT SWITCHER TABS - FULL WIDTH ON RESPONSIVE */}
-        <div className="mb-8 lg:mb-10 -mx-4 sm:-mx-6 lg:mx-0 animate-fade-down">
+        <div data-aos="fade-down" data-aos-duration="600" className="mb-8 lg:mb-10 -mx-4 sm:-mx-6 lg:mx-0">
           <div
             ref={tabsContainerRef}
             onMouseEnter={() => setIsPaused(true)}
@@ -493,7 +493,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   }`}
                 >
                   {/* Category Eyebrow Tag */}
-                  <div className="inline-block animate-fade-down animation-delay-100">
+                  <div data-aos="fade-down" data-aos-delay="100" className="inline-block">
                     <span
                       className="section-eyebrow transition-colors duration-300"
                       style={{ color: slide.themeColor }}
@@ -503,7 +503,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Main Headline */}
-                  <div className="animate-fade-up animation-delay-200">
+                  <div data-aos="fade-up" data-aos-delay="150" data-aos-duration="700">
                     <h1>
                       {slide.headlineMain}{' '}
                       <span
@@ -520,14 +520,14 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Subheadline Description */}
-                  <div className="animate-fade-up animation-delay-300">
+                  <div data-aos="fade-up" data-aos-delay="250" data-aos-duration="700">
                     <p className="max-w-xl mx-auto lg:mx-0">
                       {slide.subheadline}
                     </p>
                   </div>
 
                   {/* Mini Feature Highlights Chips */}
-                  <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2 pt-1 animate-fade-up animation-delay-400">
+                  <div data-aos="fade-up" data-aos-delay="350" data-aos-duration="700" className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2 pt-1">
                     {slide.highlights.map((highlight, idx) => (
                       <div
                         key={idx}
@@ -545,7 +545,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4 w-full animate-fade-up animation-delay-500">
+                  <div data-aos="fade-up" data-aos-delay="450" data-aos-duration="700" className="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4 w-full">
                     {slide.id === 'crm' ? (
                       <Link
                         href="/crm"
@@ -611,7 +611,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Product Stats / Trust Badges */}
-                  <div className="pt-4 border-t border-slate-200/70 w-full animate-fade-up animation-delay-600">
+                  <div data-aos="fade-up" data-aos-delay="550" data-aos-duration="700" className="pt-4 border-t border-slate-200/70 w-full">
                     <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-center lg:justify-start gap-3.5 sm:gap-4 lg:gap-6">
                       {slide.stats.map((stat, idx) => {
                         const StatIcon = stat.icon;
@@ -642,7 +642,13 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
           </div>
 
           {/* RIGHT COLUMN: Interactive Slider Carousel with Floating Module Animation */}
-          <div className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full animate-fade-up animation-delay-300">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="250"
+            data-aos-duration="800"
+            data-aos-easing="ease-out-cubic"
+            className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full"
+          >
             
             {/* Slider Image Card Container with QuickDice Floating Effect */}
             <div

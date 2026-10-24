@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import 'aos/dist/aos.css';
 import Navbar from './Navbar';
 import Hero from './Hero';
 import ProductsSection from './ProductsSection';
@@ -23,6 +24,24 @@ export default function MainPageContent({ initialCountry = 'IN' }) {
     type: 'started',
     selectedProduct: ''
   });
+
+  // Dynamically initialize AOS on client mount
+  useEffect(() => {
+    let aosInstance = null;
+    import('aos').then((module) => {
+      aosInstance = module.default || module;
+      aosInstance.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: false,
+        offset: 50,
+        delay: 50,
+      });
+      setTimeout(() => {
+        aosInstance?.refresh();
+      }, 150);
+    });
+  }, []);
 
   // Keep countryCode in sync with initialCountry if route changes
   useEffect(() => {

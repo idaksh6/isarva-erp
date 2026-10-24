@@ -28,7 +28,11 @@ export default function GstSection({ gstData }) {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* LEFT ZONE: Section Eyebrow, Title, Subtitle, Checklist & Trust Badges */}
-          <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="700"
+            className="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start"
+          >
             
             {/* Category Eyebrow with Pulsing Live Sync Badge */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
@@ -57,6 +61,8 @@ export default function GstSection({ gstData }) {
               {gstData?.checklist?.map((item, idx) => (
                 <div
                   key={idx}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 80 + 100}
                   className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group text-left"
                 >
                   <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
@@ -94,7 +100,12 @@ export default function GstSection({ gstData }) {
           </div>
 
           {/* RIGHT ZONE: 3D Photorealistic Tax Invoice Card with Radar Backing */}
-          <div className="lg:col-span-5 relative flex items-center justify-center w-full">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="200"
+            data-aos-duration="800"
+            className="lg:col-span-5 relative flex items-center justify-center w-full"
+          >
             {/* Concentric Decorative Compliance Radar Rings */}
             <div className="absolute -inset-6 sm:-inset-10 flex items-center justify-center pointer-events-none">
               <div className="w-[360px] sm:w-[440px] h-[360px] sm:h-[440px] rounded-full border border-dashed border-[#007a55]/20 animate-[spin_100s_linear_infinite]" />

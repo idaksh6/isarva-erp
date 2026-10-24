@@ -41,7 +41,7 @@ export default function CrmFaq() {
       <div className="w-full max-w-4xl mx-auto px-5 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-14">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs font-heading">
             <span className="w-2 h-2 rounded-full bg-[#008CDB] animate-pulse" />
             Got Questions?
@@ -66,6 +66,9 @@ export default function CrmFaq() {
             return (
               <div
                 key={idx}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 3) * 100 + 100}
+                data-aos-duration="600"
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
                   isOpen
                     ? 'border-[#008CDB] shadow-md shadow-sky-500/10'

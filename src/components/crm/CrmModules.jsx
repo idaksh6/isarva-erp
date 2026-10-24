@@ -102,7 +102,7 @@ export default function CrmModules({ onOpenLightbox }) {
       <div className="site-container relative z-10">
         
         {/* Exact Section Header from Source Theme */}
-        <div className="text-center mb-14 lg:mb-20">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-14 lg:mb-20">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#008CDB] animate-pulse" />
             Complete Sales Ecosystem
@@ -127,6 +127,8 @@ export default function CrmModules({ onOpenLightbox }) {
             >
               {/* Content Column */}
               <div
+                data-aos={mod.reverse ? 'fade-left' : 'fade-right'}
+                data-aos-duration="700"
                 className={`lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left ${
                   mod.reverse ? 'lg:order-2' : 'lg:order-1'
                 }`}
@@ -168,6 +170,9 @@ export default function CrmModules({ onOpenLightbox }) {
 
               {/* Graphic Column */}
               <div
+                data-aos={mod.reverse ? 'fade-right' : 'fade-left'}
+                data-aos-delay="150"
+                data-aos-duration="700"
                 className={`lg:col-span-6 flex justify-center ${
                   mod.reverse ? 'lg:order-1' : 'lg:order-2'
                 }`}
