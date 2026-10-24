@@ -205,7 +205,7 @@ export default function ProductsSection({ header, products, onOpenModal }) {
       <div className="site-container">
 
         {/* Section Header */}
-        <div className="section-header">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header">
           <div className="section-eyebrow">
             {header?.badge || 'OUR SOLUTIONS'}
           </div>
@@ -226,12 +226,13 @@ export default function ProductsSection({ header, products, onOpenModal }) {
             const href = getProductHref(product);
             const imageUrl = getImageUrl(product.image, style.fallbackImage);
             const description = product.description || DEFAULT_DESCRIPTIONS[product.id] || product.subtitle;
+            const cardDelay = (idx % 4) * 100 + 100;
 
             const cardInner = (
               <>
                 <div>
-                  {/* Card Top Row: Icon on left, Title in middle, Arrow on right */}
-                  <div className="flex items-center justify-between gap-2 mb-3.5 sm:mb-4 h-[46px] sm:h-[50px]">
+                  {/* Card Top Row: Icon on left, Title in middle, Arrow on top-right */}
+                  <div className="flex items-start justify-between gap-2 mb-3.5 sm:mb-4 h-[46px] sm:h-[50px]">
                     <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
                       <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-xs`}>
                         {getProductIcon(product.iconName, product.id)}
@@ -240,7 +241,7 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                         {formatCardTitle(product.title)}
                       </h3>
                     </div>
-                    <div className="text-[#2563eb] shrink-0 pl-1 group-hover:translate-x-1 transition-transform duration-200">
+                    <div className="text-[#2563eb] shrink-0 pt-0.5 sm:pt-1 pl-1 group-hover:translate-x-1 transition-transform duration-200">
                       <ArrowRight size={17} strokeWidth={2.4} />
                     </div>
                   </div>
@@ -250,7 +251,7 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                     <img
                       src={imageUrl}
                       alt={`${product.title} Interface Preview`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block rounded-xl"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl"
                       loading="lazy"
                       onError={(e) => {
                         if (style.fallbackImage && e.currentTarget.src !== style.fallbackImage) {
@@ -274,6 +275,9 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                   key={product.id}
                   id={product.id}
                   href={href}
+                  data-aos="fade-up"
+                  data-aos-delay={cardDelay}
+                  data-aos-duration="700"
                   className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_2px_8px_rgba(15,23,42,0.03)] hover:shadow-md transition-all duration-200 min-w-0 w-full block ${colClass}`}
                   aria-label={`Explore ${product.title}`}
                 >
@@ -288,6 +292,9 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                 id={product.id}
                 type="button"
                 onClick={() => onOpenModal && onOpenModal('product', product.title)}
+                data-aos="fade-up"
+                data-aos-delay={cardDelay}
+                data-aos-duration="700"
                 className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_2px_8px_rgba(15,23,42,0.03)] hover:shadow-md transition-all duration-200 min-w-0 w-full text-left cursor-pointer ${colClass}`}
                 aria-label={`Explore ${product.title}`}
               >
