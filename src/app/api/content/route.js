@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getContent, updateContent } from '../../../lib/content-store';
 import { getDefaultContentForCountry } from '../../../lib/content';
 
+export const dynamic = 'force-dynamic';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'isarva2026';
 
 export async function GET(request) {

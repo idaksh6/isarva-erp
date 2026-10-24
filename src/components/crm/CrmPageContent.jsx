@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import 'aos/dist/aos.css';
 import Navbar from '../Navbar';
 import CrmHero from './CrmHero';
 import CrmCapabilities from './CrmCapabilities';
@@ -27,6 +28,25 @@ export default function CrmPageContent() {
     src: '',
     alt: '',
   });
+
+  // Dynamically initialize AOS on client mount
+  useEffect(() => {
+    let aosInstance = null;
+    import('aos').then((module) => {
+      aosInstance = module.default || module;
+      aosInstance.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: false,
+        offset: 50,
+        delay: 50,
+      });
+      // Refresh to recalculate element offsets
+      setTimeout(() => {
+        aosInstance?.refresh();
+      }, 150);
+    });
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

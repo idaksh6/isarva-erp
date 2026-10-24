@@ -492,6 +492,118 @@
   border-color: #94a3b8;
 }
 
+/* Dedicated Restaurant POS Landing CTA Buttons */
+.pos-primary-btn-emerald {
+  height: 48px;
+  min-height: 48px;
+  background: #059669;
+  border: none;
+  border-bottom: 3px solid #047857;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 0 1.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.pos-primary-btn-emerald:hover {
+  background: #047857;
+  border-bottom-width: 2px;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
+}
+.pos-primary-btn-emerald:active {
+  border-bottom-width: 0px;
+}
+
+.pos-secondary-btn-white {
+  height: 48px;
+  min-height: 48px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 0 1.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  color: #0f172a;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.pos-secondary-btn-white:hover {
+  background: #f8fafc;
+  border-color: #059669;
+}
+
+/* Dedicated BillSoft Accounting Landing CTA Buttons */
+.billsoft-primary-btn-blue {
+  height: 48px;
+  min-height: 48px;
+  background: #2563eb;
+  border: none;
+  border-bottom: 3px solid #1d4ed8;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 0 1.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.billsoft-primary-btn-blue:hover {
+  background: #1d4ed8;
+  border-bottom-width: 2px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+.billsoft-primary-btn-blue:active {
+  border-bottom-width: 0px;
+}
+
+.billsoft-secondary-btn-white {
+  height: 48px;
+  min-height: 48px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 0 1.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  color: #0f172a;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.billsoft-secondary-btn-white:hover {
+  background: #f8fafc;
+  border-color: #2563eb;
+}
+
 /* Badges and Tags */
 .badge-pill {
   display: inline-flex;
@@ -665,6 +777,143 @@
   will-change: transform, opacity;
 }
 
+/* ==========================================================================
+   GLOBAL SECTION ANIMATIONS (Fade Up, Fade Down, Fade In, Zoom In)
+   ========================================================================== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-fade-down {
+  animation: fadeInDown 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Stagger Delay Classes */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+/* Reusable Scroll Reveal Classes */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-init-down {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-init-zoom {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-active {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* Accessibility: Respect Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-down,
+  .animate-fade-in,
+  .animate-zoom-in,
+  .animate-hero-fade-up,
+  .animate-hero-badge-pop,
+  .floating-module {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .reveal-init,
+  .reveal-init-down,
+  .reveal-init-zoom {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* QuickDice ERP Inspired Ambient & Floating Animations */
 @keyframes heroFloat {
   0%, 100% {
@@ -818,4 +1067,210 @@
   -webkit-text-fill-color: transparent;
   display: inline;
 }
+
+/* ==========================================================================
+   CRM & SECTION ENTRANCE & SCROLL ANIMATIONS (Fade Up, Fade Down, Scale, Float)
+   ========================================================================== */
+@keyframes crmFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes crmFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes crmFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes crmScaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes crmPulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes crmFloatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-crm-fade-up {
+  animation: crmFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-crm-fade-down {
+  animation: crmFadeDown 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-crm-fade-in {
+  animation: crmFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity;
+}
+
+.animate-crm-scale-up {
+  animation: crmScaleUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-crm-pulse-glow {
+  animation: crmPulseGlow 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-crm-float {
+  animation: crmFloatGentle 6s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-crm-float:hover {
+  animation-play-state: paused;
+}
+
+/* Stagger animation delay utility classes */
+.animation-delay-75 { animation-delay: 75ms; }
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-150 { animation-delay: 150ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-250 { animation-delay: 250ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-350 { animation-delay: 350ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-450 { animation-delay: 450ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-550 { animation-delay: 550ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+.animation-delay-700 { animation-delay: 700ms; }
+
+/* Scroll Reveal Utilities for in-view triggers */
+.crm-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.crm-reveal.crm-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.crm-reveal-scale {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.crm-reveal-scale.crm-revealed {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.transition-delay-100 { transition-delay: 100ms; }
+.transition-delay-150 { transition-delay: 150ms; }
+.transition-delay-200 { transition-delay: 200ms; }
+.transition-delay-250 { transition-delay: 250ms; }
+.transition-delay-300 { transition-delay: 300ms; }
+.transition-delay-350 { transition-delay: 350ms; }
+.transition-delay-400 { transition-delay: 400ms; }
+.transition-delay-500 { transition-delay: 500ms; }
+
+/* Product Solution Card (Modern Compact SaaS Card matching reference layout) */
+.card-product {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-product:hover {
+  transform: translateY(-2px);
+}
+.card-product h3 {
+  font-family: var(--font-space-grotesk), var(--font-inter), sans-serif;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.25;
+  font-weight: 700;
+  color: #0f172a;
+}
+@media (min-width: 640px) {
+  .card-product h3 {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+@media (min-width: 1024px) {
+  .card-product h3 {
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.22;
+  }
+}
+@media (min-width: 1280px) {
+  .card-product h3 {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
+.card-product p {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.55;
+  color: #64748b;
+  font-weight: 400;
+}
+@media (min-width: 640px) {
+  .card-product p {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.55;
+  }
+}
+@media (min-width: 1024px) {
+  .card-product p {
+    font-size: 0.8125rem; /* 13px */
+    line-height: 1.5;
+  }
+}
+@media (min-width: 1280px) {
+  .card-product p {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.55;
+  }
+}
+
+
 

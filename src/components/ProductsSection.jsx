@@ -4,22 +4,20 @@ import React from 'react';
 import Link from 'next/link';
 import {
   UtensilsCrossed,
+  ReceiptText,
   BarChart3,
   Users2,
   Handshake,
-  Check,
   ArrowRight,
   Sparkles,
-  Building2,
-  Briefcase
+  Boxes,
+  Package
 } from 'lucide-react';
 import { renderTitleWithGradient } from '../lib/render-title';
 
 function getProductItemColClass(count, idx) {
-  if (count === 5) {
-    if (idx < 3) return 'lg:col-span-2 xl:col-span-1';
-    if (idx === 3) return 'lg:col-span-2 lg:col-start-2 xl:col-span-1 xl:col-start-auto';
-    return 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-2 xl:col-span-1 xl:col-start-auto';
+  if (count === 5 && idx === 4) {
+    return 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-1';
   }
   if (count === 3 && idx === 2) {
     return 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-1';
@@ -28,12 +26,22 @@ function getProductItemColClass(count, idx) {
 }
 
 function getProductsGridClass(count) {
-  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto gap-6 sm:gap-7';
-  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-6 sm:gap-7';
-  if (count === 4) return 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-7';
-  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5 gap-4.5 lg:gap-5 xl:gap-3.5 2xl:gap-5';
-  return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7';
+  if (count <= 2) return 'grid grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto gap-4 sm:gap-5';
+  if (count === 3) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-4 sm:gap-5';
+  if (count === 4) return 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5';
+  if (count === 5) return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 xl:gap-4.5 2xl:gap-5';
+  return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5';
 }
+
+const DEFAULT_DESCRIPTIONS = {
+  billsoft: 'Complete financial management with GST, VAT and multi-currency support.',
+  'restaurant-pos': 'Fast and flexible POS for restaurants, cafes and retail outlets.',
+  hrms: 'Manage your workforce from hiring to payroll, attendance and leave.',
+  crm: 'Convert leads, manage customers and grow your sales pipeline.',
+  'inventory-operations': 'Real-time stock, purchase, sales, warehouses and multi-branch management.',
+  operations: 'Real-time stock, purchase, sales, warehouses and multi-branch management.',
+  pos: 'Fast and flexible POS for restaurants, cafes and retail outlets.'
+};
 
 export default function ProductsSection({ header, products, onOpenModal }) {
   // Helper to format image path
@@ -44,180 +52,152 @@ export default function ProductsSection({ header, products, onOpenModal }) {
     return src.startsWith('/') ? src : '/' + src;
   };
 
-  const getProductIcon = (iconName) => {
+  const getProductIcon = (iconName, productId) => {
+    switch (productId) {
+      case 'billsoft':
+      case 'bill-soft':
+        return <ReceiptText size={22} strokeWidth={2.4} />;
+      case 'restaurant-pos':
+      case 'pos':
+        return <UtensilsCrossed size={22} strokeWidth={2.4} />;
+      case 'hrms':
+        return <Users2 size={22} strokeWidth={2.4} />;
+      case 'crm':
+        return <Handshake size={22} strokeWidth={2.4} />;
+      case 'inventory-operations':
+      case 'inventory':
+      case 'operations':
+        return <Boxes size={22} strokeWidth={2.4} />;
+    }
+
     switch (iconName) {
+      case 'ReceiptText':
+      case 'Receipt':
+        return <ReceiptText size={22} strokeWidth={2.4} />;
       case 'UtensilsCrossed':
       case 'Utensils':
-        return <UtensilsCrossed size={24} strokeWidth={2.4} />;
-      case 'BarChart3':
-        return <BarChart3 size={24} strokeWidth={2.4} />;
+        return <UtensilsCrossed size={22} strokeWidth={2.4} />;
       case 'Users2':
-        return <Users2 size={24} strokeWidth={2.4} />;
+      case 'Users':
+        return <Users2 size={22} strokeWidth={2.4} />;
       case 'Handshake':
-        return <Handshake size={24} strokeWidth={2.4} />;
-      case 'Building2':
-      case 'Building':
-        return <Building2 size={24} strokeWidth={2.4} />;
-      case 'Briefcase':
-        return <Briefcase size={24} strokeWidth={2.4} />;
+        return <Handshake size={22} strokeWidth={2.4} />;
+      case 'Boxes':
+      case 'Package':
+        return <Boxes size={22} strokeWidth={2.4} />;
+      case 'BarChart3':
+        return <BarChart3 size={22} strokeWidth={2.4} />;
       default:
-        return <Sparkles size={24} strokeWidth={2.4} />;
+        return <Sparkles size={22} strokeWidth={2.4} />;
     }
   };
 
-  const getProductStyles = (themeClass) => {
-    switch (themeClass) {
+  const getProductStyles = (themeClass, productId) => {
+    switch (productId || themeClass) {
+      case 'billsoft':
+      case 'bill-soft':
+        return {
+          iconBg: 'bg-[#2563eb]',
+          borderColor: 'hover:border-[#2563eb]/50',
+          fallbackImage: '/images/billsoft-card-preview.jpg'
+        };
+      case 'restaurant-pos':
       case 'pos':
         return {
-          iconBg: 'bg-[#078356]',
-          checkBg: 'bg-[#078356]',
-          btnClass: 'btn-pos group',
-          fallbackImage: '/images/pos-card-preview.jpg',
-          borderColor: 'hover:border-[#078356]/40'
-        };
-      case 'billsoft':
-        return {
-          iconBg: 'bg-[#1d4ed8]',
-          checkBg: 'bg-[#1d4ed8]',
-          btnClass: 'btn-billsoft group',
-          fallbackImage: '/images/billsoft-card-preview.jpg',
-          borderColor: 'hover:border-[#1d4ed8]/40'
+          iconBg: 'bg-[#f43f5e]',
+          borderColor: 'hover:border-[#f43f5e]/50',
+          fallbackImage: '/images/pos-card-preview.jpg'
         };
       case 'hrms':
         return {
-          iconBg: 'bg-[#7c3aed]',
-          checkBg: 'bg-[#7c3aed]',
-          btnClass: 'btn-hrms group',
-          fallbackImage: '/images/hrms-card-preview.jpg',
-          borderColor: 'hover:border-[#7c3aed]/40'
+          iconBg: 'bg-[#0284c7]',
+          borderColor: 'hover:border-[#0284c7]/50',
+          fallbackImage: '/images/hrms-card-preview.jpg'
         };
       case 'crm':
         return {
-          iconBg: 'bg-[#ea580c]',
-          checkBg: 'bg-[#ea580c]',
-          btnClass: 'btn-crm group',
-          fallbackImage: '/images/crm-card-preview.jpg',
-          borderColor: 'hover:border-[#ea580c]/40'
+          iconBg: 'bg-[#7c3aed]',
+          borderColor: 'hover:border-[#7c3aed]/50',
+          fallbackImage: '/images/crm-card-preview.jpg'
         };
-      case 'industry':
+      case 'inventory-operations':
+      case 'inventory':
+      case 'operations':
         return {
-          iconBg: 'bg-[#0284c7]',
-          checkBg: 'bg-[#0284c7]',
-          btnClass: 'btn-industry group',
-          fallbackImage: '/images/hero-erp-overview.jpg',
-          borderColor: 'hover:border-[#0284c7]/40'
+          iconBg: 'bg-[#059669]',
+          borderColor: 'hover:border-[#059669]/50',
+          fallbackImage: '/images/hero-erp-overview.jpg'
         };
       default:
         return {
           iconBg: 'bg-[#007a55]',
-          checkBg: 'bg-[#007a55]',
-          btnClass: 'btn-brand-primary group',
-          fallbackImage: '/images/pos-card-preview.jpg',
-          borderColor: 'hover:border-brand-500'
+          borderColor: 'hover:border-[#007a55]/50',
+          fallbackImage: '/images/hero-erp-overview.jpg'
         };
     }
   };
 
-  // Helper to ensure subtitles wrap onto 2 lines on desktop for alignment, while staying on 1 line on responsive/mobile when space permits
-  const renderSubtitle = (subtitle) => {
-    if (!subtitle) return '';
-    if (typeof subtitle !== 'string') return subtitle;
-
-    // Handle existing explicit newlines
-    if (subtitle.includes('\n')) {
-      const parts = subtitle.split('\n');
-      return parts.map((part, index) => (
-        <React.Fragment key={index}>
-          {part}
-          {index < parts.length - 1 && <br className="hidden lg:inline" />}
-          {index < parts.length - 1 && <span className="inline lg:hidden"> </span>}
-        </React.Fragment>
-      ));
-    }
-
-    const trimmed = subtitle.trim();
-
-    // Specific product subtitle matches to ensure 2 lines on desktop across all 4 cards
-    if (trimmed === 'Complete Accounting Solution') {
+  const formatCardTitle = (title) => {
+    if (!title) return '';
+    const clean = title.replace(/\s*\([^)]*\)/g, '').trim();
+    if (clean === 'BillSoft Accounting' || clean.includes('BillSoft')) {
       return (
         <>
-          Complete Accounting
-          <br className="hidden lg:inline" />
-          <span className="inline lg:hidden"> </span>
-          Solution
+          <span>BillSoft</span>
+          <span className="block">Accounting</span>
         </>
       );
     }
-    if (trimmed === 'Human Resource Management') {
+    if (clean === 'Restaurant POS' || clean.includes('Restaurant')) {
       return (
         <>
-          Human Resource
-          <br className="hidden lg:inline" />
-          <span className="inline lg:hidden"> </span>
-          Management
+          <span>Restaurant</span>
+          <span className="block">POS</span>
         </>
       );
     }
-    if (trimmed === 'Complete Restaurant Management') {
+    if (clean === 'HRMS & Payroll' || clean.includes('HRMS')) {
       return (
         <>
-          Complete Restaurant
-          <br className="hidden lg:inline" />
-          <span className="inline lg:hidden"> </span>
-          Management
+          <span>HRMS &amp;</span>
+          <span className="block">Payroll</span>
         </>
       );
     }
-    if (trimmed === 'Customer Relationship Management') {
+    if (clean === 'CRM & Sales' || clean.includes('CRM')) {
       return (
         <>
-          Customer Relationship
-          <br className="hidden lg:inline" />
-          <span className="inline lg:hidden"> </span>
-          Management
+          <span>CRM &amp;</span>
+          <span className="block">Sales</span>
         </>
       );
     }
+    if (clean === 'Inventory & Operations' || clean.includes('Inventory')) {
+      return (
+        <>
+          <span>Inventory &amp;</span>
+          <span className="block">Operations</span>
+        </>
+      );
+    }
+    const words = clean.split(/\s+/);
+    if (words.length === 2) {
+      return (
+        <>
+          <span>{words[0]}</span>
+          <span className="block">{words[1]}</span>
+        </>
+      );
+    }
+    return clean;
+  };
 
-    // Generic 3-word subtitle: wrap the 3rd word onto the below line on desktop
-    const words = trimmed.split(/\s+/);
-    if (words.length === 3) {
-      return (
-        <>
-          {words[0]} {words[1]}
-          <br className="hidden lg:inline" />
-          <span className="inline lg:hidden"> </span>
-          {words[2]}
-        </>
-      );
-    }
-
-    // 4 words: 2 words on first line, 2 words on second line on desktop
-    if (words.length === 4) {
-      return (
-        <>
-          {words[0]} {words[1]}
-          <br className="hidden lg:inline" />
-          <span className="inline lg:hidden"> </span>
-          {words[2]} {words[3]}
-        </>
-      );
-    }
-
-    // 5 or 6 words: split evenly on desktop
-    if (words.length >= 5 && words.length <= 6) {
-      const mid = Math.ceil(words.length / 2);
-      return (
-        <>
-          {words.slice(0, mid).join(' ')}
-          <br className="hidden lg:inline" />
-          <span className="inline lg:hidden"> </span>
-          {words.slice(mid).join(' ')}
-        </>
-      );
-    }
-
-    return subtitle;
+  const getProductHref = (product) => {
+    if (product.id === 'crm') return '/crm';
+    if (product.id === 'billsoft' || product.id === 'bill-soft') return '/billsoft';
+    if (product.id === 'restaurant-pos' || product.id === 'pos') return '/restaurant-pos';
+    if (product.buttonLink && product.buttonLink.startsWith('/')) return product.buttonLink;
+    return null;
   };
 
   return (
@@ -227,52 +207,50 @@ export default function ProductsSection({ header, products, onOpenModal }) {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-eyebrow">
-            {header?.badge || 'PRODUCTS & SOLUTIONS'}
+            {header?.badge || 'OUR SOLUTIONS'}
           </div>
           <h2>
-            {renderTitleWithGradient(header?.title || 'Complete Business Management Solutions for Every Stage of Growth')}
+            {renderTitleWithGradient(header?.title || 'One platform. The tools your teams need.')}
           </h2>
           <p>
             {header?.subtitle ||
-              'Manage essential business activities with connected solutions for billing, accounting, workforce management, sales and inventory. Choose the modules your business needs and build a more organized way of working.'}
+              'From accounting to operations, ISARVA ERP brings all your business functions together in a single system.'}
           </p>
         </div>
 
-        {/* Product Cards Grid */}
-        <div className={getProductsGridClass(products?.length || 4)}>
+        {/* Product Cards Grid with interface preview images */}
+        <div className={getProductsGridClass(products?.length || 5)}>
           {products?.map((product, idx) => {
-            const style = getProductStyles(product.themeClass);
+            const style = getProductStyles(product.themeClass, product.id);
+            const colClass = getProductItemColClass(products?.length || 5, idx);
+            const href = getProductHref(product);
             const imageUrl = getImageUrl(product.image, style.fallbackImage);
-            const colClass = getProductItemColClass(products?.length || 4, idx);
+            const description = product.description || DEFAULT_DESCRIPTIONS[product.id] || product.subtitle;
 
-            return (
-              <div
-                key={product.id}
-                id={product.id}
-                className={`card-product bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 xl:p-4 2xl:p-5 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 min-w-0 w-full ${style.borderColor} ${colClass}`}
-              >
+            const cardInner = (
+              <>
                 <div>
-                  {/* Card Header: Icon + Title & Subtitle */}
-                  <div className="flex items-start gap-2.5 2xl:gap-3.5 mb-4 sm:mb-5">
-                    <div className={`w-11 h-11 sm:w-12 sm:h-12 2xl:w-14 2xl:h-14 rounded-2xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-sm`}>
-                      {getProductIcon(product.iconName)}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="min-h-0 sm:min-h-[2.6rem] flex items-start">
-                        <span>{product.title}</span>
+                  {/* Card Top Row: Icon on left, Title in middle, Arrow on right */}
+                  <div className="flex items-center justify-between gap-2.5 mb-3.5 sm:mb-4">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-xs`}>
+                        {getProductIcon(product.iconName, product.id)}
+                      </div>
+                      <h3 className="min-w-0">
+                        {formatCardTitle(product.title)}
                       </h3>
-                      <p className="mt-1">
-                        {renderSubtitle(product.subtitle)}
-                      </p>
+                    </div>
+                    <div className="text-[#2563eb] shrink-0 pl-1 group-hover:translate-x-1 transition-transform duration-200">
+                      <ArrowRight size={18} strokeWidth={2.4} />
                     </div>
                   </div>
 
                   {/* Photorealistic Product Interface Image Showcase */}
-                  <div className="relative mb-5 rounded-lg overflow-hidden border border-slate-100/80 shadow-xs aspect-[16/10] bg-slate-100 group/img">
+                  <div className="relative mb-3.5 sm:mb-4 rounded-xl overflow-hidden border border-slate-100/90 shadow-2xs aspect-[16/10] bg-slate-100 group/img">
                     <img
                       src={imageUrl}
                       alt={`${product.title} Interface Preview`}
-                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500 block rounded-lg"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block rounded-xl"
                       loading="lazy"
                       onError={(e) => {
                         if (style.fallbackImage && e.currentTarget.src !== style.fallbackImage) {
@@ -281,43 +259,40 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                       }}
                     />
                   </div>
-
-                  {/* Bullet Features Checklist with Solid Rounded Checkmarks */}
-                  <ul className="space-y-3 mb-6">
-                    {product.features?.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5">
-                        <div className={`w-5 h-5 rounded-full ${style.checkBg} text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs`}>
-                          <Check size={12} strokeWidth={3.5} />
-                        </div>
-                        <span className="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
-                {/* Card Full-Width CTA Action Button */}
-                {product.id === 'crm' ? (
-                  <Link
-                    href="/crm"
-                    className={style.btnClass}
-                    aria-label={`Explore ${product.title}`}
-                  >
-                    <span>{product.buttonText}</span>
-                    <ArrowRight size={17} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                ) : (
-                  <button
-                    onClick={() => onOpenModal('product', product.title)}
-                    className={style.btnClass}
-                    aria-label={`Explore ${product.title}`}
-                  >
-                    <span>{product.buttonText}</span>
-                    <ArrowRight size={17} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                )}
-              </div>
+                {/* Card Description */}
+                <p>
+                  {description}
+                </p>
+              </>
+            );
+
+            if (href) {
+              return (
+                <Link
+                  key={product.id}
+                  id={product.id}
+                  href={href}
+                  className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_2px_8px_rgba(15,23,42,0.03)] hover:shadow-md transition-all duration-200 min-w-0 w-full block ${colClass}`}
+                  aria-label={`Explore ${product.title}`}
+                >
+                  {cardInner}
+                </Link>
+              );
+            }
+
+            return (
+              <button
+                key={product.id}
+                id={product.id}
+                type="button"
+                onClick={() => onOpenModal && onOpenModal('product', product.title)}
+                className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_2px_8px_rgba(15,23,42,0.03)] hover:shadow-md transition-all duration-200 min-w-0 w-full text-left cursor-pointer ${colClass}`}
+                aria-label={`Explore ${product.title}`}
+              >
+                {cardInner}
+              </button>
             );
           })}
         </div>
@@ -326,4 +301,3 @@ export default function ProductsSection({ header, products, onOpenModal }) {
     </section>
   );
 }
-

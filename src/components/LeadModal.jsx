@@ -100,35 +100,38 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
             <div className="mb-6 space-y-1.5">
               <div className="section-eyebrow flex items-center gap-1.5">
                 <Sparkles size={13} />
-                <span>{modalType === 'demo' ? 'Live Product Demo' : 'Get Started with ISARVA ERP'}</span>
+                <span>BOOK A DEMO</span>
               </div>
               <h3 className="pt-0.5">
-                {modalType === 'demo' ? 'Schedule an Interactive Demo' : 'Connect with Our Solutions Team'}
+                Ready to bring your business into sync?
               </h3>
+              <p className="text-xs text-slate-500">
+                Book a free demo and see how ISARVA ERP can work for you.
+              </p>
             </div>
 
             {/* Form */}
             <form onSubmit={handleSubmit} autoComplete="off" className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Your Full Name *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
                   <input
                     type="text"
                     required
                     autoComplete="off"
-                    placeholder="e.g. Rahul Sharma"
+                    placeholder="Your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Company / Store Name *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Business Type *</label>
                   <input
                     type="text"
                     required
                     autoComplete="off"
-                    placeholder="e.g. Spice Hub Cafe"
+                    placeholder="Select business type"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
@@ -143,7 +146,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                     type="email"
                     required
                     autoComplete="off"
-                    placeholder="name@company.com"
+                    placeholder="you@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-brand-500 focus:bg-white transition-colors"
@@ -203,7 +206,7 @@ export default function LeadModal({ isOpen, onClose, modalType, selectedProduct,
                 className="btn-brand-primary w-full py-3.5 text-base mt-2"
               >
                 <Send size={16} />
-                <span>{loading ? 'Submitting...' : 'Request a Demo'}</span>
+                <span>{loading ? 'Submitting...' : 'Request a Demo →'}</span>
               </button>
             </form>
           </div>

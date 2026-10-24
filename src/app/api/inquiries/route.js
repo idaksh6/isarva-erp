@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getInquiries, addInquiry } from '../../../lib/content-store';
 
+export const dynamic = 'force-dynamic';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'isarva2026';
 const CRM_API_URL = process.env.CRM_API_URL || process.env.CRM_WEBHOOK_URL || 'https://crm.isarva.in/api/leads';
 const CRM_CATEGORY_ID = parseInt(process.env.CRM_CATEGORY_ID || '1', 10);

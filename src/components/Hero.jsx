@@ -73,31 +73,31 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
       tabIcon: Layers,
       themeColor: '#007a55',
       lightBg: 'rgba(0, 122, 85, 0.08)',
-      badge: heroProp?.badge || 'ALL-IN-ONE BUSINESS MANAGEMENT SOFTWARE',
-      headlineMain: heroProp?.headlineMain || 'Run Your Entire Business with One',
-      headlineHighlight: heroProp?.headlineHighlight || 'Powerful ERP Platform',
+      badge: heroProp?.badge || 'ONE CONNECTED BUSINESS PLATFORM',
+      headlineMain: heroProp?.headlineMain || 'Every part of your business.',
+      headlineHighlight: heroProp?.headlineHighlight || 'Working as one.',
       subheadline:
         heroProp?.subheadline ||
-        'Simplify billing, accounting, inventory, employee management and customer relationships with ISARVA ERP. Connect your daily business operations through an integrated platform designed to help your business work smarter and grow confidently.',
-      primaryCtaText: heroProp?.primaryCtaText || 'Book a Free Demo',
-      secondaryCtaText: heroProp?.secondaryCtaText || 'Explore Our Solutions',
+        'ISARVA ERP connects your finance, inventory, sales, HRMS, CRM and restaurant POS in a single, easy to use platform. Streamline operations, improve visibility and make smarter decisions — from anywhere.',
+      primaryCtaText: heroProp?.primaryCtaText || 'Book a Live Demo',
+      secondaryCtaText: heroProp?.secondaryCtaText || 'Explore the Platform',
       modalType: 'started',
       productName: '',
       image: '/images/hero-erp-overview.jpg',
       imageAlt: 'ISARVA Cloud ERP Multi-Device Workspace Dashboard and Touch POS',
       highlights: [
-        'Single Unified Cloud Database',
-        'Multi-Branch & Real-Time Sync',
-        'GST e-Invoice & e-Way Bill Ready'
+        'Multi-branch visibility',
+        'Connected workflows',
+        'Built for India & GCC business needs'
       ],
       floatingMetric1: {
-        title: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'ZATCA Phase 2' : 'GST Compliant',
-        subtitle: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'Saudi Fatoora Ready' : 'India & GCC Statutory Ready',
+        title: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'ZATCA Phase 2' : 'Operations Synced',
+        subtitle: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'Saudi Fatoora Ready' : 'All modules are connected & up to date',
         flag: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? 'SA' : 'IN'
       },
       floatingMetric2: {
-        title: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? '500+ GCC Businesses' : '1,000+ Businesses',
-        subtitle: '99.9% Cloud Uptime'
+        title: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? '500+ GCC Businesses' : 'Multi-Branch Ready',
+        subtitle: 'India & GCC Statutory Ready'
       },
       stats: [
         { label: 'Trusted by', value: heroProp?.mockupStats?.gstTag?.includes('ZATCA') ? '500+ GCC Businesses' : '1,000+ Businesses', icon: Users },
@@ -424,7 +424,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
       <div className="site-container relative z-10">
 
         {/* TOP INTERACTIVE PRODUCT SWITCHER TABS - FULL WIDTH ON RESPONSIVE */}
-        <div className="mb-8 lg:mb-10 -mx-4 sm:-mx-6 lg:mx-0">
+        <div className="mb-8 lg:mb-10 -mx-4 sm:-mx-6 lg:mx-0 animate-fade-down">
           <div
             ref={tabsContainerRef}
             onMouseEnter={() => setIsPaused(true)}
@@ -493,7 +493,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   }`}
                 >
                   {/* Category Eyebrow Tag */}
-                  <div className="inline-block">
+                  <div className="inline-block animate-fade-down animation-delay-100">
                     <span
                       className="section-eyebrow transition-colors duration-300"
                       style={{ color: slide.themeColor }}
@@ -503,7 +503,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Main Headline */}
-                  <div>
+                  <div className="animate-fade-up animation-delay-200">
                     <h1>
                       {slide.headlineMain}{' '}
                       <span
@@ -520,14 +520,14 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Subheadline Description */}
-                  <div>
+                  <div className="animate-fade-up animation-delay-300">
                     <p className="max-w-xl mx-auto lg:mx-0">
                       {slide.subheadline}
                     </p>
                   </div>
 
                   {/* Mini Feature Highlights Chips */}
-                  <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2 pt-1">
+                  <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-2 pt-1 animate-fade-up animation-delay-400">
                     {slide.highlights.map((highlight, idx) => (
                       <div
                         key={idx}
@@ -545,10 +545,34 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4 w-full">
+                  <div className="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4 w-full animate-fade-up animation-delay-500">
                     {slide.id === 'crm' ? (
                       <Link
                         href="/crm"
+                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        style={{
+                          backgroundColor: slide.themeColor,
+                          boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
+                        }}
+                      >
+                        <span>{slide.primaryCtaText}</span>
+                        <ArrowRight size={18} />
+                      </Link>
+                    ) : slide.id === 'pos' || slide.id === 'restaurant-pos' ? (
+                      <Link
+                        href="/restaurant-pos"
+                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        style={{
+                          backgroundColor: slide.themeColor,
+                          boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
+                        }}
+                      >
+                        <span>{slide.primaryCtaText}</span>
+                        <ArrowRight size={18} />
+                      </Link>
+                    ) : slide.id === 'billsoft' ? (
+                      <Link
+                        href="/billsoft"
                         className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
                         style={{
                           backgroundColor: slide.themeColor,
@@ -587,12 +611,12 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   </div>
 
                   {/* Product Stats / Trust Badges */}
-                  <div className="pt-4 border-t border-slate-200/70 w-full">
-                    <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-wrap items-center justify-center lg:justify-start gap-x-3.5 sm:gap-x-4 gap-y-2 sm:gap-y-2.5">
+                  <div className="pt-4 border-t border-slate-200/70 w-full animate-fade-up animation-delay-600">
+                    <div className="w-fit max-w-full mx-auto lg:mx-0 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-center lg:justify-start gap-3.5 sm:gap-4 lg:gap-6">
                       {slide.stats.map((stat, idx) => {
                         const StatIcon = stat.icon;
                         return (
-                          <div key={idx} className="flex items-center gap-2.5">
+                          <div key={idx} className="flex items-center gap-2.5 w-full sm:w-auto">
                             <div
                               className="w-9 h-9 rounded-full flex items-center justify-center shadow-xs shrink-0 transition-colors duration-300"
                               style={{
@@ -604,7 +628,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                             </div>
                             <div className="text-left">
                               <div className="text-xs text-slate-500 font-medium leading-none">{stat.label}</div>
-                              <div className="text-sm font-black text-slate-900 mt-1">{stat.value}</div>
+                              <div className="text-sm font-black text-slate-900 mt-1 whitespace-nowrap">{stat.value}</div>
                             </div>
                           </div>
                         );
@@ -618,7 +642,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
           </div>
 
           {/* RIGHT COLUMN: Interactive Slider Carousel with Floating Module Animation */}
-          <div className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full">
+          <div className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full animate-fade-up animation-delay-300">
             
             {/* Slider Image Card Container with QuickDice Floating Effect */}
             <div

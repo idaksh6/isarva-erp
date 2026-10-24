@@ -20,49 +20,75 @@ export const indiaContent = {
     { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', currency: 'SAR (ر.س)', phoneCode: '+966', lang: 'العربية / English' }
   ],
   hero: {
-    badge: 'ALL-IN-ONE BUSINESS MANAGEMENT SOFTWARE',
-    headlineMain: 'Run Your Entire Business with One',
-    headlineHighlight: 'Powerful ERP Platform',
-    subheadline: 'Simplify billing, accounting, inventory, employee management and customer relationships with ISARVA ERP. Connect your daily business operations through an integrated platform designed to help your business work smarter and grow confidently.',
-    primaryCtaText: 'Book a Free Demo',
+    badge: 'ONE CONNECTED BUSINESS PLATFORM',
+    headlineMain: 'Every part of your business.',
+    headlineHighlight: 'Working as one.',
+    subheadline: 'ISARVA ERP connects your finance, inventory, sales, HRMS, CRM and restaurant POS in a single, easy to use platform. Streamline operations, improve visibility and make smarter decisions — from anywhere.',
+    primaryCtaText: 'Book a Live Demo',
     primaryCtaLink: '#demo',
-    secondaryCtaText: 'Explore Our Solutions',
+    secondaryCtaText: 'Explore the Platform',
     secondaryCtaLink: '#products',
     trustBadges: [
-      { id: 't1', title: 'Connected Operations', subtitle: 'Unified Platform', icon: 'Layers' },
-      { id: 't2', title: 'Actionable Insights', subtitle: 'Accessible Reports', icon: 'BarChart3' },
-      { id: 't3', title: 'Multi-Branch Management', subtitle: 'Central System', icon: 'Store' }
+      { id: 't1', title: 'Multi-Branch Visibility', subtitle: 'Central System', icon: 'Store' },
+      { id: 't2', title: 'Connected Workflows', subtitle: 'Unified Platform', icon: 'Layers' },
+      { id: 't3', title: 'Built for India & GCC', subtitle: 'Statutory Compliant', icon: 'ShieldCheck' }
     ],
     mockupStats: {
       totalSales: '₹ 2,48,320',
       totalCustomers: '1,268',
-      gstTag: 'GST e-Invoice Compliant India'
+      gstTag: 'Operations Synced — All Modules Connected'
     },
     slides: [
       {
         id: 'overview',
         tabLabel: 'All Solutions',
-        badge: 'ALL-IN-ONE BUSINESS MANAGEMENT SOFTWARE',
-        headlineMain: 'Run Your Entire Business with One',
-        headlineHighlight: 'Powerful ERP Platform',
-        subheadline: 'Simplify billing, accounting, inventory, employee management and customer relationships with ISARVA ERP. Connect your daily business operations through an integrated platform designed to help your business work smarter and grow confidently.',
-        primaryCtaText: 'Book a Free Demo',
-        secondaryCtaText: 'Explore Our Solutions',
+        badge: 'ONE CONNECTED BUSINESS PLATFORM',
+        headlineMain: 'Every part of your business.',
+        headlineHighlight: 'Working as one.',
+        subheadline: 'ISARVA ERP connects your finance, inventory, sales, HRMS, CRM and restaurant POS in a single, easy to use platform. Streamline operations, improve visibility and make smarter decisions — from anywhere.',
+        primaryCtaText: 'Book a Live Demo',
+        secondaryCtaText: 'Explore the Platform',
         image: '/images/hero-erp-overview.jpg',
         imageAlt: 'ISARVA Cloud ERP Multi-Device Workspace Dashboard and Touch POS',
         highlights: [
-          'Single Unified Cloud Database',
-          'Multi-Branch & Real-Time Sync',
-          'GST e-Invoice & e-Way Bill Ready'
+          'Multi-branch visibility',
+          'Connected workflows',
+          'Built for India & GCC business needs'
         ],
         floatingMetric1: {
-          title: 'GST Compliant',
-          subtitle: 'India & GCC Statutory Ready',
+          title: 'Operations Synced',
+          subtitle: 'All modules are connected & up to date',
           flag: 'IN'
         },
         floatingMetric2: {
-          title: '1,000+ Businesses',
-          subtitle: '99.9% Cloud Uptime'
+          title: 'Multi-Branch Ready',
+          subtitle: 'India & GCC Statutory Ready'
+        }
+      },
+      {
+        id: 'billsoft',
+        tabLabel: 'BillSoft Accounting',
+        badge: 'ACCOUNTING & GST COMPLIANCE',
+        headlineMain: 'Automated GST e-Invoicing &',
+        headlineHighlight: 'Financial Accounting',
+        subheadline: 'Complete financial management with GST, VAT and multi-currency support. Generate IRN and QR code-ready tax invoices in a single click with consolidated ledgers.',
+        primaryCtaText: 'Explore BillSoft',
+        secondaryCtaText: 'Book Accounting Demo',
+        image: '/images/hero-billsoft.jpg',
+        imageAlt: 'BillSoft Financial Accounting and GST e-Invoicing Dashboard on Laptop',
+        highlights: [
+          'Direct GST Portal e-Invoice & IRN',
+          'Profit & Loss and Balance Sheet',
+          'Multi-Branch Consolidated Ledgers'
+        ],
+        floatingMetric1: {
+          title: 'Profit & Loss Live',
+          subtitle: 'Direct GST Portal Validated',
+          flag: 'IN'
+        },
+        floatingMetric2: {
+          title: 'Instant Financials',
+          subtitle: 'Live P&L & Balance Sheet'
         }
       },
       {
@@ -71,7 +97,7 @@ export const indiaContent = {
         badge: 'RESTAURANT & FOOD SERVICE POS',
         headlineMain: 'Ultra-Fast Touch Billing &',
         headlineHighlight: 'Kitchen Display (KDS)',
-        subheadline: 'Accelerate dine-in, takeaway, quick counter, and multi-aggregator delivery orders. Manage table floor plans, recipe costing, kitchen order tickets (KOT), and split billing in real time.',
+        subheadline: 'Fast and flexible POS for restaurants, cafés and retail outlets. Manage dine-in, takeaway, quick counter, table floor plans, and kitchen order tickets (KOT) in real time.',
         primaryCtaText: 'Explore Restaurant POS',
         secondaryCtaText: 'Book POS Demo',
         image: '/images/hero-restaurant-pos.jpg',
@@ -91,75 +117,49 @@ export const indiaContent = {
         }
       },
       {
-        id: 'billsoft',
-        tabLabel: 'BillSoft Accounting',
-        badge: 'ACCOUNTING & GST COMPLIANCE',
-        headlineMain: 'Automated GST e-Invoicing &',
-        headlineHighlight: 'Financial Accounting',
-        subheadline: 'Generate IRN and QR code-ready tax invoices in a single click. Manage purchases, stock inventory, receivables, TDS/TCS returns, and balance sheets effortlessly with 100% statutory compliance.',
-        primaryCtaText: 'Explore BillSoft',
-        secondaryCtaText: 'Book Accounting Demo',
-        image: '/images/hero-billsoft.jpg',
-        imageAlt: 'BillSoft Financial Accounting and GST e-Invoicing Dashboard on Laptop',
-        highlights: [
-          'Direct GST Portal e-Invoice & IRN',
-          'Live Stock Valuation & Reorder Alerts',
-          'Multi-Branch Consolidated Ledgers'
-        ],
-        floatingMetric1: {
-          title: '1-Click e-Invoicing',
-          subtitle: 'Direct GST Portal Validated',
-          flag: 'IN'
-        },
-        floatingMetric2: {
-          title: 'Instant Financials',
-          subtitle: 'Live P&L & Balance Sheet'
-        }
-      },
-      {
         id: 'hrms',
-        tabLabel: 'HRMS',
+        tabLabel: 'HRMS & Payroll',
         badge: 'HUMAN RESOURCE & WORKFORCE',
         headlineMain: 'Streamlined Payroll, Leaves &',
         headlineHighlight: 'People Operations',
-        subheadline: 'Automate monthly payroll, PF/ESI/TDS tax deductions, biometric attendance clock-ins, geofencing, employee self-service mobile portal, and onboarding workflows across multiple offices.',
+        subheadline: 'Manage your workforce from hiring to payroll, attendance and leave. Automate salary calculations, biometric and GPS attendance, and employee self-service.',
         primaryCtaText: 'Explore HRMS',
         secondaryCtaText: 'Book HRMS Demo',
         image: '/images/hero-hrms.jpg',
         imageAlt: 'ISARVA HRMS and Employee Payroll Dashboard on Desktop & Mobile App',
         highlights: [
+          'Employee Directory & Onboarding',
           'Automated PF, ESI & TDS Computations',
-          'Biometric & Mobile GPS Attendance',
-          'Employee Self-Service (ESS) Portal'
+          'Biometric & Mobile GPS Attendance'
         ],
         floatingMetric1: {
           title: 'Auto Payroll Run',
           subtitle: '1-Click Payslip Generation'
         },
         floatingMetric2: {
-          title: 'Mobile App Ready',
+          title: 'Employee Directory',
           subtitle: 'Leave & Attendance Tracking'
         }
       },
       {
         id: 'crm',
-        tabLabel: 'CRM',
+        tabLabel: 'CRM & Sales',
         badge: 'SALES & CLIENT RELATIONSHIPS',
         headlineMain: 'Accelerate Sales Pipelines &',
         headlineHighlight: 'Customer Conversions',
-        subheadline: 'Track leads from initial inquiry to closed deal with interactive visual Kanban boards. Integrated WhatsApp and email messaging, automated follow-up reminders, and revenue forecasts.',
+        subheadline: 'Convert leads, manage customers and grow your sales pipeline. Interactive visual Kanban boards, integrated WhatsApp and email messaging, and deal velocity tracking.',
         primaryCtaText: 'Explore CRM',
         secondaryCtaText: 'Book CRM Demo',
         image: '/images/hero-crm.jpg',
         imageAlt: 'ISARVA CRM Kanban Sales Pipeline and Customer Management Dashboard',
         highlights: [
-          'Multi-Stage Kanban Pipeline Boards',
+          'Visual Kanban Pipeline (New to Won)',
           'Direct WhatsApp & Email Messaging',
           'Smart Automated Follow-Up Reminders'
         ],
         floatingMetric1: {
-          title: '+38% Deal Velocity',
-          subtitle: 'Automated Pipeline Tracking'
+          title: 'Sales Pipeline Active',
+          subtitle: 'New • Qualified • Proposal • Won'
         },
         floatingMetric2: {
           title: 'Omnichannel Chat',
@@ -169,128 +169,117 @@ export const indiaContent = {
     ]
   },
   productsHeader: {
-    badge: 'PRODUCTS & SOLUTIONS',
-    title: 'Complete Business Management Solutions for Every Stage of Growth',
-    subtitle: 'Manage essential business activities with connected solutions for billing, accounting, workforce management, sales and inventory. Choose the modules your business needs and build a more organized way of working.'
+    badge: 'OUR SOLUTIONS',
+    title: 'One platform. The tools your teams need.',
+    subtitle: 'From accounting to operations, ISARVA ERP brings all your business functions together in a single system.'
   },
   products: [
     {
-      id: 'restaurant-pos',
-      title: 'Restaurant POS',
-      subtitle: 'Complete Restaurant\nManagement',
-      color: '#059669',
-      themeClass: 'pos',
-      buttonText: 'Explore Restaurant POS',
-      buttonLink: '#restaurant-pos',
-      iconName: 'UtensilsCrossed',
-      image: '/images/pos-card-preview.jpg',
-      features: [
-        'Dine In, Takeaway, Delivery & Online Orders',
-        'Table & Floor Management',
-        'Menu & Inventory Management',
-        'Kitchen Display System (KDS)',
-        'Reports & Analytics',
-        'Multi-Branch Support'
-      ]
-    },
-    {
       id: 'billsoft',
       title: 'BillSoft Accounting',
-      subtitle: 'Complete Accounting\nSolution',
+      subtitle: 'Complete Financial\nManagement',
       color: '#2563eb',
       themeClass: 'billsoft',
       buttonText: 'Explore BillSoft',
-      buttonLink: '#billsoft',
+      buttonLink: '/billsoft',
       iconName: 'BarChart3',
       image: '/images/billsoft-card-preview.jpg',
-      features: [
-        'GST e-Invoicing (India)',
-        'Sales, Purchase & Inventory',
-        'Accounts, Payments & Receivables',
-        'Multi-Branch & Multi-Currency',
-        'Financial Reports & Analytics',
-        'TDS, TCS & GST Reports'
-      ]
+      description: 'Complete financial management with GST, VAT and multi-currency support.',
+      features: []
+    },
+    {
+      id: 'restaurant-pos',
+      title: 'Restaurant POS',
+      subtitle: 'Fast & Flexible\nFood Service POS',
+      color: '#059669',
+      themeClass: 'pos',
+      buttonText: 'Explore Restaurant POS',
+      buttonLink: '/restaurant-pos',
+      iconName: 'UtensilsCrossed',
+      image: '/images/pos-card-preview.jpg',
+      description: 'Fast and flexible POS for restaurants, cafés and retail outlets.',
+      features: []
     },
     {
       id: 'hrms',
-      title: 'HRMS',
-      subtitle: 'Human Resource\nManagement',
+      title: 'HRMS & Payroll',
+      subtitle: 'Workforce & People\nOperations',
       color: '#7c3aed',
       themeClass: 'hrms',
       buttonText: 'Explore HRMS',
       buttonLink: '#hrms',
       iconName: 'Users2',
       image: '/images/hrms-card-preview.jpg',
-      features: [
-        'Employee Management',
-        'Payroll & Salary Processing',
-        'Attendance & Leave Management',
-        'Recruitment & Onboarding',
-        'HR Reports & Analytics',
-        'Multi-Branch Support'
-      ]
+      description: 'Manage your workforce from hiring to payroll, attendance and leave.',
+      features: []
     },
     {
       id: 'crm',
-      title: 'CRM',
-      subtitle: 'Customer Relationship\nManagement',
+      title: 'CRM & Sales',
+      subtitle: 'Sales Pipeline &\nCustomer Growth',
       color: '#ea580c',
       themeClass: 'crm',
       buttonText: 'Explore CRM',
       buttonLink: '#crm',
       iconName: 'Handshake',
       image: '/images/crm-card-preview.jpg',
-      features: [
-        'Lead & Customer Management',
-        'Sales Pipeline',
-        'Follow-ups & Tasks',
-        'WhatsApp & Email Communication',
-        'Customer Insights & Reports',
-        'Team & Activity Tracking'
-      ]
+      description: 'Convert leads, manage customers and grow your sales pipeline.',
+      features: []
+    },
+    {
+      id: 'inventory-operations',
+      title: 'Inventory & Operations',
+      subtitle: 'Multi-Warehouse &\nStock Control',
+      color: '#0d9488',
+      themeClass: 'operations',
+      buttonText: 'Explore Operations',
+      buttonLink: '#products',
+      iconName: 'Boxes',
+      image: '/images/hero-erp-overview.jpg',
+      description: 'Real-time stock, purchase, sales, warehouses and multi-branch management.',
+      features: []
     }
   ],
   whyChoose: {
-    badge: 'WHY CHOOSE ISARVA ERP?',
-    title: 'Everything Your Business Needs, Connected in One Platform',
-    subtitle: 'Reduce fragmented workflows by bringing essential business operations into a more connected environment. ISARVA ERP helps teams manage information, coordinate activities and access business reports from a common platform.',
+    badge: 'A FULLY CONNECTED ECOSYSTEM',
+    title: 'A Fully Connected Ecosystem',
+    subtitle: 'All your modules work together, giving you real-time data and complete control across your business.',
     items: [
       {
         id: 'wc1',
-        title: 'Integrated Business Modules',
-        description: 'Connect billing, accounting, inventory, HRMS and CRM workflows where supported, helping reduce duplicate data entry.',
-        iconName: 'Layers'
+        title: 'Single Database for All Modules',
+        description: 'Connect all your business data in a single unified cloud database with zero duplicate entries.',
+        iconName: 'Database'
       },
       {
         id: 'wc2',
-        title: 'Centralized Multi-Branch Operations',
-        description: 'Access relevant branch information from a centralized workspace with role-based access where configured.',
+        title: 'Real-Time Data Across Branches',
+        description: 'Instant synchronization across all physical stores, warehouses, and regional offices.',
         iconName: 'Store'
       },
       {
         id: 'wc3',
-        title: 'Reports That Support Better Decisions',
-        description: 'Review sales, financial performance, stock and workforce information using the reports available in your selected modules.',
-        iconName: 'BarChart3'
+        title: 'Role-Based Access & Approvals',
+        description: 'Granular user permissions, strict departmental security, and multi-tier approval workflows.',
+        iconName: 'ShieldCheck'
       },
       {
         id: 'wc4',
-        title: 'Convenient Business Access',
-        description: 'Work through supported devices and locations, subject to your deployment and access configuration.',
-        iconName: 'Smartphone'
+        title: 'Scalable for Multi-Location Businesses',
+        description: 'Engineered to scale effortlessly from a single outlet to enterprise multi-branch operations.',
+        iconName: 'TrendingUp'
       },
       {
         id: 'wc5',
-        title: 'Practical Business Workflows',
-        description: 'Organize routine activities such as invoicing, approvals, employee requests, stock transfers and customer follow-ups.',
-        iconName: 'CheckCircle2'
+        title: 'Connected Core Modules',
+        description: 'Seamless data exchange between BillSoft Accounting, Restaurant POS, HRMS, CRM, and Inventory.',
+        iconName: 'Layers'
       },
       {
         id: 'wc6',
-        title: 'Support for Your Business Journey',
-        description: 'Get guidance on selecting and configuring solutions for your operational requirements.',
-        iconName: 'ShieldCheck'
+        title: 'Central Platform Reporting & Analytics',
+        description: 'Live executive dashboards and automated cross-departmental reporting for actionable insights.',
+        iconName: 'BarChart3'
       }
     ]
   },
@@ -315,43 +304,29 @@ export const indiaContent = {
   },
   industries: {
     badge: 'INDUSTRIES WE SERVE',
-    title: 'Business Management Software for Your Industry',
-    subtitle: 'Every industry has different operational requirements. ISARVA ERP offers business management solutions that can be selected and configured around your workflows.',
+    title: 'Built for Diverse Businesses',
+    subtitle: 'Flexible solutions for different industries and business models.',
     items: [
       {
         id: 'ind1',
-        name: 'Restaurants, Cafés & QSRs',
+        name: 'Restaurants & Retail',
         iconName: 'Utensils',
-        tag: 'F&B',
-        description: 'Manage restaurant orders, tables, kitchen tickets, billing and sales reporting through restaurant POS workflows.'
+        tag: 'F&B / Retail',
+        description: 'POS, KOT, table management, inventory and real-time sales reporting.'
       },
       {
         id: 'ind2',
-        name: 'Retail Stores & Supermarkets',
-        iconName: 'ShoppingBag',
-        tag: 'Retail',
-        description: 'Organize product sales, billing, stock availability, purchasing and inventory reporting.'
+        name: 'Trading & Distribution',
+        iconName: 'Boxes',
+        tag: 'Distribution',
+        description: 'Purchase, sales, stock management and multi-warehouse operations.'
       },
       {
         id: 'ind3',
-        name: 'Wholesale & Distribution',
-        iconName: 'Boxes',
-        tag: 'B2B',
-        description: 'Track purchase and sales transactions, warehouse stock, customer balances and supplier accounts.'
-      },
-      {
-        id: 'ind4',
-        name: 'Apparel & Boutiques',
-        iconName: 'Store',
-        tag: 'Boutiques',
-        description: 'Manage product catalogs, sales transactions, stock movement and business reporting.'
-      },
-      {
-        id: 'ind5',
-        name: 'Corporate & Multi-Branch Businesses',
+        name: 'Multi-Location Businesses',
         iconName: 'Building2',
-        tag: 'Enterprise',
-        description: 'Organize workforce administration, accounting, sales activities and branch-level reporting.'
+        tag: 'Multi-Branch',
+        description: 'Manage multiple branches, users and financials in one system.'
       }
     ]
   },
@@ -400,40 +375,28 @@ export const indiaContent = {
   },
   faqs: {
     badge: 'FREQUENTLY ASKED QUESTIONS',
-    title: 'Common Questions About ISARVA ERP',
-    subtitle: 'Find clear answers about platform capabilities, modules, multi-branch operations and GST compliance.',
+    title: 'Your Questions, Answered',
+    subtitle: 'Quick answers to common questions about ISARVA ERP.',
     items: [
       {
         q: 'What is ISARVA ERP?',
-        a: 'ISARVA ERP is a business management platform offering solutions for restaurant POS, accounting, inventory, HRMS, payroll and CRM. Available modules can help businesses organize daily operations and reporting.'
+        a: 'ISARVA ERP is an integrated business management platform that combines accounting, inventory, sales, CRM, HRMS, payroll and restaurant POS in a single system.'
       },
       {
-        q: 'Who can use ISARVA ERP?',
-        a: 'Restaurants, cafés, retail stores, wholesalers and multi-branch organizations can explore relevant modules based on their operational needs.'
+        q: 'Is it suitable for small and medium businesses?',
+        a: 'Yes. ISARVA ERP is modular and scalable. Small and medium businesses can start with the specific modules they need—such as billing or POS—and expand as their business grows.'
       },
       {
-        q: 'Does ISARVA ERP support GST invoicing?',
-        a: 'BillSoft can support relevant GST invoicing and reporting workflows, depending on the features and integrations enabled. Contact the team to confirm the specific e-invoice, IRN and e-way bill capabilities you require.'
+        q: 'Can I use it for multiple branches?',
+        a: 'Yes. ISARVA ERP provides centralized multi-branch management, allowing you to manage multiple stores, warehouses, and locations with consolidated reporting and role-based permissions in real time.'
       },
       {
-        q: 'Can I manage multiple branches?',
-        a: 'Multi-branch management is intended to provide centralized visibility into supported business operations. Branch-level access, consolidation and synchronization depend on your configuration.'
+        q: 'Does it support GST and VAT?',
+        a: 'Yes. ISARVA ERP is built with full statutory compliance, including GST e-invoicing, IRN, and e-way bills for India, as well as VAT and ZATCA Phase 2 compliance for Saudi Arabia and the GCC.'
       },
       {
-        q: 'Does ISARVA ERP include payroll and attendance?',
-        a: 'The HRMS solution is designed to support employee records, payroll, attendance, leave and related workforce processes. Confirm available integrations and payroll rules for your business before implementation.'
-      },
-      {
-        q: 'Can I use only one module?',
-        a: 'You can enquire about individual solutions such as Restaurant POS, BillSoft Accounting, HRMS or CRM. The sales team can confirm available standalone packages and integration options.'
-      },
-      {
-        q: 'How can I get a demo?',
-        a: 'Submit your business details through the contact form and select the solution you want to explore. The team can then discuss your requirements and arrange a suitable demonstration.'
-      },
-      {
-        q: 'Is ISARVA ERP available in India and the Middle East?',
-        a: 'The website references Indian GST and Saudi ZATCA-related workflows. Contact the team to confirm regional availability, supported legal entities, integrations and compliance capabilities for your location.'
+        q: 'How long does implementation take?',
+        a: 'Implementation is fast and structured—ranging from a few days for standalone modules to a few weeks for multi-branch rollouts. Our dedicated support team guides you through discovery, configuration, data migration, and team training.'
       }
     ]
   }

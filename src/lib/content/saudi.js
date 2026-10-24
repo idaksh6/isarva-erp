@@ -179,17 +179,10 @@ export const saudiContent = {
       color: '#059669',
       themeClass: 'pos',
       buttonText: 'Explore Saudi POS',
-      buttonLink: '#restaurant-pos',
+      buttonLink: '/restaurant-pos',
       iconName: 'UtensilsCrossed',
       image: '/images/hero-restaurant-pos.jpg',
-      features: [
-        'Bilingual Arabic & English Touch Billing',
-        'ZATCA Simplified Tax Invoices with QR Code',
-        'Interactive Table Layouts & Split Billing',
-        'Kitchen Display System (KDS) & Multi-Station KOT',
-        'Recipe Costing & Real-Time Stock Depletion',
-        'Jahez, HungerStation & Delivery Aggregators Sync'
-      ]
+      features: []
     },
     {
       id: 'billsoft',
@@ -198,17 +191,10 @@ export const saudiContent = {
       color: '#2563eb',
       themeClass: 'billsoft',
       buttonText: 'Explore BillSoft KSA',
-      buttonLink: '#billsoft',
+      buttonLink: '/billsoft',
       iconName: 'BarChart3',
       image: '/images/hero-billsoft-isarva.jpg',
-      features: [
-        'ZATCA Phase 2 Direct API Clearance & Reporting',
-        'Cryptographic Stamps (CSID), UUID & Hash Generation',
-        '15% Standard VAT & Zero-Rated Export Rules',
-        'Multi-Branch & Multi-Warehouse Inventory Control',
-        'Automated Bilingual Financial Statements (P&L, Balance Sheet)',
-        'Accounts Payable, Receivables & Bank Reconciliation'
-      ]
+      features: []
     },
     {
       id: 'hrms',
@@ -220,14 +206,7 @@ export const saudiContent = {
       buttonLink: '#hrms',
       iconName: 'Users2',
       image: '/images/hero-hrms-isarva.jpg',
-      features: [
-        'Wage Protection System (WPS / SIF) File Generation',
-        'GOSI Social Insurance Tracking & Deductions',
-        'Iqama, Passport & Baladiya License Expiry Alerts',
-        'End of Service (EOSB) Gratuity Calculation',
-        'Biometric Attendance & Overtime Automation',
-        'Bilingual Employee Self-Service Mobile Portal'
-      ]
+      features: []
     },
     {
       id: 'crm',
@@ -239,14 +218,20 @@ export const saudiContent = {
       buttonLink: '#crm',
       iconName: 'Handshake',
       image: '/images/hero-crm-isarva.jpg',
-      features: [
-        'Direct WhatsApp Business Cloud Integration',
-        'Bilingual Arabic & English Quotations & Invoices',
-        'Customer Loyalty Points & SMS Campaigns',
-        'Visual B2B Sales Pipeline & Deal Stages',
-        'Multi-Agent Customer Support Inbox',
-        'GCC Multi-Currency & Cross-Border Quotations'
-      ]
+      features: []
+    },
+    {
+      id: 'inventory-operations',
+      title: 'Inventory & Operations (KSA & GCC)',
+      subtitle: 'Multi-Warehouse &\nStock Control',
+      color: '#0d9488',
+      themeClass: 'operations',
+      buttonText: 'Explore Operations',
+      buttonLink: '#products',
+      iconName: 'Boxes',
+      image: '/images/hero-erp-overview.jpg',
+      description: 'Real-time stock, purchase, sales, warehouses and multi-branch management across the GCC.',
+      features: []
     }
   ],
   whyChoose: {

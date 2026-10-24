@@ -79,21 +79,21 @@ export default function Footer({
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 shadow-inner">
                   <Sparkles size={14} className="text-emerald-300" />
                   <span className="section-eyebrow">
-                    READY TO ELEVATE YOUR OPERATIONS?
+                    READY TO BRING YOUR BUSINESS INTO SYNC?
                   </span>
                 </div>
 
                 {/* High-Impact Native Heading */}
                 <div>
                   <h2>
-                    {renderTitleWithGradient('Ready to Simplify Your Business Operations?', 'Your Business Operations?', true)}
+                    {renderTitleWithGradient('Ready to bring your business into sync?', 'into sync?', true)}
                   </h2>
                 </div>
 
                 {/* Native Paragraph */}
                 <div>
                   <p className="max-w-2xl">
-                    Discover how ISARVA ERP unifies your billing, ZATCA Phase 2 e-invoicing, inventory, workforce, and multi-branch operations. Let&apos;s build the right workflow for your enterprise.
+                    Book a free demo and see how ISARVA ERP can work for you. Discover connected operations across billing, ZATCA e-invoicing, inventory, and multi-branch management.
                   </p>
                 </div>
 
@@ -105,19 +105,19 @@ export default function Footer({
                       <div className="w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-2xs">
                         <Check size={11} strokeWidth={3} />
                       </div>
-                      <span>15-Min Live Interactive Walkthrough</span>
+                      <span>Personalized Demo</span>
                     </div>
                     <div className="w-full sm:w-auto flex sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-emerald-400/20 text-xs font-semibold text-emerald-200">
                       <div className="w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-2xs">
                         <Check size={11} strokeWidth={3} />
                       </div>
-                      <span>100% ZATCA Phase 2 Compliant</span>
+                      <span>No Obligation</span>
                     </div>
                     <div className="w-full sm:w-auto flex sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-emerald-400/20 text-xs font-semibold text-emerald-200">
                       <div className="w-5 h-5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center shrink-0 shadow-2xs">
                         <Check size={11} strokeWidth={3} />
                       </div>
-                      <span>Zero Migration Downtime</span>
+                      <span>Expert Consultation</span>
                     </div>
                   </div>
 
@@ -211,21 +211,21 @@ export default function Footer({
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/90 shadow-2xs">
                   <Sparkles size={14} className="text-[#007a55]" />
                   <span className="section-eyebrow">
-                    READY TO ELEVATE YOUR OPERATIONS?
+                    READY TO BRING YOUR BUSINESS INTO SYNC?
                   </span>
                 </div>
 
                 {/* High-Impact Native Heading (Space Grotesk slate-900, purely inherited) */}
                 <div>
                   <h2>
-                    {renderTitleWithGradient('Ready to Simplify Your Business Operations?', 'Your Business Operations?', false)}
+                    {renderTitleWithGradient('Ready to bring your business into sync?', 'into sync?', false)}
                   </h2>
                 </div>
 
                 {/* Native Paragraph (Inter slate-600, purely inherited) */}
                 <div>
                   <p className="max-w-2xl">
-                    Discover how ISARVA ERP unifies your billing, GST e-invoicing &amp; e-way bills, inventory, workforce, and multi-branch operations. Let&apos;s build the right workflow for your enterprise.
+                    Book a free demo and see how ISARVA ERP can work for you. Discover connected operations across billing, GST e-invoicing, inventory, and multi-branch management.
                   </p>
                 </div>
 
@@ -237,19 +237,19 @@ export default function Footer({
                       <div className="w-5 h-5 rounded-full bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs">
                         <Check size={11} strokeWidth={3} />
                       </div>
-                      <span>15-Min Live Interactive Walkthrough</span>
+                      <span>Personalized Demo</span>
                     </div>
                     <div className="w-full sm:w-auto flex sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-white/95 border border-emerald-200/80 text-xs font-semibold text-slate-800 shadow-2xs">
                       <div className="w-5 h-5 rounded-full bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs">
                         <Check size={11} strokeWidth={3} />
                       </div>
-                      <span>100% GST &amp; Statutory Compliant</span>
+                      <span>No Obligation</span>
                     </div>
                     <div className="w-full sm:w-auto flex sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-white/95 border border-emerald-200/80 text-xs font-semibold text-slate-800 shadow-2xs">
                       <div className="w-5 h-5 rounded-full bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs">
                         <Check size={11} strokeWidth={3} />
                       </div>
-                      <span>Zero Migration Downtime</span>
+                      <span>Expert Consultation</span>
                     </div>
                   </div>
 
@@ -344,7 +344,7 @@ export default function Footer({
 
             <div>
               <p className="max-w-sm mx-auto lg:mx-0">
-                Connected business software for billing, accounting, inventory, workforce management and customer relationships.
+                A complete business management platform for growing businesses. Connected workflows across finance, operations, HRMS and CRM.
               </p>
             </div>
 
@@ -404,12 +404,12 @@ export default function Footer({
               Solutions
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
+              <li><Link href="#billsoft" className="hover:text-[#007a55] transition-colors">Accounting (BillSoft)</Link></li>
               <li><Link href="#restaurant-pos" className="hover:text-[#007a55] transition-colors">Restaurant POS</Link></li>
-              <li><Link href="#billsoft" className="hover:text-[#007a55] transition-colors">BillSoft Accounting</Link></li>
-              <li><Link href="#hrms" className="hover:text-[#007a55] transition-colors">HRMS & Payroll</Link></li>
-              <li><Link href="/crm" className="hover:text-[#007a55] transition-colors">CRM & Sales</Link></li>
-              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Inventory Management</Link></li>
-              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Multi-Branch Management</Link></li>
+              <li><Link href="#hrms" className="hover:text-[#007a55] transition-colors">HRMS &amp; Payroll</Link></li>
+              <li><Link href="/crm" className="hover:text-[#007a55] transition-colors">CRM &amp; Sales</Link></li>
+              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Inventory &amp; Operations</Link></li>
+              <li><Link href="#why-choose" className="hover:text-[#007a55] transition-colors">Reporting &amp; Analytics</Link></li>
             </ul>
           </div>
 
@@ -419,26 +419,25 @@ export default function Footer({
               Industries
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Restaurants & Cafés</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Retail & Supermarkets</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Wholesale & Distribution</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Apparel & Boutiques</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Corporate Businesses</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Restaurants &amp; Retail</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Trading &amp; Distribution</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Manufacturing</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Multi-Location Businesses</Link></li>
+              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Professional Services</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Statutory & Compliance (3 cols) */}
+          {/* Column 4: Resources (3 cols) */}
           <div className="lg:col-span-3 space-y-3 text-center lg:text-left">
             <h4>
-              Resources & Compliance
+              Resources
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#faqs" className="hover:text-[#007a55] transition-colors">FAQs & Knowledge Base</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing & IRN</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">e-Way Bill Workflows</Link></li>
+              <li><Link href="#faqs" className="hover:text-[#007a55] transition-colors">Help Center &amp; FAQs</Link></li>
+              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing &amp; IRN</Link></li>
               <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">Saudi ZATCA Phase 2</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">Tax & GSTR Reports</Link></li>
-              <li><Link href="#contact" className="hover:text-[#007a55] transition-colors">Implementation & Support</Link></li>
+              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Product Guides</Link></li>
+              <li><Link href="#contact" className="hover:text-[#007a55] transition-colors">Case Studies &amp; Support</Link></li>
             </ul>
           </div>
         </div>
