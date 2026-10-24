@@ -143,40 +143,40 @@ export default function ProductsSection({ header, products, onOpenModal }) {
     if (clean === 'BillSoft Accounting' || clean.includes('BillSoft')) {
       return (
         <>
-          <span>BillSoft</span>
-          <span className="block">Accounting</span>
+          <span className="block whitespace-nowrap">BillSoft</span>
+          <span className="block whitespace-nowrap">Accounting</span>
         </>
       );
     }
     if (clean === 'Restaurant POS' || clean.includes('Restaurant')) {
       return (
         <>
-          <span>Restaurant</span>
-          <span className="block">POS</span>
+          <span className="block whitespace-nowrap">Restaurant</span>
+          <span className="block whitespace-nowrap">POS</span>
         </>
       );
     }
     if (clean === 'HRMS & Payroll' || clean.includes('HRMS')) {
       return (
         <>
-          <span>HRMS &amp;</span>
-          <span className="block">Payroll</span>
+          <span className="block whitespace-nowrap">HRMS &amp;</span>
+          <span className="block whitespace-nowrap">Payroll</span>
         </>
       );
     }
     if (clean === 'CRM & Sales' || clean.includes('CRM')) {
       return (
         <>
-          <span>CRM &amp;</span>
-          <span className="block">Sales</span>
+          <span className="block whitespace-nowrap">CRM &amp;</span>
+          <span className="block whitespace-nowrap">Sales</span>
         </>
       );
     }
     if (clean === 'Inventory & Operations' || clean.includes('Inventory')) {
       return (
         <>
-          <span>Inventory &amp;</span>
-          <span className="block">Operations</span>
+          <span className="block whitespace-nowrap">Inventory &amp;</span>
+          <span className="block whitespace-nowrap">Operations</span>
         </>
       );
     }
@@ -184,8 +184,8 @@ export default function ProductsSection({ header, products, onOpenModal }) {
     if (words.length === 2) {
       return (
         <>
-          <span>{words[0]}</span>
-          <span className="block">{words[1]}</span>
+          <span className="block whitespace-nowrap">{words[0]}</span>
+          <span className="block whitespace-nowrap">{words[1]}</span>
         </>
       );
     }
@@ -231,22 +231,22 @@ export default function ProductsSection({ header, products, onOpenModal }) {
               <>
                 <div>
                   {/* Card Top Row: Icon on left, Title in middle, Arrow on right */}
-                  <div className="flex items-center justify-between gap-2.5 mb-3.5 sm:mb-4">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-xs`}>
+                  <div className="flex items-center justify-between gap-2 mb-3.5 sm:mb-4 h-[46px] sm:h-[50px]">
+                    <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
+                      <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl ${style.iconBg} text-white flex items-center justify-center shrink-0 shadow-xs`}>
                         {getProductIcon(product.iconName, product.id)}
                       </div>
-                      <h3 className="min-w-0">
+                      <h3 className="min-w-0 flex-1 leading-snug">
                         {formatCardTitle(product.title)}
                       </h3>
                     </div>
                     <div className="text-[#2563eb] shrink-0 pl-1 group-hover:translate-x-1 transition-transform duration-200">
-                      <ArrowRight size={18} strokeWidth={2.4} />
+                      <ArrowRight size={17} strokeWidth={2.4} />
                     </div>
                   </div>
 
                   {/* Photorealistic Product Interface Image Showcase */}
-                  <div className="relative mb-3.5 sm:mb-4 rounded-xl overflow-hidden border border-slate-100/90 shadow-2xs aspect-[16/10] bg-slate-100 group/img">
+                  <div className="relative mb-3.5 sm:mb-4 rounded-xl overflow-hidden border border-slate-100/90 shadow-2xs aspect-[16/10] bg-slate-100 group/img w-full">
                     <img
                       src={imageUrl}
                       alt={`${product.title} Interface Preview`}
@@ -262,7 +262,7 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                 </div>
 
                 {/* Card Description */}
-                <p>
+                <p className="min-h-[3rem] sm:min-h-[3.25rem] flex items-start">
                   {description}
                 </p>
               </>
