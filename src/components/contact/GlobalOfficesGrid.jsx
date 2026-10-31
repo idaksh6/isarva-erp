@@ -11,6 +11,7 @@ const GLOBAL_OFFICES = [
     flagCode: 'IN',
     role: 'Corporate Headquarters',
     address: 'Bajpe, Mangalore, Karnataka, India',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Bajpe%2C+Mangalore%2C+India&t=&z=13&ie=UTF8&iwloc=&output=embed',
     mapUrl: 'https://maps.google.com/?q=Bajpe,Mangalore,India',
     accent: '#007a55',
   },
@@ -20,6 +21,7 @@ const GLOBAL_OFFICES = [
     flagCode: 'IN',
     role: 'Technology & Development Center',
     address: 'Bangalore, Karnataka, India',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Bangalore%2C+India&t=&z=12&ie=UTF8&iwloc=&output=embed',
     mapUrl: 'https://maps.google.com/?q=Bangalore,India',
     accent: '#2563eb',
   },
@@ -29,6 +31,7 @@ const GLOBAL_OFFICES = [
     flagCode: 'AE',
     role: 'Middle East Operations',
     address: 'Dubai, United Arab Emirates',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Dubai%2C+UAE&t=&z=12&ie=UTF8&iwloc=&output=embed',
     mapUrl: 'https://maps.google.com/?q=Dubai,UAE',
     accent: '#ea580c',
   },
@@ -38,6 +41,7 @@ const GLOBAL_OFFICES = [
     flagCode: 'GB',
     role: 'European Representative Office',
     address: 'United Kingdom',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=United+Kingdom&t=&z=6&ie=UTF8&iwloc=&output=embed',
     mapUrl: 'https://maps.google.com/?q=United+Kingdom',
     accent: '#7c3aed',
   },
@@ -50,13 +54,13 @@ export default function GlobalOfficesGrid() {
         {/* Section Header */}
         <div className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="section-eyebrow">
-            GLOBAL FOOTPRINT
+            OUR OFFICES
           </div>
           <h2>
-            <span>Our Offices Worldwide</span>
+            <span>We have offices around the world to serve our global clients.</span>
           </h2>
           <p className="max-w-xl mx-auto">
-            We have offices around the world to serve you better with localized compliance, regional support, and high-touch ERP engineering.
+            Reach out to our global presence across India, GCC, and the United Kingdom for localized consulting and enterprise delivery.
           </p>
         </div>
 
@@ -65,7 +69,7 @@ export default function GlobalOfficesGrid() {
           {GLOBAL_OFFICES.map((office, idx) => (
             <div
               key={idx}
-              className="card-ecosystem rounded-2xl p-6 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.18),0_4px_14px_-2px_rgba(0,122,85,0.08)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.30)] transition-all duration-300 flex flex-col justify-between group"
+              className="card-ecosystem rounded-3xl p-5 sm:p-6 bg-white border border-emerald-600/20 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.14),0_4px_14px_-2px_rgba(0,122,85,0.06)] hover:border-[#007a55]/60 hover:shadow-[0_20px_45px_-4px_rgba(0,122,85,0.25)] transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Header: Flag + Location Pin */}
@@ -87,20 +91,34 @@ export default function GlobalOfficesGrid() {
                   {office.role}
                 </div>
 
-                {/* City Heading (semantic h3 with no classes per GEMINI.md) */}
+                {/* City Heading */}
                 <h3 className="mb-2">
                   <span>{office.city}</span>
                 </h3>
 
                 {/* Address Paragraph */}
-                <p className="flex items-start gap-2 text-xs leading-relaxed">
+                <p className="flex items-start gap-2 text-xs leading-relaxed mb-4 text-slate-600 font-normal">
                   <MapPin size={14} className="text-[#007a55] shrink-0 mt-0.5" />
                   <span>{office.address}</span>
                 </p>
+
+                {/* Interactive Map Embed */}
+                <div className="w-full h-40 rounded-2xl overflow-hidden border border-slate-200/80 mb-4 shadow-inner relative bg-slate-100">
+                  <iframe
+                    title={`${office.city} Office Map`}
+                    src={office.mapEmbedUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
               </div>
 
               {/* Map Link */}
-              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                 <a
                   href={office.mapUrl}
                   target="_blank"
@@ -108,7 +126,7 @@ export default function GlobalOfficesGrid() {
                   className="inline-flex items-center gap-1.5 font-semibold text-[#007a55] hover:text-[#005a3e] group-hover:translate-x-0.5 transition-all"
                 >
                   <Navigation size={13} />
-                  <span>View on Map</span>
+                  <span>View on Google Maps</span>
                   <ExternalLink size={11} className="opacity-70" />
                 </a>
 
