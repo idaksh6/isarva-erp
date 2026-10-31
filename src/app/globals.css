@@ -1471,5 +1471,129 @@
   border-color: #007a55 !important;
 }
 
+/* ==========================================================================
+   COLORFUL BOX SHADOW SYSTEM FOR CARDS & MODULES
+   ========================================================================== */
+
+/* Emerald / Brand Primary (#007a55 / #059669) */
+.card-shadow-emerald {
+  box-shadow: 0 10px 30px -4px rgba(0, 122, 85, 0.16), 0 4px 12px -2px rgba(0, 122, 85, 0.08) !important;
+  border-color: rgba(0, 122, 85, 0.22) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-emerald:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px -4px rgba(0, 122, 85, 0.28), 0 8px 20px -2px rgba(0, 122, 85, 0.14) !important;
+  border-color: rgba(0, 122, 85, 0.55) !important;
+}
+
+/* Blue / BillSoft Accounting (#2563eb / #0284c7) */
+.card-shadow-blue {
+  box-shadow: 0 10px 30px -4px rgba(37, 99, 235, 0.15), 0 4px 12px -2px rgba(37, 99, 235, 0.08) !important;
+  border-color: rgba(37, 99, 235, 0.22) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-blue:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px -4px rgba(37, 99, 235, 0.28), 0 8px 20px -2px rgba(37, 99, 235, 0.14) !important;
+  border-color: rgba(37, 99, 235, 0.55) !important;
+}
+
+/* Purple / HRMS & Payroll (#7c3aed) */
+.card-shadow-purple {
+  box-shadow: 0 10px 30px -4px rgba(124, 58, 237, 0.15), 0 4px 12px -2px rgba(124, 58, 237, 0.08) !important;
+  border-color: rgba(124, 58, 237, 0.22) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-purple:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px -4px rgba(124, 58, 237, 0.28), 0 8px 20px -2px rgba(124, 58, 237, 0.14) !important;
+  border-color: rgba(124, 58, 237, 0.55) !important;
+}
+
+/* Orange / CRM & Sales (#ea580c / #f97316) */
+.card-shadow-orange {
+  box-shadow: 0 10px 30px -4px rgba(234, 88, 12, 0.15), 0 4px 12px -2px rgba(234, 88, 12, 0.08) !important;
+  border-color: rgba(234, 88, 12, 0.22) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-orange:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px -4px rgba(234, 88, 12, 0.28), 0 8px 20px -2px rgba(234, 88, 12, 0.14) !important;
+  border-color: rgba(234, 88, 12, 0.55) !important;
+}
+
+/* Teal / Operations & Single-Source (#0d9488) */
+.card-shadow-teal {
+  box-shadow: 0 10px 30px -4px rgba(13, 148, 136, 0.15), 0 4px 12px -2px rgba(13, 148, 136, 0.08) !important;
+  border-color: rgba(13, 148, 136, 0.22) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-teal:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px -4px rgba(13, 148, 136, 0.28), 0 8px 20px -2px rgba(13, 148, 136, 0.14) !important;
+  border-color: rgba(13, 148, 136, 0.55) !important;
+}
+
+/* Indigo / Telemetry & Enterprise Mesh (#4f46e5) */
+.card-shadow-indigo {
+  box-shadow: 0 10px 30px -4px rgba(79, 70, 229, 0.15), 0 4px 12px -2px rgba(79, 70, 229, 0.08) !important;
+  border-color: rgba(79, 70, 229, 0.22) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-indigo:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px -4px rgba(79, 70, 229, 0.28), 0 8px 20px -2px rgba(79, 70, 229, 0.14) !important;
+  border-color: rgba(79, 70, 229, 0.55) !important;
+}
+
+/* Rose / Restaurant POS (#f43f5e) */
+.card-shadow-rose {
+  box-shadow: 0 10px 30px -4px rgba(244, 63, 94, 0.15), 0 4px 12px -2px rgba(244, 63, 94, 0.08) !important;
+  border-color: rgba(244, 63, 94, 0.22) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-rose:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px -4px rgba(244, 63, 94, 0.28), 0 8px 20px -2px rgba(244, 63, 94, 0.14) !important;
+  border-color: rgba(244, 63, 94, 0.55) !important;
+}
+
+/* Dark Enterprise Card with Glowing Emerald Ambient Halo */
+.card-shadow-dark-emerald {
+  box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.5), 0 0 25px -2px rgba(16, 185, 129, 0.25) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-dark-emerald:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 22px 50px -5px rgba(0, 0, 0, 0.6), 0 0 35px 2px rgba(16, 185, 129, 0.45) !important;
+  border-color: rgba(16, 185, 129, 0.7) !important;
+}
+
+/* Dark Enterprise Card with Glowing Teal/Cyan Halo */
+.card-shadow-dark-teal {
+  box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.5), 0 0 25px -2px rgba(20, 184, 166, 0.25) !important;
+  border-color: rgba(20, 184, 166, 0.35) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-shadow-dark-teal:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 22px 50px -5px rgba(0, 0, 0, 0.6), 0 0 35px 2px rgba(20, 184, 166, 0.45) !important;
+  border-color: rgba(20, 184, 166, 0.7) !important;
+}
+
+/* FAQ Card Glowing Accordion Classes */
+.card-shadow-faq-emerald {
+  box-shadow: 0 6px 20px -2px rgba(0, 122, 85, 0.12), 0 2px 6px -1px rgba(0, 122, 85, 0.06);
+  border-color: rgba(0, 122, 85, 0.25);
+  transition: all 0.25s ease;
+}
+.card-shadow-faq-emerald:hover,
+.card-shadow-faq-emerald.is-open {
+  box-shadow: 0 14px 36px -4px rgba(0, 122, 85, 0.24), 0 4px 12px -2px rgba(0, 122, 85, 0.12);
+  border-color: #007a55;
+}
+
 
 

@@ -99,6 +99,7 @@ export default function ProductsSection({ header, products, onOpenModal }) {
         return {
           iconBg: 'bg-[#2563eb]',
           borderColor: 'hover:border-[#2563eb]/50',
+          shadowClass: 'card-shadow-blue',
           fallbackImage: '/images/billsoft-card-preview.jpg'
         };
       case 'restaurant-pos':
@@ -106,18 +107,21 @@ export default function ProductsSection({ header, products, onOpenModal }) {
         return {
           iconBg: 'bg-[#f43f5e]',
           borderColor: 'hover:border-[#f43f5e]/50',
+          shadowClass: 'card-shadow-rose',
           fallbackImage: '/images/pos-card-preview.jpg'
         };
       case 'hrms':
         return {
-          iconBg: 'bg-[#0284c7]',
-          borderColor: 'hover:border-[#0284c7]/50',
+          iconBg: 'bg-[#7c3aed]',
+          borderColor: 'hover:border-[#7c3aed]/50',
+          shadowClass: 'card-shadow-purple',
           fallbackImage: '/images/hrms-card-preview.jpg'
         };
       case 'crm':
         return {
-          iconBg: 'bg-[#7c3aed]',
-          borderColor: 'hover:border-[#7c3aed]/50',
+          iconBg: 'bg-[#ea580c]',
+          borderColor: 'hover:border-[#ea580c]/50',
+          shadowClass: 'card-shadow-orange',
           fallbackImage: '/images/crm-card-preview.jpg'
         };
       case 'inventory-operations':
@@ -126,12 +130,14 @@ export default function ProductsSection({ header, products, onOpenModal }) {
         return {
           iconBg: 'bg-[#059669]',
           borderColor: 'hover:border-[#059669]/50',
+          shadowClass: 'card-shadow-emerald',
           fallbackImage: '/images/hero-erp-overview.jpg'
         };
       default:
         return {
           iconBg: 'bg-[#007a55]',
           borderColor: 'hover:border-[#007a55]/50',
+          shadowClass: 'card-shadow-emerald',
           fallbackImage: '/images/hero-erp-overview.jpg'
         };
     }

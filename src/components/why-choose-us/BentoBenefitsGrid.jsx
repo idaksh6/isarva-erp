@@ -53,8 +53,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 1: Large 2x2 - Native Dual-Region Regulatory Mastery */}
           <div
-            className="md:col-span-2 lg:col-span-2 lg:row-span-2 rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="md:col-span-2 lg:col-span-2 lg:row-span-2 rounded-2xl bg-white border border-emerald-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-emerald group"
           >
             <div>
               <div className="flex items-center justify-between mb-6">
@@ -133,15 +132,14 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 2: Wide 2x1 - Zero-Disruption Rapid Migration */}
           <div
-            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-teal-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-teal group"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-[#0d9488] group-hover:scale-110 group-hover:bg-[#0d9488] group-hover:text-white transition-all duration-300">
                   <Zap className="w-6 h-6" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200/60">
+                <span className="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200/60">
                   2-4 Weeks Go-Live
                 </span>
               </div>
@@ -169,7 +167,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 3: Stat 1x1 - 1,000+ Enterprises */}
           <div
-            className="rounded-2xl bg-gradient-to-br from-slate-900 to-[#0b1a30] text-white p-7 sm:p-8 flex flex-col justify-between border border-slate-800 shadow-xl group hover:border-emerald-500/40 transition-all duration-300"
+            className="rounded-2xl bg-gradient-to-br from-slate-900 to-[#0b1a30] text-white p-7 sm:p-8 flex flex-col justify-between border border-emerald-500/40 card-shadow-dark-emerald group transition-all duration-300"
           >
             <div>
               <div className="text-xs uppercase font-extrabold tracking-widest text-emerald-400 mb-2">
@@ -193,15 +191,14 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 4: Stat 1x1 - 99.98% High Availability */}
           <div
-            className="rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="rounded-2xl bg-white border border-blue-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-blue group"
           >
             <div>
-              <div className="text-xs uppercase font-extrabold tracking-widest text-[#007a55] mb-2">
+              <div className="text-xs uppercase font-extrabold tracking-widest text-blue-600 mb-2">
                 Infrastructure SLA
               </div>
               <div className="text-4xl sm:text-5xl font-black text-slate-900 font-heading tracking-tight mb-3">
-                99.98<span className="text-[#007a55]">%</span>
+                99.98<span className="text-blue-600">%</span>
               </div>
               <h3>
                 High-Availability Uptime
@@ -212,14 +209,13 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 flex items-center justify-between">
               <span>Sub-second failover</span>
-              <span className="text-[#007a55] font-semibold">Continuous Mirroring</span>
+              <span className="text-blue-600 font-semibold">Continuous Mirroring</span>
             </div>
           </div>
 
           {/* Card 5: Tall 1x2 - Unified Single-Source Ecosystem */}
           <div
-            className="md:col-span-2 lg:col-span-1 lg:row-span-2 rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="md:col-span-2 lg:col-span-1 lg:row-span-2 rounded-2xl bg-white border border-emerald-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-emerald group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] mb-6 group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
@@ -259,11 +255,10 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 6: 1x1 - No Per-User Headcount Penalty */}
           <div
-            className="rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="rounded-2xl bg-white border border-orange-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-orange group"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] mb-4 group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-[#ea580c] mb-4 group-hover:scale-110 group-hover:bg-[#ea580c] group-hover:text-white transition-all duration-300">
                 <Coins className="w-6 h-6" />
               </div>
               <h3>
@@ -280,11 +275,10 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 7: 1x1 - Frictionless Human Experience */}
           <div
-            className="rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="rounded-2xl bg-white border border-purple-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-purple group"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] mb-4 group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-[#7c3aed] mb-4 group-hover:scale-110 group-hover:bg-[#7c3aed] group-hover:text-white transition-all duration-300">
                 <MousePointerClick className="w-6 h-6" />
               </div>
               <h3>
@@ -301,15 +295,14 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 8: Wide 2x1 - Instant Financial Telemetry & AI Forecasting */}
           <div
-            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-indigo-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-indigo group"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-[#4f46e5] group-hover:scale-110 group-hover:bg-[#4f46e5] group-hover:text-white transition-all duration-300">
                   <TrendingUp className="w-6 h-6" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold">
+                <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200/60">
                   Executive Cockpit
                 </span>
               </div>
@@ -343,11 +336,10 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 9: 1x1 - Multi-Entity & Warehouse Mesh */}
           <div
-            className="rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="rounded-2xl bg-white border border-blue-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-blue group"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] mb-4 group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#2563eb] mb-4 group-hover:scale-110 group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-300">
                 <Building2 className="w-6 h-6" />
               </div>
               <h3>
@@ -364,8 +356,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 10: 1x1 - Dedicated Human Implementation Lead */}
           <div
-            className="rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-            style={{ boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.08), 0 4px 10px -2px rgba(0, 122, 85, 0.04)' }}
+            className="rounded-2xl bg-white border border-emerald-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-emerald group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] mb-4 group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">

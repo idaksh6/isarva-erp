@@ -77,6 +77,17 @@ const features = [
   },
 ];
 
+const FEATURE_SHADOW_MAP = {
+  financial: 'card-shadow-orange border-orange-200/70',
+  inventory: 'card-shadow-blue border-blue-200/70',
+  sales: 'card-shadow-emerald border-emerald-200/70',
+  crm: 'card-shadow-purple border-purple-200/70',
+  hrms: 'card-shadow-teal border-teal-200/70',
+  project: 'card-shadow-orange border-amber-200/70',
+  analytics: 'card-shadow-emerald border-emerald-200/70',
+  multibranch: 'card-shadow-indigo border-indigo-200/70',
+};
+
 export default function ErpFeaturesGrid() {
   return (
     <section id="features" className="bg-white section-padding">
@@ -127,7 +138,11 @@ export default function ErpFeaturesGrid() {
         {/* ── Feature Cards Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((f) => (
-            <div key={f.id} id={`erp-feature-card-${f.id}`} className="card-feature flex flex-col gap-4">
+            <div
+              key={f.id}
+              id={`erp-feature-card-${f.id}`}
+              className={`card-feature flex flex-col gap-4 ${FEATURE_SHADOW_MAP[f.id] || 'card-shadow-emerald'}`}
+            >
               {/* Icon */}
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"

@@ -46,7 +46,7 @@ export default function WhyUsMetrics() {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-emerald-500/40 transition-all duration-300 group"
+                className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-emerald-500/40 card-shadow-dark-emerald transition-all duration-300 group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">

@@ -165,6 +165,17 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                       <div className="text-xs text-slate-500">Leads &amp; visual pipeline</div>
                     </div>
                   </Link>
+
+                  <div className="pt-2 border-t border-slate-100 mt-1">
+                    <Link
+                      href="/solutions"
+                      onClick={() => setIsSolutionsOpen(false)}
+                      className="flex items-center justify-between p-2 rounded-xl bg-emerald-50/70 hover:bg-emerald-100/70 text-[#007a55] font-semibold text-xs transition-colors"
+                    >
+                      <span>Explore All Solutions</span>
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -275,6 +286,9 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
               Our Solutions
             </div>
+            <Link href="/solutions" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-bold text-[#007a55] pl-2 border-l-2 border-[#007a55] mb-1">
+              All Solutions Overview &rarr;
+            </Link>
             <Link href="/restaurant-pos" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-emerald-600 pl-2 border-l-2 border-emerald-500 mb-1">
               Restaurant POS Software
             </Link>

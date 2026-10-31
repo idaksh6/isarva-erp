@@ -98,13 +98,17 @@ export default function EeatPillars() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PILLARS.map((pillar, index) => {
             const Icon = pillar.icon;
+            const shadowClasses = [
+              'card-shadow-emerald border-emerald-200/80',
+              'card-shadow-blue border-blue-200/80',
+              'card-shadow-purple border-purple-200/80',
+              'card-shadow-orange border-amber-200/80',
+            ][index % 4];
+
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-white border border-slate-200/90 p-8 sm:p-9 flex flex-col justify-between hover:border-[#007a55]/60 hover:shadow-xl transition-all duration-300 group"
-                style={{
-                  boxShadow: '0 10px 25px -4px rgba(15, 23, 42, 0.06), 0 4px 10px -2px rgba(15, 23, 42, 0.03)',
-                }}
+                className={`rounded-2xl bg-white border p-8 sm:p-9 flex flex-col justify-between transition-all duration-300 group ${shadowClasses}`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">

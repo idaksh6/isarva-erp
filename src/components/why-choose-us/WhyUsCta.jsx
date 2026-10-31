@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, ShieldCheck, CheckCircle2, Lock, Headphones, Sparkles } from 'lucide-react';
 
 export default function WhyUsCta({ onOpenModal }) {
@@ -45,14 +46,13 @@ export default function WhyUsCta({ onOpenModal }) {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <button
-                type="button"
-                onClick={() => onOpenModal?.('contact', 'Why Choose Us Bottom CTA')}
+              <Link
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/40 transition-all duration-200 text-sm sm:text-base backdrop-blur-md"
               >
                 <Headphones className="w-4 h-4 text-emerald-400" />
                 <span>Talk to an Architect</span>
-              </button>
+              </Link>
             </div>
 
             {/* Trust Badges */}

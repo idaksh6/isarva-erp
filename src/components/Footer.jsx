@@ -183,14 +183,13 @@ export default function Footer({
                     </span>
                   </button>
 
-                  {/* Secondary Action Button */}
-                  <button
-                    type="button"
-                    onClick={() => onOpenModal ? onOpenModal('contact') : null}
+                  {/* Secondary Action Link */}
+                  <Link
+                    href="/contact"
                     className="w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/25 hover:border-white/40 shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
                     <span>Talk to Our Team</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -315,14 +314,13 @@ export default function Footer({
                     </span>
                   </button>
 
-                  {/* Secondary Action Button */}
-                  <button
-                    type="button"
-                    onClick={() => onOpenModal ? onOpenModal('contact') : null}
+                  {/* Secondary Action Link */}
+                  <Link
+                    href="/contact"
                     className="w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-full bg-slate-100/90 hover:bg-slate-100 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
                     <span>Talk to Our Team</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
