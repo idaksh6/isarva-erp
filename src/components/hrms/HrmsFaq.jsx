@@ -71,8 +71,8 @@ export default function HrmsFaq() {
                 data-aos-duration="600"
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-white ${
                   isOpen
-                    ? 'border-[#7c3aed] shadow-[0_12px_36px_-6px_rgba(124,58,237,0.18),0_4px_12px_-2px_rgba(124,58,237,0.08)] ring-1 ring-[#7c3aed]/20'
-                    : 'border-slate-200/90 shadow-[0_4px_16px_rgba(15,23,42,0.05),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_24px_rgba(15,23,42,0.09)] hover:border-purple-300'
+                    ? 'card-shadow-purple border-[#7c3aed] ring-1 ring-[#7c3aed]/20'
+                    : 'border-slate-200/90 hover:card-shadow-purple hover:border-purple-300'
                 }`}
               >
                 <button

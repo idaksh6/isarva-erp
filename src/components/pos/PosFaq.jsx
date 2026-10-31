@@ -75,7 +75,11 @@ export default function PosFaq({ onOpenDemoModal }) {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-2xl border border-gray-200/90 shadow-2xs overflow-hidden transition-all duration-200"
+                className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? 'card-shadow-emerald border-[#007a55] ring-1 ring-[#007a55]/20'
+                    : 'border-slate-200/90 hover:border-emerald-300 hover:shadow-[0_8px_24px_rgba(0,122,85,0.14)]'
+                }`}
               >
                 <button
                   type="button"

@@ -15,7 +15,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(236, 253, 245, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(209, 250, 229, 0.7) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(209, 250, 229, 0.85) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(0, 122, 85, 0.18)',
+    glow: 'rgba(0, 122, 85, 0.26)',
   },
   {
     // 1: Royal Blue (Multi-Industry & Versatility)
@@ -27,7 +27,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(239, 246, 255, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(219, 234, 254, 0.7) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(219, 234, 254, 0.85) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(37, 99, 235, 0.18)',
+    glow: 'rgba(37, 99, 235, 0.26)',
   },
   {
     // 2: Warm Amber / Orange (GST / E-Invoicing / Taxes)
@@ -39,7 +39,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(255, 247, 237, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(254, 215, 170, 0.65) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(254, 215, 170, 0.8) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(234, 88, 12, 0.18)',
+    glow: 'rgba(234, 88, 12, 0.26)',
   },
   {
     // 3: Royal Violet / Purple (Multi-Branch Operations)
@@ -51,7 +51,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(245, 243, 255, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(237, 233, 254, 0.7) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(237, 233, 254, 0.85) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(124, 58, 237, 0.18)',
+    glow: 'rgba(124, 58, 237, 0.26)',
   },
   {
     // 4: Indigo (Payroll & HRMS)
@@ -63,7 +63,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(238, 242, 255, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(224, 231, 255, 0.7) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(224, 231, 255, 0.85) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(79, 70, 229, 0.18)',
+    glow: 'rgba(79, 70, 229, 0.26)',
   },
   {
     // 5: Teal (Modular Choice & Flexibility)
@@ -75,7 +75,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(240, 253, 250, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(204, 251, 241, 0.7) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(204, 251, 241, 0.85) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(13, 148, 136, 0.18)',
+    glow: 'rgba(13, 148, 136, 0.26)',
   },
   {
     // 6: Rose Pink (Demo & Consultations)
@@ -87,7 +87,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(253, 242, 248, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(252, 231, 243, 0.7) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(252, 231, 243, 0.85) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(219, 39, 119, 0.18)',
+    glow: 'rgba(219, 39, 119, 0.26)',
   },
   {
     // 7: Forest Mint (International / Multi-Region)
@@ -99,7 +99,7 @@ const FAQ_THEMES = [
     cardBg: 'linear-gradient(135deg, rgba(236, 253, 245, 0.75) 0%, rgba(255, 255, 255, 0.95) 60%)',
     cardBgHover: 'linear-gradient(135deg, rgba(167, 243, 208, 0.6) 0%, rgba(255, 255, 255, 0.98) 60%)',
     cardBgOpen: 'linear-gradient(135deg, rgba(167, 243, 208, 0.75) 0%, rgba(255, 255, 255, 0.98) 60%)',
-    glow: 'rgba(5, 150, 105, 0.18)',
+    glow: 'rgba(5, 150, 105, 0.26)',
   },
 ];
 
@@ -149,10 +149,10 @@ function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
         background: isOpen ? theme.cardBgOpen : (isHovered ? theme.cardBgHover : theme.cardBg),
         border: `1.5px solid ${isOpen || isHovered ? theme.cardBorderHover : theme.cardBorder}`,
         boxShadow: isOpen
-          ? `0 14px 36px ${theme.glow}, 0 2px 6px rgba(0,0,0,0.04)`
+          ? `0 16px 40px -4px ${theme.glow}, 0 4px 14px -2px ${theme.glow}`
           : isHovered
-          ? `0 8px 24px ${theme.glow}, 0 2px 4px rgba(0,0,0,0.03)`
-          : '0 2px 8px rgba(0,0,0,0.02)',
+          ? `0 14px 32px -4px ${theme.glow}, 0 4px 10px -2px ${theme.glow}`
+          : `0 8px 24px -4px ${theme.glow}, 0 2px 6px -1px rgba(0,0,0,0.03)`,
         transform: isHovered && !isOpen ? 'translateY(-2px)' : 'translateY(0)',
       }}
     >

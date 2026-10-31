@@ -206,5 +206,32 @@ Before authoring or modifying any component or page in this project:
 - [ ] Is section spacing using `.section-padding` or `.section-padding-sm`?
 - [ ] Are colors referencing design tokens or global brand hex variables?
 - [ ] Are country flags rendered using `<FlagIcon />` instead of emoji strings?
+- [ ] Do cards use theme-colored box shadows (`.card-shadow-emerald`, `.card-shadow-blue`, etc.) instead of plain dull gray shadows?
 - [ ] Is all development direct in-place without scratchpads or browser inspect routines?
+
+---
+
+## 12. Mandatory Colorful Box Shadow System for Cards & Modules
+
+To deliver a high-tech, vibrant, enterprise-grade aesthetic, cards must **NEVER** use generic flat gray shadows (e.g. `shadow-md`, `shadow-xl`, `rgba(0,0,0,0.1)`). Instead, all product modules, feature grids, bento benefits, and FAQ accordion cards must use **Theme-Colored Box Shadows** that emit a radiant ambient glow matching their functional domain.
+
+### A. Predefined Card Shadow Utility Classes
+
+| Class Name | Theme Domain | Static Shadow | Hover Elevation Glow |
+| :--- | :--- | :--- | :--- |
+| **`.card-shadow-emerald`** | Core ERP, POS, Compliance, Tax Sync (`#007a55` / `#059669`) | `0 10px 30px -4px rgba(0, 122, 85, 0.16)` | `0 20px 45px -4px rgba(0, 122, 85, 0.28), -4px lift` |
+| **`.card-shadow-blue`** | BillSoft Accounting, Invoicing, Cloud SLA (`#2563eb` / `#0284c7`) | `0 10px 30px -4px rgba(37, 99, 235, 0.15)` | `0 20px 45px -4px rgba(37, 99, 235, 0.28), -4px lift` |
+| **`.card-shadow-purple`** | HRMS, Payroll, Multi-Branch Operations (`#7c3aed`) | `0 10px 30px -4px rgba(124, 58, 237, 0.15)` | `0 20px 45px -4px rgba(124, 58, 237, 0.28), -4px lift` |
+| **`.card-shadow-orange`** | CRM, Sales Pipeline, Rapid Deployment (`#ea580c` / `#f97316`) | `0 10px 30px -4px rgba(234, 88, 12, 0.15)` | `0 20px 45px -4px rgba(234, 88, 12, 0.28), -4px lift` |
+| **`.card-shadow-teal`** | Warehouse, Single-Source Ecosystem, Migration (`#0d9488`) | `0 10px 30px -4px rgba(13, 148, 136, 0.15)` | `0 20px 45px -4px rgba(13, 148, 136, 0.28), -4px lift` |
+| **`.card-shadow-indigo`** | Financial Telemetry, AI Radar, Group Mesh (`#4f46e5`) | `0 10px 30px -4px rgba(79, 70, 229, 0.15)` | `0 20px 45px -4px rgba(79, 70, 229, 0.28), -4px lift` |
+| **`.card-shadow-rose`** | Restaurant & Counter POS Module (`#f43f5e`) | `0 10px 30px -4px rgba(244, 63, 94, 0.15)` | `0 20px 45px -4px rgba(244, 63, 94, 0.28), -4px lift` |
+| **`.card-shadow-dark-emerald`** | Dark Enterprise Stat Cards / Metric Blocks (Dark UI) | `0 14px 35px -5px rgba(0,0,0,0.5), halo rgba(16,185,129,0.25)` | `0 22px 50px -5px rgba(0,0,0,0.6), halo rgba(16,185,129,0.45)` |
+
+### B. Implementation Rules for Cards
+1. **Never use generic gray shadows on cards**: Replace `shadow-md`, `shadow-lg`, `shadow-xl`, or raw `rgba(15, 23, 42, 0.08)` with the matching `.card-shadow-*` class.
+2. **Smooth Hover Elevation**: All `.card-shadow-*` classes automatically handle `-4px` vertical translate lift and double-density colored elevation spread on hover.
+3. **Card Borders**: Ensure cards have a subtle matching border (e.g. `border-emerald-200/80` or `border-blue-200/80`) that harmonizes with the colored shadow.
+4. **FAQ Accordions**: FAQ cards must feature ambient theme glow in both static and expanded states (`.card-shadow-faq-emerald` or dynamic theme glow `rgba(..., 0.26)`).
+
 

@@ -37,6 +37,11 @@
 5. **Flag Icons**:
    - Always use `<FlagIcon country="IN" />` / `<FlagIcon country="SA" />` SVG components, never Unicode flag emojis (which fail on Windows Chromium).
 
+6. **Mandatory Colorful Box Shadows for Cards**:
+   - **NEVER** use generic flat gray shadows (e.g., `shadow-md`, `shadow-xl`, `rgba(0,0,0,0.1)`) on product cards, bento benefits, or feature grids.
+   - Always use theme-colored box shadows (`.card-shadow-emerald`, `.card-shadow-blue`, `.card-shadow-purple`, `.card-shadow-orange`, `.card-shadow-teal`, `.card-shadow-indigo`, `.card-shadow-rose`, `.card-shadow-dark-emerald`) that provide a radiant ambient glow and smooth -4px hover elevation lift.
+   - FAQ accordions must have colored ambient glow in both idle and active states.
+
 ## Development Workflow & Tooling Rules
 1. **No Scratchpad / Scratch Files**:
    - **NEVER** use scratchpads, temporary test scratch scripts, or scratch files when developing or modifying code.
