@@ -492,6 +492,63 @@
   border-color: #94a3b8;
 }
 
+/* Dedicated HRMS & Payroll Landing CTA Buttons */
+.hrms-primary-btn-purple {
+  height: 48px;
+  min-height: 48px;
+  background: #7c3aed;
+  border: none;
+  border-bottom: 3px solid #6d28d9;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 0 1.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.hrms-primary-btn-purple:hover {
+  background: #6d28d9;
+  border-bottom-width: 2px;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
+}
+.hrms-primary-btn-purple:active {
+  border-bottom-width: 0px;
+}
+
+.hrms-secondary-btn-white {
+  height: 48px;
+  min-height: 48px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 0 1.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  color: #0f172a;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.hrms-secondary-btn-white:hover {
+  background: #faf5ff;
+  border-color: #c084fc;
+  color: #7c3aed;
+}
+
 /* Dedicated Restaurant POS Landing CTA Buttons */
 .pos-primary-btn-emerald {
   height: 48px;
@@ -1166,6 +1223,19 @@
   animation-play-state: paused;
 }
 
+.animate-hrms-pulse-glow {
+  animation: crmPulseGlow 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-hrms-float {
+  animation: crmFloatGentle 6s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-hrms-float:hover {
+  animation-play-state: paused;
+}
+
 /* Stagger animation delay utility classes */
 .animation-delay-75 { animation-delay: 75ms; }
 .animation-delay-100 { animation-delay: 100ms; }
@@ -1283,6 +1353,122 @@
     font-size: 0.875rem; /* 14px on 2xl */
     line-height: 1.55;
   }
+}
+
+/* ==========================================================================
+   A FULLY CONNECTED ECOSYSTEM — CONSTELLATION SECTION STYLES (LIGHT THEME)
+   ========================================================================== */
+
+.section-ecosystem h2 {
+  color: var(--text-main);
+}
+
+.section-ecosystem h3 {
+  color: var(--text-main);
+  transition: color 0.25s ease;
+}
+
+.section-ecosystem .card-ecosystem:hover h3 {
+  color: #007a55;
+}
+
+.section-ecosystem p {
+  color: #475569;
+  transition: color 0.25s ease;
+}
+
+.section-ecosystem .card-ecosystem:hover p {
+  color: #1e293b;
+}
+
+.section-ecosystem .section-eyebrow {
+  color: #007a55;
+}
+
+.section-ecosystem .card-ecosystem {
+  box-shadow: 0 12px 32px -4px rgba(0, 122, 85, 0.22), 0 4px 14px -2px rgba(0, 122, 85, 0.12);
+  border-color: rgba(0, 122, 85, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-ecosystem .card-ecosystem:hover {
+  box-shadow: 0 24px 50px -4px rgba(0, 122, 85, 0.35), 0 8px 20px -2px rgba(0, 122, 85, 0.18);
+  border-color: rgba(0, 122, 85, 0.70);
+}
+
+@keyframes ecosystem-pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes ecosystem-flow {
+  from {
+    stroke-dashoffset: 40;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ecosystem-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ecosystem-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-ecosystem-pulse-1 {
+  animation: ecosystem-pulse-ring 3.5s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
+.animate-ecosystem-pulse-2 {
+  animation: ecosystem-pulse-ring 3.5s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 1.75s;
+}
+
+.animate-ecosystem-flow {
+  stroke-dasharray: 6 8;
+  animation: ecosystem-flow 1.8s linear infinite;
+}
+
+.animate-ecosystem-spin {
+  animation: ecosystem-spin-slow 28s linear infinite;
+}
+
+.animate-ecosystem-float {
+  animation: ecosystem-float 5s ease-in-out infinite;
+}
+
+/* Compliance Checklist Cards Elevated Green Box Shadow */
+.card-compliance-checklist {
+  box-shadow: 0 10px 25px -4px rgba(0, 122, 85, 0.22), 0 4px 10px -2px rgba(0, 122, 85, 0.12) !important;
+  border-color: rgba(0, 122, 85, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-compliance-checklist:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -4px rgba(0, 122, 85, 0.35), 0 8px 16px -2px rgba(0, 122, 85, 0.18) !important;
+  border-color: #007a55 !important;
 }
 
 

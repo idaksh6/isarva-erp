@@ -278,7 +278,7 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                   data-aos="fade-up"
                   data-aos-delay={cardDelay}
                   data-aos-duration="700"
-                  className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_2px_8px_rgba(15,23,42,0.03)] hover:shadow-md transition-all duration-200 min-w-0 w-full block ${colClass}`}
+                  className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_4px_16px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 min-w-0 w-full block ${colClass}`}
                   aria-label={`Explore ${product.title}`}
                 >
                   {cardInner}
@@ -295,7 +295,7 @@ export default function ProductsSection({ header, products, onOpenModal }) {
                 data-aos="fade-up"
                 data-aos-delay={cardDelay}
                 data-aos-duration="700"
-                className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_2px_8px_rgba(15,23,42,0.03)] hover:shadow-md transition-all duration-200 min-w-0 w-full text-left cursor-pointer ${colClass}`}
+                className={`card-product group bg-white rounded-2xl border border-slate-200/90 ${style.borderColor} p-4 sm:p-5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between shadow-[0_4px_16px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 min-w-0 w-full text-left cursor-pointer ${colClass}`}
                 aria-label={`Explore ${product.title}`}
               >
                 {cardInner}

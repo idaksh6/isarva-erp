@@ -12,8 +12,6 @@ import {
   BarChart3,
   Users2,
   Handshake,
-  Boxes,
-  Network,
   ArrowRight,
   Check
 } from 'lucide-react';
@@ -137,7 +135,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                   </Link>
 
                   <Link
-                    href="#hrms"
+                    href="/hrms"
                     onClick={() => setIsSolutionsOpen(false)}
                     className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-purple-50 transition-colors group"
                   >
@@ -164,33 +162,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     </div>
                   </Link>
 
-                  <Link
-                    href="#products"
-                    onClick={() => setIsSolutionsOpen(false)}
-                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-cyan-50 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center shrink-0">
-                      <Boxes size={16} />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-cyan-700">Inventory & Warehouse</div>
-                      <div className="text-xs text-slate-500">Stock movements & reorders</div>
-                    </div>
-                  </Link>
 
-                  <Link
-                    href="#products"
-                    onClick={() => setIsSolutionsOpen(false)}
-                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-indigo-50 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
-                      <Network size={16} />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-indigo-700">Multi-Branch Management</div>
-                      <div className="text-xs text-slate-500">Centralized operational visibility</div>
-                    </div>
-                  </Link>
                 </div>
               )}
             </div>
@@ -307,15 +279,13 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           <Link href="/billsoft" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-blue-600">
             BillSoft Accounting Software
           </Link>
-          <Link href="#hrms" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-purple-600">
+          <Link href="/hrms" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-purple-600">
             HRMS & Payroll Software
           </Link>
           <Link href="/crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-orange-600">
             CRM & Sales Management
           </Link>
-          <Link href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-cyan-600">
-            Inventory & Warehouse Management
-          </Link>
+
           <Link href="/#industries" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
             Industries
           </Link>

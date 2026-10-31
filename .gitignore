@@ -28,3 +28,6 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# External guides
+deployment_and_implementation_guide.md

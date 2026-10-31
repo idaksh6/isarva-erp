@@ -582,6 +582,18 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                         <span>{slide.primaryCtaText}</span>
                         <ArrowRight size={18} />
                       </Link>
+                    ) : slide.id === 'hrms' ? (
+                      <Link
+                        href="/hrms"
+                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        style={{
+                          backgroundColor: slide.themeColor,
+                          boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
+                        }}
+                      >
+                        <span>{slide.primaryCtaText}</span>
+                        <ArrowRight size={18} />
+                      </Link>
                     ) : (
                       <button
                         onClick={() => onOpenModal(slide.modalType, slide.productName)}

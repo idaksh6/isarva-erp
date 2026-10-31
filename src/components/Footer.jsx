@@ -404,9 +404,9 @@ export default function Footer({
               Solutions
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#billsoft" className="hover:text-[#007a55] transition-colors">Accounting (BillSoft)</Link></li>
-              <li><Link href="#restaurant-pos" className="hover:text-[#007a55] transition-colors">Restaurant POS</Link></li>
-              <li><Link href="#hrms" className="hover:text-[#007a55] transition-colors">HRMS &amp; Payroll</Link></li>
+              <li><Link href="/billsoft" className="hover:text-[#007a55] transition-colors">Accounting (BillSoft)</Link></li>
+              <li><Link href="/restaurant-pos" className="hover:text-[#007a55] transition-colors">Restaurant POS</Link></li>
+              <li><Link href="/hrms" className="hover:text-[#007a55] transition-colors">HRMS &amp; Payroll</Link></li>
               <li><Link href="/crm" className="hover:text-[#007a55] transition-colors">CRM &amp; Sales</Link></li>
               <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Inventory &amp; Operations</Link></li>
               <li><Link href="#why-choose" className="hover:text-[#007a55] transition-colors">Reporting &amp; Analytics</Link></li>
@@ -433,19 +433,23 @@ export default function Footer({
               Resources
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#faqs" className="hover:text-[#007a55] transition-colors">Help Center &amp; FAQs</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing &amp; IRN</Link></li>
-              <li><Link href="#compliance" className="hover:text-[#007a55] transition-colors">Saudi ZATCA Phase 2</Link></li>
-              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Product Guides</Link></li>
-              <li><Link href="#contact" className="hover:text-[#007a55] transition-colors">Case Studies &amp; Support</Link></li>
+              <li><Link href="/#faqs" className="hover:text-[#007a55] transition-colors">Help Center &amp; FAQs</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-[#007a55] transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing &amp; IRN</Link></li>
+              <li><Link href="/#compliance" className="hover:text-[#007a55] transition-colors">Saudi ZATCA Phase 2</Link></li>
+              <li><Link href="/#contact" className="hover:text-[#007a55] transition-colors">Case Studies &amp; Support</Link></li>
             </ul>
           </div>
         </div>
 
         {/* 4. SUB-FOOTER BOTTOM BAR */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium text-center md:text-left">
-          <div className="text-center md:text-left w-full md:w-auto">
-            © 2026 ISARVA IT Solutions Pvt. Ltd. All rights reserved.
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center md:text-left w-full md:w-auto">
+            <span>© 2026 ISARVA IT Solutions Pvt. Ltd. All rights reserved.</span>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <Link href="/privacy-policy" className="hover:text-[#007a55] transition-colors">
+              Privacy Policy
+            </Link>
           </div>
 
           <div className="flex items-center justify-center md:justify-end w-full md:w-auto">

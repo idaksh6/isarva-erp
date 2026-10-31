@@ -203,7 +203,7 @@ export const saudiContent = {
       color: '#7c3aed',
       themeClass: 'hrms',
       buttonText: 'Explore HRMS KSA',
-      buttonLink: '#hrms',
+      buttonLink: '/hrms',
       iconName: 'Users2',
       image: '/images/hero-hrms-isarva.jpg',
       features: []
@@ -382,6 +382,10 @@ export const saudiContent = {
       {
         q: 'Is ISARVA ERP bilingual with Arabic support?',
         a: 'Yes, ISARVA ERP features full Arabic and English bilingual UI, RTL layout support, and bilingual receipts and tax invoices compliant with Saudi standards.'
+      },
+      {
+        q: 'How is our business and customer data protected?',
+        a: 'We implement enterprise-grade encryption (SSL/TLS in transit and AES-256 at rest), role-based permissions, automated daily backups, and strict data protection practices compliant with international standards and Saudi data privacy regulations.'
       }
     ]
   }

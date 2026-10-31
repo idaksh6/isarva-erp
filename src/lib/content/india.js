@@ -207,7 +207,7 @@ export const indiaContent = {
       color: '#7c3aed',
       themeClass: 'hrms',
       buttonText: 'Explore HRMS',
-      buttonLink: '#hrms',
+      buttonLink: '/hrms',
       iconName: 'Users2',
       image: '/images/hrms-card-preview.jpg',
       description: 'Manage your workforce from hiring to payroll, attendance and leave.',
@@ -397,6 +397,10 @@ export const indiaContent = {
       {
         q: 'How long does implementation take?',
         a: 'Implementation is fast and structured—ranging from a few days for standalone modules to a few weeks for multi-branch rollouts. Our dedicated support team guides you through discovery, configuration, data migration, and team training.'
+      },
+      {
+        q: 'How secure is my business and customer data on ISARVA ERP?',
+        a: "Your data is protected with enterprise-grade encryption (SSL/TLS in transit and AES-256 at rest), daily automated cloud backups, strict role-based access permissions, and full compliance with data privacy regulations such as India's DPDPA 2023. You retain 100% ownership and control over your business records."
       }
     ]
   }

@@ -57,15 +57,18 @@ export default function GstSection({ gstData }) {
             </div>
 
             {/* 2-Column Enhanced High-Contrast Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 w-full max-w-xl mx-auto lg:mx-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1 w-full max-w-xl mx-auto lg:mx-0">
               {gstData?.checklist?.map((item, idx) => (
                 <div
                   key={idx}
                   data-aos="fade-up"
                   data-aos-delay={idx * 80 + 100}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-[#007a55]/40 hover:-translate-y-0.5 transition-all duration-200 group text-left"
+                  className="card-compliance-checklist flex items-center gap-3 p-3.5 rounded-xl bg-white border border-emerald-500/30 hover:border-[#007a55] hover:-translate-y-1 transition-all duration-300 group text-left cursor-default shadow-[0_10px_25px_-4px_rgba(0,122,85,0.22),0_4px_10px_-2px_rgba(0,122,85,0.12)] hover:shadow-[0_20px_40px_-4px_rgba(0,122,85,0.32),0_8px_16px_-2px_rgba(0,122,85,0.18)]"
+                  style={{
+                    boxShadow: '0 10px 25px -4px rgba(0, 122, 85, 0.22), 0 4px 10px -2px rgba(0, 122, 85, 0.12)',
+                  }}
                 >
-                  <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 group-hover:bg-[#006546] transition-all">
+                  <div className="w-6 h-6 rounded-lg bg-[#007a55] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-110 group-hover:bg-[#006546] transition-all">
                     <Check size={13} strokeWidth={3.5} />
                   </div>
                   <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug text-left flex-1">
@@ -87,7 +90,7 @@ export default function GstSection({ gstData }) {
                   return (
                     <div
                       key={idx}
-                      className="w-full sm:w-auto flex sm:inline-flex items-center justify-start gap-2.5 px-3.5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs font-bold text-slate-900 hover:border-[#007a55]/30 hover:shadow-xs transition-all text-left"
+                      className="w-full sm:w-auto flex sm:inline-flex items-center justify-start gap-2.5 px-3.5 py-2 rounded-xl bg-white border border-slate-200/90 shadow-[0_2px_8px_rgba(15,23,42,0.06)] hover:shadow-md text-xs font-bold text-slate-900 hover:border-[#007a55]/30 transition-all text-left"
                     >
                       <IconComp size={15} className="text-[#007a55] shrink-0" />
                       <span className="whitespace-nowrap">{pill.label}</span>
