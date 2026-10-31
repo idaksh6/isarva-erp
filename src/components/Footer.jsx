@@ -433,11 +433,13 @@ export default function Footer({
               Resources
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
+              <li><Link href="/about" className="hover:text-[#007a55] transition-colors">About Us</Link></li>
+              <li><Link href="/why-choose-us" className="hover:text-[#007a55] transition-colors">Why Choose Us</Link></li>
               <li><Link href="/#faqs" className="hover:text-[#007a55] transition-colors">Help Center &amp; FAQs</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-[#007a55] transition-colors">Privacy Policy</Link></li>
               <li><Link href="/#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing &amp; IRN</Link></li>
               <li><Link href="/#compliance" className="hover:text-[#007a55] transition-colors">Saudi ZATCA Phase 2</Link></li>
-              <li><Link href="/#contact" className="hover:text-[#007a55] transition-colors">Case Studies &amp; Support</Link></li>
+              <li><Link href="/contact" className="hover:text-[#007a55] transition-colors">Contact Us &amp; Support</Link></li>
             </ul>
           </div>
         </div>
@@ -449,6 +451,10 @@ export default function Footer({
             <span className="hidden sm:inline text-slate-300">•</span>
             <Link href="/privacy-policy" className="hover:text-[#007a55] transition-colors">
               Privacy Policy
+            </Link>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <Link href="/why-choose-us" className="hover:text-[#007a55] transition-colors">
+              Why Choose Us
             </Link>
           </div>
 

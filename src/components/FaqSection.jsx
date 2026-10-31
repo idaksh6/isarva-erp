@@ -191,7 +191,7 @@ function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
 
           {/* Question Text */}
           <span
-            className="font-space font-bold text-base lg:text-lg pr-1 leading-snug transition-colors line-clamp-2"
+            className="font-space font-bold text-base lg:text-lg pr-1 leading-snug transition-colors"
             style={{
               color: isOpen ? theme.accent : '#0f172a',
             }}

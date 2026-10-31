@@ -84,9 +84,13 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold text-slate-600 whitespace-nowrap shrink-0">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-6 2xl:gap-8 text-xs xl:text-sm font-semibold text-slate-600 whitespace-nowrap shrink-0">
             <Link href="/" className="text-brand-500 hover:text-brand-600 transition-colors">
               Home
+            </Link>
+
+            <Link href="/about" className="hover:text-brand-500 transition-colors">
+              About Us
             </Link>
 
             {/* Solutions Mega Dropdown Trigger */}
@@ -96,7 +100,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                 onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
                 className="flex items-center gap-1 hover:text-brand-500 transition-colors py-2"
               >
-                <span>Solutions</span>
+                <span>Our Solutions</span>
                 <ChevronDown size={14} className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180 text-brand-500' : ''}`} />
               </button>
 
@@ -116,7 +120,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     </div>
                     <div>
                       <div className="text-sm font-bold text-slate-900 group-hover:text-emerald-700">Restaurant POS Software</div>
-                      <div className="text-xs text-slate-500">Order, KOT & table billing</div>
+                      <div className="text-xs text-slate-500">Order, KOT &amp; table billing</div>
                     </div>
                   </Link>
 
@@ -130,7 +134,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     </div>
                     <div>
                       <div className="text-sm font-bold text-slate-900 group-hover:text-blue-700">BillSoft Accounting Software</div>
-                      <div className="text-xs text-slate-500">GST, billing & ledger</div>
+                      <div className="text-xs text-slate-500">GST, billing &amp; ledger</div>
                     </div>
                   </Link>
 
@@ -143,8 +147,8 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                       <Users2 size={16} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-purple-700">HRMS & Payroll Software</div>
-                      <div className="text-xs text-slate-500">Staff, biometric & payroll</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-purple-700">HRMS &amp; Payroll Software</div>
+                      <div className="text-xs text-slate-500">Staff, biometric &amp; payroll</div>
                     </div>
                   </Link>
 
@@ -157,31 +161,22 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                       <Handshake size={16} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-orange-700">CRM & Sales Management</div>
-                      <div className="text-xs text-slate-500">Leads & visual pipeline</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-orange-700">CRM &amp; Sales Management</div>
+                      <div className="text-xs text-slate-500">Leads &amp; visual pipeline</div>
                     </div>
                   </Link>
-
-
                 </div>
               )}
             </div>
 
-            <Link href="/#industries" className="hover:text-brand-500 transition-colors">
-              Industries
-            </Link>
-            <Link href="/#why-choose" className="hover:text-brand-500 transition-colors">
+            <Link href="/erp-features" className="hover:text-brand-500 transition-colors">
               Features
             </Link>
-            <Link href="/#compliance" className="hover:text-brand-500 transition-colors whitespace-nowrap">
-              <span>{selectedCountry.code === 'SA' ? 'ZATCA' : 'GST'}</span>
-              <span className="hidden xl:inline">&nbsp;Compliance</span>
+            <Link href="/why-choose-us" className="hover:text-brand-500 transition-colors">
+              Why Choose Us
             </Link>
-            <Link href="/#faqs" className="hover:text-brand-500 transition-colors">
-              FAQs
-            </Link>
-            <Link href="/#contact" className="hover:text-brand-500 transition-colors">
-              Contact
+            <Link href="/contact" className="hover:text-brand-500 transition-colors">
+              Contact Us
             </Link>
           </nav>
 
@@ -273,30 +268,35 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
             Home
           </Link>
-          <Link href="/restaurant-pos" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-emerald-600">
-            Restaurant POS Software
+          <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            About Us
           </Link>
-          <Link href="/billsoft" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-blue-600">
-            BillSoft Accounting Software
-          </Link>
-          <Link href="/hrms" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-purple-600">
-            HRMS & Payroll Software
-          </Link>
-          <Link href="/crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-orange-600">
-            CRM & Sales Management
-          </Link>
+          <div className="pt-1 pb-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+              Our Solutions
+            </div>
+            <Link href="/restaurant-pos" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-emerald-600 pl-2 border-l-2 border-emerald-500 mb-1">
+              Restaurant POS Software
+            </Link>
+            <Link href="/billsoft" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-blue-600 pl-2 border-l-2 border-blue-500 mb-1">
+              BillSoft Accounting Software
+            </Link>
+            <Link href="/hrms" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-purple-600 pl-2 border-l-2 border-purple-500 mb-1">
+              HRMS &amp; Payroll Software
+            </Link>
+            <Link href="/crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-orange-600 pl-2 border-l-2 border-orange-500">
+              CRM &amp; Sales Management
+            </Link>
+          </div>
 
-          <Link href="/#industries" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
-            Industries
+          <Link href="/erp-features" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            Features
           </Link>
-          <Link href="/#compliance" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
-            {selectedCountry.code === 'SA' ? 'ZATCA Compliance' : 'GST Compliance'}
+          <Link href="/why-choose-us" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            Why Choose Us
           </Link>
-          <Link href="/#faqs" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
-            FAQs
-          </Link>
-          <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
-            Contact
+          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+            Contact Us
           </Link>
 
           {/* Mobile Region Switcher */}

@@ -127,8 +127,33 @@ export function USFlag({ className = 'w-5 h-3.5' }) {
 }
 
 /**
+ * United Kingdom National Flag Vector Component
+ */
+export function UKFlag({ className = 'w-5 h-3.5' }) {
+  return (
+    <svg
+      viewBox="0 0 60 40"
+      className={`inline-block rounded-xs shadow-2xs border border-slate-200/80 overflow-hidden shrink-0 ${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Flag of United Kingdom"
+    >
+      <clipPath id="uk-flag-clip">
+        <rect width="60" height="40" />
+      </clipPath>
+      <g clipPath="url(#uk-flag-clip)">
+        <rect width="60" height="40" fill="#012169" />
+        <path d="M0 0L60 40M60 0L0 40" stroke="#FFFFFF" strokeWidth="8" />
+        <path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" strokeWidth="4" />
+        <path d="M30 0v40M0 20h60" stroke="#FFFFFF" strokeWidth="12" />
+        <path d="M30 0v40M0 20h60" stroke="#C8102E" strokeWidth="7" />
+      </g>
+    </svg>
+  );
+}
+
+/**
  * Universal Flag Icon Component
- * Accepts country code (e.g. 'IN', 'SA', 'AE', 'US') or country name
+ * Accepts country code (e.g. 'IN', 'SA', 'AE', 'US', 'GB', 'UK') or country name
  */
 export default function FlagIcon({ code, className = 'w-5 h-3.5' }) {
   const normalized = (code || '').trim().toUpperCase();
@@ -152,6 +177,12 @@ export default function FlagIcon({ code, className = 'w-5 h-3.5' }) {
     case 'USA':
     case '🇺🇸':
       return <USFlag className={className} />;
+    case 'GB':
+    case 'UK':
+    case 'UNITED KINGDOM':
+    case 'ENGLAND':
+    case '🇬🇧':
+      return <UKFlag className={className} />;
     default:
       return (
         <span
