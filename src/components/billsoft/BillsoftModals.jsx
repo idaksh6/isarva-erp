@@ -57,7 +57,7 @@ export function BillsoftBrochureModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone) {
       setErrorMsg('Please fill in your name, email, and phone number.');
@@ -66,10 +66,21 @@ export function BillsoftBrochureModal({ isOpen, onClose }) {
     setErrorMsg('');
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      setIsDownloaded(true);
-      
+    try {
+      await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          product: 'BillSoft Accounting Brochure',
+          message: 'Requested ISARVA BillSoft Accounting Brochure (PDF)',
+          country: 'IN',
+        }),
+      });
+
       const link = document.createElement('a');
       link.href = '/docs/isarva-erp-brochure.pdf';
       link.download = 'BillSoft-ERP-Brochure.pdf';
@@ -77,7 +88,13 @@ export function BillsoftBrochureModal({ isOpen, onClose }) {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    }, 1200);
+
+      setIsDownloaded(true);
+    } catch (err) {
+      setErrorMsg('Failed to process download request. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -262,7 +279,7 @@ export function BillsoftDemoModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone) {
       setErrorMsg('Please fill in your name, email, and phone number.');
@@ -271,10 +288,31 @@ export function BillsoftDemoModal({ isOpen, onClose }) {
     setErrorMsg('');
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          product: 'BillSoft Accounting',
+          message: `Branches: ${formData.branches}${formData.message ? ` | Notes: ${formData.message}` : ''}`,
+          country: formData.country === 'Saudi Arabia' ? 'SA' : 'IN',
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to submit demo request');
+      }
+
       setIsSuccess(true);
-    }, 1200);
+    } catch (err) {
+      setErrorMsg('Something went wrong. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

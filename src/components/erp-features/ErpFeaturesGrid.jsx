@@ -394,7 +394,7 @@ export default function ErpFeaturesGrid() {
                           <ModuleImageVisual module={m} />
                         </div>
 
-                        <span className="block text-xs text-slate-400 italic pt-1">
+                        <span className="block text-xs text-slate-400 italic text-center pt-2">
                           {m.screenshotNote}
                         </span>
                       </div>

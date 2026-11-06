@@ -71,7 +71,7 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-5 sm:mb-6 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={onOpenDemoModal}
@@ -95,7 +95,7 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
             </div>
 
             {/* 3 Trust Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-gray-200/90 w-full self-stretch">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full self-stretch">
               <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100/80 text-[#2563eb]">
                   <ShieldCheck size={22} className="text-[#2563eb]" />

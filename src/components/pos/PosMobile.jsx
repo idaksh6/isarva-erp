@@ -28,7 +28,7 @@ export default function PosMobile({ onOpenLightbox }) {
               </p>
 
               {/* 3 Quick Highlight Points */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-xl mb-8 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-xl text-left">
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-200/60 shadow-2xs">
                   <Zap size={18} className="text-[#059669] shrink-0" />
                   <span className="text-xs font-bold text-slate-800">Instant KOT Fire</span>
@@ -40,43 +40,6 @@ export default function PosMobile({ onOpenLightbox }) {
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-200/60 shadow-2xs">
                   <CreditCard size={18} className="text-[#059669] shrink-0" />
                   <span className="text-xs font-bold text-slate-800">Tableside Settle</span>
-                </div>
-              </div>
-
-              {/* App Store Download Badges */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 sm:gap-4">
-                {/* Google Play Store Badge */}
-                <div className="inline-flex min-h-[56px] items-center gap-3.5 rounded-2xl border border-gray-200 bg-white px-5 py-2.5 shadow-2xs cursor-default hover:border-gray-300 transition-colors">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg"
-                    alt="Google Play"
-                    className="w-6 h-6 shrink-0"
-                  />
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-                      GET IT ON
-                    </span>
-                    <span className="text-sm sm:text-base font-extrabold text-gray-900 mt-1">
-                      Google Play
-                    </span>
-                  </div>
-                </div>
-
-                {/* Apple App Store Badge */}
-                <div className="inline-flex min-h-[56px] items-center gap-3.5 rounded-2xl border border-gray-200 bg-white px-5 py-2.5 shadow-2xs cursor-default hover:border-gray-300 transition-colors">
-                  <img
-                    src="https://www.vectorlogo.zone/logos/apple/apple-icon.svg"
-                    alt="App Store"
-                    className="w-6 h-6 object-contain shrink-0"
-                  />
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-                      Download on the
-                    </span>
-                    <span className="text-sm sm:text-base font-extrabold text-gray-900 mt-1">
-                      App Store
-                    </span>
-                  </div>
                 </div>
               </div>
 

@@ -63,17 +63,17 @@ export function PosBrochureModal({ isOpen, onClose }) {
     setErrorMsg('');
 
     try {
-      const res = await fetch('/api/content', {
+      const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'submitLead',
-          data: {
-            ...formData,
-            type: 'brochure',
-            product: 'Restaurant POS Software',
-            date: new Date().toISOString(),
-          },
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          product: 'Restaurant POS Brochure',
+          message: 'Requested ISARVA Restaurant POS Brochure (PDF)',
+          country: 'IN',
         }),
       });
 
@@ -264,17 +264,17 @@ export function PosDemoModal({ isOpen, onClose }) {
     setErrorMsg('');
 
     try {
-      const res = await fetch('/api/content', {
+      const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'submitLead',
-          data: {
-            ...formData,
-            type: 'demo',
-            product: 'Restaurant POS Software',
-            date: new Date().toISOString(),
-          },
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.restaurantName,
+          product: 'Restaurant POS',
+          message: `Outlet: ${formData.outletType}, Branches: ${formData.branches}${formData.message ? ` | Notes: ${formData.message}` : ''}`,
+          country: 'IN',
         }),
       });
 

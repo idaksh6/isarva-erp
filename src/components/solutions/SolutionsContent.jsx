@@ -7,7 +7,6 @@ import LeadModal from '../LeadModal';
 import { getDefaultContentForCountry } from '../../lib/content';
 import SolutionsHero from './SolutionsHero';
 import CoreSolutionsGrid from './CoreSolutionsGrid';
-import SolutionRecommender from './SolutionRecommender';
 import UnifiedSynergySection from './UnifiedSynergySection';
 import IndustrySolutionsMatrix from './IndustrySolutionsMatrix';
 import SolutionsMetricsRoi from './SolutionsMetricsRoi';
@@ -69,9 +68,6 @@ export default function SolutionsContent() {
 
         {/* 6 Core Solutions Deep-Dive Cards */}
         <CoreSolutionsGrid activeTab={activeTab} onOpenModal={handleOpenModal} />
-
-        {/* Interactive "Find Your Solution" Recommender */}
-        <SolutionRecommender onOpenModal={handleOpenModal} />
 
         {/* Unified Real-Time Synergy vs Fragmented Apps */}
         <UnifiedSynergySection />

@@ -110,7 +110,7 @@ export default function HrmsHero({ onOpenDemoModal, onOpenBrochureModal, onOpenL
               data-aos="fade-up"
               data-aos-delay="450"
               data-aos-duration="700"
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-5 sm:mb-6 w-full sm:w-auto"
             >
               <button
                 type="button"
@@ -135,7 +135,7 @@ export default function HrmsHero({ onOpenDemoModal, onOpenBrochureModal, onOpenL
             </div>
 
             {/* 3 Trust Cards with Individual Staggered AOS Fade-Up & Interactive Hover */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-gray-200/90 w-full self-stretch">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full self-stretch">
               <div
                 data-aos="fade-up"
                 data-aos-delay="500"
