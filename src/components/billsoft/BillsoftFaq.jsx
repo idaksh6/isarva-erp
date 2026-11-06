@@ -111,7 +111,7 @@ export default function BillsoftFaq({ onOpenDemoModal }) {
         </div>
 
         {/* Bottom CTA Card */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-900 via-[#1e40af] to-slate-900 text-white text-center shadow-xl">
+        <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-blue-50/80 via-white to-sky-50/70 border border-blue-200/80 text-center card-shadow-blue">
           <h3 className="mb-2">
             Have a Specific Accounting or GST Query?
           </h3>

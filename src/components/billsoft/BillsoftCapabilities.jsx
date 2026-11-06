@@ -111,6 +111,11 @@ export default function BillsoftCapabilities() {
                   {item.description}
                 </p>
               </div>
+
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-[#2563eb] opacity-90 group-hover:opacity-100">
+                <span>Explore capability details</span>
+                <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </div>
             </div>
           ))}
         </div>

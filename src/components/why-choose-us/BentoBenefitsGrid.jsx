@@ -57,7 +57,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 1: Large 2x2 - Native Dual-Region Regulatory Mastery */}
           <div
-            className="md:col-span-2 lg:col-span-2 lg:row-span-2 rounded-2xl bg-white border border-emerald-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-emerald group"
+            className="md:col-span-2 lg:col-span-2 lg:row-span-2 rounded-2xl bg-white border border-emerald-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-emerald group"
           >
             <div>
               <div className="flex items-center justify-between mb-6">
@@ -88,16 +88,16 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                     <span className="text-xs font-bold text-slate-900">India Compliance Hub</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-slate-600">
-                    <li className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
+                    <li className="flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0 mt-0.5" />
                       <span>Direct NIC Portal E-Way Bills</span>
                     </li>
-                    <li className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
+                    <li className="flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0 mt-0.5" />
                       <span>One-Click GSTR-1, 2B &amp; 3B Reconcile</span>
                     </li>
-                    <li className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
+                    <li className="flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0 mt-0.5" />
                       <span>TDS &amp; TCS Automated Ledger Posting</span>
                     </li>
                   </ul>
@@ -109,16 +109,16 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                     <span className="text-xs font-bold text-slate-900">Saudi &amp; GCC Hub</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-slate-600">
-                    <li className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
+                    <li className="flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0 mt-0.5" />
                       <span>ZATCA Phase 2 FATOORA Integration</span>
                     </li>
-                    <li className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
+                    <li className="flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0 mt-0.5" />
                       <span>Bilingual Arabic &amp; English Tax Receipts</span>
                     </li>
-                    <li className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
+                    <li className="flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0 mt-0.5" />
                       <span>Mudad &amp; Mol WPS Payroll Export</span>
                     </li>
                   </ul>
@@ -126,29 +126,29 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
               </div>
 
               {/* Real-Time Regulatory Clearance Gateway Strip */}
-              <div className="mt-5 p-4 rounded-xl bg-gradient-to-r from-emerald-50/90 via-[#eef9f4] to-teal-50/80 border border-emerald-200/80 shadow-2xs">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-emerald-200/60">
+              <div className="mt-5 p-3.5 sm:p-4 rounded-xl bg-gradient-to-r from-emerald-50/90 via-[#eef9f4] to-teal-50/80 border border-emerald-200/80 shadow-2xs">
+                <div className="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-emerald-200/60">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                     <span className="text-xs font-bold text-slate-800">
                       Live Regulatory Clearance Gateway
                     </span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-[#007a55] bg-white/90 px-2.5 py-0.5 rounded-full border border-emerald-200/80 whitespace-nowrap self-start sm:self-auto">
+                  <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-mono font-bold text-[#007a55] bg-white/90 px-2.5 py-0.5 rounded-full border border-emerald-200/80 whitespace-nowrap self-start min-[420px]:self-auto">
                     SHA-256 Stamped
                   </span>
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
+                  <div className="flex flex-col min-[480px]:flex-row min-[480px]:items-center justify-between gap-1 min-[480px]:gap-2 p-2.5 sm:px-3.5 sm:py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
                     <span className="text-slate-600 font-medium">IRN Clearance Speed</span>
                     <span className="font-bold text-slate-900 font-mono whitespace-nowrap">&lt; 350ms Direct NIC</span>
                   </div>
-                  <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
+                  <div className="flex flex-col min-[480px]:flex-row min-[480px]:items-center justify-between gap-1 min-[480px]:gap-2 p-2.5 sm:px-3.5 sm:py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
                     <span className="text-slate-600 font-medium">ZATCA Cryptographic Clearance</span>
                     <span className="font-bold text-[#007a55] font-mono whitespace-nowrap">Phase 2 Live Gateway</span>
                   </div>
-                  <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
+                  <div className="flex flex-col min-[480px]:flex-row min-[480px]:items-center justify-between gap-1 min-[480px]:gap-2 p-2.5 sm:px-3.5 sm:py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
                     <span className="text-slate-600 font-medium">Statutory Penalties Audit</span>
                     <span className="font-bold text-emerald-600 font-mono whitespace-nowrap">Zero Penalty Record</span>
                   </div>
@@ -163,7 +163,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 2: Wide 2x1 - Zero-Disruption Rapid Migration */}
           <div
-            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-teal-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-teal group"
+            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-teal-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-teal group"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -198,7 +198,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 3: Stat 1x1 - 1,000+ Enterprises with Light Colored Gradient */}
           <div
-            className="rounded-2xl bg-gradient-to-br from-[#e8f8f0] via-[#def4e9] to-[#edf9f3] p-7 sm:p-8 flex flex-col justify-between border border-emerald-200/80 card-shadow-emerald group transition-all duration-300 hover:-translate-y-1"
+            className="rounded-2xl bg-gradient-to-br from-[#e8f8f0] via-[#def4e9] to-[#edf9f3] p-5 sm:p-7 lg:p-8 flex flex-col justify-between border border-emerald-200/80 card-shadow-emerald group transition-all duration-300 hover:-translate-y-1"
           >
             <div>
               <div className="text-xs uppercase font-extrabold tracking-widest text-[#007a55] mb-2">
@@ -222,7 +222,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 4: Stat 1x1 - 99.98% High Availability */}
           <div
-            className="rounded-2xl bg-white border border-blue-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-blue group"
+            className="rounded-2xl bg-white border border-blue-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-blue group"
           >
             <div>
               <div className="text-xs uppercase font-extrabold tracking-widest text-blue-600 mb-2">
@@ -246,7 +246,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 5: Tall 1x2 - Unified Single-Source Ecosystem */}
           <div
-            className="md:col-span-2 lg:col-span-1 lg:row-span-2 rounded-2xl bg-white border border-emerald-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-emerald group"
+            className="md:col-span-2 lg:col-span-1 lg:row-span-2 rounded-2xl bg-white border border-emerald-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-emerald group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] mb-6 group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
@@ -286,7 +286,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 8: Wide 2x1 - Instant Financial Telemetry & AI Forecasting */}
           <div
-            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-indigo-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-indigo group"
+            className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-indigo-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-indigo group"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -327,7 +327,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 6: 1x1 - No Per-User Headcount Penalty */}
           <div
-            className="rounded-2xl bg-white border border-amber-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-orange group"
+            className="rounded-2xl bg-white border border-amber-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-orange group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-4 group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
@@ -347,7 +347,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 7: 1x1 - Frictionless Human Experience */}
           <div
-            className="rounded-2xl bg-white border border-purple-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-purple group"
+            className="rounded-2xl bg-white border border-purple-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-purple group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
@@ -367,7 +367,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 9: 1x1 - Multi-Entity & Warehouse Mesh */}
           <div
-            className="rounded-2xl bg-white border border-blue-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-blue group"
+            className="rounded-2xl bg-white border border-blue-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-blue group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
@@ -387,7 +387,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
           {/* Card 10: 1x1 - Dedicated Human Implementation Lead */}
           <div
-            className="rounded-2xl bg-white border border-emerald-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-emerald group"
+            className="rounded-2xl bg-white border border-emerald-200/80 p-5 sm:p-7 lg:p-8 flex flex-col justify-between card-shadow-emerald group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#007a55] mb-4 group-hover:scale-110 group-hover:bg-[#007a55] group-hover:text-white transition-all duration-300">
@@ -420,7 +420,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
           <button
             type="button"
             onClick={() => onOpenModal?.('demo', 'Why Choose Us Bento Banner')}
-            className="shrink-0 px-6 py-3 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#007a55]/25 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+            className="shrink-0 w-full sm:w-auto text-center px-6 py-3 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#007a55]/25 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
           >
             Request Custom Architecture Walkthrough
           </button>
