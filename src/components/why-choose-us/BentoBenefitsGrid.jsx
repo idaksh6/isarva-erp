@@ -84,7 +84,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-6 pt-6 border-t border-slate-100">
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                   <div className="flex items-center gap-2 mb-2">
-                    <FlagIcon country="IN" className="w-5 h-3.5 rounded-xs shadow-2xs" />
+                    <FlagIcon country="IN" className="w-6 h-4 rounded-xs shadow-2xs" />
                     <span className="text-xs font-bold text-slate-900">India Compliance Hub</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-slate-600">
@@ -105,7 +105,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                   <div className="flex items-center gap-2 mb-2">
-                    <FlagIcon country="SA" className="w-5 h-3.5 rounded-xs shadow-2xs" />
+                    <FlagIcon country="SA" className="w-6 h-4 rounded-xs shadow-2xs" />
                     <span className="text-xs font-bold text-slate-900">Saudi &amp; GCC Hub</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-slate-600">

@@ -125,8 +125,8 @@ export default function WhyUsHero({ onOpenModal }) {
                 {/* Floating Badge: Dual Statutory Clearance */}
                 <div className="absolute top-5 right-5 sm:top-6 sm:right-6 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 border border-emerald-200/80 shadow-lg backdrop-blur-md">
                   <div className="flex items-center -space-x-1">
-                    <FlagIcon country="IN" className="w-4 h-3 rounded-xs shadow-xs" />
-                    <FlagIcon country="SA" className="w-4 h-3 rounded-xs shadow-xs" />
+                    <FlagIcon country="IN" className="w-5 h-3.5 sm:w-6 sm:h-4 rounded-xs shadow-xs" />
+                    <FlagIcon country="SA" className="w-5 h-3.5 sm:w-6 sm:h-4 rounded-xs shadow-xs" />
                   </div>
                   <span className="text-xs font-semibold text-slate-800">
                     Dual Statutory Engine
