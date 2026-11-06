@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function AboutBottomCta() {
   return (
-    <section className="py-12 lg:py-16 relative bg-[#1a1f24] text-white overflow-hidden">
+    <section className="section-padding relative bg-[#1a1f24] text-white overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/agency_design_process_abstract_1773850147849.png"

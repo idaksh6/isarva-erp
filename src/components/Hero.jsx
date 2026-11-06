@@ -662,7 +662,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
             className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full"
           >
             
-            {/* Slider Image Card Container with QuickDice Floating Effect */}
+            {/* Slider Image Card Container with ISARVA Floating Effect */}
             <div
               className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group select-none floating-module"
               onMouseEnter={() => setIsPaused(true)}

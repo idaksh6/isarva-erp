@@ -79,7 +79,7 @@ export default function PosWhyUs() {
   ];
 
   return (
-    <section id="why-us" className="py-14 lg:py-20 bg-slate-50/70 border-b border-gray-200 scroll-mt-20">
+    <section id="why-us" className="section-padding bg-slate-50/70 border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
         
         {/* Section Header */}

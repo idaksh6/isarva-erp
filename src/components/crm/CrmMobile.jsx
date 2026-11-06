@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function CrmMobile({ onOpenLightbox }) {
   return (
-    <section id="mobile-crm" className="py-12 lg:py-16 bg-white border-b border-gray-200 scroll-mt-20">
+    <section id="mobile-crm" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="w-full max-w-7xl mx-auto px-5 sm:px-6">
         <div className="rounded-3xl bg-gradient-to-r from-sky-50/80 via-white to-sky-50/80 border border-gray-200/90 p-6 sm:p-8 lg:p-12 shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">

@@ -85,9 +85,9 @@ export default function CrmCapabilities() {
   ];
 
   return (
-    <section id="features" className="py-14 lg:py-20 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/60 border-b border-gray-200 scroll-mt-20">
+    <section id="features" className="section-padding bg-gradient-to-b from-slate-50/60 via-white to-slate-50/60 border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
-        
+
         {/* Exact Section Header from Source Theme */}
         <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">

@@ -7,9 +7,6 @@ import {
   PiggyBank,
   Rocket,
   CheckCircle2,
-  Server,
-  FileCheck,
-  Clock
 } from 'lucide-react';
 
 const PILLARS = [
@@ -73,13 +70,25 @@ const PILLARS = [
 
 export default function EeatPillars() {
   return (
-    <section className="section-padding bg-white relative">
+    <section className="section-padding bg-gradient-to-b from-[#edf7f2] via-[#f7fbf9] to-white border-b border-emerald-200/70 relative overflow-hidden">
+      {/* Soft atmospheric glow */}
+      <div className="absolute -top-32 left-1/3 w-[550px] h-[550px] bg-emerald-200/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-teal-200/25 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Blueprint grid dots */}
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#007a55 1px, transparent 1px)',
+          backgroundSize: '36px 36px',
+        }}
+      />
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 mb-3">
             <span className="section-eyebrow">
-              TRUST, GOVERNANCE & INTEGRITY
+              TRUST, GOVERNANCE &amp; INTEGRITY
             </span>
           </div>
 

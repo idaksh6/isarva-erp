@@ -275,20 +275,29 @@
 
 .section-padding-sm,
 .hero-padding {
-  padding-top: 2.5rem;
-  /* 40px */
-  padding-bottom: 3.5rem;
-  /* 56px */
+  padding-top: 3rem;
+  /* 48px (mobile) */
+  padding-bottom: 3rem;
+  /* 48px (mobile) */
+}
+
+@media (min-width: 640px) {
+  .section-padding-sm,
+  .hero-padding {
+    padding-top: 4rem;
+    /* 64px (tablet) */
+    padding-bottom: 4rem;
+    /* 64px (tablet) */
+  }
 }
 
 @media (min-width: 1024px) {
-
   .section-padding-sm,
   .hero-padding {
-    padding-top: 3.5rem;
-    /* 56px */
-    padding-bottom: 5rem;
-    /* 80px */
+    padding-top: 4.5rem;
+    /* 72px (desktop) */
+    padding-bottom: 4.5rem;
+    /* 72px (desktop) */
   }
 }
 
@@ -1064,7 +1073,7 @@
   }
 }
 
-/* QuickDice ERP Inspired Ambient & Floating Animations */
+/* ISARVA ERP Inspired Ambient & Floating Animations */
 @keyframes heroFloat {
 
   0%,
@@ -1105,7 +1114,7 @@
   will-change: transform, opacity;
 }
 
-/* QuickDice ERP Smooth Fluid Slide Transition */
+/* ISARVA ERP Smooth Fluid Slide Transition */
 .hero-slide-transition {
   transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, opacity;

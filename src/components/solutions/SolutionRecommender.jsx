@@ -6,11 +6,6 @@ import {
   Sparkles,
   ArrowRight,
   Check,
-  Building,
-  Store,
-  Layers,
-  Zap,
-  HelpCircle,
 } from 'lucide-react';
 
 const INDUSTRIES = [
@@ -99,8 +94,8 @@ export default function SolutionRecommender({ onOpenModal }) {
           </p>
         </div>
 
-        {/* Master Selector Container */}
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.18),0_4px_14px_-2px_rgba(0,122,85,0.08)]">
+        {/* Master Selector Container - Full width of site-container */}
+        <div className="w-full bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border card-shadow-emerald">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Step Selection Controls (7 cols) */}
@@ -184,18 +179,18 @@ export default function SolutionRecommender({ onOpenModal }) {
                   <span>{rec.badge}</span>
                 </div>
 
-                {/* Recommendation Title (Semantic h3 per GEMINI.md) */}
-                <h3 className="text-slate-900">
+                {/* Recommendation Title */}
+                <h3 className="mb-2">
                   <span>{rec.primary}</span>
                 </h3>
 
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="mb-4">
                   {rec.description}
                 </p>
 
                 {/* Included Software Bundles */}
                 <div className="pt-2 border-t border-emerald-200/60">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold mb-2">
+                  <div className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-2">
                     Included Modules:
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -213,18 +208,18 @@ export default function SolutionRecommender({ onOpenModal }) {
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-6 pt-4 border-t border-emerald-200/60 flex flex-col sm:flex-row gap-2">
+              <div className="mt-6 pt-4 border-t border-emerald-200/60 flex flex-col sm:flex-row items-center gap-3">
                 <Link
                   href={rec.link}
-                  className="btn-brand-primary w-full py-2.5 px-4 text-xs font-bold inline-flex items-center justify-center gap-1.5 shadow-md"
+                  className="w-full sm:flex-1 h-11 px-5 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#007a55] hover:bg-[#006546] inline-flex items-center justify-center gap-2 shadow-md shadow-emerald-900/20 hover:scale-[1.01] transition-all whitespace-nowrap"
                 >
                   <span>Explore Plan</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={15} />
                 </Link>
                 <button
                   type="button"
                   onClick={() => onOpenModal?.('demo', rec.primary)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-semibold bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 transition-colors cursor-pointer"
+                  className="w-full sm:w-auto h-11 px-5 rounded-xl text-xs sm:text-sm font-semibold bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 shadow-2xs inline-flex items-center justify-center transition-all whitespace-nowrap cursor-pointer shrink-0"
                 >
                   Custom Quote
                 </button>

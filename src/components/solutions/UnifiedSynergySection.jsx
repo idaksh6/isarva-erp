@@ -54,8 +54,8 @@ export default function UnifiedSynergySection() {
           </p>
         </div>
 
-        {/* Comparison Comparison Matrix (Fragmented vs Unified) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-16">
+        {/* Comparison Matrix (Fragmented vs Unified) - Full width of site-container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full mb-16">
           {/* Left: Fragmented Legacy Approach */}
           <div className="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/90 flex flex-col justify-between">
             <div>
@@ -63,8 +63,10 @@ export default function UnifiedSynergySection() {
                 <XCircle size={14} />
                 <span>FRAGMENTED APPS</span>
               </div>
-              <h3 className="mb-2 text-slate-900">Separate Point Solutions</h3>
-              <p className="text-xs sm:text-sm text-slate-600 mb-6">
+              <h3 className="mb-2">
+                <span>Separate Point Solutions</span>
+              </h3>
+              <p className="mb-6">
                 Using one tool for billing, another for accounting, a spreadsheet for payroll, and standalone CRM.
               </p>
 
@@ -94,14 +96,16 @@ export default function UnifiedSynergySection() {
           </div>
 
           {/* Right: Unified ISARVA ERP Architecture */}
-          <div className="card-ecosystem rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-400/40 shadow-[0_16px_40px_rgba(0,122,85,0.30)] flex flex-col justify-between">
+          <div className="card-ecosystem rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-400/40 card-shadow-dark-emerald flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-bold font-mono mb-4 border border-emerald-300/30">
                 <CheckCircle2 size={14} />
                 <span>ISARVA UNIFIED CORE</span>
               </div>
-              <h3 className="mb-2 text-white">One Central Platform</h3>
-              <p className="text-xs sm:text-sm text-emerald-100/90 mb-6">
+              <h3 className="mb-2 text-white">
+                <span>One Central Platform</span>
+              </h3>
+              <p className="mb-6 text-emerald-100">
                 POS, BillSoft, HRMS, CRM, and Inventory all share the exact same real-time Postgres database.
               </p>
 
@@ -131,30 +135,30 @@ export default function UnifiedSynergySection() {
           </div>
         </div>
 
-        {/* 4-Step Synchronized Real-Time Event Sequence */}
-        <div className="max-w-5xl mx-auto">
+        {/* 4-Step Synchronized Real-Time Event Sequence - Full width of site-container */}
+        <div className="w-full">
           <div className="text-center mb-8">
             <span className="text-xs font-mono font-bold text-[#007a55] uppercase tracking-wider">
               HOW ONE EVENT PROPAGATES INSTANTLY
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {SYNERGY_FLOWS.map((flow, fIdx) => (
               <div
                 key={fIdx}
-                className="card-ecosystem rounded-2xl p-5 bg-white border border-emerald-600/25 shadow-[0_12px_28px_-4px_rgba(0,122,85,0.14)] relative"
+                className="card-ecosystem rounded-2xl p-5 bg-white border card-shadow-emerald relative"
               >
                 <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#007a55] font-mono font-bold text-xs flex items-center justify-center mb-3 border border-emerald-200">
                   {flow.step}
                 </div>
-                <h4 className="text-sm font-bold text-slate-900 mb-1.5">
-                  {flow.event}
+                <h4 className="mb-1.5">
+                  <span>{flow.event}</span>
                 </h4>
-                <p className="text-xs text-slate-500 leading-relaxed mb-3">
+                <p className="mb-3">
                   {flow.description}
                 </p>
-                <div className="inline-block px-2 py-0.5 rounded bg-emerald-50 text-[11px] font-mono font-semibold text-[#007a55]">
+                <div className="inline-block px-2 py-0.5 rounded bg-emerald-50 text-xs font-mono font-semibold text-[#007a55]">
                   {flow.impact}
                 </div>
               </div>

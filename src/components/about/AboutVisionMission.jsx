@@ -5,10 +5,10 @@ import { TrendingUp, Cpu } from 'lucide-react';
 
 export default function AboutVisionMission() {
   return (
-    <section className="py-12 lg:py-16 bg-white">
+    <section className="section-padding bg-white">
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
-          
+
           {/* Our Vision */}
           <div className="bg-[#1a1f24] text-white p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] relative overflow-hidden section-animate">
             <div className="absolute top-0 right-0 p-10 opacity-10 text-[#10b981] pointer-events-none">

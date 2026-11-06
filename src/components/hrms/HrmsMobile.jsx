@@ -4,11 +4,11 @@ import React from 'react';
 
 export default function HrmsMobile({ onOpenLightbox }) {
   return (
-    <section id="mobile-hrms" className="py-12 lg:py-16 bg-white border-b border-gray-200 scroll-mt-20">
+    <section id="mobile-hrms" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
         <div className="rounded-3xl bg-gradient-to-r from-purple-50/80 via-white to-purple-50/80 border border-gray-200/90 p-6 sm:p-8 lg:p-12 shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
+
             {/* Left Content Column */}
             <div
               data-aos="fade-right"

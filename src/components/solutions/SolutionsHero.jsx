@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { ChevronRight, Sparkles, Layers, ShieldCheck, Zap } from 'lucide-react';
+import { Sparkles, Layers, ShieldCheck, Zap } from 'lucide-react';
 import { renderTitleWithGradient } from '../../lib/render-title';
 
 const SOLUTION_TABS = [
@@ -11,7 +10,6 @@ const SOLUTION_TABS = [
   { id: 'billsoft', label: 'BillSoft Accounting' },
   { id: 'hrms', label: 'HRMS & Payroll' },
   { id: 'crm', label: 'CRM & Sales' },
-  { id: 'enterprise', label: 'Multi-Branch & IoT' },
 ];
 
 export default function SolutionsHero({ activeTab, onTabChange }) {
@@ -31,15 +29,6 @@ export default function SolutionsHero({ activeTab, onTabChange }) {
       />
 
       <div className="site-container relative z-10">
-        {/* Centered Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
-          <Link href="/" className="hover:text-[#007a55] transition-colors">
-            Home
-          </Link>
-          <ChevronRight size={14} className="text-slate-400" />
-          <span className="text-[#007a55] font-semibold">Solutions</span>
-        </nav>
-
         {/* Section Header */}
         <div className="section-header text-center max-w-4xl mx-auto">
           <div className="section-eyebrow">
@@ -80,8 +69,8 @@ export default function SolutionsHero({ activeTab, onTabChange }) {
                   type="button"
                   onClick={() => onTabChange(tab.id)}
                   className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${isActive
-                      ? 'bg-[#007a55] text-white shadow-md shadow-emerald-800/20 scale-105'
-                      : 'bg-white/90 text-slate-700 hover:bg-emerald-50 hover:text-[#007a55] border border-slate-200/80 shadow-2xs'
+                    ? 'bg-[#007a55] text-white shadow-md shadow-emerald-800/20 scale-105'
+                    : 'bg-white/90 text-slate-700 hover:bg-emerald-50 hover:text-[#007a55] border border-slate-200/80 shadow-2xs'
                     }`}
                 >
                   {tab.label}

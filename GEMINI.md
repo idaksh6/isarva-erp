@@ -42,6 +42,11 @@
    - Always use theme-colored box shadows (`.card-shadow-emerald`, `.card-shadow-blue`, `.card-shadow-purple`, `.card-shadow-orange`, `.card-shadow-teal`, `.card-shadow-indigo`, `.card-shadow-rose`, `.card-shadow-dark-emerald`) that provide a radiant ambient glow and smooth -4px hover elevation lift.
    - FAQ accordions must have colored ambient glow in both idle and active states.
 
+7. **Global Responsive Text Alignment Standard**:
+   - **Hero Sections (Two-Column Split)**: Must ALWAYS use `text-center items-center` on mobile, transitioning to `lg:text-left lg:items-start` on desktop (`< 1024px` centered symmetry, `≥ 1024px` left-aligned reading flow). CTA buttons and trust badges must have `justify-center lg:justify-start`.
+   - **Section Introductions**: `.section-header` (centered on all viewports).
+   - **Feature Cards, Accordions, Checklists & Detail Lists**: Strict left-alignment (`text-left`) across all breakpoints for maximum scannability.
+
 ## Development Workflow & Tooling Rules
 1. **No Scratchpad / Scratch Files**:
    - **NEVER** use scratchpads, temporary test scratch scripts, or scratch files when developing or modifying code.

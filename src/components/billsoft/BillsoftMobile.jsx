@@ -5,7 +5,7 @@ import { ZoomIn, Printer, MessageCircle, WifiOff } from 'lucide-react';
 
 export default function BillsoftMobile({ onOpenLightbox }) {
   return (
-    <section id="mobile" className="py-14 lg:py-20 bg-white border-b border-gray-200 scroll-mt-20">
+    <section id="mobile" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
         <div className="rounded-3xl bg-gradient-to-r from-blue-50/80 via-white to-sky-50/80 border border-gray-200/90 p-6 sm:p-8 lg:p-12 shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">

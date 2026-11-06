@@ -34,7 +34,7 @@ export default function ErpFeaturesHero({ onOpenModal }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center">
 
           {/* ── Left: Text Content ── */}
-          <div className="flex flex-col gap-6 max-w-xl">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 max-w-xl mx-auto lg:mx-0">
             {/* Eyebrow */}
             <span className="section-eyebrow">ERP Software Features</span>
 
@@ -45,14 +45,14 @@ export default function ErpFeaturesHero({ onOpenModal }) {
             </h1>
 
             {/* Subtitle */}
-            <p className="max-w-md">
+            <p className="max-w-md mx-auto lg:mx-0">
               Streamline your finance, sales, inventory, HR, projects and more
               with Isarva ERP. Get real-time insights, automate your operations
               and take complete control of your business.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex flex-wrap gap-3 items-center justify-center lg:justify-start">
               <a href="#features" className="btn-brand-primary" id="erp-hero-explore-btn">
                 Explore Features <ArrowRight size={16} />
               </a>
@@ -66,7 +66,7 @@ export default function ErpFeaturesHero({ onOpenModal }) {
             </div>
 
             {/* Trust Badges */}
-            <div className="flex flex-wrap gap-4 items-center pt-1">
+            <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start pt-1">
               {[
                 'All-in-One Platform',
                 'Scalable for Growth',

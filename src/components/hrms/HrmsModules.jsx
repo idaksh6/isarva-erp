@@ -98,7 +98,7 @@ export default function HrmsModules({ onOpenLightbox }) {
   ];
 
   return (
-    <section id="modules" className="py-14 lg:py-20 bg-gray-50/70 relative overflow-hidden border-b border-gray-200 scroll-mt-20">
+    <section id="modules" className="section-padding bg-gray-50/70 relative overflow-hidden border-b border-gray-200 scroll-mt-20">
       <div className="site-container relative z-10">
         
         {/* Exact Section Header from Source Theme */}

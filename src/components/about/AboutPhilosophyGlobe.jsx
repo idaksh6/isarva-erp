@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function AboutPhilosophyGlobe() {
   return (
-    <section className="py-12 lg:py-16 bg-[#FDF8F2] overflow-hidden">
+    <section className="section-padding bg-[#FDF8F2] overflow-hidden">
       <div className="site-container">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
           

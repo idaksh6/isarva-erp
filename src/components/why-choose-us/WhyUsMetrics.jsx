@@ -32,40 +32,50 @@ const METRICS = [
 
 export default function WhyUsMetrics() {
   return (
-    <section className="py-14 sm:py-18 bg-gradient-to-r from-slate-900 via-[#071822] to-slate-900 text-white relative overflow-hidden border-y border-white/10">
-      {/* Background Subtle Blur */}
+    <section className="section-padding bg-gradient-to-b from-white via-[#f0f9f4] to-[#e8f6f0] border-b border-emerald-200/60 relative overflow-hidden">
+      {/* Background Subtle Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-teal-500/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-200/30 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-teal-200/25 rounded-full blur-[120px]" />
+        {/* Subtle dot matrix */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: 'radial-gradient(#007a55 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
       </div>
 
       <div className="site-container relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {METRICS.map((metric, idx) => {
             const Icon = metric.icon;
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-emerald-500/40 card-shadow-dark-emerald transition-all duration-300 group"
+                className="p-6 rounded-2xl bg-white border border-emerald-200/80 hover:border-emerald-400 card-shadow-emerald transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Icon className="w-5 h-5" />
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#007a55] flex items-center justify-center group-hover:scale-110 transition-transform border border-emerald-100">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs uppercase font-mono font-bold tracking-wider text-[#007a55]">
+                      Proven Impact
+                    </span>
                   </div>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                    Proven Impact
-                  </span>
+
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#007a55] font-heading tracking-tight mb-2">
+                    {metric.value}
+                  </div>
+
+                  <h3 className="mb-2">
+                    <span>{metric.title}</span>
+                  </h3>
                 </div>
 
-                <div className="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight mb-2">
-                  <span className="text-emerald-400">{metric.value}</span>
-                </div>
-
-                <h3 className="text-white">
-                  {metric.title}
-                </h3>
-
-                <p className="mt-2 text-xs sm:text-sm text-slate-300">
+                <p className="mt-2 leading-relaxed">
                   {metric.description}
                 </p>
               </div>

@@ -85,7 +85,7 @@ export default function PosWorkflow() {
   ];
 
   return (
-    <section id="workflow" className="py-14 lg:py-20 bg-white border-b border-gray-200 scroll-mt-20">
+    <section id="workflow" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
         
         {/* Section Header */}
@@ -106,7 +106,7 @@ export default function PosWorkflow() {
         </div>
 
         {/* 5-Step Process Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {steps.map((s, idx) => (
             <div
               key={idx}

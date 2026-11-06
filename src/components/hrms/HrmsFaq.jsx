@@ -37,9 +37,9 @@ export default function HrmsFaq() {
   };
 
   return (
-    <section id="faq" className="py-14 lg:py-20 bg-gray-50 border-b border-gray-200 scroll-mt-20">
+    <section id="faq" className="section-padding bg-gray-50 border-b border-gray-200 scroll-mt-20">
       <div className="w-full max-w-4xl mx-auto px-5 sm:px-6">
-        
+
         {/* Section Header */}
         <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-emerald-500/10 border border-purple-300/60 text-[#7c3aed] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
@@ -69,11 +69,10 @@ export default function HrmsFaq() {
                 data-aos="fade-up"
                 data-aos-delay={(idx % 3) * 100 + 100}
                 data-aos-duration="600"
-                className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-white ${
-                  isOpen
+                className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-white ${isOpen
                     ? 'card-shadow-purple border-[#7c3aed] ring-1 ring-[#7c3aed]/20'
                     : 'border-slate-200/90 hover:card-shadow-purple hover:border-purple-300'
-                }`}
+                  }`}
               >
                 <button
                   type="button"
@@ -85,11 +84,10 @@ export default function HrmsFaq() {
                     {faq.q}
                   </span>
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${
-                      isOpen
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${isOpen
                         ? 'rotate-180 bg-[#7c3aed] text-white'
                         : 'bg-gray-100 text-gray-500'
-                    }`}
+                      }`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />

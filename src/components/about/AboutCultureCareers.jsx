@@ -7,7 +7,7 @@ import { Briefcase } from 'lucide-react';
 
 export default function AboutCultureCareers() {
   return (
-    <section className="py-12 lg:py-16 bg-[#FDF8F2] relative overflow-hidden">
+    <section className="section-padding bg-[#FDF8F2] relative overflow-hidden">
       <div className="site-container relative z-10">
         <div className="bg-white rounded-[4rem] p-10 lg:p-20 shadow-2xl border border-[#10b981]/5 flex flex-col lg:flex-row items-center justify-between gap-12">
           

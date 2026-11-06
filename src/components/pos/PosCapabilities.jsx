@@ -88,7 +88,7 @@ export default function PosCapabilities() {
   ];
 
   return (
-    <section id="features" className="py-14 lg:py-20 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/60 border-b border-gray-200 scroll-mt-20">
+    <section id="features" className="section-padding bg-gradient-to-b from-slate-50/60 via-white to-slate-50/60 border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
         
         {/* Exact Section Header from Source Theme */}

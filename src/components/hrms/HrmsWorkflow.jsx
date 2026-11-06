@@ -82,7 +82,7 @@ export default function HrmsWorkflow() {
   ];
 
   return (
-    <section id="workflow" className="py-16 lg:py-24 bg-gradient-to-b from-slate-50/50 via-white to-slate-50/50 border-b border-gray-200 relative overflow-hidden scroll-mt-20">
+    <section id="workflow" className="section-padding bg-gradient-to-b from-slate-50/50 via-white to-slate-50/50 border-b border-gray-200 relative overflow-hidden scroll-mt-20">
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-purple-200/30 blur-3xl pointer-events-none rounded-full" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-indigo-200/30 blur-3xl pointer-events-none rounded-full" />
 

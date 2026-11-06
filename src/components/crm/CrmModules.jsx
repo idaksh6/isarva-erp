@@ -98,9 +98,9 @@ export default function CrmModules({ onOpenLightbox }) {
   ];
 
   return (
-    <section id="modules" className="py-14 lg:py-20 bg-gray-50/70 relative overflow-hidden border-b border-gray-200 scroll-mt-20">
+    <section id="modules" className="section-padding bg-gray-50/70 relative overflow-hidden border-b border-gray-200 scroll-mt-20">
       <div className="site-container relative z-10">
-        
+
         {/* Exact Section Header from Source Theme */}
         <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-14 lg:mb-20">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
@@ -129,9 +129,8 @@ export default function CrmModules({ onOpenLightbox }) {
               <div
                 data-aos={mod.reverse ? 'fade-left' : 'fade-right'}
                 data-aos-duration="700"
-                className={`lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left ${
-                  mod.reverse ? 'lg:order-2' : 'lg:order-1'
-                }`}
+                className={`lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left ${mod.reverse ? 'lg:order-2' : 'lg:order-1'
+                  }`}
               >
                 <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-3">
                   <span className="text-xs font-bold text-[#008CDB] bg-[rgba(0,140,219,0.08)] border border-[rgba(0,140,219,0.2)] px-3 py-1 rounded-full uppercase tracking-wider">
@@ -173,9 +172,8 @@ export default function CrmModules({ onOpenLightbox }) {
                 data-aos={mod.reverse ? 'fade-right' : 'fade-left'}
                 data-aos-delay="150"
                 data-aos-duration="700"
-                className={`lg:col-span-6 flex justify-center ${
-                  mod.reverse ? 'lg:order-1' : 'lg:order-2'
-                }`}
+                className={`lg:col-span-6 flex justify-center ${mod.reverse ? 'lg:order-1' : 'lg:order-2'
+                  }`}
               >
                 <div
                   className="group relative rounded-2xl bg-white border border-gray-200/80 p-2 sm:p-2.5 shadow-lg hover:shadow-2xl hover:border-sky-300 transition-all duration-300 overflow-hidden cursor-zoom-in w-full max-w-lg"

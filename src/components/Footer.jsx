@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import {
   Facebook,
@@ -8,7 +8,6 @@ import {
   Linkedin,
   Youtube,
   Instagram,
-  ChevronDown,
   Check,
   ArrowRight,
   Phone,
@@ -16,7 +15,6 @@ import {
   Building2,
   Sparkles
 } from 'lucide-react';
-import FlagIcon from './FlagIcon';
 import { renderTitleWithGradient } from '../lib/render-title';
 
 export default function Footer({
@@ -31,24 +29,6 @@ export default function Footer({
   ];
 
   const selectedCountry = selectedCountryProp || countries[0];
-  const [isCountryOpen, setIsCountryOpen] = useState(false);
-  const countryRef = useRef(null);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (countryRef.current && !countryRef.current.contains(event.target)) {
-        setIsCountryOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
-    };
-  }, []);
 
   const metaPhone = content?.meta?.phone || '+91 9902863697';
   const metaEmail = content?.meta?.email || 'marketing@isarvait.com';
@@ -454,67 +434,6 @@ export default function Footer({
             <Link href="/why-choose-us" className="hover:text-[#007a55] transition-colors">
               Why Choose Us
             </Link>
-          </div>
-
-          <div className="flex items-center justify-center md:justify-end w-full md:w-auto">
-            {/* Upward Region & Currency Dropdown */}
-            <div className="relative" ref={countryRef}>
-              <button
-                type="button"
-                onClick={() => setIsCountryOpen(!isCountryOpen)}
-                aria-label="Select country and currency"
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 shadow-2xs transition-colors"
-              >
-                <FlagIcon code={selectedCountry.code} className="w-4 h-3" />
-                <span>{selectedCountry.name}</span>
-                <span className="text-slate-400">({selectedCountry.currency})</span>
-                <ChevronDown
-                  size={13}
-                  className={`text-slate-400 transition-transform duration-200 ${
-                    isCountryOpen ? 'rotate-180 text-[#007a55]' : ''
-                  }`}
-                />
-              </button>
-
-              {/* Upward Dropdown Menu */}
-              {isCountryOpen && (
-                <div className="absolute bottom-full right-0 mb-2 w-72 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2.5 z-50 animate-fadeIn">
-                  <div className="px-3.5 pb-2 mb-1 border-b border-slate-100 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                    Select Operating Region & Currency
-                  </div>
-                  {countries.map((country) => (
-                    <button
-                      key={country.code}
-                      type="button"
-                      onClick={() => {
-                        onSelectCountry?.(country);
-                        setIsCountryOpen(false);
-                      }}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs transition-colors text-left group ${
-                        selectedCountry.code === country.code
-                          ? 'bg-emerald-50/70 text-[#007a55]'
-                          : 'text-slate-700 hover:bg-slate-50'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <FlagIcon code={country.code} className="w-6 h-4" />
-                        <div>
-                          <div className="font-semibold text-slate-900 group-hover:text-[#007a55] transition-colors">
-                            {country.name}
-                          </div>
-                          <div className="text-[11px] text-slate-500 font-normal mt-0.5">
-                            {country.currency} • {country.lang}
-                          </div>
-                        </div>
-                      </div>
-                      {selectedCountry.code === country.code && (
-                        <Check size={16} className="text-[#007a55] font-bold" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
           </div>
         </div>
 

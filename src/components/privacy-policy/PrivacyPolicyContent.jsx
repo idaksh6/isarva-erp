@@ -21,7 +21,6 @@ import {
   Phone,
   MapPin,
   ChevronDown,
-  ChevronRight,
   ArrowRight,
   Sparkles,
   Check,
@@ -332,13 +331,6 @@ function HeroBanner() {
       <div className="absolute inset-0 bg-[radial-gradient(#007a55_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.025] pointer-events-none" />
 
       <div className="site-container relative z-10 section-padding-sm">
-        {/* Breadcrumb */}
-        <nav className="flex items-center justify-center gap-2 text-xs font-medium text-slate-500 mb-8">
-          <Link href="/" className="hover:text-[#007a55] transition-colors">Home</Link>
-          <ChevronRight size={12} className="text-slate-400" />
-          <span className="text-slate-900 font-semibold">Privacy Policy</span>
-        </nav>
-
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           {/* Legal & Compliance Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-emerald-200/70 shadow-2xs mb-5">

@@ -88,7 +88,7 @@ export default function PosModules({ onOpenLightbox }) {
   ];
 
   return (
-    <section id="modules" className="py-14 lg:py-20 bg-white border-b border-gray-200 scroll-mt-20">
+    <section id="modules" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
         
         {/* Section Header */}

@@ -27,7 +27,7 @@ const OFFICES = [
 
 export default function GlobalOfficesGrid() {
   return (
-    <section className="py-10 lg:py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
       <div className="absolute inset-0 bg-mesh-green opacity-20 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">

@@ -11,20 +11,24 @@ import {
   Building2,
   Headphones,
   Check,
-  FileCheck2,
-  Lock,
-  ArrowUpRight,
-  Database,
-  Workflow
 } from 'lucide-react';
 import FlagIcon from '../FlagIcon';
 
 export default function BentoBenefitsGrid({ onOpenModal }) {
   return (
-    <section id="why-isarva-bento" className="section-padding bg-slate-50 relative overflow-hidden">
-      {/* Subtle Background Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl pointer-events-none" />
+    <section id="why-isarva-bento" className="section-padding bg-gradient-to-b from-[#e8f6f0] via-slate-50 to-white relative overflow-hidden border-b border-emerald-200/60">
+      {/* Soft Background Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-200/25 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Blueprint grid dots */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#007a55 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
 
       <div className="site-container relative z-10">
         {/* Section Header */}
@@ -48,8 +52,8 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
           </p>
         </div>
 
-        {/* 4-Column Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4-Column Bento Grid with Dense Auto-Packing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 [grid-auto-flow:dense]">
 
           {/* Card 1: Large 2x2 - Native Dual-Region Regulatory Mastery */}
           <div
@@ -80,7 +84,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-6 pt-6 border-t border-slate-100">
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                   <div className="flex items-center gap-2 mb-2">
-                    <FlagIcon code="IN" className="w-5 h-3.5 rounded-xs shadow-2xs" />
+                    <FlagIcon country="IN" className="w-5 h-3.5 rounded-xs shadow-2xs" />
                     <span className="text-xs font-bold text-slate-900">India Compliance Hub</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-slate-600">
@@ -90,19 +94,19 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                     </li>
                     <li className="flex items-center gap-1.5">
                       <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
-                      <span>One-Click GSTR-1, 2B & 3B Reconcile</span>
+                      <span>One-Click GSTR-1, 2B &amp; 3B Reconcile</span>
                     </li>
                     <li className="flex items-center gap-1.5">
                       <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
-                      <span>TDS & TCS Automated Ledger Posting</span>
+                      <span>TDS &amp; TCS Automated Ledger Posting</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                   <div className="flex items-center gap-2 mb-2">
-                    <FlagIcon code="SA" className="w-5 h-3.5 rounded-xs shadow-2xs" />
-                    <span className="text-xs font-bold text-slate-900">Saudi & GCC Hub</span>
+                    <FlagIcon country="SA" className="w-5 h-3.5 rounded-xs shadow-2xs" />
+                    <span className="text-xs font-bold text-slate-900">Saudi &amp; GCC Hub</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-slate-600">
                     <li className="flex items-center gap-1.5">
@@ -111,22 +115,49 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                     </li>
                     <li className="flex items-center gap-1.5">
                       <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
-                      <span>Bilingual Arabic & English Tax Receipts</span>
+                      <span>Bilingual Arabic &amp; English Tax Receipts</span>
                     </li>
                     <li className="flex items-center gap-1.5">
                       <Check className="w-3.5 h-3.5 text-[#007a55] shrink-0" />
-                      <span>Mudad & Mol WPS Payroll Export</span>
+                      <span>Mudad &amp; Mol WPS Payroll Export</span>
                     </li>
                   </ul>
                 </div>
               </div>
+
+              {/* Real-Time Regulatory Clearance Gateway Strip */}
+              <div className="mt-5 p-4 rounded-xl bg-gradient-to-r from-emerald-50/90 via-[#eef9f4] to-teal-50/80 border border-emerald-200/80 shadow-2xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-emerald-200/60">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-bold text-slate-800">
+                      Live Regulatory Clearance Gateway
+                    </span>
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-[#007a55] bg-white/90 px-2.5 py-0.5 rounded-full border border-emerald-200/80 whitespace-nowrap self-start sm:self-auto">
+                    SHA-256 Stamped
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
+                    <span className="text-slate-600 font-medium">IRN Clearance Speed</span>
+                    <span className="font-bold text-slate-900 font-mono whitespace-nowrap">&lt; 350ms Direct NIC</span>
+                  </div>
+                  <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
+                    <span className="text-slate-600 font-medium">ZATCA Cryptographic Clearance</span>
+                    <span className="font-bold text-[#007a55] font-mono whitespace-nowrap">Phase 2 Live Gateway</span>
+                  </div>
+                  <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-white/90 border border-emerald-100/80 shadow-2xs text-xs">
+                    <span className="text-slate-600 font-medium">Statutory Penalties Audit</span>
+                    <span className="font-bold text-emerald-600 font-mono whitespace-nowrap">Zero Penalty Record</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-6 pt-4 flex items-center justify-between text-xs text-slate-500 font-medium">
+            <div className="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-500 font-medium">
               <span>Updated automatically with gazetted tax notifications</span>
-              <span className="text-[#007a55] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                Read compliance spec <ArrowUpRight className="w-3.5 h-3.5" />
-              </span>
             </div>
           </div>
 
@@ -139,7 +170,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                 <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-[#0d9488] group-hover:scale-110 group-hover:bg-[#0d9488] group-hover:text-white transition-all duration-300">
                   <Zap className="w-6 h-6" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200/60">
+                <span className="px-3 py-1 rounded-full bg-teal-50 text-[#0d9488] text-xs font-bold border border-teal-100">
                   2-4 Weeks Go-Live
                 </span>
               </div>
@@ -165,27 +196,27 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
             </div>
           </div>
 
-          {/* Card 3: Stat 1x1 - 1,000+ Enterprises */}
+          {/* Card 3: Stat 1x1 - 1,000+ Enterprises with Light Colored Gradient */}
           <div
-            className="rounded-2xl bg-gradient-to-br from-slate-900 to-[#0b1a30] text-white p-7 sm:p-8 flex flex-col justify-between border border-emerald-500/40 card-shadow-dark-emerald group transition-all duration-300"
+            className="rounded-2xl bg-gradient-to-br from-[#e8f8f0] via-[#def4e9] to-[#edf9f3] p-7 sm:p-8 flex flex-col justify-between border border-emerald-200/80 card-shadow-emerald group transition-all duration-300 hover:-translate-y-1"
           >
             <div>
-              <div className="text-xs uppercase font-extrabold tracking-widest text-emerald-400 mb-2">
-                Proven Scale
+              <div className="text-xs uppercase font-extrabold tracking-widest text-[#007a55] mb-2">
+                PROVEN SCALE
               </div>
-              <div className="text-4xl sm:text-5xl font-black text-white font-heading tracking-tight mb-3">
-                1,000<span className="text-emerald-400">+</span>
+              <div className="text-4xl sm:text-5xl font-black text-slate-900 font-heading tracking-tight mb-3">
+                1,000<span className="text-[#007a55]">+</span>
               </div>
-              <h3 className="text-white">
+              <h3>
                 Thriving Enterprises
               </h3>
-              <p className="mt-2 text-slate-300 text-sm">
+              <p className="mt-2">
                 Powering multi-branch retail chains, wholesale FMCG distributors, manufacturing plants, and service providers.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
-              <span>Across IN & GCC</span>
-              <span className="text-emerald-400 font-semibold">99.2% Retention</span>
+            <div className="mt-4 pt-3 border-t border-emerald-200/70 text-xs text-slate-600 flex items-center justify-between gap-2">
+              <span className="whitespace-nowrap">Across IN &amp; GCC</span>
+              <span className="text-[#007a55] font-bold whitespace-nowrap">99.2% Retention</span>
             </div>
           </div>
 
@@ -207,9 +238,9 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                 Tier-IV enterprise data center redundancy with ISO 27001 grade encryption and automated hourly snapshot backups.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 flex items-center justify-between">
-              <span>Sub-second failover</span>
-              <span className="text-blue-600 font-semibold">Continuous Mirroring</span>
+            <div className="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 flex items-center justify-between gap-2">
+              <span className="whitespace-nowrap">Sub-second failover</span>
+              <span className="text-blue-600 font-semibold whitespace-nowrap">Continuous Mirroring</span>
             </div>
           </div>
 
@@ -242,7 +273,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                 ].map((item, idx) => (
                   <div key={idx} className="p-2.5 rounded-lg bg-slate-50 border border-slate-200/70 text-xs">
                     <div className="font-bold text-slate-900">{item.name}</div>
-                    <div className="text-slate-500 text-[11px]">{item.desc}</div>
+                    <div className="text-slate-500 text-xs">{item.desc}</div>
                   </div>
                 ))}
               </div>
@@ -253,62 +284,22 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
             </div>
           </div>
 
-          {/* Card 6: 1x1 - No Per-User Headcount Penalty */}
-          <div
-            className="rounded-2xl bg-white border border-orange-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-orange group"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-[#ea580c] mb-4 group-hover:scale-110 group-hover:bg-[#ea580c] group-hover:text-white transition-all duration-300">
-                <Coins className="w-6 h-6" />
-              </div>
-              <h3>
-                No Per-User Penalty
-              </h3>
-              <p className="mt-2">
-                Add cashiers, warehouse assistants, and accountants without watching your software bill balloon every single month.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-600">
-              Transparent, scalable pricing
-            </div>
-          </div>
-
-          {/* Card 7: 1x1 - Frictionless Human Experience */}
-          <div
-            className="rounded-2xl bg-white border border-purple-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-purple group"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-[#7c3aed] mb-4 group-hover:scale-110 group-hover:bg-[#7c3aed] group-hover:text-white transition-all duration-300">
-                <MousePointerClick className="w-6 h-6" />
-              </div>
-              <h3>
-                Intuitive & Minimal Clicks
-              </h3>
-              <p className="mt-2">
-                Built for real operations. High-speed keyboard navigation, clean readable forms, and zero cluttered 1990s menus.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-600">
-              Staff master it in hours
-            </div>
-          </div>
-
           {/* Card 8: Wide 2x1 - Instant Financial Telemetry & AI Forecasting */}
           <div
             className="md:col-span-2 lg:col-span-2 rounded-2xl bg-white border border-indigo-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-indigo group"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-[#4f46e5] group-hover:scale-110 group-hover:bg-[#4f46e5] group-hover:text-white transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
                   <TrendingUp className="w-6 h-6" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200/60">
+                <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold border border-indigo-100">
                   Executive Cockpit
                 </span>
               </div>
 
               <h3>
-                Live Financial Telemetry & Cash-Flow Radar
+                Live Financial Telemetry &amp; Cash-Flow Radar
               </h3>
 
               <p className="mt-3">
@@ -318,19 +309,59 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
               </p>
             </div>
 
-            <div className="mt-6 grid grid-cols-3 gap-3 pt-4 border-t border-slate-100 text-center">
-              <div className="p-2 rounded-lg bg-slate-50">
-                <div className="text-xs text-slate-500 font-medium">Month-End Close</div>
-                <div className="text-sm font-bold text-slate-900">4.2x Faster</div>
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-4 border-t border-slate-100 text-center">
+              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3">
+                <div className="text-xs text-slate-500 font-medium whitespace-nowrap">Month-End Close</div>
+                <div className="text-sm font-bold text-slate-900 whitespace-nowrap mt-0.5">4.2x Faster</div>
               </div>
-              <div className="p-2 rounded-lg bg-slate-50">
-                <div className="text-xs text-slate-500 font-medium">Reconciliation</div>
-                <div className="text-sm font-bold text-slate-900">100% Automated</div>
+              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3">
+                <div className="text-xs text-slate-500 font-medium whitespace-nowrap">Reconciliation</div>
+                <div className="text-sm font-bold text-slate-900 whitespace-nowrap mt-0.5">100% Automated</div>
               </div>
-              <div className="p-2 rounded-lg bg-slate-50">
-                <div className="text-xs text-slate-500 font-medium">Data Integrity</div>
-                <div className="text-sm font-bold text-[#007a55]">Auditor Ready</div>
+              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3">
+                <div className="text-xs text-slate-500 font-medium whitespace-nowrap">Data Integrity</div>
+                <div className="text-sm font-bold text-[#007a55] whitespace-nowrap mt-0.5">Auditor Ready</div>
               </div>
+            </div>
+          </div>
+
+          {/* Card 6: 1x1 - No Per-User Headcount Penalty */}
+          <div
+            className="rounded-2xl bg-white border border-amber-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-orange group"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-4 group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                <Coins className="w-6 h-6" />
+              </div>
+              <h3>
+                No Per-User Penalty
+              </h3>
+              <p className="mt-2">
+                Add cashiers, warehouse assistants, and accountants without watching your software bill balloon every single month.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+              Transparent, scalable pricing
+            </div>
+          </div>
+
+          {/* Card 7: 1x1 - Frictionless Human Experience */}
+          <div
+            className="rounded-2xl bg-white border border-purple-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-purple group"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                <MousePointerClick className="w-6 h-6" />
+              </div>
+              <h3>
+                Intuitive &amp; Minimal Clicks
+              </h3>
+              <p className="mt-2">
+                Built for real operations. High-speed keyboard navigation, clean readable forms, and zero cluttered 1990s menus.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+              Staff master it in hours
             </div>
           </div>
 
@@ -339,18 +370,18 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
             className="rounded-2xl bg-white border border-blue-200/80 p-7 sm:p-8 flex flex-col justify-between card-shadow-blue group"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#2563eb] mb-4 group-hover:scale-110 group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                 <Building2 className="w-6 h-6" />
               </div>
               <h3>
-                Multi-Branch & Warehouses
+                Multi-Branch &amp; Warehouses
               </h3>
               <p className="mt-2">
                 Seamless inter-branch stock transfers, localized price rules, and consolidated group tax filings.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-600">
-              Unlimited entities & stores
+            <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+              Unlimited entities &amp; stores
             </div>
           </div>
 
@@ -377,7 +408,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
         </div>
 
         {/* Bottom Banner Trigger */}
-        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-[#007a55]/10 to-teal-500/10 border border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50/70 border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-6 card-shadow-emerald">
           <div className="space-y-1 text-center sm:text-left">
             <div className="text-base sm:text-lg font-bold text-slate-900 font-heading">
               Ready to see how ISARVA ERP fits into your operations?
@@ -389,7 +420,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
           <button
             type="button"
             onClick={() => onOpenModal?.('demo', 'Why Choose Us Bento Banner')}
-            className="shrink-0 px-6 py-3 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#007a55]/25 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+            className="shrink-0 px-6 py-3 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#007a55]/25 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
           >
             Request Custom Architecture Walkthrough
           </button>

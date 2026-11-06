@@ -16,6 +16,7 @@ const ROI_STATS = [
     description: 'Average reduction in counter checkout queue time across dining & retail outlets.',
     icon: TrendingUp,
     accent: '#007a55',
+    cardShadow: 'card-shadow-emerald',
   },
   {
     value: '100%',
@@ -23,6 +24,7 @@ const ROI_STATS = [
     description: 'Guaranteed compliance with GST e-invoicing in India and ZATCA Phase 2 in Saudi Arabia.',
     icon: ShieldCheck,
     accent: '#2563eb',
+    cardShadow: 'card-shadow-blue',
   },
   {
     value: '3.5x',
@@ -30,6 +32,7 @@ const ROI_STATS = [
     description: 'Biometric punches automatically calculate salaries, deductions, and tax withholdings.',
     icon: Clock,
     accent: '#7c3aed',
+    cardShadow: 'card-shadow-purple',
   },
   {
     value: '99.98%',
@@ -37,6 +40,7 @@ const ROI_STATS = [
     description: 'Near-zero stock shrinkage across warehouses and store counters with automated BOM tracking.',
     icon: CheckCircle,
     accent: '#ea580c',
+    cardShadow: 'card-shadow-orange',
   },
 ];
 
@@ -55,14 +59,14 @@ export default function SolutionsMetricsRoi() {
           </p>
         </div>
 
-        {/* 4 Key Metrics Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+        {/* 4 Key Metrics Cards - Full width of site-container */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14 w-full">
           {ROI_STATS.map((stat, idx) => {
             const Icon = stat.icon;
             return (
               <div
                 key={idx}
-                className="card-ecosystem rounded-2xl p-6 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.18),0_4px_14px_-2px_rgba(0,122,85,0.08)] text-center flex flex-col items-center justify-between transition-all duration-300 hover:scale-[1.02]"
+                className={`card-ecosystem rounded-2xl p-6 bg-white border ${stat.cardShadow} text-center flex flex-col items-center justify-between`}
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-inner"
@@ -78,11 +82,11 @@ export default function SolutionsMetricsRoi() {
                   {stat.value}
                 </div>
 
-                <h4 className="text-sm font-bold text-slate-900 mb-2">
-                  {stat.label}
+                <h4 className="mb-2">
+                  <span>{stat.label}</span>
                 </h4>
 
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="mb-0">
                   {stat.description}
                 </p>
               </div>
@@ -90,8 +94,8 @@ export default function SolutionsMetricsRoi() {
           })}
         </div>
 
-        {/* Executive Endorsement Banner */}
-        <div className="max-w-4xl mx-auto rounded-3xl p-7 sm:p-9 bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] text-white border border-emerald-400/30 shadow-xl relative overflow-hidden">
+        {/* Executive Endorsement Banner - Full width of site-container */}
+        <div className="w-full rounded-3xl p-7 sm:p-9 bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] text-white border border-emerald-400/30 card-shadow-dark-emerald relative overflow-hidden">
           <Quote className="absolute right-6 bottom-4 w-24 h-24 text-white/5 pointer-events-none" />
           <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 p-2 flex items-center justify-center shrink-0 shadow-inner">
@@ -102,7 +106,7 @@ export default function SolutionsMetricsRoi() {
               />
             </div>
             <div>
-              <p className="text-sm sm:text-base text-emerald-50 leading-relaxed italic mb-3">
+              <p className="italic mb-3 text-emerald-50">
                 &ldquo;Before ISARVA, reconciling point-of-sale revenues with accounting ledgers took our finance team 3 days at the end of every month. Today, everything is synchronized live. We saved 15+ hours weekly.&rdquo;
               </p>
               <div className="text-xs font-bold text-emerald-300 font-mono tracking-wide">
