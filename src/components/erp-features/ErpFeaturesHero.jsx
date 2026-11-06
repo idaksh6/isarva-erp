@@ -30,7 +30,7 @@ export default function ErpFeaturesHero({ onOpenModal }) {
         }}
       />
 
-      <div className="site-container section-padding relative">
+      <div className="site-container section-padding-sm relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center">
 
           {/* ── Left: Text Content ── */}

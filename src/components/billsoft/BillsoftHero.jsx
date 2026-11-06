@@ -5,7 +5,7 @@ import { ShieldCheck, Zap, Building2, ZoomIn, FileText, CheckCircle2 } from 'luc
 
 export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLightbox }) {
   return (
-    <section id="overview" className="relative pt-24 lg:pt-36 pb-12 lg:pb-16 overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#EFF6FF] via-[#F8FAFC] to-white scroll-mt-20">
+    <section id="overview" className="relative section-padding-sm overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#EFF6FF] via-[#F8FAFC] to-white scroll-mt-20">
       {/* Radial Dot Grid Background with Royal Blue Accent */}
       <div
         className="absolute inset-0 opacity-[0.30] pointer-events-none"

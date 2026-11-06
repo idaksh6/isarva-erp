@@ -5,7 +5,7 @@ import { ShieldCheck, RefreshCw, Headphones, ZoomIn } from 'lucide-react';
 
 export default function HrmsHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLightbox }) {
   return (
-    <section id="overview" className="relative pt-24 lg:pt-36 pb-12 lg:pb-16 overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#FAF5FF] via-[#FDFBFF] to-white scroll-mt-20">
+    <section id="overview" className="relative section-padding-sm overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#FAF5FF] via-[#FDFBFF] to-white scroll-mt-20">
       {/* Exact Radial Dot Grid Background with Purple Tint */}
       <div
         className="absolute inset-0 opacity-[0.35] pointer-events-none"
@@ -21,10 +21,10 @@ export default function HrmsHero({ onOpenDemoModal, onOpenBrochureModal, onOpenL
 
       <div className="site-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
-          
+
           {/* Left Hero Column */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
-            
+
             {/* Live Indicator Eyebrow Tag with AOS Fade-Down */}
             <div
               data-aos="fade-down"

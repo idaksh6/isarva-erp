@@ -15,14 +15,25 @@ export const metadata = {
       "Precision in Technology. Purpose in Impact. Learn about Isarva Infotech's legacy of innovation, our expert team, and commitment to delivering exceptional digital solutions since our founding.",
     url: 'https://demoweb.isarva.in/about',
     siteName: 'Isarva Infotech',
-    locale: 'en_US',
+    locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: '/isarva-og.jpg',
+        secureUrl: 'https://demoweb.isarva.in/isarva-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'About Isarva Infotech — Precision in Technology, Purpose in Impact',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Us - Leading IT Solutions Provider | Isarva Infotech',
     description:
       "Precision in Technology. Purpose in Impact. Learn about Isarva Infotech's legacy of innovation, our expert team, and commitment to delivering exceptional digital solutions.",
+    images: ['/isarva-og.jpg'],
   },
 };
 

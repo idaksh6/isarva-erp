@@ -331,7 +331,7 @@ function HeroBanner() {
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#007a55_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.025] pointer-events-none" />
 
-      <div className="site-container relative z-10 section-padding">
+      <div className="site-container relative z-10 section-padding-sm">
         {/* Breadcrumb */}
         <nav className="flex items-center justify-center gap-2 text-xs font-medium text-slate-500 mb-8">
           <Link href="/" className="hover:text-[#007a55] transition-colors">Home</Link>

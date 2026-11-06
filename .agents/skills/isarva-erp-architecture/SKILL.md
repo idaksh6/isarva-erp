@@ -234,4 +234,69 @@ To deliver a high-tech, vibrant, enterprise-grade aesthetic, cards must **NEVER*
 3. **Card Borders**: Ensure cards have a subtle matching border (e.g. `border-emerald-200/80` or `border-blue-200/80`) that harmonizes with the colored shadow.
 4. **FAQ Accordions**: FAQ cards must feature ambient theme glow in both static and expanded states (`.card-shadow-faq-emerald` or dynamic theme glow `rgba(..., 0.26)`).
 
+---
+
+## 13. Mandatory Open Graph (OG) & Social Card Standards Across All Pages
+
+To ensure social sharing across WhatsApp, LinkedIn, Facebook, Twitter (X), and enterprise communication channels generates rich preview cards (matching **[isarvait.com](https://www.isarvait.com/)**), **every page in the platform must export full Open Graph and Twitter metadata**:
+
+### A. Root Layout `metadataBase`
+In `src/app/layout.js`, always declare `metadataBase` to resolve all relative image paths correctly:
+```javascript
+export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://demoweb.isarva.in'),
+  // ...
+};
+```
+
+### B. Standard OG & Twitter Metadata Schema per Page
+Every `page.js` / `page.jsx` must include:
+```javascript
+export const metadata = {
+  title: 'Page Title — Subtitle | ISARVA ERP',
+  description: 'Detailed description (150-160 characters) explaining features and value proposition.',
+  keywords: 'keyword 1, keyword 2, keyword 3',
+  alternates: {
+    canonical: 'https://demoweb.isarva.in/page-slug',
+  },
+  openGraph: {
+    title: 'Page Title — Subtitle | ISARVA ERP',
+    description: 'Detailed description for social card sharing.',
+    url: 'https://demoweb.isarva.in/page-slug',
+    siteName: 'ISARVA ERP',
+    locale: 'en_IN', // 'ar_SA' for Saudi Arabia routes
+    type: 'website',
+    images: [
+      {
+        url: '/isarva-og.jpg', // or dedicated module graphic
+        secureUrl: 'https://demoweb.isarva.in/isarva-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Page Title Description',
+        type: 'image/jpeg', // or 'image/png'
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Page Title — Subtitle | ISARVA ERP',
+    description: 'Detailed description for social card sharing.',
+    images: ['/isarva-og.jpg'],
+  },
+};
+```
+
+### C. Standard Dimensions & Image Format
+- **Dimensions**: Strictly `1200x630` pixels (standard 1.91:1 social card ratio).
+- **Fallback Global OG Image**: `/public/isarva-og.jpg` (150KB optimized high-res banner matching isarvait.com).
+- **Module Specific Preview Images**:
+  - Home & General: `/isarva-og.jpg`
+  - BillSoft Accounting: `/images/billsoft/dashboard.png`
+  - Restaurant POS: `/images/pos/feature-floor-tables.png`
+  - HRMS & Payroll: `/images/hrms/HRMS-dashboard-v3.png`
+  - CRM: `/images/crm/CRM-dashboard-v3.png`
+  - ERP Features: `/images/erp-features/erp-dashboard-hero.jpg`
+  - Why Choose Us: `/images/why-us/hero-core-hub.jpg`
+
+
 

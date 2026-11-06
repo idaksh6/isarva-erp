@@ -21,9 +21,11 @@ export const metadata = {
     images: [
       {
         url: '/images/why-us/hero-core-hub.jpg',
+        secureUrl: 'https://demoweb.isarva.in/images/why-us/hero-core-hub.jpg',
         width: 1200,
         height: 630,
         alt: 'Why Choose ISARVA ERP Architecture & Solutions Hub',
+        type: 'image/jpeg',
       },
     ],
   },

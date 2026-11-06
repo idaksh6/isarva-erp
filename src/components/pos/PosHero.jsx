@@ -5,7 +5,7 @@ import { WifiOff, RefreshCw, Headphones, ZoomIn } from 'lucide-react';
 
 export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLightbox }) {
   return (
-    <section id="overview" className="relative pt-24 lg:pt-36 pb-12 lg:pb-16 overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#ECFDF5] via-[#F7FEFA] to-white scroll-mt-20">
+    <section id="overview" className="relative section-padding-sm overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#ECFDF5] via-[#F7FEFA] to-white scroll-mt-20">
       {/* Exact Radial Dot Grid Background with Emerald Accent */}
       <div
         className="absolute inset-0 opacity-[0.32] pointer-events-none"
@@ -21,10 +21,10 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
 
       <div className="site-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
-          
+
           {/* Left Hero Column */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
-            
+
             {/* Live Indicator Eyebrow Tag */}
             <div className="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 mb-6 shadow-2xs">
               <span className="relative flex h-2 w-2 shrink-0">

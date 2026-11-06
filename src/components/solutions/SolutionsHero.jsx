@@ -16,7 +16,7 @@ const SOLUTION_TABS = [
 
 export default function SolutionsHero({ activeTab, onTabChange }) {
   return (
-    <section className="relative pt-28 pb-12 sm:pt-36 sm:pb-16 bg-gradient-to-b from-[#f0f8f4] via-[#e7f4ee] to-[#f4faf6] border-b border-[#d3eade]/70 overflow-hidden">
+    <section className="relative section-padding-sm bg-gradient-to-b from-[#f0f8f4] via-[#e7f4ee] to-[#f4faf6] border-b border-[#d3eade]/70 overflow-hidden">
       {/* Soft atmospheric glow orbs */}
       <div className="absolute -top-32 left-1/4 w-[550px] h-[550px] bg-emerald-200/35 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-10 w-[500px] h-[500px] bg-teal-200/25 rounded-full blur-3xl pointer-events-none" />
@@ -79,11 +79,10 @@ export default function SolutionsHero({ activeTab, onTabChange }) {
                   key={tab.id}
                   type="button"
                   onClick={() => onTabChange(tab.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                    isActive
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${isActive
                       ? 'bg-[#007a55] text-white shadow-md shadow-emerald-800/20 scale-105'
                       : 'bg-white/90 text-slate-700 hover:bg-emerald-50 hover:text-[#007a55] border border-slate-200/80 shadow-2xs'
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>

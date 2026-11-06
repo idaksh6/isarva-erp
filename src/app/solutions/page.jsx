@@ -17,12 +17,23 @@ export const metadata = {
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: '/isarva-og.jpg',
+        secureUrl: 'https://demoweb.isarva.in/isarva-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ISARVA ERP Solutions — Integrated Business Suites',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ERP Solutions — Integrated Business Management Suites | ISARVA ERP',
     description:
       'From point-of-sale and GST-compliant accounting to multi-branch HRMS and automated customer pipelines.',
+    images: ['/isarva-og.jpg'],
   },
 };
 

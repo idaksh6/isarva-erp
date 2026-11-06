@@ -14,11 +14,22 @@ export const metadata = {
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: '/isarva-og.jpg',
+        secureUrl: 'https://demoweb.isarva.in/isarva-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Contact ISARVA Infotech — Get in Touch with Our ERP Experts',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact Us - Get in Touch with Our Experts | Isarva Infotech',
     description: "Have a project in mind? Connect with ISARVA Infotech for enterprise ERP, Restaurant POS, Accounting, and HRMS solutions.",
+    images: ['/isarva-og.jpg'],
   },
 };
 

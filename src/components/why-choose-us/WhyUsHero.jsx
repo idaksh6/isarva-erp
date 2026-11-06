@@ -26,7 +26,7 @@ export default function WhyUsHero({ onOpenModal }) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-[#0a192f] to-slate-900 text-white pt-28 pb-16 lg:pt-36 lg:pb-24">
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-[#0a192f] to-slate-900 text-white section-padding-sm">
       {/* Background Radial Glow & Grid Pattern */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#007a55]/20 rounded-full blur-[140px]" />

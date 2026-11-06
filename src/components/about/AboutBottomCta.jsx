@@ -3,39 +3,48 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
 
 export default function AboutBottomCta() {
   return (
-    <section className="py-16 lg:py-24 relative bg-[#1a1f24] text-white overflow-hidden">
-      {/* Background Abstract Overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+    <section className="py-12 lg:py-16 relative bg-[#1a1f24] text-white overflow-hidden">
+      <div className="absolute inset-0 z-0">
         <Image
-          src="/images/about/agency_design_process_abstract_1773850147849.png"
-          alt="Abstract Background Pattern"
+          src="/agency_design_process_abstract_1773850147849.png"
+          alt="Abstract"
           fill
           sizes="100vw"
           className="object-cover opacity-[0.08] mix-blend-screen"
         />
       </div>
 
-      <div className="site-container relative z-10 text-center">
+      <div className="site-container text-center relative z-10 section-animate">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-white mb-6 capitalize leading-tight">
+          <h2 className="text-white mb-8 capitalize">
             Ready to shape the digital future?
           </h2>
-
-          <p className="text-base sm:text-lg lg:text-xl text-[#FDF8F2]/75 mb-10 max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="text-[clamp(1rem,2vw,1.3rem)] text-[#FDF8F2]/70 mb-12 max-w-2xl mx-auto leading-relaxed">
             We simplify complexity through innovation—crafting custom platforms, accelerating cloud adoption, and advancing intelligent automation aligned with your strategic goals.
           </p>
-
           <div className="flex justify-center items-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-bold text-lg shadow-xl shadow-orange-500/30 transition-all duration-200"
+              prefetch={false}
+              className="press-illusion-btn-orange bg-orange-500 text-white w-fit font-bold px-8 py-3 text-lg flex items-center space-x-3"
             >
               <span>Get In Touch</span>
-              <ArrowRight size={18} />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 9"
+                className="h-3 w-5"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="m12.495 0 4.495 4.495-4.495 4.495-.99-.99 2.805-2.805H0v-1.4h14.31L11.505.99z"
+                  clipRule="evenodd"
+                />
+              </svg>
             </Link>
           </div>
         </div>

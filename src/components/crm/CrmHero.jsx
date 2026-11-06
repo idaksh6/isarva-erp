@@ -5,7 +5,7 @@ import { ShieldCheck, RefreshCw, Headphones, ZoomIn } from 'lucide-react';
 
 export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLightbox }) {
   return (
-    <section id="overview" className="relative pt-24 lg:pt-36 pb-12 lg:pb-16 overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#F0F9FF] via-[#FAFDFF] to-white scroll-mt-20">
+    <section id="overview" className="relative section-padding-sm overflow-hidden border-b border-gray-200 bg-gradient-to-b from-[#F0F9FF] via-[#FAFDFF] to-white scroll-mt-20">
       {/* Exact Radial Dot Grid Background from Source */}
       <div
         className="absolute inset-0 opacity-[0.35] pointer-events-none"
@@ -21,10 +21,10 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
 
       <div className="site-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
-          
+
           {/* Left Hero Column */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
-            
+
             {/* Live Indicator Eyebrow Tag with AOS Fade-Down */}
             <div
               data-aos="fade-down"
